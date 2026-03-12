@@ -100,22 +100,22 @@ export default function ServiceQuestionnairePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.45, delay: index * 0.05 }}
-                className="flex flex-col justify-between h-full p-8 bg-white rounded-2xl shadow-lg shadow-black/5 border border-gray-100"
+                className="flex flex-col justify-between h-full p-8 bg-white rounded-lg shadow-lg shadow-black/5 border border-gray-100"
               >
                 <div>
                   <h2 className="text-2xl font-semibold text-gray-900">
                     {item.title}
                   </h2>
-                  <p className="mt-3 text-sm font-medium text-[var(--autisync-gold,#b98b2f)]">
+                  <p className="mt-1 text-sm font-medium text-[var(--autisync-gold,#b98b2f)]">
                     {item.tagline}
                   </p>
-                  <p className="mt-4 text-sm text-gray-600">
+                  <p className="mt-2 text-sm text-gray-600">
                     {item.description}
                   </p>
                 </div>
 
                 {/* CTA – you can swap the href to an external form (Typeform, GHL, etc.) */}
-                <div className="mt-6">
+                <div className="mt-3">
                   <Link
                     href={`#${item.id}`}
                     className="inline-flex items-center text-sm font-semibold text-[var(--autisync-gold,#b98b2f)] hover:text-gray-900"
@@ -129,12 +129,12 @@ export default function ServiceQuestionnairePage() {
           </div>
 
           {/* OPTIONAL: FAQ-STYLE SECTION ANCHORS (PLACEHOLDERS) */}
-          <div className="mt-20 space-y-12">
+          <div className="mt-20 space-y-4">
             {questionnaires.map((item) => (
               <div
                 key={item.id}
                 id={item.id}
-                className="max-w-4xl p-6 mx-auto bg-white rounded-2xl shadow-sm border border-gray-100"
+                className="max-w-4xl p-6 mx-auto bg-white rounded-lg shadow-sm border border-gray-100"
               >
                 <h3 className="text-lg font-semibold text-gray-900">
                   {item.title} – key things we&apos;ll ask you

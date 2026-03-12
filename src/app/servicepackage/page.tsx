@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { CheckIcon } from "@heroicons/react/24/solid"; // if you're on v1, use "@heroicons/react/solid"
@@ -199,16 +199,16 @@ export default function ServicePackagesPage() {
 
   return (
     <div className="bg-[#F9F9F9]">
-      <div className="py-16 px-6 mx-auto max-w-7xl">
+      <div className="py-16 my-6 px-6 mx-auto max-w-7xl">
         {/* Top intro */}
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-base font-semibold leading-7 text-[#B28228]">
             Flexible Solutions for Your Brand
           </h2>
           <p className="mt-2 text-4xl font-bold tracking-tight text-[#3B3B3B] sm:text-5xl">
-            Let&apos;s Tailor the Right Package for You
+            Let&apos;s Tailor the<br/>Right Package for You
           </p>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+          <p className="mt-4 text-lg text-gray-600">
             We understand every business is unique. Instead of showing fixed
             prices, we invite you to book a consultation. Let’s align your
             needs with the perfect offer.
@@ -216,13 +216,13 @@ export default function ServicePackagesPage() {
         </div>
 
         {/* Accordion sections */}
-        <div className="space-y-6">
+        <div className="space-y-3">
           {sections.map((section) => {
             const isOpen = openSection === section.id;
             return (
               <div
                 key={section.id}
-                className="bg-white rounded-3xl shadow-md ring-1 ring-gray-200 overflow-hidden"
+                className="bg-white rounded-lg shadow-md ring-1 ring-gray-200 overflow-hidden"
               >
                 {/* Header */}
                 <button
@@ -275,7 +275,7 @@ export default function ServicePackagesPage() {
         {/* Contact CTA (fixed at bottom) */}
         <div className="mt-12 text-center">
           <Link
-            className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium border rounded-md shadow-sm bg-[#3B3B3B] text-white hover:bg-[#B28228] focus:ring-2 focus:ring-offset-2 focus:ring-[#B28228]"
+            className="inline-flex items-center justify-center px-6 py-2 text-white bg-[var(--autisync-gold,#b98b2f)] rounded-md shadow-lg hover:bg-gray-900 transition-all hover:shadow-[0_16px_30px_rgba(0,0,0,0.25)]/10"
             href="https://wa.me/+447883317646"
           >
             <PhoneIcon className="w-5 h-5 mr-2 text-white" />
