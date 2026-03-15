@@ -236,7 +236,7 @@ export default function DevService() {
                                 Give Us a Call
                             </Link>
                             <Link
-                                href="mailto:info@enovtechnologies.com"
+                                href="mailto:info@autisync.com"
                                 className="text-sm font-semibold leading-6 text-gray-600 hover:text-[var(--autisync-gold,#B98B2F)]"
                             >
                                 Book a Consultation <span aria-hidden="true">→</span>

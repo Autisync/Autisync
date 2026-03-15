@@ -235,7 +235,7 @@ export default function Example() {
                     <br />
                     <div className="">
                         <Link
-                            href="mailto:info@enovtechnologies.com"
+                            href="mailto:info@autisync.com"
                             className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-[#1C1C1C] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white hover:text-gray-100"
                         >
                             How can We Attend to Your IT Needs?

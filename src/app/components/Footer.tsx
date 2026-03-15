@@ -190,15 +190,6 @@ export default function Footer() {
                 <ul className="list-none">
                   <li>
                     <Link
-                      href="/profile/perfil_por.pdf"
-                      target="_blank"
-                      className="block pb-2 text-sm hover:text-[#B28228]"
-                    >
-                      View Portuguese Profile
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
                       href="/ServiceQuestionaire"
                       className="block pb-2 text-sm hover:text-[#B28228]"
                     >
@@ -207,11 +198,20 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="https://www.freeprivacypolicy.com/live/6e47a48f-6547-4446-a605-55a18be2cca8"
+                      href="/PrivacyPolicy/"
                       target="_blank"
                       className="block pb-2 text-sm hover:text-[#B28228]"
                     >
                       Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                        href="/TermsofUse/"
+                        target="_blank"
+                        className="block pb-2 text-sm hover:text-[#B28228]"
+                    >
+                      Terms of Use
                     </Link>
                   </li>
                   <li>
