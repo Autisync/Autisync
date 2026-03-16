@@ -88,7 +88,7 @@ export default function CreativeDesign() {
                         <br />
                         <Link
                             className="px-4 py-3 mb-1 text-xs text-white uppercase transition-all duration-150 ease-linear bg-[#1C1C1C] rounded shadow outline-none hover:bg-[var(--autisync-gold,#B98B2F)] hover:shadow-md focus:outline-none sm:mr-2 transition-all hover:shadow-[0_16px_30px_rgba(0,0,0,0.18)]/10"
-                            href="/src/app/(main)/servicepackage/"
+                            href="/servicepackage/"
                         >
                             Check out Our Packages
                         </Link>

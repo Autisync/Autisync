@@ -126,7 +126,7 @@ export default function Example() {
                                 <br />
                                 <Link
                                     className="px-4 py-3 mb-1 text-xs  text-white uppercase transition-all duration-150 ease-linear bg-[var(--autisync-gold,#B98B2F)] rounded shadow outline-none hover:bg-[#1C1C1C] hover:shadow-md focus:outline-none sm:mr-2"
-                                    href="/src/app/(main)/servicepackage/"
+                                    href="/servicepackage/"
                                 >
                                     Checkout Our Packages
                                 </Link>
@@ -235,7 +235,7 @@ export default function Example() {
                     <br />
                     <div className="">
                         <Link
-                            href="mailto:info@autisync.com"
+                            href="/ServiceQuestionaire"
                             className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-[#1C1C1C] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white hover:text-gray-100"
                         >
                             How can We Attend to Your IT Needs?

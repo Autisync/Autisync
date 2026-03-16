@@ -116,7 +116,7 @@ export default function DevService() {
                         <Link
                             className="px-4 py-3 mb-1 text-xs text-white uppercase transition-all duration-150 ease-linear bg-[var(--autisync-gold,#B98B2F)] rounded shadow outline-none hover:bg-[#1C1C1C] hover:shadow-md focus:outline-none sm:mr-2 transition-all hover:shadow-[0_16px_30px_rgba(0,0,0,0.18)]/10"
                             type="button"
-                            href="/src/app/(main)/servicepackage/"
+                            href="/servicepackage/"
                         >
                             Checkout Our Packages
                         </Link>

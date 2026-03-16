@@ -192,7 +192,7 @@ export default function Footer() {
                 <ul className="list-none">
                   <li>
                     <Link
-                      href="/servicequestionaire"
+                      href="/ServiceQuestionaire"
                       className="block pb-2 text-sm hover:text-[#B28228]"
                     >
                       Service Questionnaire
