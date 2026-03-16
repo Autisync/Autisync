@@ -3,7 +3,6 @@ import Landing from "@/app/(main)/homescreen/landing";
 import WhyUs from "@/app/(main)/homescreen/whyUs";
 import Packages from "@/app/(main)/homescreen/packages";
 import Team from "@/app/(main)/homescreen/team";
-import CallToAction from "@/app/(main)/homescreen/callToAction";
 import Tools from "@/app/(main)/homescreen/tools";
 import type { Metadata } from "next";
 

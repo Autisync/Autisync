@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { Metadata } from "next";
 
 const LAST_UPDATED = "15 March 2026";
 

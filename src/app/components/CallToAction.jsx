@@ -1,7 +1,4 @@
-import Link from "next/link";
-import emailjs from "@emailjs/browser";
-import React, { useRef, useState, useEffect } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
+import React, { useEffect } from "react";
 
 export default function CallToAction() {
   useEffect(() => {

@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import type { Metadata } from "next";
 
 const BASE_URL = "https://www.autisync.com";
 

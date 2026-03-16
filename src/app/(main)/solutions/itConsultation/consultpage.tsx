@@ -8,26 +8,26 @@ import Link from "next/link";
 
 // import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
 
-const features = [
-    {
-        name: "Push to deploy.",
-        description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-        // icon: CloudArrowUpIcon,
-    },
-    {
-        name: "SSL certificates.",
-        description:
-            "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
-        // icon: LockClosedIcon,
-    },
-    {
-        name: "Database backups.",
-        description:
-            "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
-        // icon: ServerIcon,
-    },
-];
+// const features = [
+//     {
+//         name: "Push to deploy.",
+//         description:
+//             "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
+//         // icon: CloudArrowUpIcon,
+//     },
+//     {
+//         name: "SSL certificates.",
+//         description:
+//             "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
+//         // icon: LockClosedIcon,
+//     },
+//     {
+//         name: "Database backups.",
+//         description:
+//             "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
+//         // icon: ServerIcon,
+//     },
+// ];
 const services = [
     {
         name: "Application/Web support",
@@ -236,7 +236,7 @@ export default function Example() {
                     <div className="">
                         <Link
                             href="/ServiceQuestionaire"
-                            className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-[#1C1C1C] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white hover:text-gray-100"
+                            className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-[#1C1C1C] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white hover:text-gray-100"
                         >
                             How can We Attend to Your IT Needs?
                         </Link>
@@ -265,14 +265,14 @@ export default function Example() {
                         width={1200}
                         height={1200}
                     />
-                    <div className="relative left-0 z-20 w-full p-4 mt-4 bg-white shadow-lg xl:p-6 sm:w-auto sm:absolute sm:mt-0 xl:ml-56 sm:ml-12 xl:-mt-40 sm:-mt-12">
+                    <div className="relative left-0 z-20 w-full p-4 mt-4 bg-white shadow-lg xl:p-6 sm:w-auto sm:absolute xl:ml-56 sm:ml-12 xl:-mt-40 sm:-mt-12">
                         <p className="text-3xl font-semibold text-gray-800">20+</p>
                         <p className="mt-2 text-base leading-4 text-gray-600 xl:mt-4">
                             Projects Completed & <br />
                             more under development
                         </p>
                     </div>
-                    <div className="relative z-20 w-full p-4 mt-4 bg-white shadow-lg xl:p-6 sm:w-auto sm:absolute sm:mt-0 xl:mt-80 sm:mt-56 xl:-ml-0 sm:-ml-12">
+                    <div className="relative z-20 w-full p-4 mt-4 bg-white shadow-lg xl:p-6 sm:w-auto sm:absolute xl:mt-80 sm:mt-56 xl:-ml-0 sm:-ml-12">
                         <p className="text-3xl font-semibold text-gray-800">11+</p>
                         <p className="mt-2 text-base leading-4 text-gray-600 xl:mt-4">
                             Collaborators & Growing

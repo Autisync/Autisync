@@ -1,7 +1,6 @@
 "use client"
-import Link from "next/link";
-import emailjs from "@emailjs/browser";
-import React, { useRef, useState, useEffect } from "react";
+
+import React, { useEffect } from "react";
 
 export default function CallToAction() {
   useEffect(() => {
