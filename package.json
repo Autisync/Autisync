@@ -22,7 +22,8 @@
     "react-google-recaptcha": "^3.1.0",
     "react-tsparticles": "^2.12.2",
     "styled-components": "^6.1.19",
-    "tsparticles": "^3.9.1"
+    "tsparticles": "^3.9.1",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

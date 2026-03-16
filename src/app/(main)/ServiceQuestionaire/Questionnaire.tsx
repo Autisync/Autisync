@@ -73,7 +73,7 @@ const questionnaires: Questionnaire[] = [
                 fields: [
                     { id: "usage", label: "Where will designs be used?", type: "multiselect", options: ["Digital / web", "Print", "Social media", "Out-of-home / signage", "Product packaging", "Video / motion"] },
                     { id: "timeline", label: "What is your ideal delivery timeline?", type: "select", options: ["ASAP (rush)", "Within 1 week", "2–3 weeks", "1 month+", "Flexible"] },
-                    { id: "budget", label: "Approximate budget range", type: "select", options: ["Under €500", "€500–€1,500", "€1,500–€5,000", "€5,000+", "To be discussed"] },
+                    { id: "budget", label: "Approximate budget range (local currency)", type: "select", options: ["Under 500", "500 - 1,500", "1,500 - 5,000", "5,000+", "To be discussed"] },
                     { id: "inspiration", label: "Share any inspiration links, moodboards, or references", type: "textarea", placeholder: "URLs, Pinterest boards, Dribbble shots..." },
                     { id: "extra", label: "Anything else we should know?", type: "textarea", placeholder: "Context, constraints, stakeholders involved..." },
                 ],
@@ -130,7 +130,7 @@ const questionnaires: Questionnaire[] = [
                     { id: "brand_assets", label: "Do you have brand assets ready?", type: "radio", options: ["Yes — logo, colours, fonts ready", "Partial — some assets exist", "No — starting from scratch"] },
                     { id: "pages_count", label: "Estimated number of pages / screens", type: "select", options: ["1–5", "6–15", "16–30", "30+", "Not sure yet"] },
                     { id: "timeline", label: "Target launch date / timeline", type: "select", options: ["ASAP", "1 month", "2–3 months", "3–6 months", "Flexible"] },
-                    { id: "budget", label: "Budget range", type: "select", options: ["Under €1,000", "€1,000–€5,000", "€5,000–€15,000", "€15,000+", "To be discussed"] },
+                    { id: "budget", label: "Budget range (local currency)", type: "select", options: ["Under 1,000", "1,000 - 5,000", "5,000 - 15,000", "15,000+", "To be discussed"] },
                 ],
             },
             {
@@ -185,7 +185,7 @@ const questionnaires: Questionnaire[] = [
                     { id: "kpis", label: "What KPIs matter most to you?", type: "multiselect", options: ["Follower growth", "Reach & impressions", "Engagement rate", "Link clicks / traffic", "DMs / enquiries", "Sales conversions", "Brand sentiment"] },
                     { id: "paid_ads", label: "Do you want paid social ads included?", type: "radio", options: ["Yes", "No", "Maybe — let's discuss"] },
                     { id: "reporting", label: "How often do you want performance reports?", type: "select", options: ["Weekly", "Bi-weekly", "Monthly", "Quarterly"] },
-                    { id: "budget", label: "Monthly budget range", type: "select", options: ["Under €500", "€500–€1,500", "€1,500–€3,000", "€3,000+", "To be discussed"] },
+                    { id: "budget", label: "Monthly budget range (local currency)", type: "select", options: ["Under 500", "500 - 1,500", "1,500 - 3,000", "3,000+", "To be discussed"] },
                 ],
             },
             {
@@ -239,7 +239,7 @@ const questionnaires: Questionnaire[] = [
                 title: "Contract & Budget",
                 fields: [
                     { id: "contract_type", label: "Preferred arrangement", type: "radio", options: ["Monthly retainer", "Pay-per-incident", "Annual contract", "Project-based", "Not sure yet"] },
-                    { id: "budget", label: "Monthly budget range", type: "select", options: ["Under €200", "€200–€500", "€500–€1,500", "€1,500+", "To be discussed"] },
+                    { id: "budget", label: "Monthly budget range (local currency)", type: "select", options: ["Under 200", "200 - 500", "500 - 1,500", "1,500+", "To be discussed"] },
                     { id: "start_date", label: "When do you need support to begin?", type: "select", options: ["Immediately", "Within 2 weeks", "Next month", "Flexible"] },
                     { id: "extra", label: "Any other context or requirements?", type: "textarea", placeholder: "Existing contracts, documentation, system diagrams..." },
                 ],
@@ -305,7 +305,7 @@ const questionnaires: Questionnaire[] = [
                 fields: [
                     { id: "monthly_orders", label: "Expected monthly orders at launch", type: "select", options: ["Under 50", "50–200", "200–500", "500+", "Not sure"] },
                     { id: "timeline", label: "Target launch date", type: "select", options: ["ASAP", "Within 1 month", "1–2 months", "3+ months", "Flexible"] },
-                    { id: "budget", label: "Budget range (store build)", type: "select", options: ["Under €1,000", "€1,000–€3,000", "€3,000–€8,000", "€8,000+", "To be discussed"] },
+                    { id: "budget", label: "Budget range (store build, local currency)", type: "select", options: ["Under 1,000", "1,000 - 3,000", "3,000 - 8,000", "8,000+", "To be discussed"] },
                     { id: "extra", label: "Anything else to share?", type: "textarea", placeholder: "Existing supplier data, import requirements, post-launch support needs..." },
                 ],
             },
@@ -368,7 +368,7 @@ const questionnaires: Questionnaire[] = [
                     { id: "primary_goal", label: "Primary goal of email marketing", type: "radio", options: ["Drive sales / revenue", "Nurture leads into customers", "Retain & delight existing customers", "Grow brand awareness", "Drive website/blog traffic"] },
                     { id: "kpis", label: "KPIs you care about", type: "multiselect", options: ["Open rate", "Click-through rate", "Revenue per email", "Unsubscribe rate", "Conversion rate", "List growth rate"] },
                     { id: "reporting", label: "Reporting frequency", type: "select", options: ["After every send", "Weekly", "Monthly", "Quarterly"] },
-                    { id: "budget", label: "Monthly budget range", type: "select", options: ["Under €300", "€300–€800", "€800–€2,000", "€2,000+", "To be discussed"] },
+                    { id: "budget", label: "Monthly budget range (local currency)", type: "select", options: ["Under 300", "300 - 800", "800 - 2,000", "2,000+", "To be discussed"] },
                     { id: "extra", label: "Anything else we should know?", type: "textarea", placeholder: "Past campaigns, what's worked/not worked, compliance needs (GDPR)..." },
                 ],
             },
@@ -688,6 +688,9 @@ function QuestionnaireModal({ q, onClose }: { q: Questionnaire; onClose: () => v
                             <p className="mb-8 text-sm text-gray-400">
                                 We&apos;ll review your answers and get back to you within 1 business day.
                             </p>
+                            <p className="mb-8 text-sm text-gray-500">
+                                A confirmation email has been sent to the email address you provided.
+                            </p>
                             <button
                                 onClick={onClose}
                                 className="rounded-lg px-6 py-3 text-sm font-semibold text-white shadow transition-opacity hover:opacity-90"
@@ -722,6 +725,9 @@ function QuestionnaireModal({ q, onClose }: { q: Questionnaire; onClose: () => v
                                             {field.label}
                                             {field.required && <span className="ml-1 text-[#b98b2f]">*</span>}
                                         </label>
+                                        {field.id === "budget" && (
+                                            <p className="mb-2 text-xs text-gray-400">Please use your local currency.</p>
+                                        )}
                                         {field.hint && <p className="mb-2 text-xs text-gray-400">{field.hint}</p>}
                                         <FormField
                                             field={field}

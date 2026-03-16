@@ -114,6 +114,178 @@ function buildText(payload: Payload): string {
     return lines.join("\n");
 }
 
+function buildConfirmationText(payload: Payload, supportEmail: string): string {
+    return [
+        "Thank you for your submission.",
+        "",
+        `We have received your ${payload.title} and our team will review it shortly.`,
+        "",
+        `If you want to add more details, reply to ${supportEmail}.`,
+        "",
+        "Autisync Team",
+    ].join("\n");
+}
+
+function buildConfirmationHtml(payload: Payload, supportEmail: string): string {
+    return `<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f4f1ec;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f1ec;padding:32px 16px;">
+    <tr><td align="center">
+      <table width="100%" style="max-width:640px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+        <tr><td style="background:linear-gradient(135deg,#7a5a1d,#d1a94c);padding:28px 32px;text-align:center;">
+          <p style="margin:0 0 4px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.75);">Autisync</p>
+          <h1 style="margin:0;font-size:22px;font-weight:700;color:#fff;">We Received Your Questionnaire</h1>
+        </td></tr>
+        <tr><td style="padding:26px 32px;color:#2d2d2d;">
+          <p style="margin:0 0 12px;font-size:15px;line-height:1.65;">
+            Thank you for your submission. We have received your <strong>${payload.title}</strong> and our team will review it shortly.
+          </p>
+          <p style="margin:0;font-size:14px;line-height:1.65;color:#5a5a5a;">
+            If you want to add more details, contact us at
+            <a href="mailto:${supportEmail}" style="color:#b98b2f;">${supportEmail}</a>.
+          </p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+}
+
+interface GraphMessage {
+  subject: string;
+  html: string;
+  to: string;
+  replyTo?: string;
+}
+
+async function getGraphAccessToken(): Promise<string> {
+  const tenantId = process.env.MICROSOFT_TENANT_ID!;
+  const clientId = process.env.MICROSOFT_CLIENT_ID!;
+  const clientSecret = process.env.MICROSOFT_CLIENT_SECRET!;
+
+  const tokenRes = await fetch(
+    `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/token`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        grant_type: "client_credentials",
+        client_id: clientId,
+        client_secret: clientSecret,
+        scope: "https://graph.microsoft.com/.default",
+      }),
+    }
+  );
+
+  if (!tokenRes.ok) {
+    const body = await tokenRes.text();
+    throw new Error(`Graph token request failed (${tokenRes.status}): ${body}`);
+  }
+
+  const tokenJson = (await tokenRes.json()) as { access_token: string };
+  return tokenJson.access_token;
+}
+
+async function sendGraphMessage(accessToken: string, fromEmail: string, message: GraphMessage): Promise<void> {
+  const mailRes = await fetch(
+    `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(fromEmail)}/sendMail`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        message: {
+          subject: message.subject,
+          body: { contentType: "HTML", content: message.html },
+          toRecipients: [{ emailAddress: { address: message.to } }],
+          ...(message.replyTo
+            ? { replyTo: [{ emailAddress: { address: message.replyTo } }] }
+            : {}),
+        },
+        saveToSentItems: false,
+      }),
+    }
+  );
+
+  if (!mailRes.ok) {
+    const body = await mailRes.text();
+    throw new Error(`Graph sendMail failed (${mailRes.status}): ${body}`);
+  }
+}
+
+async function sendViaGraphApi(
+  payload: Payload,
+  fromEmail: string,
+  toEmail: string,
+  noReplyEmail: string,
+  supportEmail: string,
+  submitterEmail?: string
+): Promise<void> {
+  const accessToken = await getGraphAccessToken();
+
+  // Internal notification to team
+  await sendGraphMessage(accessToken, fromEmail, {
+    subject: `New submission: ${payload.title} | Autisync`,
+    html: buildHtml(payload),
+    to: toEmail,
+    ...(submitterEmail ? { replyTo: submitterEmail } : {}),
+  });
+
+  // Confirmation to submitter
+  if (submitterEmail) {
+    await sendGraphMessage(accessToken, noReplyEmail, {
+      subject: `We received your questionnaire - Autisync`,
+      html: buildConfirmationHtml(payload, supportEmail),
+      to: submitterEmail,
+      replyTo: supportEmail,
+    });
+  }
+}
+
+async function sendViaSmtp(
+  payload: Payload,
+  fromEmail: string,
+  toEmail: string,
+  noReplyEmail: string,
+  supportEmail: string,
+  submitterEmail?: string
+): Promise<void> {
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT ?? 587),
+    secure: process.env.SMTP_SECURE === "true",
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
+
+  await transporter.sendMail({
+    from: `"Autisync Questionnaires" <${fromEmail}>`,
+    to: toEmail,
+    ...(submitterEmail ? { replyTo: submitterEmail } : {}),
+    subject: `New submission: ${payload.title} | Autisync`,
+    text: buildText(payload),
+    html: buildHtml(payload),
+  });
+
+  if (submitterEmail) {
+    await transporter.sendMail({
+      from: `"Autisync" <${noReplyEmail}>`,
+      to: submitterEmail,
+      replyTo: supportEmail,
+      subject: `We received your questionnaire - Autisync`,
+      text: buildConfirmationText(payload, supportEmail),
+      html: buildConfirmationHtml(payload, supportEmail),
+    });
+  }
+}
+
 // ─── Route handler ────────────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
@@ -130,33 +302,55 @@ export async function POST(req: NextRequest) {
     }
 
     // Derive a reply-to from the contact_email field if present
-    const replyTo = typeof payload.answers["contact_email"] === "string"
+    const submitterEmail = typeof payload.answers["contact_email"] === "string"
         ? payload.answers["contact_email"]
         : undefined;
 
-    const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT ?? 587),
-        secure: process.env.SMTP_SECURE === "true",
-        auth: {
-            user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS,
-        },
-    });
+    const fromEmail = process.env.OUTLOOK_FROM_EMAIL ?? process.env.SMTP_USER ?? "";
+    const noReplyEmail = process.env.OUTLOOK_NOREPLY_EMAIL ?? fromEmail;
+    const supportEmail = process.env.OUTLOOK_SUPPORT_EMAIL ?? "support@austisync.com";
+    const toEmail =
+      process.env.OUTLOOK_QUESTIONNAIRE_TO_EMAIL ??
+      process.env.OUTLOOK_TO_EMAIL ??
+      "info@autisync.com";
+
+    const useGraph =
+      process.env.MICROSOFT_TENANT_ID &&
+      process.env.MICROSOFT_CLIENT_ID &&
+      process.env.MICROSOFT_CLIENT_SECRET;
+
+    const useSmtp = process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS;
+
+    if (!fromEmail || (!useGraph && !useSmtp)) {
+      console.error("[questionnaire] No valid email transport configuration found.");
+      return NextResponse.json(
+        { error: "Email service is not configured. Please contact us directly." },
+        { status: 503 }
+      );
+    }
 
     try {
-        await transporter.sendMail({
-            from: `"Autisync Questionnaires" <${process.env.SMTP_USER}>`,
-            to: "info@autisync.com",
-            ...(replyTo ? { replyTo } : {}),
-            subject: `📋 New submission: ${payload.title}`,
-            text: buildText(payload),
-            html: buildHtml(payload),
-        });
+      if (useGraph) {
+        await sendViaGraphApi(payload, fromEmail, toEmail, noReplyEmail, supportEmail, submitterEmail);
+      } else {
+        await sendViaSmtp(payload, fromEmail, toEmail, noReplyEmail, supportEmail, submitterEmail);
+      }
 
         return NextResponse.json({ ok: true }, { status: 200 });
     } catch (err) {
-        console.error("[questionnaire] sendMail error:", err);
+      console.error("[questionnaire] send error:", err);
+
+      const message = err instanceof Error ? err.message : "";
+      if (message.includes("AADSTS7000215") || message.includes("invalid_client")) {
+        return NextResponse.json(
+          {
+            error:
+              "Email service is misconfigured: MICROSOFT_CLIENT_SECRET must be the Azure client secret VALUE (not the secret ID).",
+          },
+          { status: 503 }
+        );
+      }
+
         return NextResponse.json({ error: "Failed to send email. Please try again." }, { status: 500 });
     }
 }
