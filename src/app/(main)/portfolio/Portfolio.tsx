@@ -1,645 +1,4 @@
-// "use client";
-//
-// import React, { useState, useRef, useEffect, ReactNode } from "react";
-// import Image from "next/image";
-// import { motion, useInView } from "framer-motion";
-// import Link from "next/link";
-//
-// type ProjectCategory =
-//   | "Corporate Website"
-//   | "Healthcare Website"
-//   | "Cybersecurity Website"
-//   | "E-commerce Website"
-//   | "Web App"
-//   | "Data & Analytics"
-//   | "Education Website"
-//   | "IT Support";
-//
-// interface PortfolioProject {
-//   id: number;
-//   title: string;
-//   category: ProjectCategory;
-//   image: string;
-//   description: string;
-//   url?: string;
-// }
-//
-// const portfolioProjects: PortfolioProject[] = [
-//   {
-//     id: 1,
-//     title: "Ninth Vision",
-//     category: "Corporate Website",
-//     image: "/logos/NinthVision.png",
-//     description: "Enterprise website with modern UI/UX for a visionary brand.",
-//     url: "https://www.9thvision.com/"
-//   },
-//   {
-//     id: 2,
-//     title: "OCCUCARE",
-//     category: "Healthcare Website",
-//     image: "/logos/OCCUCARE.png",
-//     description: "Healthcare management platform presented as a clean web app.",
-//   },
-//   {
-//     id: 3,
-//     title: "Segucyber",
-//     category: "Cybersecurity Website",
-//     image: "/logos/Segucyber.png",
-//     description: "Security solutions website focused on trust and reliability.",
-//     url: "https://segu-cyber.vercel.app/",
-//   },
-//   {
-//     id: 4,
-//     title: "Tchary Glamour",
-//     category: "E-commerce Website",
-//     image: "/logos/TcharyGlamour.png",
-//     description:
-//       "Beauty and fashion e-commerce experience with modern shopping flow.",
-//   },
-//   {
-//     id: 5,
-//     title: "Your Pharmacy",
-//     category: "Web App",
-//     image: "/logos/YourP.png",
-//     description: "Personal productivity platform with a web-first experience.",
-//     url: "https://your-pharm.vercel.app/",
-//   },
-//   {
-//     id: 6,
-//     title: "AJF Solutions",
-//     category: "Corporate Website",
-//     image: "/logos/ajf.png",
-//     description:
-//       "Enterprise business management suite presented as a clear corporate site.",
-//   },
-//   {
-//     id: 7,
-//     title: "DSSI",
-//     category: "Data & Analytics",
-//     image: "/logos/dssi.png",
-//     description: "Data science and integration platform with a minimal design.",
-//   },
-//   {
-//     id: 8,
-//     title: "OKU Platform",
-//     category: "Education Website",
-//     image: "/logos/oku.png",
-//     description: "Educational technology website for a modern learning platform.",
-//   },
-//   {
-//     id: 9,
-//     title: "Passa Studio",
-//     category: "IT Support",
-//     image: "/logos/passa.png",
-//     description: "We supported Passa Studio with end-to-end IT services, including business device setup, technical support, helpdesk operations, and secure systems configuration to ensure smooth daily operations.",
-//   },
-// ];
-//
-// /* ========= Inline SVG “3D” Icons ========= */
-//
-// const TrophyIcon = ({ className }: { className?: string }) => (
-//   <svg
-//     viewBox="0 0 24 24"
-//     className={className}
-//     fill="none"
-//     stroke="currentColor"
-//     strokeWidth={1.7}
-//     strokeLinecap="round"
-//     strokeLinejoin="round"
-//   >
-//     <path d="M9 21h6" />
-//     <path d="M10.5 17h3" />
-//     <path d="M8 4h8v4a4 4 0 0 1-8 0V4z" />
-//     <path d="M6 5H4a2 2 0 0 0 0 4h2" />
-//     <path d="M18 5h2a2 2 0 0 1 0 4h-2" />
-//   </svg>
-// );
-//
-// const ProjectsIcon = ({ className }: { className?: string }) => (
-//   <svg
-//     viewBox="0 0 24 24"
-//     className={className}
-//     fill="none"
-//     stroke="currentColor"
-//     strokeWidth={1.7}
-//     strokeLinecap="round"
-//     strokeLinejoin="round"
-//   >
-//     <rect x="3.5" y="3.5" width="7" height="7" rx="1.5" />
-//     <rect x="13.5" y="3.5" width="7" height="7" rx="1.5" />
-//     <rect x="3.5" y="13.5" width="7" height="7" rx="1.5" />
-//     <rect x="13.5" y="13.5" width="7" height="7" rx="1.5" />
-//   </svg>
-// );
-//
-// const ClientsIcon = ({ className }: { className?: string }) => (
-//   <svg
-//     viewBox="0 0 24 24"
-//     className={className}
-//     fill="none"
-//     stroke="currentColor"
-//     strokeWidth={1.7}
-//     strokeLinecap="round"
-//     strokeLinejoin="round"
-//   >
-//     <path d="M8 13a4 4 0 1 1 4-4" />
-//     <path d="M4 21v-1.5A4.5 4.5 0 0 1 8.5 15h0" />
-//     <circle cx="16" cy="9" r="3" />
-//     <path d="M12 21v-1.5A4.5 4.5 0 0 1 16.5 15H17" />
-//   </svg>
-// );
-//
-// const YearsIcon = ({ className }: { className?: string }) => (
-//   <svg
-//     viewBox="0 0 24 24"
-//     className={className}
-//     fill="none"
-//     stroke="currentColor"
-//     strokeWidth={1.7}
-//     strokeLinecap="round"
-//     strokeLinejoin="round"
-//   >
-//     <rect x="3.5" y="4.5" width="17" height="16" rx="2" />
-//     <path d="M8 3v3" />
-//     <path d="M16 3v3" />
-//     <path d="M3.5 9.5h17" />
-//     <path d="M9 14.5h3l-2 3h3" />
-//   </svg>
-// );
-//
-// const SatisfactionIcon = ({ className }: { className?: string }) => (
-//   <svg
-//     viewBox="0 0 24 24"
-//     className={className}
-//     fill="none"
-//     stroke="currentColor"
-//     strokeWidth={1.7}
-//     strokeLinecap="round"
-//     strokeLinejoin="round"
-//   >
-//     <circle cx="12" cy="12" r="8" />
-//     <path d="M9 10h.01" />
-//     <path d="M15 10h.01" />
-//     <path d="M9 15c.7 1 1.8 1.6 3 1.6s2.3-.6 3-1.6" />
-//   </svg>
-// );
-//
-// /* ========= Achievements logic ========= */
-//
-// interface StatProps {
-//   icon: ReactNode;
-//   label: string;
-//   value: number;
-//   suffix?: string;
-//   delay?: number;
-// }
-//
-// function progressSuffix(target: number, suffix: string, display: number) {
-//   if (!suffix) return "";
-//   return display >= target ? suffix : "";
-// }
-//
-// // Auto-count + 3D icon badge (with hover effects)
-// function AchievementStat({
-//   icon,
-//   label,
-//   value,
-//   suffix = "",
-//   delay = 0,
-// }: StatProps) {
-//   const ref = useRef<HTMLDivElement | null>(null);
-//   const isInView = useInView(ref, { once: true, margin: "-80px" });
-//   const [displayValue, setDisplayValue] = useState(0);
-//
-//   useEffect(() => {
-//     if (!isInView) return;
-//
-//     let frameId: number;
-//     const duration = 1200;
-//     const start = performance.now();
-//
-//     const animateCount = (now: number) => {
-//       const elapsed = now - (start + delay * 1000);
-//       if (elapsed < 0) {
-//         frameId = requestAnimationFrame(animateCount);
-//         return;
-//       }
-//
-//       const progress = Math.min(elapsed / duration, 1);
-//       const current = Math.floor(progress * value);
-//       setDisplayValue(current);
-//
-//       if (progress < 1) frameId = requestAnimationFrame(animateCount);
-//     };
-//
-//     frameId = requestAnimationFrame(animateCount);
-//     return () => cancelAnimationFrame(frameId);
-//   }, [isInView, value, delay]);
-//
-//   return (
-//     <motion.div
-//       ref={ref}
-//       initial={{ opacity: 0, scale: 0.9, y: 20 }}
-//       whileInView={{ opacity: 1, scale: 1, y: 0 }}
-//       viewport={{ once: true }}
-//       transition={{ duration: 0.55, delay }}
-//       className="
-//         group relative flex flex-col items-center w-full min-w-0 break-words
-//         bg-white rounded-3xl shadow-lg pt-10 pb-6 px-5
-//         transition-all duration-300 ease-out
-//         hover:-translate-y-2 hover:shadow-[0_22px_55px_rgba(15,23,42,0.35)]/10
-//       "
-//     >
-//       {/* 3D ICON BADGE */}
-//       <div className="absolute -top-8 left-1/2 -translate-x-1/2">
-//         <div
-//           className="
-//             flex items-center justify-center
-//             w-16 h-16 rounded-full
-//             bg-gradient-to-br from-[#b98b2f] via-[#d1a94c] to-[#7a5a1d]
-//             shadow-[0_12px_24px_rgba(0,0,0,0.25)]
-//             transition-transform duration-300 ease-out
-//              group-hover:shadow-[0_18px_40px_rgba(0,0,0,0.35)]/10
-//           "
-//         >
-//           <div
-//             className="
-//               flex items-center justify-center
-//               w-11 h-11 rounded-full
-//               bg-white/95
-//               shadow-[inset_0_3px_6px_rgba(0,0,0,0.18)]
-//               text-[var(--autisync-gold,#b98b2f)]
-//               transition-transform duration-300 ease-out
-//               group-hover:scale-105
-//             "
-//           >
-//             {icon}
-//           </div>
-//         </div>
-//       </div>
-//
-//       {/* NUMBER + LABEL */}
-//       <div className="mt-4 text-4xl font-extrabold text-slate-800">
-//         {displayValue}
-//         {progressSuffix(value, suffix, displayValue)}
-//       </div>
-//       <div className="mt-2 text-sm text-slate-500">{label}</div>
-//
-//       {/* Bottom accent bar */}
-//       {/*<div*/}
-//       {/*  className="*/}
-//       {/*    mt-6 h-1 w-full origin-center scale-x-75*/}
-//       {/*    rounded-full bg-[var(--autisync-gold,#f2a51f)]*/}
-//       {/*    transition-transform duration-300 ease-out*/}
-//       {/*    group-hover:scale-x-100*/}
-//       {/*  "*/}
-//       {/*/>*/}
-//     </motion.div>
-//   );
-// }
-//
-// /* ========= Page ========= */
-//
-// export default function Portfolio() {
-//   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-//   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-//
-//   return (
-//     <div className="min-h-screen">
-//       {/* HERO IMAGE ONLY (TEXT ON TOP) */}
-//       <div className="relative flex items-center content-center justify-center pt-20 pb-32">
-//         <div
-//           className="absolute top-0 w-full h-full bg-center bg-cover "
-//           style={{
-//             backgroundImage:
-//               "url('https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')",
-//           }}
-//         >
-//           <span
-//             id="blackOverlay"
-//             className="absolute w-full h-full bg-black opacity-95"
-//           ></span>
-//         </div>
-//         <div className=" relative mx-auto">
-//           <div className="flex flex-wrap items-center">
-//             <div className="w-full px-4 ml-auto mr-auto text-center lg:w-9/12">
-//               <div className="p-4">
-//                 <h1 className="mt-24 text-5xl font-semibold text-white ">
-//                   Our Portfolio
-//                 </h1>
-//                 <p className="mt-4 text-lg text-gray-200 pb-10">
-//                   A curated look at digital products we've designed and built
-//                   for clients across industries — from corporate websites to
-//                   data-driven platforms.
-//                 </p>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//         <div
-//           className="absolute bottom-0 left-0 right-0 top-auto w-full h-16 overflow-hidden pointer-events-none"
-//           style={{ transform: "translateZ(0)" }}
-//         >
-//           <svg
-//             className="absolute bottom-0 overflow-hidden"
-//             xmlns="http://www.w3.org/2000/svg"
-//             preserveAspectRatio="none"
-//             version="1.1"
-//             viewBox="0 0 2560 100"
-//             x="0"
-//             y="0"
-//           >
-//             <polygon
-//               className="text-white fill-current"
-//               points="2560 0 2560 100 0 100"
-//             ></polygon>
-//           </svg>
-//         </div>
-//       </div>
-//
-//       {/* TEXT BLOCK ON WHITE BACKGROUND */}
-//       <section className="bg-white pt-16 pb-10">
-//         <div className="container mx-auto text-center px-4 max-w-3xl">
-//           <p className="text-xs tracking-widest mt-6 text-[var(--autisync-gold,#B98B2F)] font-semibold uppercase">
-//             Recent Work
-//           </p>
-//
-//           <h2 className="text-2xl font-semibold text-gray-800 mt-1">
-//             Websites We&apos;ve Crafted
-//           </h2>
-//
-//           <p className="mt-3 text-lg text-gray-500">
-//             Every project combines strategy, design, and execution. Hover over a
-//             card to feel the Autisync touch — and open a live preview to explore
-//             the full experience.
-//           </p>
-//         </div>
-//       </section>
-//
-//       {/* Portfolio Grid */}
-//       <section className="pb-20 bg-white">
-//         <div className="container px-4 mx-auto relative pt-4">
-//           {/* Soft glow behind cards */}
-//           <div className="pointer-events-none absolute inset-0 -z-10">
-//             <div className="mx-auto mt-12 h-64 max-w-5xl rounded-full bg-gradient-to-r from-amber-200/40 via-yellow-100/20 to-amber-200/40 blur-3xl" />
-//           </div>
-//
-//           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-//             {portfolioProjects.map((project, index) => (
-//               <motion.article
-//                 key={project.id}
-//                 initial={{ opacity: 0, y: 40, scale: 0.96 }}
-//                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-//                 viewport={{ once: true, margin: "-80px" }}
-//                 transition={{
-//                   duration: 0.5,
-//                   delay: index * 0.06,
-//                   ease: "easeOut",
-//                 }}
-//                 whileHover={{ y: -10, scale: 1.02 }}
-//                 onHoverStart={() => setHoveredCard(project.id)}
-//                 onHoverEnd={() => setHoveredCard(null)}
-//                 className="relative flex flex-col overflow-hidden rounded-2xl bg-white/95 shadow-lg shadow-black/10 backdrop-blur-md"
-//               >
-//                 {/* Animated glow border */}
-//                 <motion.div
-//                   className="pointer-events-none absolute inset-0 rounded-2xl border border-transparent"
-//                   animate={
-//                     hoveredCard === project.id
-//                       ? {
-//                           boxShadow:
-//                             "0 0 0 1px rgba(185,139,47,0.55), 0 24px 60px rgba(15,23,42,0.35)",
-//                         }
-//                       : {
-//                           boxShadow: "0 16px 40px rgba(15,23,42,0.14)",
-//                         }
-//                   }
-//                   transition={{ duration: 0.28 }}
-//                 />
-//
-//                 {/* Logo / visual */}
-//                 <div className="relative flex h-56 items-center justify-center bg-gradient-to-br from-gray-50 via-white to-amber-50/40">
-//                   <motion.div
-//                     animate={
-//                       hoveredCard === project.id
-//                         ? { scale: 1.07, rotateZ: [0, -1.5, 1.5, 0] }
-//                         : { scale: 1, rotateZ: 0 }
-//                     }
-//                     transition={{ duration: 0.4 }}
-//                     className="relative z-10"
-//                   >
-//                     <Image
-//                       src={project.image}
-//                       alt={project.title}
-//                       width={210}
-//                       height={210}
-//                       className="object-contain p-8 drop-shadow-xl"
-//                     />
-//                   </motion.div>
-//
-//                   {/* Light sweep overlay */}
-//                   <motion.div
-//                     className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/35 via-transparent to-transparent"
-//                     initial={{ opacity: 0 }}
-//                     animate={{
-//                       opacity: hoveredCard === project.id ? 1 : 0,
-//                     }}
-//                     transition={{ duration: 0.3 }}
-//                   />
-//                 </div>
-//
-//                 {/* Content */}
-//                 <div className="relative flex flex-1 flex-col px-6 py-6">
-//                   <div className="mb-3 flex items-center justify-between gap-2">
-//                     <span className="inline-flex items-center rounded-full bg-amber-50 px-3 py-1 text-[11px] font-semibold text-amber-800 border border-amber-200">
-//                       <span className="mr-1 h-1.5 w-1.5 rounded-full bg-[var(--autisync-gold,#B98B2F)]" />
-//                       {project.category}
-//                     </span>
-//                     <motion.span
-//                       className="text-[11px] uppercase tracking-[0.18em] text-gray-400"
-//                       animate={
-//                         hoveredCard === project.id
-//                           ? { letterSpacing: "0.26em" }
-//                           : { letterSpacing: "0.18em" }
-//                       }
-//                       transition={{ duration: 0.3 }}
-//                     >
-//                       Website
-//                     </motion.span>
-//                   </div>
-//
-//                   <motion.h3
-//                     className="mb-2 text-xl font-semibold text-gray-900"
-//                     animate={
-//                       hoveredCard === project.id
-//                         ? { color: "#b98b2f" }
-//                         : { color: "#111827" }
-//                     }
-//                     transition={{ duration: 0.25 }}
-//                   >
-//                     {project.title}
-//                   </motion.h3>
-//
-//                   <p className="mb-4 text-base text-gray-600">
-//                     {project.description}
-//                   </p>
-//
-//                   <div className="mt-auto flex items-center justify-between pt-3 border-t border-gray-100">
-//                     <span className="text-[11px] uppercase tracking-[0.2em] text-gray-400">
-//                       Previous work
-//                     </span>
-//
-//                     <div className="flex items-center gap-3">
-//                       {project.url && (
-//                         <button
-//                           type="button"
-//                           onClick={() => setPreviewUrl(project.url!)}
-//                           className="text-xs font-medium text-[var(--autisync-gold,#B98B2F)] underline-offset-4 hover:underline"
-//                         >
-//                           Live preview
-//                         </button>
-//                       )}
-//                       <motion.div
-//                         className="flex items-center text-xs font-medium text-[var(--autisync-gold,#B98B2F)]"
-//                         animate={hoveredCard === project.id ? { x: 4 } : { x: 0 }}
-//                       >
-//                         View case study
-//                         <span className="ml-1">↗</span>
-//                       </motion.div>
-//                     </div>
-//                   </div>
-//                 </div>
-//               </motion.article>
-//             ))}
-//           </div>
-//
-//           {/* Our Achievements Section */}
-//           <div className="flex flex-wrap items-center mt-32">
-//             <div className="w-full px-4 mx-auto text-center">
-//               {/* White 3D circle with trophy above title */}
-//               <div className="flex justify-center mb-4">
-//                 <div
-//                   className="
-//                     flex items-center justify-center
-//                     w-16 h-16 rounded-full bg-white
-//                     shadow-[0_12px_25px_rgba(0,0,0,0.12)]
-//                   "
-//                 >
-//                   <TrophyIcon className="w-7 h-7 text-[var(--autisync-gold,#b98b2f)]" />
-//                 </div>
-//               </div>
-//
-//               <h3 className="mb-3 text-3xl font-semibold leading-normal text-gray-800">
-//                 Our Achievements
-//               </h3>
-//               <p className="mb-10 text-base text-gray-500 max-w-2xl mx-auto">
-//                 Numbers that reflect the trust our partners place in us and the
-//                 work we deliver across every project.
-//               </p>
-//
-//               <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-//                 <AchievementStat
-//                   icon={<ProjectsIcon className="w-5 h-5" />}
-//                   label="Projects Launched"
-//                   value={50}
-//                   suffix="+"
-//                   delay={0}
-//                 />
-//                 <AchievementStat
-//                   icon={<ClientsIcon className="w-5 h-5" />}
-//                   label="Happy Clients"
-//                   value={30}
-//                   suffix="+"
-//                   delay={0.1}
-//                 />
-//                 <AchievementStat
-//                   icon={<YearsIcon className="w-5 h-5" />}
-//                   label="Years Building Digital"
-//                   value={5}
-//                   suffix="+"
-//                   delay={0.2}
-//                 />
-//                 <AchievementStat
-//                   icon={<SatisfactionIcon className="w-5 h-5" />}
-//                   label="Client Satisfaction"
-//                   value={98}
-//                   suffix="%"
-//                   delay={0.3}
-//                 />
-//               </div>
-//             </div>
-//           </div>
-//
-//           {/* CTA Section */}
-//           <div className="flex flex-wrap items-center mt-32">
-//             <div className="w-full px-4 mx-auto text-center">
-//               <motion.h2
-//                 initial={{ opacity: 0, y: 20 }}
-//                 whileInView={{ opacity: 1, y: 0 }}
-//                 viewport={{ once: true }}
-//                 className="mb-2 text-3xl font-semibold text-gray-800"
-//               >
-//                 Ready to Start Your Project?
-//               </motion.h2>
-//               <motion.p
-//                 initial={{ opacity: 0, y: 20 }}
-//                 whileInView={{ opacity: 1, y: 0 }}
-//                 viewport={{ once: true }}
-//                 transition={{ delay: 0.1 }}
-//                 className="mb-8 text-base text-gray-600"
-//               >
-//                 Let&apos;s collaborate and turn your next idea into a flagship
-//                 website for your brand.
-//               </motion.p>
-//
-//               <Link
-//                 href="https://wa.me/+447883317646"
-//                 target="_blank"
-//                 className="inline-flex items-center justify-center rounded-md border border-transparent bg-[var(--autisync-gold,#b98b2f)] px-8 py-2 text-sm font-medium text-white shadow-lg hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all hover:shadow-[0_16px_30px_rgba(0,0,0,0.18)]/10"
-//               >
-//                 Get In Touch
-//               </Link>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-//
-//       {/* === LIVE PREVIEW MODAL === */}
-//       {previewUrl && (
-//         <motion.div
-//           initial={{ opacity: 0 }}
-//           animate={{ opacity: 1 }}
-//           exit={{ opacity: 0 }}
-//           className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70"
-//           onClick={() => setPreviewUrl(null)} // ← CLOSE WHEN CLICKING BACKDROP
-//         >
-//           <div
-//             className="relative w-[95vw] max-w-5xl h-[80vh] bg-white rounded-2xl shadow-2xl overflow-hidden"
-//             onClick={(e) => e.stopPropagation()} // ← PREVENT CLOSING WHEN CLICKING MODAL CONTENT
-//           >
-//             {/* CLOSE BUTTON */}
-//             <button
-//               onClick={() => setPreviewUrl(null)}
-//               className="absolute right-4 top-3 z-10 rounded-full bg-black/70 px-3 py-1 text-xs font-medium text-white hover:bg-black"
-//             >
-//               Close ✕
-//             </button>
-//
-//             {/* WEBSITE IFRAME */}
-//             <iframe
-//               src={previewUrl}
-//               title="Project preview"
-//               className="w-full h-full border-0"
-//               loading="lazy"
-//             />
-//           </div>
-//         </motion.div>
-//       )}
-//     </div>
-//   );
-// }
-
-"use client"
+"use client";
 import type { ReactNode } from "react";
 import React, { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
@@ -661,8 +20,20 @@ interface PortfolioProject {
     subcategory: string;
     image: string;
     description: string;
-    url?: string;
+    url: string;
     color: string;
+    industry: string;
+    tech: string[];
+    location: string;
+    year: string;
+    services: string[];
+    // Graphic design projects use a gallery instead of iframe
+    designGallery?: {
+        images: string[];       // mockup/snapshot URLs (Unsplash/Pexels placeholders)
+        highlights: string[];   // key design decisions shown as bullets
+        deliverables: string[]; // what was delivered
+        nda?: boolean;          // flag to suppress client name in UI
+    };
 }
 
 interface CategoryTheme {
@@ -673,13 +44,11 @@ interface CategoryTheme {
     textColor: string;
     bgColor: string;
     particleColor: string;
-    // Per-category header copy
     eyebrow: string;
     heading: string;
     subheading: string;
 }
 
-// Theme colors for each category
 const categoryThemes: Record<CategoryType, CategoryTheme> = {
     "Website/App Development": {
         name: "Website/App Development",
@@ -738,113 +107,386 @@ const portfolioProjects: PortfolioProject[] = [
         category: "Website/App Development",
         subcategory: "Corporate Website",
         image: "/logos/NinthVision.svg",
-        description: "Enterprise website with modern UI/UX for a visionary brand.",
+        description: "Enterprise corporate website with a modern, visionary aesthetic. Clean architecture and bold typography that positions the brand as a forward-thinking leader.",
         url: "https://www.9thvision.com/",
         color: "#6366F1",
+        industry: "Corporate / Business",
+        tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
+        location: "International",
+        year: "2024",
+        services: ["Web Design", "Web Development", "Brand Alignment"],
     },
     {
         id: 2,
+        title: "Florentek Engineering",
+        category: "Website/App Development",
+        subcategory: "Corporate Website",
+        image: "/logos/florentek.svg",
+        description: "Industrial engineering firm website covering instrumentation, electrical systems, maintenance services, and specialised manpower — built to instil trust with B2B clients.",
+        url: "https://www.florentek.co.ao/",
+        color: "#6366F1",
+        industry: "Engineering & Industrial",
+        tech: ["Next.js", "Tailwind CSS"],
+        location: "Angola",
+        year: "2024",
+        services: ["Web Design", "Web Development", "Content Strategy"],
+    },
+    {
+        id: 3,
+        title: "Mavunzuka & Filhos",
+        category: "Website/App Development",
+        subcategory: "Corporate Website",
+        image: "/logos/mavunzuka.svg",
+        description: "Road safety specialist website for Angola's leading vehicle identification company — licence plates, safety films, and public sector partnerships presented with authority.",
+        url: "https://www.mavunzuka.co.ao/",
+        color: "#6366F1",
+        industry: "Road Safety / Government",
+        tech: ["Next.js", "Tailwind CSS"],
+        location: "Angola",
+        year: "2024",
+        services: ["Web Design", "Web Development", "Multilingual Support"],
+    },
+    {
+        id: 4,
+        title: "Salustra Group",
+        category: "Website/App Development",
+        subcategory: "Corporate Website",
+        image: "/logos/salustra.svg",
+        description: "Multi-entity corporate portal for the Salustra group, directing visitors across three independent business lines — asset management, facilities management, and oil & gas.",
+        url: "https://www.globus.co.ao/",
+        color: "#6366F1",
+        industry: "Oil & Gas / Asset Management",
+        tech: ["Next.js", "Tailwind CSS"],
+        location: "Angola",
+        year: "2024",
+        services: ["Web Design", "Web Development", "Information Architecture"],
+    },
+    {
+        id: 5,
+        title: "Grupo Girassol",
+        category: "Website/App Development",
+        subcategory: "Corporate Website",
+        image: "/logos/girassol.svg",
+        description: "Construction and services group website built to showcase the company's project portfolio, capabilities, and team — conveying quality and scale in Angola's construction market.",
+        url: "https://www.grupogirassol.co.ao/",
+        color: "#6366F1",
+        industry: "Construction & Services",
+        tech: ["Next.js", "Tailwind CSS"],
+        location: "Angola",
+        year: "2024",
+        services: ["Web Design", "Web Development"],
+    },
+    {
+        id: 6,
         title: "Segucyber",
         category: "Website/App Development",
         subcategory: "Cybersecurity Website",
         image: "/logos/Segucyber.svg",
-        description: "Security solutions website focused on trust and reliability.",
-        url: "https://segu-cyber.vercel.app/",
+        description: "Cybersecurity solutions website built to communicate trust, technical authority, and reliability. Dark aesthetic with clear service messaging tailored to enterprise clients.",
+        url: "https://www.segucyber.ao/",
         color: "#6366F1",
+        industry: "Cybersecurity",
+        tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
+        location: "Angola",
+        year: "2024",
+        services: ["Web Design", "Web Development", "UX Strategy"],
     },
+    // {
+    //     id: 7,
+    //     title: "ParVaga",
+    //     category: "Website/App Development",
+    //     subcategory: "Web App",
+    //     image: "/logos/parvaga.svg",
+    //     description: "Angolan job recruitment platform connecting candidates and companies. Features CV submission, job listings, and a dedicated employer portal with user authentication.",
+    //     url: "https://parvagas.vercel.app/",
+    //     color: "#6366F1",
+    //     industry: "Recruitment / HR Tech",
+    //     tech: ["Next.js", "Tailwind CSS", "Authentication"],
+    //     location: "Angola",
+    //     year: "2024",
+    //     services: ["Web App Development", "UI/UX Design", "Portal Development"],
+    // },
     {
-        id: 3,
-        title: "Tchary Glamour",
-        category: "Website/App Development",
-        subcategory: "E-commerce Website",
-        image: "/logos/TcharyGlamour.svg",
-        description: "Beauty and fashion e-commerce experience with modern shopping flow.",
-        color: "#6366F1",
-    },
-    {
-        id: 4,
+        id: 8,
         title: "Your Pharmacy",
         category: "Website/App Development",
         subcategory: "Web App",
         image: "/logos/YourP.svg",
-        description: "Personal productivity platform with a web-first experience.",
+        description: "Pharmacy management web app providing customers with a seamless digital experience for browsing, ordering, and managing pharmaceutical needs online.",
         url: "https://your-pharm.vercel.app/",
         color: "#6366F1",
-    },
-    {
-        id: 5,
-        title: "AJF Solutions",
-        category: "Website/App Development",
-        subcategory: "Corporate Website",
-        image: "/logos/ajf.svg",
-        description: "Enterprise business management suite presented as a clear corporate site.",
-        color: "#6366F1",
-    },
-    {
-        id: 6,
-        title: "OKU Platform",
-        category: "Website/App Development",
-        subcategory: "Education Website",
-        image: "/logos/oku.svg",
-        description: "Educational technology website for a modern learning platform.",
-        color: "#6366F1",
-    },
-    {
-        id: 7,
-        title: "Brand Identity - Luxe",
-        category: "Graphic Design",
-        subcategory: "Brand Identity",
-        image: "/logos/dssi.svg",
-        description: "Complete brand identity design including logo, color palette, and visual guidelines.",
-        color: "#EC4899",
-    },
-    {
-        id: 8,
-        title: "Marketing Collateral",
-        category: "Graphic Design",
-        subcategory: "Print Design",
-        image: "/logos/passa.svg",
-        description: "Brochures, business cards, and promotional materials with cohesive design language.",
-        color: "#EC4899",
+        industry: "Healthcare / Pharmacy",
+        tech: ["Next.js", "Tailwind CSS", "React"],
+        location: "International",
+        year: "2023",
+        services: ["Web App Development", "UI/UX Design"],
     },
     {
         id: 9,
-        title: "Passa Studio IT",
-        category: "Technical Support",
-        subcategory: "IT Infrastructure",
-        image: "/logos/passa.svg",
-        description: "End-to-end IT services including business device setup, technical support, and secure systems configuration.",
-        color: "#06B6D4",
+        title: "Blue Horizon",
+        category: "Website/App Development",
+        subcategory: "Corporate Website",
+        image: "/logos/bluehorizon.svg",
+        description: "Bilingual corporate website (Portuguese & English) with a refined, international aesthetic — built for a company operating across Angola and the UK.",
+        url: "https://blueh.vercel.app/",
+        color: "#6366F1",
+        industry: "Corporate / Investment",
+        tech: ["Next.js", "Tailwind CSS", "i18n"],
+        location: "Angola / UK",
+        year: "2024",
+        services: ["Web Design", "Web Development", "Multilingual Support"],
     },
     {
         id: 10,
-        title: "DSSI Systems",
-        category: "Technical Support",
-        subcategory: "Data Integration",
-        image: "/logos/dssi.svg",
-        description: "Data science and integration platform with comprehensive technical support.",
-        color: "#06B6D4",
+        title: "Evolution Technologies",
+        category: "Website/App Development",
+        subcategory: "Corporate Website",
+        image: "/logos/evolutiontec.svg",
+        description: "Network solutions and telecommunications company website showcasing infrastructure services, antenna systems, and technology consulting in the Angolan market.",
+        url: "https://www.evolutiontec.co.ao/",
+        color: "#6366F1",
+        industry: "Telecommunications / IT",
+        tech: ["Next.js", "Tailwind CSS"],
+        location: "Angola",
+        year: "2024",
+        services: ["Web Design", "Web Development"],
     },
     {
         id: 11,
-        title: "OCCUCARE Campaign",
-        category: "Marketing",
-        subcategory: "Digital Marketing",
-        image: "/logos/OCCUCARE.svg",
-        description: "Healthcare management platform marketing campaign with strategic positioning.",
-        color: "#F59E0B",
+        title: "Shivali Investments",
+        category: "Website/App Development",
+        subcategory: "Corporate Website",
+        image: "/logos/shivali.svg",
+        description: "Investment and consulting firm website with a professional, trust-first design — covering services, client portfolio, partner relationships, and contact channels.",
+        url: "https://www.shivaliinvestments.com/",
+        color: "#6366F1",
+        industry: "Investment & Consulting",
+        tech: ["Next.js", "Tailwind CSS"],
+        location: "International",
+        year: "2024",
+        services: ["Web Design", "Web Development", "Brand Alignment"],
+    },
+    {
+        id: 12,
+        title: "Tchary Glamour",
+        category: "Website/App Development",
+        subcategory: "E-commerce Website",
+        image: "/logos/TcharyGlamour.svg",
+        description: "Luxury beauty salon website for one of Luanda's top glamour studios — covering makeup, wig application and confection, braids, and more. Bilingual landing page with portfolio and contact sections.",
+        url: "https://tcharyglamour.netlify.app/",
+        color: "#6366F1",
+        industry: "Beauty & Wellness",
+        tech: ["HTML", "CSS", "JavaScript"],
+        location: "Angola",
+        year: "2023",
+        services: ["Web Design", "Web Development", "Brand Identity"],
+    },
+    {
+        id: 13,
+        title: "BoG Pro Max",
+        category: "Website/App Development",
+        subcategory: "Web App",
+        image: "/logos/bogpromax.svg",
+        description: "Fantasy Premier League competition platform for Namibia — weekly gameweek codes, team registration, payment instructions, and a WhatsApp-integrated request system for a growing FPL community.",
+        url: "https://bogpromax.netlify.app/",
+        color: "#6366F1",
+        industry: "Sports & Gaming",
+        tech: ["HTML", "CSS", "JavaScript"],
+        location: "Namibia",
+        year: "2024",
+        services: ["Web Design", "Web Development"],
+    },
+    // ── Graphic Design ──────────────────────────────────────────────────
+    {
+        id: 14,
+        title: "Florentek Engineering",
+        category: "Graphic Design",
+        subcategory: "Brand Identity",
+        image: "/logos/florentek.svg",
+        description: "Full brand identity system for an industrial engineering firm — logo system with 7 variations, colour palette, typography, and complete stationery suite including business cards, letterhead, envelopes, folders, and branded flyers.",
+        url: "",
+        color: "#EC4899",
+        industry: "Engineering & Industrial",
+        tech: ["Adobe Illustrator", "Adobe Photoshop", "Adobe InDesign"],
+        location: "Angola",
+        year: "2024",
+        services: ["Logo Design", "Brand Guidelines", "Stationery Design", "Print Collateral"],
+        designGallery: {
+            images: [
+                "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=80",
+                "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=800&q=80",
+                "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+            ],
+            highlights: [
+                "Distinctive 'F' mark of three stacked bars — symbolises engineering precision and forward momentum",
+                "Primary palette: Observatory teal (#008A6D), Charcoal Gray (#303034), Pure White — eco-innovation driven",
+                "Three typefaces: Retroica Bold (headlines), Codec Cold (body), Comfortaa (UI) — modern yet approachable",
+                "6 logo variants: light bg, dark bg, B&W, app icon, banner, and vertical — full production flexibility",
+                "Stationery suite: A4 letterhead, DL flyer, C4 envelope, stationery folder, and business cards",
+            ],
+            deliverables: ["Primary & secondary logos (SVG/PNG/PDF)", "Brand guidelines PDF", "Business card", "A4 letterhead", "DL flyer", "Stationery envelope & folder", "Social media kit"],
+            nda: false,
+        },
+    },
+    {
+        id: 15,
+        title: "Grupo Girassol",
+        category: "Graphic Design",
+        subcategory: "Brand Identity & Merchandise",
+        image: "/logos/girassol.svg",
+        description: "Complete brand identity and print/merchandise programme for an Angolan automotive services group — logo system, brand guidelines, and branded items spanning mugs, calendars, hard hats, lanyards, file binders, and roll-up banners.",
+        url: "",
+        color: "#EC4899",
+        industry: "Automotive Services",
+        tech: ["Adobe Illustrator", "Adobe Photoshop", "Adobe InDesign"],
+        location: "Angola",
+        year: "2025",
+        services: ["Logo Design", "Brand Guidelines", "Merchandise Design", "Print & Signage"],
+        designGallery: {
+            images: [
+                "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+                "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=800&q=80",
+                "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80",
+            ],
+            highlights: [
+                "Sunflower motif — warm gold and lime-green rings reflect the brand name and radiate energy and trust",
+                "4-colour palette: Dourado Primário (#E8A341), Dourado Secundário (#F0C43E), Verde-Amarelo (#B2C74B), Cinza-Azulado (#2D3238)",
+                "Source Sans Variable (Semibold / Regular / Light) — clean and highly legible at all sizes",
+                "Logo usage guide covering contrast rules, rotation permissions, and 3D prohibition",
+                "Extensive merchandise: mugs, travel cups, hard hats, desk & wall calendar 2025, lanyards, USB drives, file binders, and event roll-ups",
+            ],
+            deliverables: ["Brand identity system & guidelines", "Full merchandise mockup set", "Desk & wall calendar 2025", "Roll-up banner & event folder", "Hard hat & safety vest decals", "USB drive & lanyard branding"],
+            nda: false,
+        },
+    },
+    {
+        id: 16,
+        title: "Mavunzuka & Filhos",
+        category: "Graphic Design",
+        subcategory: "Brand Identity",
+        image: "/logos/mavunzuka.svg",
+        description: "Corporate brand identity for a road-safety and vehicle identification company — bold hexagonal logo mark, dark navy colour system, full stationery suite, vehicle wrap design, and branded merchandise.",
+        url: "",
+        color: "#EC4899",
+        industry: "Road Safety / Government",
+        tech: ["Adobe Illustrator", "Adobe Photoshop"],
+        location: "Angola",
+        year: "2025",
+        services: ["Logo Design", "Brand Guidelines", "Vehicle Wrap", "Stationery & Merchandise"],
+        designGallery: {
+            images: [
+                "https://images.unsplash.com/photo-1542744094-24638eff58bb?w=800&q=80",
+                "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&q=80",
+                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
+            ],
+            highlights: [
+                "Hexagonal icon with stylised 'M' peak — authority, road infrastructure, and structural strength",
+                "Ebony Clay navy (#1e263e) primary, Deep Gray (#222526) secondary — timeless, high-contrast corporate identity",
+                "Montserrat across all weights — bold for impact, regular for body copy",
+                "Vehicle wrap for full fleet branding with service list on rear quarter panel",
+                "Full stationery: company letter, file holder, envelope, double-sided business cards, display screen, and mug set",
+            ],
+            deliverables: ["Logo system & brand style guide v1.0", "Business card & letterhead", "Vehicle wrap design", "Mousepad & mug set", "Exhibition display assets", "Brand guidelines PDF (2025)"],
+            nda: false,
+        },
+    },
+    {
+        id: 17,
+        title: "Blue Horizon",
+        category: "Graphic Design",
+        subcategory: "Brand Identity",
+        image: "/logos/bluehorizon.svg",
+        description: "Brand identity for an Angolan Oil & Gas services company — concentric eclipse logo, deep navy palette, bilingual stationery, and full corporate collateral including hard hats, safety vests, and a 10×10 exhibition stand.",
+        url: "",
+        color: "#EC4899",
+        industry: "Oil & Gas",
+        tech: ["Adobe Illustrator", "Adobe InDesign", "Adobe Photoshop"],
+        location: "Angola / UK",
+        year: "2023",
+        services: ["Logo Design", "Brand Guidelines", "Corporate Collateral", "Exhibition Design"],
+        designGallery: {
+            images: [
+                "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
+                "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
+                "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
+            ],
+            highlights: [
+                "Four concentric eclipses in graduating navy — each arc represents a deeper level of expertise and commitment",
+                "5-stop blue palette (#00296b → #5fa8d3) creates depth and technical authority in the O&G sector",
+                "MADE Tommy Soft (Medium / Regular / Light) with Poppins fallback — refined and legible in both PT and EN",
+                "Complete safety print package: hi-vis vests, hard hats, branded pens, glazed name plaques, and exhibition stand",
+                "Bilingual application — all collateral in Portuguese (primary) and English",
+            ],
+            deliverables: ["Full brand guidelines", "Business cards (bilingual)", "Letterhead & stationery folder", "Hi-vis vest & hard hat graphics", "Exhibition stand (10×10)", "Calendar (desk & wall)", "A-stand & banner"],
+            nda: false,
+        },
+    },
+    {
+        id: 18,
+        title: "Dreamboat Trading",
+        category: "Graphic Design",
+        subcategory: "Corporate Stationery",
+        image: "/logos/dreamboat.svg",
+        description: "Corporate stationery suite for Dreamboat Trading Services, Lda — branded letterhead with ghost watermark, C4 envelope with full-colour navy back panel, and a double-sided staff ID card on lanyard.",
+        url: "",
+        color: "#EC4899",
+        industry: "Trading & Commerce",
+        tech: ["Adobe InDesign", "Adobe Illustrator"],
+        location: "Angola",
+        year: "2024",
+        services: ["Letterhead Design", "Envelope Design", "Staff ID Card"],
+        designGallery: {
+            images: [
+                "/uploads/c4_envelope1.png",
+                "/uploads/Cartao_de_Colaborador.png",
+                "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80",
+            ],
+            highlights: [
+                "C4 envelope: white face with Dreamboat logo & letterhead insert visible, deep navy body on the back — bold and memorable in the mail",
+                "Staff ID card (front): employee name 'Augusto Ventura', role banner 'AMINISTRACAO – BACK OFFICE', circular photo cutout, circular brand graphic motifs, and lanyard hole at top",
+                "Staff ID card (back): full company policy text in Portuguese, large QR code for verification, dark navy footer with Sede + Escritórios addresses and +244 923-065-276",
+                "A4 letterhead: Dreamboat Trading Services, Lda logo top-left, ghost watermark logo centred on page, complete contact block bottom-left (Tel, E-mail, Sede, Escritórios)",
+            ],
+            deliverables: ["A4 letterhead (print-ready PDF)", "C4 envelope (front & back)", "Staff ID card (front & back)", "All files in CMYK print-ready format"],
+            nda: false,
+        },
+    },
+    {
+        id: 19,
+        title: "Cave Properties Group",
+        category: "Graphic Design",
+        subcategory: "Logo Design",
+        image: "/logos/cave.svg",
+        description: "Logo design for a Namibian property investment group — bold house-roofline icon with red chimney accents and a sweeping baseline arc, delivered in both dark and light variants for maximum versatility.",
+        url: "",
+        color: "#EC4899",
+        industry: "Real Estate & Property",
+        tech: ["Adobe Illustrator"],
+        location: "Namibia",
+        year: "2024",
+        services: ["Logo Design", "Brand Variants"],
+        designGallery: {
+            images: [
+                "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
+                "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80",
+                "https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?w=800&q=80",
+            ],
+            highlights: [
+                "Three interconnected house rooflines form one unified mark — a portfolio of properties, not a single asset",
+                "Red chimney accents on outer houses add warmth and create a memorable sub-element that recurs across collateral",
+                "Sweeping baseline arc anchors the icon — stability, a solid foundation in property investment",
+                "Dark variant (near-black icon, white type) and light variant (charcoal icon, grey type) — ready for any surface or medium",
+                "Letter-spaced uppercase CAVE + italic 'Properties Group' — clear typographic hierarchy",
+            ],
+            deliverables: ["Primary logo — dark variant", "Secondary logo — light variant", "SVG + PNG + PDF all sizes"],
+            nda: false,
+        },
     },
 ];
 
-/* ========= Achievements logic ========= */
+/* ========= Achievements ========= */
 
-interface StatProps {
-    icon: ReactNode;
-    label: string;
-    value: number;
-    suffix?: string;
-    delay?: number;
-}
+interface StatProps { icon: ReactNode; label: string; value: number; suffix?: string; delay?: number; }
 
 function progressSuffix(target: number, suffix: string, display: number) {
     if (!suffix) return "";
@@ -954,10 +596,291 @@ const SatisfactionIcon = ({ className }: { className?: string }) => (
 );
 
 // ============================================
-// PROJECT CARD COMPONENT
+// PROJECT PREVIEW MODAL
 // ============================================
 
-function ProjectCard({ project, theme, index }: { project: PortfolioProject; theme: CategoryTheme; index: number }) {
+function ProjectModal({
+                          project,
+                          onClose,
+                      }: {
+    project: PortfolioProject;
+    onClose: () => void;
+}) {
+    const isDesign = !!project.designGallery;
+    const [iframeLoading, setIframeLoading] = useState(true);
+    const [activeImg, setActiveImg] = useState(0);
+
+    useEffect(() => {
+        document.body.style.overflow = "hidden";
+        return () => { document.body.style.overflow = ""; };
+    }, []);
+
+    useEffect(() => {
+        const handler = (e: KeyboardEvent) => {
+            if (e.key === "Escape") onClose();
+            if (isDesign && project.designGallery) {
+                if (e.key === "ArrowRight") setActiveImg(i => (i + 1) % project.designGallery!.images.length);
+                if (e.key === "ArrowLeft") setActiveImg(i => (i - 1 + project.designGallery!.images.length) % project.designGallery!.images.length);
+            }
+        };
+        window.addEventListener("keydown", handler);
+        return () => window.removeEventListener("keydown", handler);
+    }, [onClose, isDesign, project.designGallery]);
+
+    const gallery = project.designGallery;
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-sm p-3 sm:p-4"
+            onClick={onClose}
+        >
+            <motion.div
+                initial={{ opacity: 0, scale: 0.96, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.96, y: 20 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="relative w-full max-w-6xl flex flex-col bg-white rounded-2xl overflow-hidden shadow-2xl"
+                style={{ maxHeight: "92vh" }}
+                onClick={(e) => e.stopPropagation()}
+            >
+                {/* Gold top bar */}
+                <div className="h-1 w-full flex-shrink-0" style={{ background: "linear-gradient(to right, #7a5a1d, #d1a94c)" }} />
+
+                {/* Header */}
+                <div className="flex items-center justify-between px-5 py-3 border-b border-gray-100 flex-shrink-0">
+                    <div className="flex items-center gap-3 min-w-0">
+                        <span className="text-xs font-semibold uppercase tracking-widest text-[#b98b2f]">{project.subcategory}</span>
+                        <span className="text-gray-300">·</span>
+                        <h2 className="text-sm font-semibold text-gray-800 truncate">{project.title}</h2>
+                        {isDesign && (
+                            <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] bg-pink-50 text-pink-600 border border-pink-200">
+                                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14"/></svg>
+                                Brand & Design
+                            </span>
+                        )}
+                    </div>
+                    <div className="flex items-center gap-2 flex-shrink-0 ml-3">
+                        {!isDesign && project.url && (
+                            <a href={project.url} target="_blank" rel="noopener noreferrer"
+                               className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#b98b2f] text-white text-xs font-medium hover:bg-[#7a5a1d] transition-colors"
+                               onClick={(e) => e.stopPropagation()}>
+                                Open live site
+                                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                            </a>
+                        )}
+                        <button onClick={onClose}
+                                className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:bg-red-50 hover:border-red-200 hover:text-red-500 transition-all">
+                            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round">
+                                <path d="M18 6L6 18M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                {/* ── Body: scrollable ── */}
+                <div className="flex-1 overflow-y-auto min-h-0">
+                    {isDesign && gallery ? (
+                        /* ── DESIGN GALLERY MODE ── */
+                        <div className="flex flex-col lg:flex-row h-full">
+                            {/* Left: image viewer */}
+                            <div className="lg:w-3/5 flex-shrink-0 bg-gray-950 flex flex-col" style={{ minHeight: "320px" }}>
+                                {/* Main image */}
+                                <div className="relative flex-1 overflow-hidden" style={{ minHeight: "240px" }}>
+                                    <AnimatePresence mode="wait">
+                                        <motion.img
+                                            key={activeImg}
+                                            src={gallery.images[activeImg]}
+                                            alt={`${project.title} design work`}
+                                            initial={{ opacity: 0, scale: 1.04 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0 }}
+                                            transition={{ duration: 0.35 }}
+                                            className="absolute inset-0 w-full h-full object-cover"
+                                        />
+                                    </AnimatePresence>
+                                    {/* NDA watermark overlay */}
+                                    {gallery.nda && (
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <span className="rotate-[-35deg] text-white/10 text-5xl font-black tracking-widest select-none pointer-events-none">NDA</span>
+                                        </div>
+                                    )}
+                                    {/* Arrow controls */}
+                                    {gallery.images.length > 1 && (
+                                        <>
+                                            <button onClick={() => setActiveImg(i => (i - 1 + gallery.images.length) % gallery.images.length)}
+                                                    className="absolute left-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors">
+                                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                                            </button>
+                                            <button onClick={() => setActiveImg(i => (i + 1) % gallery.images.length)}
+                                                    className="absolute right-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors">
+                                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                            </button>
+                                        </>
+                                    )}
+                                    {/* Image counter */}
+                                    <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded-full bg-black/60 text-white text-[10px]">
+                                        {activeImg + 1} / {gallery.images.length}
+                                    </div>
+                                </div>
+                                {/* Thumbnails */}
+                                {gallery.images.length > 1 && (
+                                    <div className="flex gap-2 p-3 bg-gray-900">
+                                        {gallery.images.map((img, i) => (
+                                            <button key={i} onClick={() => setActiveImg(i)}
+                                                    className={`flex-1 h-14 rounded-lg overflow-hidden border-2 transition-all ${activeImg === i ? "border-[#b98b2f]" : "border-transparent opacity-50 hover:opacity-80"}`}>
+                                                <img src={img} alt="" className="w-full h-full object-cover" />
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Right: project details */}
+                            <div className="lg:w-2/5 flex flex-col overflow-y-auto bg-white">
+                                <div className="p-5 space-y-5">
+                                    {/* Description */}
+                                    <div>
+                                        <p className="text-sm text-gray-600 leading-relaxed">{project.description}</p>
+                                    </div>
+
+                                    {/* Meta */}
+                                    <div className="flex flex-wrap gap-2">
+                                        <Chip icon="📍" label={project.location} />
+                                        <Chip icon="📅" label={project.year} />
+                                        <Chip icon="🏭" label={project.industry} />
+                                    </div>
+
+                                    {/* Design highlights */}
+                                    <div>
+                                        <h4 className="text-xs font-semibold uppercase tracking-widest text-[#b98b2f] mb-2">Design Highlights</h4>
+                                        <ul className="space-y-2">
+                                            {gallery.highlights.map((h, i) => (
+                                                <li key={i} className="flex gap-2 text-xs text-gray-600 leading-relaxed">
+                                                    <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#b98b2f]" />
+                                                    {h}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    {/* Services */}
+                                    <div>
+                                        <h4 className="text-xs font-semibold uppercase tracking-widest text-[#b98b2f] mb-2">Services Delivered</h4>
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {project.services.map((s) => (
+                                                <span key={s} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#b98b2f]/10 text-[#7a5a1d] border border-[#b98b2f]/20">{s}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Deliverables */}
+                                    <div>
+                                        <h4 className="text-xs font-semibold uppercase tracking-widest text-[#b98b2f] mb-2">Deliverables</h4>
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {gallery.deliverables.map((d) => (
+                                                <span key={d} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-gray-100 text-gray-500 border border-gray-200">{d}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Tools */}
+                                    <div>
+                                        <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">Tools Used</h4>
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {project.tech.map((t) => (
+                                                <span key={t} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-gray-50 text-gray-400 border border-gray-200">{t}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* NDA notice */}
+                                    {gallery.nda && (
+                                        <div className="flex gap-2 rounded-lg bg-amber-50 border border-amber-200 px-3 py-2.5 text-xs text-amber-700">
+                                            <svg className="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m0-6v2m0-6v2M4.929 19.071A10 10 0 1 1 19.07 4.93 10 10 0 0 1 4.929 19.07z"/>
+                                            </svg>
+                                            Final artwork is protected under NDA. Mockups shown are representative references.
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    ) : (
+                        /* ── WEBSITE IFRAME MODE ── */
+                        <>
+                            <div className="relative bg-gray-100" style={{ height: "52vh" }}>
+                                {iframeLoading && (
+                                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-50 z-10">
+                                        <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                                    className="w-8 h-8 rounded-full border-2 border-[#b98b2f] border-t-transparent mb-3" />
+                                        <p className="text-xs text-gray-400">Loading preview…</p>
+                                    </div>
+                                )}
+                                <iframe src={project.url} title={`${project.title} preview`}
+                                        className="w-full h-full border-0" onLoad={() => setIframeLoading(false)} style={{ minHeight: "52vh" }} />
+                            </div>
+                            {/* Info bar */}
+                            <div className="flex-shrink-0 border-t border-gray-100 bg-gray-50 px-5 py-4">
+                                <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+                                    <div className="flex-1 min-w-0">
+                                        <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">{project.description}</p>
+                                    </div>
+                                    <div className="flex flex-wrap gap-2 sm:gap-x-4 sm:gap-y-1.5 sm:flex-col sm:min-w-[260px]">
+                                        <div className="flex flex-wrap gap-2">
+                                            <Chip icon="📍" label={project.location} />
+                                            <Chip icon="📅" label={project.year} />
+                                            <Chip icon="🏭" label={project.industry} />
+                                        </div>
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {project.services.map((s) => (
+                                                <span key={s} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#b98b2f]/10 text-[#7a5a1d] border border-[#b98b2f]/20">{s}</span>
+                                            ))}
+                                        </div>
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {project.tech.map((t) => (
+                                                <span key={t} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-gray-100 text-gray-500 border border-gray-200">{t}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
+                    )}
+                </div>
+            </motion.div>
+        </motion.div>
+    );
+}
+
+function Chip({ icon, label }: { icon: string; label: string }) {
+    return (
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] text-gray-500 bg-white border border-gray-200">
+            <span>{icon}</span>{label}
+        </span>
+    );
+}
+
+// ============================================
+// PROJECT CARD
+// ============================================
+
+function ProjectCard({
+                         project,
+                         theme,
+                         index,
+                         onViewProject,
+                     }: {
+    project: PortfolioProject;
+    theme: CategoryTheme;
+    index: number;
+    onViewProject: (project: PortfolioProject) => void;
+}) {
     const [isHovered, setIsHovered] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
     const isInView = useInView(cardRef, { once: true, margin: "-100px" });
@@ -967,52 +890,69 @@ function ProjectCard({ project, theme, index }: { project: PortfolioProject; the
             ref={cardRef}
             initial={{ opacity: 0, y: 80, rotateX: -15 }}
             animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-            transition={{ duration: 0.7, delay: index * 0.15, type: "spring", stiffness: 100 }}
+            transition={{ duration: 0.7, delay: index * 0.1, type: "spring", stiffness: 100 }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="relative group perspective-1000"
+            className="relative group"
         >
             <motion.div
-                animate={{ rotateY: isHovered ? 5 : 0, rotateX: isHovered ? -5 : 0, scale: isHovered ? 1.02 : 1 }}
-                transition={{ duration: 0.4, type: "spring" }}
-                className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-black/5 shadow-2xl"
-                style={{ boxShadow: isHovered ? `0 25px 50px -12px ${theme.glow}` : "none" }}
+                animate={{ scale: isHovered ? 1.02 : 1 }}
+                transition={{ duration: 0.35, type: "spring" }}
+                className="relative bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-lg cursor-pointer"
+                style={{ boxShadow: isHovered ? `0 20px 40px -8px ${theme.glow}` : undefined }}
+                onClick={() => onViewProject(project)}
             >
-                <div className="relative h-64 overflow-hidden">
-                    <motion.div
-                        animate={{ scale: isHovered ? 1.1 : 1 }}
-                        transition={{ duration: 0.6 }}
-                        className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center"
-                    >
-                        <div className="relative w-40 h-40">
-                            <img src={project.image} alt={project.title} className="w-full h-full object-contain drop-shadow-2xl" />
-                        </div>
+                {/* Image area */}
+                <div className="relative h-52 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                    <motion.div animate={{ scale: isHovered ? 1.08 : 1 }} transition={{ duration: 0.5 }} className="relative w-36 h-36">
+                        <img src={project.image} alt={project.title} className="w-full h-full object-contain drop-shadow-xl" />
                     </motion.div>
-                    <motion.div animate={{ opacity: isHovered ? 1 : 0 }} className={`absolute inset-0 bg-gradient-to-t ${theme.gradient} opacity-30`} />
-                    <div className="absolute top-4 left-4">
-                        <span className={`px-3 py-1 rounded-full text-xs font-semibold bg-black/50 backdrop-blur-md ${theme.textColor} border border-white/10`}>
+                    <motion.div animate={{ opacity: isHovered ? 1 : 0 }} className={`absolute inset-0 bg-gradient-to-t ${theme.gradient} opacity-20`} />
+                    <div className="absolute top-3 left-3">
+                        <span className={`px-2.5 py-1 rounded-full text-[10px] font-semibold bg-black/50 backdrop-blur-md ${theme.textColor} border border-white/10`}>
                             {project.subcategory}
                         </span>
                     </div>
+                    {/* Hover overlay CTA */}
+                    <motion.div
+                        animate={{ opacity: isHovered ? 1 : 0 }}
+                        className="absolute inset-0 flex items-center justify-center bg-black/40"
+                    >
+                        <span className="px-4 py-2 rounded-full bg-white text-gray-900 text-xs font-semibold shadow-lg flex items-center gap-2">
+                            View Project
+                            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </span>
+                    </motion.div>
                 </div>
-                <div className="p-6">
+
+                {/* Content */}
+                <div className="p-5">
                     <motion.h3
-                        animate={{ color: isHovered ? theme.accent : "#4a5565" }}
-                        className="text-xl font-bold text-gray-600 mb-2"
+                        animate={{ color: isHovered ? theme.accent : "#1f2937" }}
+                        className="text-base font-bold mb-1.5"
                     >
                         {project.title}
                     </motion.h3>
-                    <p className="text-gray-500 text-sm mb-4 line-clamp-2">{project.description}</p>
-                    <div className="flex items-center justify-between">
-                        <span className="text-xs text-gray-500 uppercase tracking-wider">View Project</span>
-                        <motion.div animate={{ x: isHovered ? 5 : 0 }} className={`flex items-center gap-2 ${theme.textColor}`}>
-                            <span className="text-sm font-medium">Explore</span>
-                            <motion.svg animate={{ x: isHovered ? 3 : 0 }} className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </motion.svg>
-                        </motion.div>
+                    <p className="text-gray-500 text-xs leading-relaxed line-clamp-2 mb-3">{project.description}</p>
+
+                    <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                        <div className="flex items-center gap-1.5 text-[10px] text-gray-400">
+                            <span>📍</span><span>{project.location}</span>
+                            <span className="mx-1">·</span>
+                            <span>📅</span><span>{project.year}</span>
+                        </div>
+                        <motion.span
+                            animate={{ x: isHovered ? 3 : 0 }}
+                            className={`text-xs font-semibold flex items-center gap-1 ${theme.textColor}`}
+                        >
+                            Explore ↗
+                        </motion.span>
                     </div>
                 </div>
+
+                {/* Animated bottom border */}
                 <motion.div
                     animate={{ background: isHovered ? `linear-gradient(90deg, ${theme.accent}, transparent, ${theme.accent})` : "transparent" }}
                     className="absolute bottom-0 left-0 right-0 h-0.5"
@@ -1023,43 +963,50 @@ function ProjectCard({ project, theme, index }: { project: PortfolioProject; the
 }
 
 // ============================================
-// PROJECTS GRID SECTION — per-category header
+// PROJECTS GRID
 // ============================================
 
-function ProjectsGrid({ theme, projects }: { theme: CategoryTheme; projects: PortfolioProject[] }) {
+function ProjectsGrid({
+                          theme,
+                          projects,
+                          onViewProject,
+                      }: {
+    theme: CategoryTheme;
+    projects: PortfolioProject[];
+    onViewProject: (project: PortfolioProject) => void;
+}) {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start end", "end start"] });
     const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
     return (
-        <div ref={containerRef} className="relative py-32 overflow-hidden">
+        <div ref={containerRef} className="relative py-28 overflow-hidden">
             <motion.div style={{ y: backgroundY }} className="absolute inset-0 -z-10">
                 <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-gray-100" />
                 <div className="absolute inset-0 opacity-20" style={{ background: `radial-gradient(circle at 50% 50%, ${theme.accent}20, transparent 70%)` }} />
             </motion.div>
 
             <div className="container mx-auto px-4">
-                {/* Per-category header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="text-center mb-14"
                 >
-                    <span className={`text-sm uppercase tracking-[0.3em] ${theme.textColor} mb-4 block`}>
-                        {theme.eyebrow}
-                    </span>
-                    <h3 className="text-4xl md:text-5xl font-bold text-gray-700 mb-4">
-                        {theme.heading}
-                    </h3>
-                    <p className="text-gray-500 max-w-xl mx-auto">
-                        {theme.subheading}
-                    </p>
+                    <span className={`text-sm uppercase tracking-[0.3em] ${theme.textColor} mb-3 block`}>{theme.eyebrow}</span>
+                    <h3 className="text-4xl md:text-5xl font-bold text-gray-700 mb-3">{theme.heading}</h3>
+                    <p className="text-gray-500 max-w-xl mx-auto text-sm">{theme.subheading}</p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {projects.map((project, index) => (
-                        <ProjectCard key={project.id} project={project} theme={theme} index={index} />
+                        <ProjectCard
+                            key={project.id}
+                            project={project}
+                            theme={theme}
+                            index={index}
+                            onViewProject={onViewProject}
+                        />
                     ))}
                 </div>
             </div>
@@ -1068,12 +1015,12 @@ function ProjectsGrid({ theme, projects }: { theme: CategoryTheme; projects: Por
 }
 
 // ============================================
-// MAIN PORTFOLIO COMPONENT
+// MAIN PORTFOLIO PAGE
 // ============================================
 
 export default function Portfolio() {
     const [activeSection, setActiveSection] = useState(-1);
-    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+    const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(null);
     const mainRef = useRef<HTMLDivElement>(null);
 
     const categories: { theme: CategoryTheme; icon: React.ComponentType<{ className?: string }>; projects: PortfolioProject[] }[] = [
@@ -1084,40 +1031,29 @@ export default function Portfolio() {
     ];
 
     useEffect(() => {
-        // 1. Hide/show nav based on hero visibility
         const heroObserver = new IntersectionObserver(
-            ([entry]) => {
-                // nav becomes visible the moment hero scrolls out of view
-                setActiveSection(entry.isIntersecting ? -1 : 0);
-            },
+            ([entry]) => { setActiveSection(entry.isIntersecting ? -1 : 0); },
             { threshold: 0 }
         );
-
         const hero = document.getElementById("hero-section");
         if (hero) heroObserver.observe(hero);
 
-        // 2. Track active category pill via 50vh trigger line
         const sectionObserver = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        const index = Number(entry.target.getAttribute("data-section-index"));
-                        setActiveSection(index);
+                        setActiveSection(Number(entry.target.getAttribute("data-section-index")));
                     }
                 });
             },
             { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
         );
-
         categories.forEach((_, i) => {
             const el = document.getElementById(`section-${i}`);
             if (el) sectionObserver.observe(el);
         });
 
-        return () => {
-            heroObserver.disconnect();
-            sectionObserver.disconnect();
-        };
+        return () => { heroObserver.disconnect(); sectionObserver.disconnect(); };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -1131,220 +1067,203 @@ export default function Portfolio() {
                         "@type": "CollectionPage",
                         name: "Autisync Portfolio",
                         url: "https://www.autisync.com/portfolio",
-                        description:
-                            "A showcase of websites, web apps, brand identities, and digital solutions delivered by Autisync.",
+                        description: "A showcase of websites, web apps, brand identities, and digital solutions delivered by Autisync.",
                     }),
                 }}
             />
 
-        <div ref={mainRef} className="relative bg-white min-h-screen">
+            <div ref={mainRef} className="relative bg-white min-h-screen">
 
-            {/* Desktop: right sidebar nav pills */}
-            <AnimatePresence>
-                {activeSection >= 0 && (
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 20 }}
-                        transition={{ duration: 0.3 }}
-                        className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-2"
-                    >
-                        {categories.map((cat, index) => (
-                            <motion.button
-                                key={cat.theme.name}
-                                onClick={() => document.getElementById(`section-${index}`)?.scrollIntoView({ behavior: "smooth" })}
-                                className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all duration-300 ${
-                                    activeSection === index
-                                        ? `bg-gradient-to-r ${cat.theme.gradient} text-white shadow-md`
-                                        : "bg-white/10 text-white/50 hover:bg-white/20 hover:text-white/80 backdrop-blur-sm border border-white/10"
-                                }`}
-                                whileHover={{ scale: 1.05, x: -2 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                {cat.theme.name}
-                            </motion.button>
-                        ))}
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            {/* Mobile: bottom pill strip */}
-            <AnimatePresence>
-                {activeSection >= 0 && (
-                    <motion.div
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 16 }}
-                        transition={{ duration: 0.3 }}
-                        className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden"
-                    >
-                        <div
-                            className="flex gap-2 px-3 py-2 rounded-full bg-black/30 backdrop-blur-md border border-white/10 shadow-lg max-w-[90vw]"
-                            style={{ overflowX: "auto", scrollbarWidth: "none" } as React.CSSProperties}
+                {/* Desktop nav pills */}
+                <AnimatePresence>
+                    {activeSection >= 0 && (
+                        <motion.div
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 20 }}
+                            transition={{ duration: 0.3 }}
+                            className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-2"
                         >
                             {categories.map((cat, index) => (
                                 <motion.button
                                     key={cat.theme.name}
                                     onClick={() => document.getElementById(`section-${index}`)?.scrollIntoView({ behavior: "smooth" })}
-                                    className={`flex-shrink-0 px-3 py-1 rounded-full text-[11px] font-medium whitespace-nowrap transition-all duration-300 ${
+                                    className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all duration-300 ${
                                         activeSection === index
-                                            ? `bg-gradient-to-r ${cat.theme.gradient} text-white`
-                                            : "text-white/50 hover:text-white/80"
+                                            ? `bg-gradient-to-r ${cat.theme.gradient} text-white shadow-md`
+                                            : "bg-white/10 text-white/50 hover:bg-white/20 hover:text-white/80 backdrop-blur-sm border border-white/10"
                                     }`}
-                                    whileTap={{ scale: 0.92 }}
+                                    whileHover={{ scale: 1.05, x: -2 }}
+                                    whileTap={{ scale: 0.95 }}
                                 >
                                     {cat.theme.name}
                                 </motion.button>
                             ))}
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
-            {/* Main Hero */}
-            <section id="hero-section" className="relative h-screen flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100" />
-                    <div className="absolute inset-0 opacity-30">
-                        <div className="w-full h-full" style={{
-                            backgroundImage: `radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                              radial-gradient(circle at 75% 75%, rgba(236, 72, 153, 0.15) 0%, transparent 50%)`,
-                        }} />
-                    </div>
-                </div>
-
-                <div className="relative z-10 text-center px-4">
-                    <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                        <span className="text-[var(--autisync-gold,#b98b2f)] text-sm uppercase tracking-[0.4em] mb-6 block">
-                            Creative Digital Agency
-                        </span>
-                    </motion.div>
-
-                    <motion.h1 initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
-                               className="text-6xl md:text-8xl lg:text-9xl font-bold text-gray-900 mb-8"
-                    >
-                        <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-[var(--autisync-gold,#b98b2f)] bg-clip-text text-transparent">
-                            AUTISYNC
-                        </span>
-                    </motion.h1>
-
-                    <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
-                              className="text-lg text-gray-500 max-w-lg mx-auto mb-6"
-                    >
-                        Where creativity meets technology. We craft digital experiences that leave lasting impressions.
-                    </motion.p>
-
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="flex gap-4 justify-center">
-                        <motion.a
-                            href="#section-0"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="px-6 py-2 text-white bg-[var(--autisync-gold,#b98b2f)] rounded-md shadow-lg hover:bg-[#1C1C1C] transition-all"
-                        >
-                            Explore Our Work
-                        </motion.a>
-                    </motion.div>
-                </div>
-
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
-                            className="absolute bottom-10 left-1/2 -translate-x-1/2"
-                >
-                    <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity }}
-                                className="w-6 h-10 rounded-full border-2 border-white/30 flex justify-center pt-2"
-                    >
-                        <motion.div animate={{ opacity: [1, 0, 1], y: [0, 12, 0] }} transition={{ duration: 2, repeat: Infinity }}
-                                    className="w-1.5 h-1.5 rounded-full bg-white/50"
-                        />
-                    </motion.div>
-                </motion.div>
-            </section>
-
-            {/* Category Sections */}
-            {categories.map((category, index) => (
-                <div key={category.theme.name} id={`section-${index}`} data-section-index={index}>
-                    <ProjectsGrid theme={category.theme} projects={category.projects} />
-                </div>
-            ))}
-
-            {/* Our Achievements Section */}
-            <div className="flex flex-wrap items-center mt-32">
-                <div className="w-full px-4 mx-auto text-center">
-                    <div className="flex justify-center mb-4">
-                        <div className="flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-[0_12px_25px_rgba(0,0,0,0.12)]">
-                            <TrophyIcon className="w-7 h-7 text-[var(--autisync-gold,#b98b2f)]" />
-                        </div>
-                    </div>
-                    <h3 className="mb-3 text-3xl font-semibold leading-normal text-gray-800">Our Achievements</h3>
-                    <p className="mb-10 text-base text-gray-500 max-w-2xl mx-auto">
-                        Numbers that reflect the trust our partners place in us and the work we deliver across every project.
-                    </p>
-                    <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-                        <AchievementStat icon={<ProjectsIcon className="w-5 h-5" />} label="Projects Launched" value={50} suffix="+" delay={0} />
-                        <AchievementStat icon={<ClientsIcon className="w-5 h-5" />} label="Happy Clients" value={30} suffix="+" delay={0.1} />
-                        <AchievementStat icon={<YearsIcon className="w-5 h-5" />} label="Years Building Digital" value={5} suffix="+" delay={0.2} />
-                        <AchievementStat icon={<SatisfactionIcon className="w-5 h-5" />} label="Client Satisfaction" value={98} suffix="%" delay={0.3} />
-                    </div>
-                </div>
-            </div>
-
-            {/* CTA Section */}
-            <section className="relative py-32 mt-12 overflow-hidden">
-                <div className="container mx-auto px-4 relative text-center">
-                    <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                               className="text-4xl md:text-5xl font-bold text-gray-700 mb-2"
-                    >
-                        Ready to Start Your Project?
-                    </motion.h2>
-                    <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-                              className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto"
-                    >
-                        Let&apos;s collaborate and turn your next idea into a flagship digital experience
-                    </motion.p>
-                    <motion.a
-                        href="https://wa.me/+447883317646"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="inline-flex items-center gap-3 px-6 py-2 text-white bg-[var(--autisync-gold,#b98b2f)] rounded-md shadow-lg hover:bg-[#1C1C1C] transition-all"
-                    >
-                        Get In Touch
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </motion.a>
-                </div>
-            </section>
-
-            {/* Preview Modal */}
-            <AnimatePresence>
-                {previewUrl && (
-                    <motion.div
-                        initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4"
-                        onClick={() => setPreviewUrl(null)}
-                    >
+                {/* Mobile nav strip */}
+                <AnimatePresence>
+                    {activeSection >= 0 && (
                         <motion.div
-                            initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
-                            className="relative w-full max-w-6xl h-[80vh] bg-white rounded-2xl overflow-hidden shadow-2xl"
-                            onClick={(e) => e.stopPropagation()}
+                            initial={{ opacity: 0, y: 16 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 16 }}
+                            transition={{ duration: 0.3 }}
+                            className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden"
                         >
-                            <button onClick={() => setPreviewUrl(null)}
-                                    className="absolute right-4 top-4 z-10 w-10 h-10 rounded-full bg-black/70 text-white flex items-center justify-center hover:bg-black transition-colors"
+                            <div
+                                className="flex gap-2 px-3 py-2 rounded-full bg-black/30 backdrop-blur-md border border-white/10 shadow-lg max-w-[90vw]"
+                                style={{ overflowX: "auto", scrollbarWidth: "none" } as React.CSSProperties}
                             >
-                                &times;
-                            </button>
-                            <iframe src={previewUrl} title="Project preview" className="w-full h-full border-0" />
+                                {categories.map((cat, index) => (
+                                    <motion.button
+                                        key={cat.theme.name}
+                                        onClick={() => document.getElementById(`section-${index}`)?.scrollIntoView({ behavior: "smooth" })}
+                                        className={`flex-shrink-0 px-3 py-1 rounded-full text-[11px] font-medium whitespace-nowrap transition-all duration-300 ${
+                                            activeSection === index
+                                                ? `bg-gradient-to-r ${cat.theme.gradient} text-white`
+                                                : "text-white/50 hover:text-white/80"
+                                        }`}
+                                        whileTap={{ scale: 0.92 }}
+                                    >
+                                        {cat.theme.name}
+                                    </motion.button>
+                                ))}
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                {/* Hero */}
+                <section id="hero-section" className="relative h-screen flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0">
+                        <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100" />
+                        <div className="absolute inset-0 opacity-30">
+                            <div className="w-full h-full" style={{
+                                backgroundImage: `radial-gradient(circle at 25% 25%, rgba(99,102,241,0.15) 0%, transparent 50%),
+                                  radial-gradient(circle at 75% 75%, rgba(236,72,153,0.15) 0%, transparent 50%)`,
+                            }} />
+                        </div>
+                    </div>
+
+                    <div className="relative z-10 text-center px-4">
+                        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+                            <span className="text-[var(--autisync-gold,#b98b2f)] text-sm uppercase tracking-[0.4em] mb-6 block">
+                                Creative Digital Agency
+                            </span>
+                        </motion.div>
+                        <motion.h1 initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
+                                   className="text-6xl md:text-8xl lg:text-9xl font-bold text-gray-900 mb-8"
+                        >
+                            <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-[var(--autisync-gold,#b98b2f)] bg-clip-text text-transparent">
+                                AUTISYNC
+                            </span>
+                        </motion.h1>
+                        <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
+                                  className="text-lg text-gray-500 max-w-lg mx-auto mb-6"
+                        >
+                            Where creativity meets technology. We craft digital experiences that leave lasting impressions.
+                        </motion.p>
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="flex gap-4 justify-center">
+                            <motion.a href="#section-0" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                                      className="px-6 py-2 text-white bg-[var(--autisync-gold,#b98b2f)] rounded-md shadow-lg hover:bg-[#1C1C1C] transition-all"
+                            >
+                                Explore Our Work
+                            </motion.a>
+                        </motion.div>
+                    </div>
+
+                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
+                                className="absolute bottom-10 left-1/2 -translate-x-1/2"
+                    >
+                        <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity }}
+                                    className="w-6 h-10 rounded-full border-2 border-gray-300 flex justify-center pt-2"
+                        >
+                            <motion.div animate={{ opacity: [1, 0, 1], y: [0, 12, 0] }} transition={{ duration: 2, repeat: Infinity }}
+                                        className="w-1.5 h-1.5 rounded-full bg-gray-400"
+                            />
                         </motion.div>
                     </motion.div>
+                </section>
+
+                {/* Category sections */}
+                {categories.map((category, index) => (
+                    <div key={category.theme.name} id={`section-${index}`} data-section-index={index}>
+                        <ProjectsGrid
+                            theme={category.theme}
+                            projects={category.projects}
+                            onViewProject={setSelectedProject}
+                        />
+                    </div>
+                ))}
+
+                {/* Achievements */}
+                <div className="flex flex-wrap items-center mt-24 mb-12 px-4">
+                    <div className="w-full mx-auto text-center max-w-5xl">
+                        <div className="flex justify-center mb-4">
+                            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-[0_12px_25px_rgba(0,0,0,0.12)]">
+                                <TrophyIcon className="w-7 h-7 text-[var(--autisync-gold,#b98b2f)]" />
+                            </div>
+                        </div>
+                        <h3 className="mb-3 text-3xl font-semibold text-gray-800">Our Achievements</h3>
+                        <p className="mb-10 text-base text-gray-500 max-w-2xl mx-auto">
+                            Numbers that reflect the trust our partners place in us and the work we deliver across every project.
+                        </p>
+                        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+                            <AchievementStat icon={<ProjectsIcon className="w-5 h-5" />} label="Projects Launched" value={50} suffix="+" delay={0} />
+                            <AchievementStat icon={<ClientsIcon className="w-5 h-5" />} label="Happy Clients" value={30} suffix="+" delay={0.1} />
+                            <AchievementStat icon={<YearsIcon className="w-5 h-5" />} label="Years Building Digital" value={5} suffix="+" delay={0.2} />
+                            <AchievementStat icon={<SatisfactionIcon className="w-5 h-5" />} label="Client Satisfaction" value={98} suffix="%" delay={0.3} />
+                        </div>
+                    </div>
+                </div>
+
+                {/* CTA */}
+                <section className="relative py-28 overflow-hidden">
+                    <div className="container mx-auto px-4 relative text-center">
+                        <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                                   className="text-4xl md:text-5xl font-bold text-gray-700 mb-2"
+                        >
+                            Ready to Start Your Project?
+                        </motion.h2>
+                        <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
+                                  className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto"
+                        >
+                            Let&apos;s collaborate and turn your next idea into a flagship digital experience
+                        </motion.p>
+                        <motion.a
+                            href="https://wa.me/+447883317646"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="inline-flex items-center gap-3 px-6 py-2 text-white bg-[var(--autisync-gold,#b98b2f)] rounded-md shadow-lg hover:bg-[#1C1C1C] transition-all"
+                        >
+                            Get In Touch
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </motion.a>
+                    </div>
+                </section>
+            </div>
+
+            {/* Project Preview Modal */}
+            <AnimatePresence>
+                {selectedProject && (
+                    <ProjectModal
+                        key={selectedProject.id}
+                        project={selectedProject}
+                        onClose={() => setSelectedProject(null)}
+                    />
                 )}
             </AnimatePresence>
-        </div>
         </>
-
     );
 }
