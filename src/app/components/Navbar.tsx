@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, type Variants, type Transition } from "framer-motion";
 import { Menu, X, ChevronDown, Phone, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -46,7 +46,7 @@ const solutions = [
 ];
 
 const callsToAction = [
-  { name: "Questionnaire", href: "/ServiceQuestionaire/" },
+  { name: "Questionnaire",    href: "/ServiceQuestionaire/" },
   { name: "Service Packages", href: "/servicepackage/" },
 ];
 
@@ -57,32 +57,46 @@ const navLinks = [
 ];
 
 // ─────────────────────────────────────────────
-// ANIMATION VARIANTS
+// SHARED EASING
+// Framer Motion requires cubic-bezier arrays typed as a
+// 4-element readonly tuple — NOT inferred as number[].
 // ─────────────────────────────────────────────
 
-const overlayVariants = {
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+// ─────────────────────────────────────────────
+// ANIMATION VARIANTS
+// Explicitly typed as Variants so TypeScript validates
+// every entry against Framer Motion's Variant union.
+// ─────────────────────────────────────────────
+
+const overlayVariants: Variants = {
   hidden:  { opacity: 0, y: -8 },
-  visible: { opacity: 1, y: 0,  transition: { duration: 0.28, ease: [0.22, 1, 0.36, 1] } },
-  exit:    { opacity: 0, y: -8, transition: { duration: 0.2,  ease: "easeIn" } },
+  visible: { opacity: 1, y: 0,  transition: { duration: 0.28, ease: EASE } as Transition },
+  exit:    { opacity: 0, y: -8, transition: { duration: 0.2,  ease: "easeIn" } as Transition },
 };
 
-const menuItemVariants = {
+const menuItemVariants: Variants = {
   hidden:  { opacity: 0, x: -12 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
-    transition: { delay: i * 0.055, duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+    transition: { delay: i * 0.055, duration: 0.3, ease: EASE } as Transition,
   }),
 };
 
-const serviceItemVariants = {
+const serviceItemVariants: Variants = {
   hidden:  { opacity: 0, y: 10 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.18 + i * 0.06, duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+    transition: { delay: 0.18 + i * 0.06, duration: 0.3, ease: EASE } as Transition,
   }),
 };
+
+// Shared inline transitions — safe as plain Transition objects (not inside Variants)
+const SPRING_TRANSITION: Transition = { duration: 0.28, ease: EASE };
+const FOOTER_TRANSITION: Transition = { delay: 0.25, duration: 0.3, ease: EASE };
 
 // ─────────────────────────────────────────────
 // DESKTOP FLYOUT
@@ -121,7 +135,6 @@ function DesktopFlyout() {
                   exit="exit"
                   className="absolute left-1/2 -translate-x-1/2 mt-4 w-[380px] bg-white shadow-[0_8px_40px_rgba(0,0,0,0.12)] overflow-hidden z-50"
               >
-
                 <div className="p-3">
                   {solutions.map((item) => {
                     const Icon = item.icon;
@@ -158,9 +171,9 @@ function DesktopFlyout() {
                       </a>
                   ))}
                 </div>
+
                 {/* Gold accent bar */}
                 <div className="h-0.5 w-full" style={{ background: "linear-gradient(to right,#7a5a1d,#d1a94c,#7a5a1d)" }} />
-
               </motion.div>
           )}
         </AnimatePresence>
@@ -173,7 +186,7 @@ function DesktopFlyout() {
 // ─────────────────────────────────────────────
 
 function MobileMenu({ onClose }: { onClose: () => void }) {
-  const [servicesOpen, setServicesOpen] = useState(true); // expanded by default
+  const [servicesOpen, setServicesOpen] = useState(true);
 
   // Lock body scroll while open
   useEffect(() => {
@@ -195,7 +208,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.18 }}
           className="fixed inset-0 z-40 flex flex-col bg-white"
-          style={{ top: "56px" }} // sits just below the navbar bar
+          style={{ top: "56px" }}
       >
         {/* Gold top accent */}
         <div className="h-0.5 flex-shrink-0" style={{ background: "linear-gradient(to right,#7a5a1d,#d1a94c,#7a5a1d)" }} />
@@ -225,7 +238,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                      transition={SPRING_TRANSITION}
                       className="overflow-hidden"
                   >
                     <div className="pb-2 space-y-1">
@@ -310,16 +323,16 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
         <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            transition={FOOTER_TRANSITION}
             className="flex-shrink-0 px-5 py-5 border-t border-gray-100 bg-white space-y-3"
         >
           <a
               href="tel:+244927114400"
+              onClick={onClose}
               className="flex items-center justify-center gap-2.5 w-full rounded-xl
             bg-[var(--autisync-gold,#B98B2F)] px-4 py-3.5 text-sm font-semibold text-white
             shadow-[0_4px_16px_rgba(185,139,47,0.35)]
             hover:bg-[#7a5a1d] active:scale-[0.97] transition-all duration-150"
-              onClick={onClose}
           >
             <Phone className="w-4 h-4" />
             Call Us Now
@@ -389,15 +402,23 @@ export default function Navbar() {
               >
                 <AnimatePresence mode="wait" initial={false}>
                   {mobileOpen ? (
-                      <motion.span key="close"
-                                   initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }}
-                                   exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.18 }}>
+                      <motion.span
+                          key="close"
+                          initial={{ rotate: -90, opacity: 0 }}
+                          animate={{ rotate: 0,   opacity: 1 }}
+                          exit={{    rotate: 90,  opacity: 0 }}
+                          transition={{ duration: 0.18 }}
+                      >
                         <X className="w-5 h-5 text-gray-800" />
                       </motion.span>
                   ) : (
-                      <motion.span key="open"
-                                   initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }}
-                                   exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.18 }}>
+                      <motion.span
+                          key="open"
+                          initial={{ rotate: 90,  opacity: 0 }}
+                          animate={{ rotate: 0,   opacity: 1 }}
+                          exit={{    rotate: -90, opacity: 0 }}
+                          transition={{ duration: 0.18 }}
+                      >
                         <Menu className="w-5 h-5 text-gray-800" />
                       </motion.span>
                   )}
