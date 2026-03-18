@@ -1,0 +1,6 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" rx="20" fill="#064e3b"/>
+  <path d="M100 40C70 40 50 65 50 90C50 130 100 160 100 160C100 160 150 130 150 90C150 65 130 40 100 40Z" fill="#10b981"/>
+  <path d="M100 70V110M80 90H120" stroke="white" stroke-width="6" stroke-linecap="round"/>
+  <text x="100" y="185" text-anchor="middle" fill="white" font-size="12" font-family="sans-serif" font-weight="bold">OCCUCARE</text>
+</svg>
