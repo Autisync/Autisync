@@ -121,7 +121,7 @@ const portfolioProjects: PortfolioProject[] = [
         title: "Florentek Engineering",
         category: "Website/App Development",
         subcategory: "Corporate Website",
-        image: "/logos/florentek.png",
+        image: "/logos/florentekw.png",
         description: "Industrial engineering firm website covering instrumentation, electrical systems, maintenance services, and specialised manpower — built to instil trust with B2B clients.",
         url: "https://www.florentek.co.ao/",
         color: "#6366F1",
@@ -166,7 +166,7 @@ const portfolioProjects: PortfolioProject[] = [
         title: "Grupo Girassol",
         category: "Website/App Development",
         subcategory: "Corporate Website",
-        image: "/logos/girassol.svg",
+        image: "/logos/Girassolw.svg",
         description: "Construction and services group website built to showcase the company's project portfolio, capabilities, and team — conveying quality and scale in Angola's construction market.",
         url: "https://www.grupogirassol.co.ao/",
         color: "#6366F1",
@@ -191,6 +191,21 @@ const portfolioProjects: PortfolioProject[] = [
         year: "2024",
         services: ["Web Design", "Web Development", "UX Strategy"],
     },
+    // {
+    //     id: 7,
+    //     title: "ParVaga",
+    //     category: "Website/App Development",
+    //     subcategory: "Web App",
+    //     image: "/logos/parvaga.svg",
+    //     description: "Angolan job recruitment platform connecting candidates and companies. Features CV submission, job listings, and a dedicated employer portal with user authentication.",
+    //     url: "https://parvagas.vercel.app/",
+    //     color: "#6366F1",
+    //     industry: "Recruitment / HR Tech",
+    //     tech: ["Next.js", "Tailwind CSS", "Authentication"],
+    //     location: "Angola",
+    //     year: "2024",
+    //     services: ["Web App Development", "UI/UX Design", "Portal Development"],
+    // },
     {
         id: 8,
         title: "Your Pharmacy",
@@ -226,7 +241,7 @@ const portfolioProjects: PortfolioProject[] = [
         title: "Evolution Technologies",
         category: "Website/App Development",
         subcategory: "Corporate Website",
-        image: "/logos/evolution.webp",
+        image: "https://www.evolutiontec.co.ao/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.fb975d65.png&w=256&q=75",
         description: "Network solutions and telecommunications company website showcasing infrastructure services, antenna systems, and technology consulting in the Angolan market.",
         url: "https://www.evolutiontec.co.ao/",
         color: "#6366F1",
@@ -287,7 +302,7 @@ const portfolioProjects: PortfolioProject[] = [
         title: "Florentek Engineering",
         category: "Graphic Design",
         subcategory: "Brand Identity",
-        image: "/logos/florentek.png",
+        image: "/logos/florentekw.png",
         description: "Full brand identity system for an industrial engineering firm — logo system with 7 variations, colour palette, typography, and complete stationery suite including business cards, letterhead, envelopes, folders, and branded flyers.",
         url: "",
         color: "#EC4899",
@@ -298,9 +313,9 @@ const portfolioProjects: PortfolioProject[] = [
         services: ["Logo Design", "Brand Guidelines", "Stationery Design", "Print Collateral"],
         designGallery: {
             images: [
-                "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=80",
-                "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=800&q=80",
-                "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+                "/logos/Florentek/1.png",
+                "/logos/Florentek/2.png",
+                "/logos/Florentek/3.png",
             ],
             highlights: [
                 "Distinctive 'F' mark of three stacked bars — symbolises engineering precision and forward momentum",
@@ -318,7 +333,7 @@ const portfolioProjects: PortfolioProject[] = [
         title: "Grupo Girassol",
         category: "Graphic Design",
         subcategory: "Brand Identity & Merchandise",
-        image: "/logos/girassol.svg",
+        image: "/logos/Girassolw.svg",
         description: "Complete brand identity and print/merchandise programme for an Angolan automotive services group — logo system, brand guidelines, and branded items spanning mugs, calendars, hard hats, lanyards, file binders, and roll-up banners.",
         url: "",
         color: "#EC4899",
@@ -329,9 +344,9 @@ const portfolioProjects: PortfolioProject[] = [
         services: ["Logo Design", "Brand Guidelines", "Merchandise Design", "Print & Signage"],
         designGallery: {
             images: [
-                "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
-                "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=800&q=80",
-                "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80",
+                "/logos/Girassol/1.png",
+                "/logos/Girassol/2.png",
+                "/logos/Girassol/3.png",
             ],
             highlights: [
                 "Sunflower motif — warm gold and lime-green rings reflect the brand name and radiate energy and trust",
@@ -360,9 +375,9 @@ const portfolioProjects: PortfolioProject[] = [
         services: ["Logo Design", "Brand Guidelines", "Vehicle Wrap", "Stationery & Merchandise"],
         designGallery: {
             images: [
-                "https://images.unsplash.com/photo-1542744094-24638eff58bb?w=800&q=80",
-                "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&q=80",
-                "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
+                "/logos/Mavunzuka/1.png",
+                "/logos/Mavunzuka/2.png",
+                "/logos/Mavunzuka/3.png",
             ],
             highlights: [
                 "Hexagonal icon with stylised 'M' peak — authority, road infrastructure, and structural strength",
@@ -391,9 +406,10 @@ const portfolioProjects: PortfolioProject[] = [
         services: ["Logo Design", "Brand Guidelines", "Corporate Collateral", "Exhibition Design"],
         designGallery: {
             images: [
-                "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
-                "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
-                "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
+                "/logos/Blue/1.jpg",
+                "/logos/Blue/2.jpg",
+                "/logos/Blue/3.png",
+                "/logos/Blue/4.png",
             ],
             highlights: [
                 "Four concentric eclipses in graduating navy — each arc represents a deeper level of expertise and commitment",
@@ -422,9 +438,8 @@ const portfolioProjects: PortfolioProject[] = [
         services: ["Letterhead Design", "Envelope Design", "Staff ID Card"],
         designGallery: {
             images: [
-                "/uploads/c4_envelope1.png",
-                "/uploads/Cartao_de_Colaborador.png",
-                "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&q=80",
+                "/logos/Dreamboat/1.png",
+                "/logos/Dreamboat/2.png",
             ],
             highlights: [
                 "C4 envelope: white face with Dreamboat logo & letterhead insert visible, deep navy body on the back — bold and memorable in the mail",
@@ -441,7 +456,7 @@ const portfolioProjects: PortfolioProject[] = [
         title: "Cave Properties Group",
         category: "Graphic Design",
         subcategory: "Logo Design",
-        image: "/logos/Cave_white.png",
+        image: "/logos/cave_white.png",
         description: "Logo design for a Namibian property investment group — bold house-roofline icon with red chimney accents and a sweeping baseline arc, delivered in both dark and light variants for maximum versatility.",
         url: "",
         color: "#EC4899",
@@ -452,9 +467,8 @@ const portfolioProjects: PortfolioProject[] = [
         services: ["Logo Design", "Brand Variants"],
         designGallery: {
             images: [
-                "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
-                "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80",
-                "https://images.unsplash.com/photo-1586281380117-5a60ae2050cc?w=800&q=80",
+                "/logos/CaveProperties/1.png",
+                "/logos/CaveProperties/2.png",
             ],
             highlights: [
                 "Three interconnected house rooflines form one unified mark — a portfolio of properties, not a single asset",
@@ -535,7 +549,7 @@ const portfolioProjects: PortfolioProject[] = [
         title: "Omatapalo",
         category: "Technical Support",
         subcategory: "Surveillance & Security Systems",
-        image: "https://omatapalo.com/wp-content/uploads/omatapalo_horizontal_azul-1.png",
+        image: "https://omatapalo.com/wp-content/uploads/Design-sem-nome-6.png",
         description: "Supply and full deployment of IT surveillance infrastructure for Omatapalo — IP camera systems, network video recorders, structured cabling, and end-to-end configuration delivering reliable 24/7 site monitoring and physical security coverage.",
         url: "",
         color: "#06B6D4",
@@ -685,9 +699,12 @@ function ProjectModal({
     project: PortfolioProject;
     onClose: () => void;
 }) {
-    const isDesign = !!project.designGallery;
+    const isIT      = project.category === "Technical Support" && !!project.designGallery;
+    const isDesign  = !!project.designGallery && !isIT;
+    const hasGallery = !!project.designGallery;
+
     const [iframeLoading, setIframeLoading] = useState(true);
-    const [activeImg, setActiveImg] = useState(0);
+    const [activeImg, setActiveImg]         = useState(0);
 
     useEffect(() => {
         document.body.style.overflow = "hidden";
@@ -699,7 +716,7 @@ function ProjectModal({
             if (e.key === "Escape") onClose();
             if (isDesign && project.designGallery) {
                 if (e.key === "ArrowRight") setActiveImg(i => (i + 1) % project.designGallery!.images.length);
-                if (e.key === "ArrowLeft") setActiveImg(i => (i - 1 + project.designGallery!.images.length) % project.designGallery!.images.length);
+                if (e.key === "ArrowLeft")  setActiveImg(i => (i - 1 + project.designGallery!.images.length) % project.designGallery!.images.length);
             }
         };
         window.addEventListener("keydown", handler);
@@ -741,6 +758,12 @@ function ProjectModal({
                                 Brand & Design
                             </span>
                         )}
+                        {isIT && (
+                            <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] bg-cyan-50 text-cyan-600 border border-cyan-200">
+                                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+                                IT Support
+                            </span>
+                        )}
                     </div>
                     <div className="flex items-center gap-2 flex-shrink-0 ml-3">
                         {!isDesign && project.url && (
@@ -764,84 +787,132 @@ function ProjectModal({
 
                 {/* ── Body: scrollable ── */}
                 <div className="flex-1 overflow-y-auto min-h-0">
-                    {isDesign && gallery ? (
-                        /* ── DESIGN GALLERY MODE ── */
+                    {hasGallery && gallery ? (
+                        /* ── GALLERY / IT SUPPORT MODE ── */
                         <div className="flex flex-col lg:flex-row h-full">
-                            {/* Left: image viewer */}
-                            <div className="lg:w-3/5 flex-shrink-0 bg-gray-950 flex flex-col" style={{ minHeight: "320px" }}>
-                                {/* Main image */}
-                                <div className="relative flex-1 overflow-hidden" style={{ minHeight: "240px" }}>
-                                    <AnimatePresence mode="wait">
-                                        <motion.img
-                                            key={activeImg}
-                                            src={gallery.images[activeImg]}
-                                            alt={`${project.title} design work`}
-                                            initial={{ opacity: 0, scale: 1.04 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            exit={{ opacity: 0 }}
-                                            transition={{ duration: 0.35 }}
-                                            className="absolute inset-0 w-full h-full object-cover"
-                                        />
-                                    </AnimatePresence>
-                                    {/* NDA watermark overlay */}
-                                    {gallery.nda && (
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <span className="rotate-[-35deg] text-white/10 text-5xl font-black tracking-widest select-none pointer-events-none">NDA</span>
+
+                            {/* Left panel */}
+                            {isIT ? (
+                                /* ── IT: client logo on styled background ── */
+                                <div className="lg:w-2/5 flex-shrink-0 flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden" style={{ minHeight: "320px" }}>
+                                    {/* Subtle circuit-grid pattern */}
+                                    <div className="absolute inset-0 opacity-10" style={{
+                                        backgroundImage: "radial-gradient(circle, #06B6D4 1px, transparent 1px)",
+                                        backgroundSize: "28px 28px",
+                                    }} />
+                                    {/* Glow ring behind logo */}
+                                    <div className="absolute w-52 h-52 rounded-full bg-cyan-500/10 blur-3xl" />
+                                    {/* Logo */}
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.85 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 0.5, ease: "easeOut" }}
+                                        className="relative z-10 flex flex-col items-center gap-6 px-10"
+                                    >
+                                        <div className="w-52 h-36 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-6">
+                                            <img
+                                                src={project.image}
+                                                alt={project.title}
+                                                className="max-w-full max-h-full object-contain drop-shadow-2xl"
+                                            />
+                                        </div>
+                                        <div className="text-center">
+                                            <p className="text-white/90 font-semibold text-base">{project.title}</p>
+                                            <p className="text-cyan-400/80 text-xs mt-1 uppercase tracking-widest">{project.subcategory}</p>
+                                        </div>
+                                        {/* IT stats strip */}
+                                        <div className="flex gap-3 flex-wrap justify-center">
+                                            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-[10px]">
+                                                <svg className="w-3 h-3 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                                {project.location}
+                                            </div>
+                                            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-[10px]">
+                                                <svg className="w-3 h-3 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                                                {project.year}
+                                            </div>
+                                            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-[10px]">
+                                                <svg className="w-3 h-3 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                                {project.industry}
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                </div>
+                            ) : (
+                                /* ── Design: image gallery ── */
+                                <div className="lg:w-3/5 flex-shrink-0 bg-gray-950 flex flex-col" style={{ minHeight: "320px" }}>
+                                    <div className="relative flex-1 overflow-hidden" style={{ minHeight: "240px" }}>
+                                        <AnimatePresence mode="wait">
+                                            <motion.img
+                                                key={activeImg}
+                                                src={gallery.images[activeImg]}
+                                                alt={`${project.title} design work`}
+                                                initial={{ opacity: 0, scale: 1.04 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                exit={{ opacity: 0 }}
+                                                transition={{ duration: 0.35 }}
+                                                className="absolute inset-0 w-full h-full object-cover"
+                                            />
+                                        </AnimatePresence>
+                                        {gallery.nda && (
+                                            <div className="absolute inset-0 flex items-center justify-center">
+                                                <span className="rotate-[-35deg] text-white/10 text-5xl font-black tracking-widest select-none pointer-events-none">NDA</span>
+                                            </div>
+                                        )}
+                                        {gallery.images.length > 1 && (
+                                            <>
+                                                <button onClick={() => setActiveImg(i => (i - 1 + gallery.images.length) % gallery.images.length)}
+                                                        className="absolute left-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors">
+                                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                                                </button>
+                                                <button onClick={() => setActiveImg(i => (i + 1) % gallery.images.length)}
+                                                        className="absolute right-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors">
+                                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                                </button>
+                                            </>
+                                        )}
+                                        <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded-full bg-black/60 text-white text-[10px]">
+                                            {activeImg + 1} / {gallery.images.length}
+                                        </div>
+                                    </div>
+                                    {gallery.images.length > 1 && (
+                                        <div className="flex gap-2 p-3 bg-gray-900">
+                                            {gallery.images.map((img, i) => (
+                                                <button key={i} onClick={() => setActiveImg(i)}
+                                                        className={`flex-1 h-14 rounded-lg overflow-hidden border-2 transition-all ${activeImg === i ? "border-[#b98b2f]" : "border-transparent opacity-50 hover:opacity-80"}`}>
+                                                    <img src={img} alt="" className="w-full h-full object-cover" />
+                                                </button>
+                                            ))}
                                         </div>
                                     )}
-                                    {/* Arrow controls */}
-                                    {gallery.images.length > 1 && (
-                                        <>
-                                            <button onClick={() => setActiveImg(i => (i - 1 + gallery.images.length) % gallery.images.length)}
-                                                    className="absolute left-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors">
-                                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"/></svg>
-                                            </button>
-                                            <button onClick={() => setActiveImg(i => (i + 1) % gallery.images.length)}
-                                                    className="absolute right-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors">
-                                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/></svg>
-                                            </button>
-                                        </>
-                                    )}
-                                    {/* Image counter */}
-                                    <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded-full bg-black/60 text-white text-[10px]">
-                                        {activeImg + 1} / {gallery.images.length}
-                                    </div>
                                 </div>
-                                {/* Thumbnails */}
-                                {gallery.images.length > 1 && (
-                                    <div className="flex gap-2 p-3 bg-gray-900">
-                                        {gallery.images.map((img, i) => (
-                                            <button key={i} onClick={() => setActiveImg(i)}
-                                                    className={`flex-1 h-14 rounded-lg overflow-hidden border-2 transition-all ${activeImg === i ? "border-[#b98b2f]" : "border-transparent opacity-50 hover:opacity-80"}`}>
-                                                <img src={img} alt="" className="w-full h-full object-cover" />
-                                            </button>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
+                            )}
 
                             {/* Right: project details */}
-                            <div className="lg:w-2/5 flex flex-col overflow-y-auto bg-white">
+                            <div className={`${isIT ? "lg:w-3/5" : "lg:w-2/5"} flex flex-col overflow-y-auto bg-white`}>
                                 <div className="p-5 space-y-5">
                                     {/* Description */}
                                     <div>
                                         <p className="text-sm text-gray-600 leading-relaxed">{project.description}</p>
                                     </div>
 
-                                    {/* Meta */}
-                                    <div className="flex flex-wrap gap-2">
-                                        <Chip icon="📍" label={project.location} />
-                                        <Chip icon="📅" label={project.year} />
-                                        <Chip icon="🏭" label={project.industry} />
-                                    </div>
+                                    {/* Meta — IT projects show this in left panel, skip here */}
+                                    {!isIT && (
+                                        <div className="flex flex-wrap gap-2">
+                                            <Chip icon="📍" label={project.location} />
+                                            <Chip icon="📅" label={project.year} />
+                                            <Chip icon="🏭" label={project.industry} />
+                                        </div>
+                                    )}
 
-                                    {/* Design highlights */}
+                                    {/* Highlights — context-aware label */}
                                     <div>
-                                        <h4 className="text-xs font-semibold uppercase tracking-widest text-[#b98b2f] mb-2">Design Highlights</h4>
+                                        <h4 className="text-xs font-semibold uppercase tracking-widest text-[#b98b2f] mb-2">
+                                            {isIT ? "What We Did" : "Design Highlights"}
+                                        </h4>
                                         <ul className="space-y-2">
                                             {gallery.highlights.map((h, i) => (
                                                 <li key={i} className="flex gap-2 text-xs text-gray-600 leading-relaxed">
-                                                    <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#b98b2f]" />
+                                                    <span className={`mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full ${isIT ? "bg-cyan-500" : "bg-[#b98b2f]"}`} />
                                                     {h}
                                                 </li>
                                             ))}
@@ -853,14 +924,16 @@ function ProjectModal({
                                         <h4 className="text-xs font-semibold uppercase tracking-widest text-[#b98b2f] mb-2">Services Delivered</h4>
                                         <div className="flex flex-wrap gap-1.5">
                                             {project.services.map((s) => (
-                                                <span key={s} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#b98b2f]/10 text-[#7a5a1d] border border-[#b98b2f]/20">{s}</span>
+                                                <span key={s} className={`px-2 py-0.5 rounded-full text-[10px] font-medium border ${isIT ? "bg-cyan-50 text-cyan-700 border-cyan-200" : "bg-[#b98b2f]/10 text-[#7a5a1d] border-[#b98b2f]/20"}`}>{s}</span>
                                             ))}
                                         </div>
                                     </div>
 
                                     {/* Deliverables */}
                                     <div>
-                                        <h4 className="text-xs font-semibold uppercase tracking-widest text-[#b98b2f] mb-2">Deliverables</h4>
+                                        <h4 className="text-xs font-semibold uppercase tracking-widest text-[#b98b2f] mb-2">
+                                            {isIT ? "Outcomes & Deliverables" : "Deliverables"}
+                                        </h4>
                                         <div className="flex flex-wrap gap-1.5">
                                             {gallery.deliverables.map((d) => (
                                                 <span key={d} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-gray-100 text-gray-500 border border-gray-200">{d}</span>
@@ -868,9 +941,11 @@ function ProjectModal({
                                         </div>
                                     </div>
 
-                                    {/* Tools */}
+                                    {/* Tech / Systems */}
                                     <div>
-                                        <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">Tools Used</h4>
+                                        <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-2">
+                                            {isIT ? "Technologies & Systems" : "Tools Used"}
+                                        </h4>
                                         <div className="flex flex-wrap gap-1.5">
                                             {project.tech.map((t) => (
                                                 <span key={t} className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-gray-50 text-gray-400 border border-gray-200">{t}</span>
@@ -884,7 +959,10 @@ function ProjectModal({
                                             <svg className="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m0-6v2m0-6v2M4.929 19.071A10 10 0 1 1 19.07 4.93 10 10 0 0 1 4.929 19.07z"/>
                                             </svg>
-                                            Final artwork is protected under NDA. Mockups shown are representative references.
+                                            {isIT
+                                                ? "Detailed technical configurations are confidential. Project scope shown is approved for disclosure."
+                                                : "Final artwork is protected under NDA. Mockups shown are representative references."
+                                            }
                                         </div>
                                     )}
                                 </div>
