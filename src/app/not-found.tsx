@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useAnimationFrame } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-
 // ─────────────────────────────────────────────
 // EASING
 // ─────────────────────────────────────────────
