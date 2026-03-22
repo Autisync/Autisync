@@ -1,0 +1,110 @@
+name: Build & Generate SLSA Provenance
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Adjust this section to your tech stack
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Package artifacts
+        run: |
+          mkdir artifacts
+          cp -r dist/* artifacts/
+
+      - name: Generate SLSA provenance
+        uses: slsa-framework/slsa-github-generator/actions/generator@v2
+        with:
+          artifact-path: artifacts
+          base64-subjects: true
+          upload-assets: true
+
+name: Verify Provenance
+
+on:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install GitHub CLI
+        uses: cli/cli@v3
+
+      - name: Download latest release artifacts
+        run: |
+          gh release download --repo ${{ github.repository }} --pattern "*.tar.gz"
+          gh release download --repo ${{ github.repository }} --pattern "*.intoto.jsonl"
+
+      - name: Install SLSA Verifier
+        run: |
+          curl -sSfL https://github.com/slsa-framework/slsa-verifier/releases/latest/download/slsa-verifier-linux-amd64 \
+            -o slsa-verifier
+          chmod +x slsa-verifier
+
+      - name: Verify provenance
+        run: |
+          ./slsa-verifier verify-artifact \
+            --source github.com/${{ github.repository }} \
+            --provenance-path *.intoto.jsonl \
+            *.tar.gz
+
+name: Auto Release with Provenance
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Package artifact
+        run: |
+          tar -czf app.tar.gz dist/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: app.tar.gz
+
+      - name: Generate SLSA Provenance
+        uses: slsa-framework/slsa-github-generator/actions/generator@v2
+        with:
+          artifact-path: app.tar.gz
+          base64-subjects: true
+          upload-assets: true
