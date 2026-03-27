@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
+import TurnstileWidget from "@/app/components/TurnstileWidget";
 
 const offices = [
     { id: 1, city: "Europe", address: ["(+44) 788 331 7646"] },
@@ -56,9 +57,13 @@ const EMPTY_FORM: FormState = {
 
 export default function Contact() {
     const [form, setForm] = useState<FormState>(EMPTY_FORM);
+    const [website, setWebsite] = useState("");
+    const [formStartedAt, setFormStartedAt] = useState<number>(() => Date.now());
+    const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
     const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
     const [errorMessage, setErrorMessage] = useState("");
+    const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
     // Capture UTM / tracking params from the URL query string on mount
     const utmRef = useRef<{
         source?: string; medium?: string; campaign?: string; gclid?: string; fbclid?: string;
@@ -86,6 +91,10 @@ export default function Contact() {
         if (!form.serviceInterestedIn) next.serviceInterestedIn = "Please select a service.";
         if (!form.consent) next.consent = "You must agree to be contacted before submitting.";
         setErrors(next);
+        if (!turnstileSiteKey || !turnstileToken) {
+            setErrorMessage("Please complete the verification check before submitting.");
+            return false;
+        }
         return Object.keys(next).length === 0;
     }
 
@@ -108,11 +117,15 @@ export default function Contact() {
         e.preventDefault();
         if (!validate()) return;
         setStatus("loading");
+        setErrorMessage("");
 
         const payload = {
             source: "website-contact",
             page: "/contact",
             ...form,
+            website,
+            form_started_at: formStartedAt,
+            turnstileToken,
             utm: {
                 source: utmRef.current.source ?? "",
                 medium: utmRef.current.medium ?? "",
@@ -137,6 +150,9 @@ export default function Contact() {
             } else {
                 setStatus("success");
                 setForm(EMPTY_FORM);
+                setWebsite("");
+                setTurnstileToken(null);
+                setFormStartedAt(Date.now());
             }
         } catch {
             setErrorMessage("Network error. Please check your connection and try again.");
@@ -294,6 +310,20 @@ export default function Contact() {
                                             ) : (
                                                 /* Form */
                                                 <form onSubmit={handleSubmit} noValidate>
+                                                    <div hidden aria-hidden="true">
+                                                        <label htmlFor="website">Website</label>
+                                                        <input
+                                                            id="website"
+                                                            name="website"
+                                                            type="text"
+                                                            tabIndex={-1}
+                                                            autoComplete="off"
+                                                            value={website}
+                                                            onChange={(e) => setWebsite(e.target.value)}
+                                                        />
+                                                    </div>
+                                                    <input type="hidden" name="form_started_at" value={formStartedAt} readOnly />
+
                                                     <h2 className="text-xl font-bold text-gray-900 mb-1">Send us a message</h2>
                                                     <p className="text-sm text-gray-500 mb-6">
                                                         Fill in the form below and we&apos;ll respond within one business day.
@@ -450,11 +480,28 @@ export default function Contact() {
                                                         </div>
                                                     )}
 
+                                                    <div className="mt-5 rounded-lg border border-gray-200 bg-white p-4">
+                                                        <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                                            Security verification
+                                                        </p>
+                                                        {turnstileSiteKey ? (
+                                                            <TurnstileWidget
+                                                                siteKey={turnstileSiteKey}
+                                                                onTokenChange={setTurnstileToken}
+                                                                theme="light"
+                                                            />
+                                                        ) : (
+                                                            <p className="text-xs text-red-600">
+                                                                Verification is currently unavailable. Please try again later.
+                                                            </p>
+                                                        )}
+                                                    </div>
+
                                                     {/* Submit */}
                                                     <div className="mt-6">
                                                         <button
                                                             type="submit"
-                                                            disabled={status === "loading"}
+                                                            disabled={status === "loading" || !turnstileToken || !turnstileSiteKey}
                                                             className="w-full px-6 py-3 text-sm font-semibold text-white uppercase tracking-wider rounded-lg bg-[#1C1C1C] hover:bg-[#B98B2F] disabled:opacity-60 disabled:cursor-not-allowed transition-colors duration-200 shadow-sm"
                                                         >
                                                             {status === "loading" ? "Sending..." : "Send Message"}

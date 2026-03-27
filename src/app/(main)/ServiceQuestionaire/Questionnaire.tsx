@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import TurnstileWidget from "@/app/components/TurnstileWidget";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -476,11 +477,15 @@ function FormField({ field, value, onChange, error }: {
 function QuestionnaireModal({ q, onClose }: { q: Questionnaire; onClose: () => void }) {
     const [currentSection, setCurrentSection] = useState(0);
     const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
+    const [website, setWebsite] = useState("");
+    const [formStartedAt, setFormStartedAt] = useState<number>(() => Date.now());
+    const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [submitted, setSubmitted] = useState(false);
     const [sending, setSending] = useState(false);
     const [sendError, setSendError] = useState<string | null>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
+    const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
     const section = q.sections[currentSection];
     const isLast = currentSection === q.sections.length - 1;
@@ -546,17 +551,34 @@ function QuestionnaireModal({ q, onClose }: { q: Questionnaire; onClose: () => v
     const submitForm = async () => {
         setSending(true);
         setSendError(null);
+
+        if (!turnstileSiteKey || !turnstileToken) {
+            setSendError("Please complete the verification check before submitting.");
+            setSending(false);
+            return;
+        }
+
         try {
             const res = await fetch("/api/questionnaire", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ title: q.title, sections: q.sections, answers }),
+                body: JSON.stringify({
+                    title: q.title,
+                    sections: q.sections,
+                    answers,
+                    website,
+                    form_started_at: formStartedAt,
+                    turnstileToken,
+                }),
             });
             if (!res.ok) {
                 const data = await res.json().catch(() => ({}));
                 throw new Error(data.error || "Failed to send. Please try again.");
             }
             setSubmitted(true);
+            setWebsite("");
+            setTurnstileToken(null);
+            setFormStartedAt(Date.now());
             scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
         } catch (err) {
             setSendError(err instanceof Error ? err.message : "Something went wrong.");
@@ -701,6 +723,20 @@ function QuestionnaireModal({ q, onClose }: { q: Questionnaire; onClose: () => v
                         </motion.div>
                     ) : (
                         <div className="px-6 py-8">
+                            <div hidden aria-hidden="true">
+                                <label htmlFor="questionnaire_website">Website</label>
+                                <input
+                                    id="questionnaire_website"
+                                    name="website"
+                                    type="text"
+                                    tabIndex={-1}
+                                    autoComplete="off"
+                                    value={website}
+                                    onChange={(e) => setWebsite(e.target.value)}
+                                />
+                                <input type="hidden" name="form_started_at" value={formStartedAt} readOnly />
+                            </div>
+
                             <div className="mb-8">
                 <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.25em] text-[#b98b2f]">
                   Step {currentSection + 1} of {q.sections.length}
@@ -746,6 +782,25 @@ function QuestionnaireModal({ q, onClose }: { q: Questionnaire; onClose: () => v
                                     </div>
                                 ))}
                             </div>
+
+                            {isLast && (
+                                <div className="mt-8 rounded-lg border border-gray-200 bg-white p-4">
+                                    <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                        Security verification
+                                    </p>
+                                    {turnstileSiteKey ? (
+                                        <TurnstileWidget
+                                            siteKey={turnstileSiteKey}
+                                            onTokenChange={setTurnstileToken}
+                                            theme="light"
+                                        />
+                                    ) : (
+                                        <p className="text-xs text-red-600">
+                                            Verification is currently unavailable. Please try again later.
+                                        </p>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
@@ -762,7 +817,7 @@ function QuestionnaireModal({ q, onClose }: { q: Questionnaire; onClose: () => v
                         </button>
                         <button
                             onClick={handleNext}
-                            disabled={sending}
+                            disabled={sending || (isLast && (!turnstileToken || !turnstileSiteKey))}
                             className="inline-flex items-center gap-2 rounded-lg px-6 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:opacity-90 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
                             style={{ background: `linear-gradient(135deg, ${GOLD_DARK}, ${GOLD_LIGHT})` }}
                         >
