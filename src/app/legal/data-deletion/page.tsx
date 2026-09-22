@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LegalDocument, { type LegalSection } from "../LegalDocument";
 
 export const metadata: Metadata = {
-    title: "Deleting your data | Autisync",
+    title: "Deleting your data",
     description:
         "How to have data removed that reached Autisync CRM through Facebook, Instagram or WhatsApp, and what happens when a business closes its account.",
     alternates: { canonical: "https://www.autisync.com/legal/data-deletion" },

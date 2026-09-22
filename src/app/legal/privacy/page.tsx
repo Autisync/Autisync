@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LegalDocument, { type LegalSection } from "../LegalDocument";
 
 export const metadata: Metadata = {
-    title: "Autisync CRM Privacy Policy | Autisync",
+    title: "Autisync CRM Privacy Policy",
     description:
         "How Autisync CRM handles the messages, contacts and files that pass through it from WhatsApp, Facebook Messenger, Instagram, email and website forms.",
     alternates: { canonical: "https://www.autisync.com/legal/privacy" },

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LegalDocument, { type LegalSection } from "../LegalDocument";
 
 export const metadata: Metadata = {
-    title: "Autisync CRM Terms of Service | Autisync",
+    title: "Autisync CRM Terms of Service",
     description:
         "The terms governing use of Autisync CRM: accounts, acceptable use, data ownership, third-party channels, payment and termination.",
     alternates: { canonical: "https://www.autisync.com/legal/terms" },
