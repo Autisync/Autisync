@@ -78,5 +78,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "yearly",
             priority: 0.3,
         },
+        // Autisync CRM's own legal pages. Meta's App Review fetches these, so
+        // they need to be indexable and reachable, not only linked.
+        {
+            url: `${BASE_URL}/legal/privacy`,
+            lastModified: now,
+            changeFrequency: "yearly",
+            priority: 0.3,
+        },
+        {
+            url: `${BASE_URL}/legal/terms`,
+            lastModified: now,
+            changeFrequency: "yearly",
+            priority: 0.3,
+        },
+        {
+            url: `${BASE_URL}/legal/data-deletion`,
+            lastModified: now,
+            changeFrequency: "yearly",
+            priority: 0.3,
+        },
     ];
 }
