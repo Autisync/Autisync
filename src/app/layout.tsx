@@ -70,10 +70,18 @@ export const metadata: Metadata = {
         ],
         apple: "/apple-touch-icon.png",
     },
-    // verification: {
-    //     google: "REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_TOKEN",
-    //     // bing: "REPLACE_WITH_BING_TOKEN",  // uncomment when ready
-    // },
+    verification: {
+        // google: "REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_TOKEN",
+        // bing: "REPLACE_WITH_BING_TOKEN",  // uncomment when ready
+        other: {
+            // Proves to Meta that this portfolio owns autisync.com. It has to
+            // stay: the Autisync CRM app points its Privacy Policy, Terms and
+            // Data Deletion URLs at this domain, and Business Verification
+            // checks the website against the company record. Removing the tag
+            // un-verifies the domain.
+            "facebook-domain-verification": "yz8uskotx7zglfbl0nqgp7wu1bg510",
+        },
+    },
 };
 
 // Organisation JSON-LD schema — appears on every page
