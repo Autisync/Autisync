@@ -89,6 +89,11 @@ const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Autisync",
+    // The registered entity behind the trading name. Meta's business
+    // verification looks for the razão social on the site; structured data is
+    // the machine-readable half of the footer line that carries it.
+    legalName: "Maheldom Consulting, Lda",
+    taxID: "5003472418",
     url: BASE_URL,
     logo: `${BASE_URL}/Autisync.svg`,
     description:

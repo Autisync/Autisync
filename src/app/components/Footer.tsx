@@ -249,10 +249,27 @@ export default function Footer() {
                 </a>
               ))}
             </div>
+            {/*
+              The registered operator, on every page.
+
+              Meta refused business verification with "a razão social da sua
+              empresa deve estar presente no site": it checks the website
+              against the company record and could not find the legal name
+              anywhere on autisync.com. The name on the certidão is Maheldom
+              Consulting, Lda; Autisync is the trading name. Saying so here is
+              what ties the two together, for Meta and for anyone else who
+              needs to know who they are dealing with.
+            */}
             <p className="py-1 text-sm text-gray-400">
               © {new Date().getFullYear()} Autisync. All rights reserved.
               <br />
-              <span className="font-light">NIF: 5001246658</span>
+              <span className="font-light">
+                Autisync is a trading name of Maheldom Consulting, Lda
+              </span>
+              <br />
+              <span className="font-light">
+                NIF 5003472418 · Matrícula 41063-26/260824 · Talatona, Luanda, Angola
+              </span>
             </p>
           </div>
         </div>
