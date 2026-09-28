@@ -209,9 +209,12 @@ export default function ProposalForm() {
                     We&apos;ve sent a confirmation to your email. Someone from Autisync will contact you shortly
                     to book a short discovery call, then we&apos;ll prepare your proposal.
                 </p>
-                <p className={s.muted}>Want to talk sooner? Message us on WhatsApp.</p>
+                <p className={s.muted}>Want to skip the wait? Book your discovery call now, or message us on WhatsApp.</p>
                 <div className={s.ctaRow} style={{ marginTop: 4 }}>
-                    <a className={`${s.btn} ${s.btnGold}`} href={wa} target="_blank" rel="noopener noreferrer">
+                    <a className={`${s.btn} ${s.btnGold}`} href="#book">
+                        Book my discovery call
+                    </a>
+                    <a className={`${s.btn} ${s.btnGhost}`} href={wa} target="_blank" rel="noopener noreferrer">
                         Message us on WhatsApp
                     </a>
                 </div>

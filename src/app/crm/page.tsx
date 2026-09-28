@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { DM_Sans, Outfit } from "next/font/google";
 import ProposalForm from "./ProposalForm";
+import BookingEmbed from "./BookingEmbed";
 import s from "./crm.module.css";
 
 const display = Outfit({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-crm-display" });
@@ -220,10 +221,36 @@ export default function CrmLandingPage() {
                                 <li><Check />No commitment until you approve the proposal</li>
                                 <li><Check />Setup handled by the Autisync team</li>
                             </ul>
+                            <p className={s.muted}>
+                                Prefer to talk first? <a href="#book">Book a discovery call</a> straight into our calendar.
+                            </p>
                         </div>
                         <div>
                             <ProposalForm />
                         </div>
+                    </div>
+                </section>
+
+                <section className={`${s.section} ${s.bookSec}`} id="book">
+                    <div className={s.wrap}>
+                        <div className={s.head}>
+                            <span className={s.eyebrow}>Book a call</span>
+                            <h2>Prefer to talk it through? Pick a time.</h2>
+                            <p className={s.muted}>
+                                Book a discovery call with the Autisync team. We&apos;ll look at how you manage clients today
+                                and what the CRM setup would involve for you.
+                            </p>
+                        </div>
+                        <div className={s.bookingCard}>
+                            <BookingEmbed />
+                        </div>
+                        <p className={s.bookFallback}>
+                            Calendar not loading?{" "}
+                            <a href="https://book.autisync.com/apps/appointments/p/autisync-agency" target="_blank" rel="noopener noreferrer">
+                                Open the booking page in a new tab
+                            </a>
+                            .
+                        </p>
                     </div>
                 </section>
 
