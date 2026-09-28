@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { DM_Sans, Outfit } from "next/font/google";
-import ProposalForm from "./ProposalForm";
+import BookingEmbed from "./BookingEmbed";
 import s from "./crm.module.css";
 
 const display = Outfit({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-crm-display" });
@@ -11,7 +11,7 @@ const body = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variab
 const URL = "https://www.autisync.com/crm";
 const TITLE = "Autisync CRM: All your clients in one dashboard";
 const DESCRIPTION =
-    "The Autisync CRM brings your contacts, leads and sales pipeline into one place, with automated follow-ups. Set up for your business by Autisync. Request a tailored proposal.";
+    "The Autisync CRM brings your contacts, leads and sales pipeline into one place, with automated follow-ups. Set up for your business by Autisync. Book a discovery call.";
 
 export const metadata: Metadata = {
     title: { absolute: TITLE },
@@ -92,8 +92,8 @@ const FEATURES = [
 ];
 
 const STEPS = [
-    { t: "Request a proposal", d: "Tell us about your business in the short form below." },
-    { t: "Discovery call", d: "We learn how you find, sell to and serve clients today." },
+    { t: "Book a call", d: "Pick a time that suits you in the calendar below." },
+    { t: "Tailored proposal", d: "We learn how you work today, then send the setup, features and price for your team." },
     { t: "Setup and import", d: "We configure your pipeline stages and bring in your existing contacts." },
     { t: "Go live", d: "Your team gets a walkthrough and ongoing support from Autisync." },
 ];
@@ -116,7 +116,7 @@ export default function CrmLandingPage() {
                         <img src="/crm/autisync-mark-white.svg" alt="" width={45} height={30} />
                         <span className={s.logoWord}>Autisync</span>
                     </Link>
-                    <a className={`${s.btn} ${s.btnGold} ${s.navBtn}`} href="#proposal">Request a proposal</a>
+                    <a className={`${s.btn} ${s.btnGold} ${s.navBtn}`} href="#book">Book a call</a>
                 </div>
             </nav>
 
@@ -132,7 +132,7 @@ export default function CrmLandingPage() {
                                 using it straight away.
                             </p>
                             <div className={s.ctaRow}>
-                                <a className={`${s.btn} ${s.btnGold}`} href="#proposal">Request your proposal</a>
+                                <a className={`${s.btn} ${s.btnGold}`} href="#book">Book a discovery call</a>
                                 <a className={`${s.btn} ${s.btnGhost}`} href="#features">See what&apos;s inside</a>
                             </div>
                             <p className={s.trust}>For service businesses in the UK, Portugal, Namibia and Angola.</p>
@@ -190,7 +190,7 @@ export default function CrmLandingPage() {
                     <div className={s.wrap}>
                         <div className={s.head}>
                             <span className={s.eyebrow}>How it works</span>
-                            <h2>From proposal to live CRM, done for you.</h2>
+                            <h2>From first call to live CRM, done for you.</h2>
                         </div>
                         <div className={s.steps}>
                             {STEPS.map((st) => (
@@ -206,24 +206,33 @@ export default function CrmLandingPage() {
                     </div>
                 </section>
 
-                <section className={`${s.section} ${s.formSec}`} id="proposal">
-                    <div className={`${s.wrap} ${s.formGrid}`}>
-                        <div className={s.formSide}>
-                            <span className={s.eyebrow}>Request a proposal</span>
-                            <h2>Get a CRM plan and quote for your business.</h2>
-                            <p className={s.muted}>
-                                Answer a few questions and our team will send you a tailored proposal, with the setup, features and
-                                price for your team.
-                            </p>
+                <section className={`${s.section} ${s.formSec}`} id="book">
+                    <div className={s.wrap}>
+                        <div className={s.bookHead}>
+                            <div className={s.head} style={{ margin: 0 }}>
+                                <span className={s.eyebrow}>Book a discovery call</span>
+                                <h2>Pick a time to talk about your CRM.</h2>
+                                <p className={s.muted}>
+                                    Choose a time that suits you. On the call we&apos;ll look at how you manage clients today, then
+                                    send you a tailored proposal with the setup, features and price for your team.
+                                </p>
+                            </div>
                             <ul className={s.checks}>
-                                <li><Check />Takes about 2 minutes</li>
                                 <li><Check />No commitment until you approve the proposal</li>
                                 <li><Check />Setup handled by the Autisync team</li>
+                                <li><Check />Your existing contacts imported for you</li>
                             </ul>
                         </div>
-                        <div>
-                            <ProposalForm />
+                        <div className={s.bookingCard}>
+                            <BookingEmbed />
                         </div>
+                        <p className={s.bookFallback}>
+                            Calendar not loading?{" "}
+                            <a href="https://book.autisync.com/apps/appointments/p/autisync-agency" target="_blank" rel="noopener noreferrer">
+                                Open the booking page in a new tab
+                            </a>
+                            , or message us on WhatsApp at +44 7883 317646.
+                        </p>
                     </div>
                 </section>
 
