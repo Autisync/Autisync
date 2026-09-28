@@ -497,6 +497,18 @@ textarea.input {
 }
 
 /* booking */
+.bookHead {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: end;
+  margin-bottom: 36px;
+}
+@media (max-width: 860px) {
+  .bookHead {
+    grid-template-columns: 1fr;
+  }
+}
 .bookSec {
   border-bottom: 1px solid var(--line);
   scroll-margin-top: 68px;
