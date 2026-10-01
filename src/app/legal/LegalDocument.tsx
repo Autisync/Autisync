@@ -51,7 +51,10 @@ export type LegalDocumentProps = {
  * about their data - should not be something they have to retype. Emails and
  * our own legal URLs become links; everything else is left alone.
  */
-const LINKABLE = /([\w.+-]+@[\w-]+\.[\w.-]+)|(autisync\.com\/legal\/[a-z-]+)/g;
+// Two Google addresses are linked as well: the policy the Limited Use
+// statement refers to, and the page where a person revokes our access. A
+// privacy policy that names them should let the reader reach them.
+const LINKABLE = /([\w.+-]+@[\w-]+\.[\w.-]+)|(autisync\.com\/legal\/[a-z-]+)|((?:developers|myaccount)\.google\.com\/[\w\/-]+)/g;
 
 function linkify(text: string): React.ReactNode[] {
     const out: React.ReactNode[] = [];
@@ -61,12 +64,13 @@ function linkify(text: string): React.ReactNode[] {
 
     while ((match = LINKABLE.exec(text)) !== null) {
         if (match.index > last) out.push(text.slice(last, match.index));
-        const [whole, email, legalPath] = match;
+        const [whole, email, legalPath, googlePath] = match;
         out.push(
             <a
                 key={`${match.index}-${whole}`}
-                href={email ? `mailto:${email}` : `/${legalPath.split("autisync.com/")[1]}`}
+                href={email ? `mailto:${email}` : googlePath ? `https://${googlePath}` : `/${legalPath.split("autisync.com/")[1]}`}
                 className="text-[#b98b2f] hover:underline"
+                {...(googlePath ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             >
                 {whole}
             </a>,

@@ -4,12 +4,12 @@ import LegalDocument, { type LegalSection } from "../LegalDocument";
 export const metadata: Metadata = {
     title: "Autisync CRM Privacy Policy",
     description:
-        "How Autisync CRM handles the messages, contacts and files that pass through it from WhatsApp, Facebook Messenger, Instagram, email and website forms.",
+        "How Autisync CRM handles the messages, contacts and files that pass through it from WhatsApp, Facebook Messenger, Instagram, email and website forms, and the calendar data of a connected Google account.",
     alternates: { canonical: "https://www.autisync.com/legal/privacy" },
     robots: { index: true, follow: true },
 };
 
-const LAST_UPDATED = "22 September 2026";
+const LAST_UPDATED = "1 October 2026";
 
 const sections: LegalSection[] = [
     {
@@ -63,6 +63,39 @@ const sections: LegalSection[] = [
         ],
     },
     {
+        id: "google",
+        title: "Google account data",
+        content: [
+            {
+                body: "A business using Autisync can connect its own Google account so that appointments booked through the CRM appear in its calendar. Connecting is optional, and nothing below happens unless someone chooses to connect.",
+            },
+            {
+                heading: "What we access",
+                body: "The calendars on that Google account, and the events on them. Where a business also connects Google Business Profile, the profile and its reviews. We ask for access at the moment of connecting, and Google shows exactly what is being granted before anyone agrees to it.",
+            },
+            {
+                heading: "What we do with it",
+                body: "One thing: keep the diary straight. We create an event when a booking is made, change it when the booking moves, and remove it when the booking is cancelled. We read the calendar to know which times are already taken, so the booking page does not offer a slot that is not free. Where Business Profile is connected, we read reviews so they can be seen and answered in the CRM.",
+            },
+            {
+                heading: "What we do not do with it",
+                body: "We do not sell it. We do not transfer it to anyone except as described under “Who else sees it”. We do not use it for advertising, for profiling, or to train machine learning models. We do not read it for any purpose other than running the booking and review features the business asked for. No person at Autisync reads a customer's Google data unless the business asks us to help with a specific problem and agrees to it, or the law requires it.",
+            },
+            {
+                heading: "Limited Use",
+                body: "Autisync's use and transfer of information received from Google APIs adheres to the Google API Services User Data Policy (developers.google.com/terms/api-services-user-data-policy), including the Limited Use requirements.",
+            },
+            {
+                heading: "How the connection is held",
+                body: "Google issues us a token rather than a password — we never see or store Google account credentials. That token is encrypted before it is written to the database and is never displayed back in full.",
+            },
+            {
+                heading: "Ending it",
+                body: "A business can disconnect Google from the CRM's Integrations screen at any time, which deletes the stored token. Access can also be withdrawn directly from Google at myaccount.google.com/permissions. Either way, we stop having access immediately. Events already written to the calendar stay there, because they belong to that calendar — they can be deleted in Google Calendar like any other event.",
+            },
+        ],
+    },
+    {
         id: "why",
         title: "Why we hold it",
         content: [
@@ -93,6 +126,7 @@ const sections: LegalSection[] = [
                 body: "Only the parties that have to, to make a message move:",
                 list: [
                     "Meta Platforms — messages to and from WhatsApp, Messenger and Instagram travel through Meta's APIs, under Meta's own terms.",
+                    "Google — where a business has connected its Google account, calendar events and, if enabled, Business Profile reviews travel through Google's APIs, under Google's own terms.",
                     "Our hosting provider, which runs the servers the data sits on.",
                     "An email delivery provider, for messages sent by email.",
                 ],
