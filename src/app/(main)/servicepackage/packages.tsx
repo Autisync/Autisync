@@ -1,84 +1,22 @@
+"use client";
+
 import { CheckIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
-const tiers = [
-  {
-    name: "Small Business",
-    id: "tier-small-business",
-    href: "#",
-    priceMonthly: "Contact Us",
-    description:
-      "Perfect for local businesses ready to scale their digital presence.",
-    features: [
-      "10 Pages",
-      "Domain – 1st Year Free",
-      "Hosting – 1st Year Free",
-      "Free SSL Certificate",
-      "Mobile Responsive",
-      "Delivery in 28 Days",
-      "Social Media Page Setup & Optimization",
-      "Contact & Newsletter Form Integration",
-      "Social Profile Linking",
-      "Advanced SEO",
-      "37 Business Emails – 1000 MB Quota",
-      "24-hour support response time",
-      "Free 30 Hours Support",
-    ],
-    mostPopular: false,
-  },
-  {
-    name: "Startup",
-    id: "tier-startup",
-    href: "#",
-    priceMonthly: "Contact Us",
-    description:
-      "A powerful launch kit to give your startup digital presence fast.",
-    features: [
-      "Up to 6 Pages",
-      "Domain – 1st Year Free",
-      "Hosting – 1st Year Free",
-      "Free SSL Certificate",
-      "Mobile Responsive",
-      "Delivery in 19 Days",
-      "Facebook Page Creation",
-      "Social Profile Linking",
-      "Basic SEO",
-      "5 Email Accounts – 1000 MB Quota",
-      "48-hour support response time",
-    ],
-    mostPopular: true,
-  },
-  {
-    name: "Enterprise",
-    id: "tier-enterprise",
-    href: "#",
-    priceMonthly: "Contact Us",
-    description:
-      "Dedicated infrastructure and branding for larger companies.",
-    features: [
-      "+15 Pages",
-      "Domain – 1st Year Free",
-      "Hosting – 1st Year Free",
-      "Free SSL Certificate",
-      "Mobile Responsive",
-      "Delivery in 62 Days",
-      "Social Media Page Setup & Optimization",
-      "Contact & Newsletter Form Integration",
-      "Social Profile Integration",
-      "Advanced SEO",
-      "100 Email Accounts – 1000 MB Quota",
-      "24-hour support response time",
-      "Free 87 Hours Support",
-    ],
-    mostPopular: false,
-  },
-];
+import { websiteTiers as tiers, type Currency } from "@/lib/website-packages";
+import { CarePlanNote, CurrencyToggle, TierPrice, usePackageCurrency } from "@/app/components/PackagePricing";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Packages() {
+/**
+ * When `currency` is passed (the /servicepackage page has one switch for
+ * every section) this block uses it and hides its own switch.
+ */
+export default function Packages({ currency: shared }: { currency?: Currency } = {}) {
+  const [own, setCurrency] = usePackageCurrency();
+  const currency = shared ?? own;
   return (
     <div className="py-16 bg-gray-100 rounded-lg">
       <div className="px-6 mx-auto max-w-7xl lg:px-8">
@@ -96,6 +34,7 @@ export default function Packages() {
           <span className="text-[#B28228]">scalable websites</span> tailored to
           your business growth.
         </p>
+        {!shared && <CurrencyToggle value={currency} onChange={setCurrency} />}
 
         <div className="grid max-w-md grid-cols-1 mx-auto mt-16 gap-y-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {tiers.map((tier, tierIdx) => (
@@ -128,14 +67,9 @@ export default function Packages() {
                 <p className="mt-4 text-sm leading-6 text-gray-600">
                   {tier.description}
                 </p>
-                <p className="flex items-baseline mt-6 gap-x-1">
-                  <span className="text-4xl font-bold tracking-tight text-[#3B3B3B]">
-                    <small className="text-xs text-[#B28228] mr-1">
-                      Pricing
-                    </small>
-                    {tier.priceMonthly}
-                  </span>
-                </p>
+                <div className="mt-6">
+                  <TierPrice amount={tier.price[currency]} currency={currency} />
+                </div>
                 <ul
                   role="list"
                   className="mt-8 space-y-3 text-sm leading-6 text-gray-700"
@@ -154,12 +88,13 @@ export default function Packages() {
             </div>
           ))}
         </div>
+        <CarePlanNote currency={currency} />
       </div>
 
       <div className="object-none object-center max-w-4xl p-4 mx-auto text-center">
         <Link
           className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-[#3B3B3B]  rounded-md shadow-lg hover:bg-[#B28228] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#B28228] sm:mr-2"
-          href="/src/app/(main)/contact/"
+          href="/contact"
         >
           Get a Proposal
         </Link>

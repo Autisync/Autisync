@@ -3,197 +3,184 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { CheckIcon } from "@heroicons/react/24/solid"; // if you're on v1, use "@heroicons/react/solid"
-import { PhoneIcon } from "@heroicons/react/24/outline"; // v1: "@heroicons/react/outline"
+import { CheckIcon } from "@heroicons/react/24/solid";
+import { PhoneIcon } from "@heroicons/react/24/outline";
 import Items from "./items";
 import Packages from "./packages";
-import Link from "next/link";
+import { CurrencyToggle, TierPrice, usePackageCurrency } from "@/app/components/PackagePricing";
+import { formatPrice, websiteTiers, type Currency } from "@/lib/website-packages";
+import { brandingTiers, launchBundle, socialTiers, socialTerms, type ServiceTier } from "@/lib/service-packages";
 
-/* -------------------------- Branding cards block -------------------------- */
+/* ------------------------------ Shared bits ------------------------------- */
 
-const BrandingGrid = () => {
-    const brandingTiers = [
-        {
-            name: "Branding - Starter",
-            description:
-                "The perfect plan if you're just getting started with your business.",
-            features: [
-                "Logo Design",
-                "Envelopes A4 & A5",
-                "Company Stamp x1",
-                "Business Card Design",
-                "Business Card Print-out x50",
-            ],
-        },
-        {
-            name: "Branding - Pro",
-            description:
-                "Ideal for growing businesses looking to establish strong brand identity.",
-            features: [
-                "Logo Design",
-                "Brand Guidelines",
-                "Company Stamp x1 & Stationery",
-                "Business Card Print-out x300",
-                "Business & Employee Card Design",
-            ],
-        },
-        {
-            name: "Branding - Enterprise",
-            description:
-                "Comprehensive solution for large teams or established brands.",
-            features: [
-                "Logo Design",
-                "Brand Guidelines",
-                "Digital Signature x6",
-                "Presentation Folder Design",
-                "Company Document Templates",
-                "Stationery Design & Mock-ups",
-                "Employee Card Design and Print x6",
-                "Business Card Design & Print-out x600",
-                "Branded Social Media Banner",
-            ],
-        },
-    ];
+const WHATSAPP = "https://wa.me/447883317646";
 
+function whatsappLink(message: string) {
+    return `${WHATSAPP}?text=${encodeURIComponent(message)}`;
+}
+
+function TierCard({ tier, currency, kind }: { tier: ServiceTier; currency: Currency; kind: string }) {
+    const price = formatPrice(tier.price[currency], currency);
     return (
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {brandingTiers.map((tier, index) => (
-                <div
-                    key={index}
-                    className="rounded-3xl p-6 shadow-md ring-1 ring-gray-200 bg-white"
-                >
-                    <h3 className="text-xl font-bold text-[#B28228] mb-2">
-                        {tier.name}
+        <div
+            className={
+                "relative flex flex-col justify-between rounded-3xl p-6 bg-white shadow-md " +
+                (tier.mostPopular ? "ring-2 ring-[#B28228]" : "ring-1 ring-gray-200")
+            }
+        >
+            <div>
+                <div className="flex items-center justify-between gap-x-4">
+                    <h3 className="text-xl font-bold text-[#3B3B3B]">
+                        <span className="text-[#B28228]">{kind}</span> {tier.name}
                     </h3>
-                    <p className="text-sm text-gray-600 mb-4">{tier.description}</p>
-                    <ul className="space-y-2 text-sm text-gray-700">
-                        {tier.features.map((feature, i) => (
-                            <li key={i} className="flex items-center gap-2">
-                                <CheckIcon className="w-4 h-4 text-[#B28228]" />
-                                {feature}
+                    {tier.mostPopular && (
+                        <p className="rounded-full bg-[#B28228]/10 px-2.5 py-1 text-xs font-semibold leading-5 text-[#B28228]">
+                            Most Popular
+                        </p>
+                    )}
+                </div>
+                <p className="mt-2 text-sm text-gray-600">{tier.description}</p>
+                <div className="mt-5">
+                    <TierPrice amount={tier.price[currency]} currency={currency} note={tier.detail} />
+                </div>
+                <ul className="mt-6 space-y-2 text-sm text-gray-700">
+                    {tier.features.map((feature) => (
+                        <li key={feature} className="flex gap-2">
+                            <CheckIcon className="flex-none w-4 h-5 text-[#B28228]" aria-hidden="true" />
+                            {feature}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <a
+                href={whatsappLink(`Hi Autisync, I'm interested in the ${kind} ${tier.name} package (${price}).`)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={
+                    "mt-6 inline-block w-full text-center py-2 px-4 rounded-md font-semibold border border-[#B28228] transition " +
+                    (tier.mostPopular
+                        ? "bg-[#B28228] text-white hover:bg-[#1C1C1C] hover:border-[#1C1C1C]"
+                        : "text-[#B28228] hover:bg-[#B28228] hover:text-white")
+                }
+            >
+                Choose {tier.name}
+            </a>
+        </div>
+    );
+}
+
+/* ---------------------------- Launch bundle ------------------------------- */
+
+const LaunchBundle = ({ currency }: { currency: Currency }) => {
+    const price = formatPrice(launchBundle.price[currency], currency);
+    const separately = formatPrice(launchBundle.separately[currency], currency);
+    const saving = formatPrice(launchBundle.separately[currency] - launchBundle.price[currency], currency);
+    return (
+        <section
+            aria-labelledby="launch-bundle"
+            className="relative overflow-hidden rounded-3xl bg-[#1C1C1C] text-white shadow-xl ring-1 ring-[#B28228]/40 mb-10"
+        >
+            <div className="grid gap-8 p-8 lg:grid-cols-5 lg:p-10">
+                <div className="lg:col-span-3">
+                    <p className="inline-block rounded-full bg-[#B28228] px-3 py-1 text-xs font-semibold uppercase tracking-wide">
+                        Best value · Save {saving}
+                    </p>
+                    <h2 id="launch-bundle" className="mt-4 text-3xl font-bold sm:text-4xl">
+                        {launchBundle.name}
+                    </h2>
+                    <p className="mt-2 text-lg text-[#d1a94c]">{launchBundle.tagline}</p>
+                    <p className="mt-4 text-gray-300">{launchBundle.description}</p>
+                    <ul className="mt-6 space-y-2 text-sm text-gray-200">
+                        {launchBundle.features.map((f) => (
+                            <li key={f} className="flex gap-2">
+                                <CheckIcon className="flex-none w-4 h-5 text-[#d1a94c]" aria-hidden="true" />
+                                {f}
                             </li>
                         ))}
                     </ul>
-                    <a
-                        href="https://wa.me/+447883317646?text=I would like to learn more about your branding services."
-                        className="mt-6 inline-block w-full text-center py-2 px-4 rounded-md font-semibold  -[#B28228] text-[#B28228] hover:bg-[#B28228] hover:text-white transition"
-                        target="_blank"
-                    >
-                        Contact Us for a Meeting
-                    </a>
                 </div>
-            ))}
-        </div>
+                <div className="flex flex-col justify-center rounded-2xl bg-white/5 p-6 ring-1 ring-white/10 lg:col-span-2">
+                    <p className="text-sm text-gray-400 line-through">{separately} separately</p>
+                    <p className="mt-1 text-4xl font-extrabold">{price}</p>
+                    <p className="mt-1 text-xs text-gray-400">one-off · 50% to start, 50% at launch</p>
+                    <a
+                        href={whatsappLink(`Hi Autisync, I'm interested in the ${launchBundle.name} bundle (${price}).`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-6 inline-flex justify-center rounded-md bg-[#B28228] px-5 py-3 font-semibold text-white shadow-lg transition hover:bg-[#d1a94c]"
+                    >
+                        Start my launch
+                    </a>
+                    <p className="mt-3 text-xs text-gray-400">Reply on WhatsApp within one business day.</p>
+                </div>
+            </div>
+        </section>
     );
 };
 
+/* -------------------------- Branding cards block -------------------------- */
+
+const BrandingGrid = ({ currency }: { currency: Currency }) => (
+    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {brandingTiers.map((tier) => (
+            <TierCard key={tier.id} tier={tier} currency={currency} kind="Branding" />
+        ))}
+    </div>
+);
+
 /* --------------------- Social media management block ---------------------- */
 
-const SocialMediaPackages = () => (
+const SocialMediaPackages = ({ currency }: { currency: Currency }) => (
     <div className="max-w-6xl mx-auto">
         <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold tracking-tight text-[#3B3B3B] sm:text-4xl">
                 Social Media Management
             </h2>
             <p className="mt-4 text-lg text-gray-600">
-                Professional social media support to boost your digital presence,
-                attract new clients, and generate qualified leads.
+                Consistent content, short-form video and paid reach that turn followers
+                into enquiries.
             </p>
         </div>
-
-        <div className="grid grid-cols-1 gap-8 mt-12 sm:grid-cols-3">
-            {/* Basic Package */}
-            <div className="p-6  rounded-lg shadow-sm ring-1 ring-gray-200 bg-white">
-                <h3 className="text-xl font-semibold text-[#B28228]">Basic Package</h3>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
-                    <li>📅 8 posts/month (design + text)</li>
-                    <li>🎥 2 reels + 2 flyers</li>
-                    <li>📱 Management of 2 platforms</li>
-                    <li>📊 Basic performance report</li>
-                </ul>
-                <a
-                    href="https://wa.me/+447883317646?text=I’m interested in the Basic Social Media Management package"
-                    className="inline-block w-full mt-6 text-center text-sm font-semibold text-[#B28228]  -[#B28228] py-2 rounded hover:bg-[#B28228] hover:text-white transition"
-                    target="_blank"
-                >
-                    Contact Us
-                </a>
-            </div>
-
-            {/* Intermediate Package */}
-            <div className="p-6  rounded-lg shadow-sm ring-1 ring-gray-200 bg-[#F9F6F0]">
-                <h3 className="text-xl font-semibold text-[#B28228]">
-                    Intermediate Package
-                </h3>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
-                    <li>📅 12 posts/month</li>
-                    <li>🎥 4 reels + 4 flyers</li>
-                    <li>📱 Management of 3 platforms</li>
-                    <li>📢 Sponsored ads (with targeting)</li>
-                    <li>📊 Monthly performance & ad reports</li>
-                </ul>
-                <a
-                    href="https://wa.me/+447883317646?text=I’m interested in the Intermediate Social Media Management package"
-                    className="inline-block w-full mt-6 text-center text-sm font-semibold text-[#B28228]  -[#B28228] py-2 rounded hover:bg-[#B28228] hover:text-white transition"
-                    target="_blank"
-                >
-                    Contact Us
-                </a>
-            </div>
-
-            {/* Premium Package */}
-            <div className="p-6  rounded-lg shadow-sm ring-1 ring-gray-200 bg-white">
-                <h3 className="text-xl font-semibold text-[#B28228]">
-                    Premium Package
-                </h3>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
-                    <li>📅 16 posts/month</li>
-                    <li>🎥 6 reels + 6 flyers</li>
-                    <li>📱 Full management of 3 platforms</li>
-                    <li>📢 Sponsored ads with strategic budget</li>
-                    <li>📊 Advanced analytics and reporting</li>
-                </ul>
-                <a
-                    href="https://wa.me/+447883317646?text=I’m interested in the Premium Social Media Management package"
-                    className="inline-block w-full mt-6 text-center text-sm font-semibold text-[#B28228]  -[#B28228] py-2 rounded hover:bg-[#B28228] hover:text-white transition"
-                    target="_blank"
-                >
-                    Contact Us
-                </a>
-            </div>
+        <div className="grid grid-cols-1 gap-8 mt-12 lg:grid-cols-3">
+            {socialTiers.map((tier) => (
+                <TierCard key={tier.id} tier={tier} currency={currency} kind="Social" />
+            ))}
         </div>
+        <p className="max-w-3xl mx-auto mt-8 text-xs leading-5 text-center text-gray-500">{socialTerms}</p>
     </div>
 );
 
 /* ---------------------------- Main page block ----------------------------- */
 
 export default function ServicePackagesPage() {
-    const [openSection, setOpenSection] = useState("branding");
+    const [openSection, setOpenSection] = useState("web-packages");
+    const [currency, setCurrency] = usePackageCurrency();
+    const from = (amount: number) => formatPrice(amount, currency);
 
     const sections = [
         {
+            id: "web-packages",
+            title: "Website Packages",
+            subtitle: `Professional websites from ${from(websiteTiers[0].price[currency])} — domain, hosting & email included.`,
+            content: <Packages currency={currency} />,
+        },
+        {
             id: "branding",
             title: "Branding Packages",
-            subtitle: "Logo, stationery & identity foundations for your brand.",
-            content: <BrandingGrid />,
+            subtitle: `Logo, stationery & full identity from ${from(brandingTiers[0].price[currency])}.`,
+            content: <BrandingGrid currency={currency} />,
         },
         {
             id: "social",
             title: "Social Media Management",
-            subtitle: "Monthly content, reels, ads and reporting tailored to you.",
-            content: <SocialMediaPackages />,
+            subtitle: `Content, reels, ads and reporting from ${from(socialTiers[0].price[currency])}/month.`,
+            content: <SocialMediaPackages currency={currency} />,
         },
         {
             id: "services-table",
-            title: "Services & Products Table",
-            subtitle: "Detailed list of everything we can design, build and manage.",
+            title: "Individual Design Services",
+            subtitle: "Rollups, flyers, company profiles and more — quoted per job.",
             content: <Items />,
-        },
-        {
-            id: "web-packages",
-            title: "Website Development Packages",
-            subtitle: "Full website builds for small business, startups & enterprises.",
-            content: <Packages />,
         },
     ];
 
@@ -212,10 +199,16 @@ export default function ServicePackagesPage() {
                         "@type": "OfferCatalog",
                         name: "Service Packages",
                         itemListElement: [
-                            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Startup Package" } },
-                            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Small Business Package" } },
-                            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Enterprise Package" } },
-                        ],
+                            ...websiteTiers.map((t) => ({ name: `${t.name} Website`, price: t.price })),
+                            ...brandingTiers.map((t) => ({ name: `Branding ${t.name}`, price: t.price })),
+                            ...socialTiers.map((t) => ({ name: `Social Media ${t.name}`, price: t.price })),
+                            { name: launchBundle.name, price: launchBundle.price },
+                        ].map((o) => ({
+                            "@type": "Offer",
+                            itemOffered: { "@type": "Service", name: o.name },
+                            price: o.price.AOA,
+                            priceCurrency: "AOA",
+                        })),
                     },
                 }),
             }}
@@ -231,11 +224,13 @@ export default function ServicePackagesPage() {
                         Let&apos;s Tailor the<br/>Right Package for You
                     </p>
                     <p className="mt-4 text-lg text-gray-600">
-                        We understand every business is unique. Instead of showing fixed
-                        prices, we invite you to book a consultation. Let’s align your
-                        needs with the perfect offer.
+                        Clear starting prices, no surprises. Pick a package, or message us
+                        and we&apos;ll shape it around your business.
                     </p>
+                    <CurrencyToggle value={currency} onChange={setCurrency} />
                 </div>
+
+                <LaunchBundle currency={currency} />
 
                 {/* Accordion sections */}
                 <div className="space-y-3">
@@ -296,13 +291,15 @@ export default function ServicePackagesPage() {
 
                 {/* Contact CTA (fixed at bottom) */}
                 <div className="mt-12 text-center">
-                    <Link
+                    <a
                         className="inline-flex items-center justify-center px-6 py-2 text-white bg-[var(--autisync-gold,#b98b2f)] rounded-md shadow-lg hover:bg-gray-900 transition-all hover:shadow-[0_16px_30px_rgba(0,0,0,0.25)]/10"
-                        href="https://wa.me/+447883317646"
+                        href={whatsappLink("Hi Autisync, I'd like help choosing the right package.")}
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         <PhoneIcon className="w-5 h-5 mr-2 text-white" />
-                        Call Us for IT Consultation
-                    </Link>
+                        Not sure? Ask us on WhatsApp
+                    </a>
                 </div>
             </div>
         </div>

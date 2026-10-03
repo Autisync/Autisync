@@ -1,89 +1,17 @@
+"use client";
+
 import { CheckIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
-const tiers = [
-  {
-    name: "Small Business",
-    id: "tier-freelancer",
-    href: "#",
-    priceMonthly: "Consult for Price",
-    description: "The essentials to provide your best work for clients.",
-    features: [
-      "10 Pages",
-      "Domain - 1st Year Free",
-      "Hosting Free For 1st Year",
-      "Free SSL",
-      "Mobile Responsive",
-      "Delivery in 28 Days",
-      "Social Media Page Creation & Optimization",
-      "Contact & Newsletter Form implementation",
-      "Social Profile Link",
-      "Advanced SEO",
-      "37 Email Accounts – 1000 MB Quota",
-      "24-hour support response time",
-      "Free 30 Hours Support",
-      "Brand Kit Included",
-      "Onboarding Automation Flow",
-    ],
-    mostPopular: false,
-  },
-  {
-    name: "Startup",
-    id: "tier-startup",
-    href: "#",
-    priceMonthly: "Consult for Price",
-    description: "A plan that scales with your rapidly growing business.",
-    features: [
-      "Up to 6 Pages",
-      "Domain - 1st Year Free",
-      "Hosting Free For 1st Year",
-      "Free SSL",
-      "Mobile Responsive",
-      "Delivery in 19 Days",
-      "Facebook Page Creation",
-      "Social Profile Link",
-      "Basic SEO",
-      "5 Email Accounts – 1000 MB Quota",
-      "48-hour support response time",
-      "AI-Powered Form Integration",
-      "CRM Sync & Notifications",
-    ],
-    mostPopular: true,
-  },
-  {
-    name: "Enterprise",
-    id: "tier-enterprise",
-    href: "#",
-    priceMonthly: "Consult for Price",
-    description: "Dedicated support and infrastructure for your company.",
-    features: [
-      "+15 Pages",
-      "Domain - 1st Year Free",
-      "Hosting Free For 1st Year",
-      "Free SSL",
-      "Mobile Responsive",
-      "Delivery in 62 Days",
-      "Social Media Page Creation & Optimization",
-      "Contact & Newsletter Form implementation",
-      "Social Profile Integration",
-      "Advanced SEO",
-      "100 Email Accounts – 1000 MB Quota",
-      "24-hour support response time",
-      "Free 87 Hours Support",
-      "Automation Sequences",
-      "AI Chatbot & Live Chat",
-      "Full CRM Setup + Pipeline Management",
-      "Analytics & Reporting Dashboard",
-    ],
-    mostPopular: false,
-  },
-];
+import { websiteTiers as tiers } from "@/lib/website-packages";
+import { CarePlanNote, CurrencyToggle, TierPrice, usePackageCurrency } from "@/app/components/PackagePricing";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Packages() {
+  const [currency, setCurrency] = usePackageCurrency();
   return (
     <div className="bg-gray-100 py-16">
       <div className="px-6 mx-auto max-w-7xl lg:px-8">
@@ -92,7 +20,7 @@ export default function Packages() {
             Pick Your Package
           </h2>
           <p className="mt-2 text-4xl font-bold tracking-tight text-gray-800 sm:text-4xl">
-            Affordable Service Packages
+            Website Packages
           </p>
         </div>
         <p className="max-w-5xl mx-auto mt-6 text-lg leading-8 text-center text-gray-600">
@@ -100,6 +28,7 @@ export default function Packages() {
           <br />
           Every package includes tools that scale with your growth.
         </p>
+        <CurrencyToggle value={currency} onChange={setCurrency} />
 
         <div className="grid max-w-md grid-cols-1 mx-auto mt-16 isolate gap-y-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {tiers.map((tier, tierIdx) => (
@@ -132,12 +61,9 @@ export default function Packages() {
                 <p className="mt-4 text-sm leading-6 text-gray-600">
                   {tier.description}
                 </p>
-                <p className="flex items-baseline mt-6 gap-x-1">
-                  <span className="text-4xl font-bold tracking-tight text-gray-900">
-                    <small className="text-xs text-[var(--autisync-gold,#b98b2f)]">Pricing </small>
-                    {tier.priceMonthly}
-                  </span>
-                </p>
+                <div className="mt-6">
+                  <TierPrice amount={tier.price[currency]} currency={currency} />
+                </div>
                 <ul
                   role="list"
                   className="mt-8 space-y-3 text-sm leading-6 text-gray-600"
@@ -156,6 +82,8 @@ export default function Packages() {
             </div>
           ))}
         </div>
+
+        <CarePlanNote currency={currency} />
 
         <div className="object-none object-center max-w-4xl p-4 mx-auto text-center">
           <Link

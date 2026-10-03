@@ -4,7 +4,7 @@ import ServicePackages from "./ServicePackages"; // or whatever your current com
 export const metadata: Metadata = {
   title: "Service Packages",
   description:
-      "Explore Autisync's service packages — Small Business, Startup, and Enterprise. Includes web design, SEO, hosting, automation, CRM, and ongoing support.",
+      "Autisync packages with clear prices: websites from Kz 495.000 / £1,490, branding from Kz 180.000 / £490, social media management from Kz 150.000 / £450 a month, and the Brand & Website Launch bundle.",
   alternates: { canonical: "https://www.autisync.com/servicepackage" },
   openGraph: {
     title: "Autisync Service Packages — Startup to Enterprise",

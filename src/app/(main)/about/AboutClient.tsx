@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
+import { siteStats } from "@/lib/site-stats";
 import Link from "next/link";
 import Landing from "@/app/(main)/about/Landing";
 
@@ -270,7 +271,10 @@ function CountUp({
     end: number;
     duration?: number;
 }) {
-    const [value, setValue] = useState(0);
+    // Start at the real figure so the server-rendered HTML (search engines,
+    // link previews, slow phones, no-JS) never shows "0". The count-up only
+    // replays from zero once the number scrolls into view.
+    const [value, setValue] = useState(end);
     const [hasStarted, setHasStarted] = useState(false);
     const spanRef = useRef<HTMLSpanElement | null>(null);
 
@@ -323,25 +327,25 @@ function CountUp({
 
 const stats = [
     {
-        value: 150,
+        value: siteStats.projects,
         suffix: "+",
         label: "Projects Completed",
         icon: <ProjectsIcon className="w-5 h-5 text-gray-900" />,
     },
     {
-        value: 98,
+        value: siteStats.satisfaction,
         suffix: "%",
         label: "Client Satisfaction",
         icon: <SatisfactionIcon className="w-5 h-5 text-gray-900" />,
     },
     {
-        value: 15,
-        suffix: "+",
+        value: siteStats.countries,
+        suffix: "",
         label: "Countries Served",
         icon: <GlobeIcon className="w-5 h-5 text-gray-900" />,
     },
     {
-        value: 99,
+        value: siteStats.uptime,
         suffix: "%",
         label: "Uptime Guarantee",
         icon: <UptimeIcon className="w-5 h-5 text-gray-900" />,

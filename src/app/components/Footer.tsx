@@ -56,7 +56,7 @@ const navigation = {
     },
     {
       name: "LinkedIn",
-      href: "https://www.linkedin.com/autisync",
+      href: "https://www.linkedin.com/company/autisync",
       icon: (props: React.SVGProps<SVGSVGElement>) => (
         <svg
           viewBox="0 0 24 24"
@@ -167,7 +167,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="/src/app/(main)/solutions"
+                      href="/solutions/devServices"
                       className="block pb-2 text-sm hover:text-[#B28228]"
                     >
                       Solutions

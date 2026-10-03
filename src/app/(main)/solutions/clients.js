@@ -8,7 +8,7 @@ const logos = [
     },
     {   id: 2,
         src: "/logos/oku.png",
-        alt: "Oku Tanga ogo",
+        alt: "Oku Tanga logo",
         href: "",
     },
     {   id: 3,
@@ -61,9 +61,8 @@ export default function Clients() {
                     Trusted by
                 </h2>
                 <div className="grid items-center max-w-lg grid-cols-3 mx-auto mt-10 gap-x-4 gap-y-10 sm:max-w-xl sm:grid-cols-5 sm:gap-x-2 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-                    {logos.map((logo) => (
-                        <Link key={logo.id} href={logo.href} target="_blank" className="transition duration-150 ease-in-out delay-100 hover:scale-125">
-                            {" "}
+                    {logos.map((logo) => {
+                        const img = (
                             <Image
                                 className="object-contain w-full col-span-2 max-h-22 lg:col-span-1"
                                 src={logo.src}
@@ -71,8 +70,16 @@ export default function Clients() {
                                 width={500}
                                 height={500}
                             />
-                        </Link>
-                    ))}
+                        );
+                        // Not every client has a public site; render those logos without a link.
+                        return logo.href ? (
+                            <Link key={logo.src} href={logo.href} target="_blank" rel="noopener noreferrer" className="transition duration-150 ease-in-out delay-100 hover:scale-125">
+                                {img}
+                            </Link>
+                        ) : (
+                            <div key={logo.src}>{img}</div>
+                        );
+                    })}
                 </div>
             </div>
         </div>

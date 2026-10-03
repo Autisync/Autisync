@@ -1,6 +1,7 @@
 "use client";
 import type { ReactNode } from "react";
 import React, { useState, useRef, useEffect } from "react";
+import { siteStats } from "@/lib/site-stats";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 
 // ============================================
@@ -589,7 +590,8 @@ function progressSuffix(target: number, suffix: string, display: number) {
 function AchievementStat({ icon, label, value, suffix = "", delay = 0 }: StatProps) {
     const ref = useRef<HTMLDivElement | null>(null);
     const isInView = useInView(ref, { once: true, margin: "-80px" });
-    const [displayValue, setDisplayValue] = useState(0);
+    // Start at the real figure so server-rendered HTML never shows "0".
+    const [displayValue, setDisplayValue] = useState(value);
 
     useEffect(() => {
         if (!isInView) return;
@@ -1369,10 +1371,10 @@ export default function Portfolio() {
                             Numbers that reflect the trust our partners place in us and the work we deliver across every project.
                         </p>
                         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-                            <AchievementStat icon={<ProjectsIcon className="w-5 h-5" />} label="Projects Launched" value={50} suffix="+" delay={0} />
-                            <AchievementStat icon={<ClientsIcon className="w-5 h-5" />} label="Happy Clients" value={30} suffix="+" delay={0.1} />
-                            <AchievementStat icon={<YearsIcon className="w-5 h-5" />} label="Years Building Digital" value={5} suffix="+" delay={0.2} />
-                            <AchievementStat icon={<SatisfactionIcon className="w-5 h-5" />} label="Client Satisfaction" value={98} suffix="%" delay={0.3} />
+                            <AchievementStat icon={<ProjectsIcon className="w-5 h-5" />} label="Projects Launched" value={siteStats.projects} suffix="+" delay={0} />
+                            <AchievementStat icon={<ClientsIcon className="w-5 h-5" />} label="Happy Clients" value={siteStats.clients} suffix="+" delay={0.1} />
+                            <AchievementStat icon={<YearsIcon className="w-5 h-5" />} label="Years Building Digital" value={siteStats.years} suffix="+" delay={0.2} />
+                            <AchievementStat icon={<SatisfactionIcon className="w-5 h-5" />} label="Client Satisfaction" value={siteStats.satisfaction} suffix="%" delay={0.3} />
                         </div>
                     </div>
                 </div>

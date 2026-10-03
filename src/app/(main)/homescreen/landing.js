@@ -295,10 +295,9 @@ export default function Landing() {
                     IT Consultation / Technical Support
                   </h6>
                   <p className="mt-2 mb-4 text-gray-500">
-                    ENOV adapted the idea of advisory services that help clients
-                    assess different technology strategies and, in doing so,
-                    align their technology strategies with their business or
-                    process strategies.
+                    We help you assess technology options and line them up with
+                    how your business actually works, so every system you pay
+                    for supports your goals.
                   </p>
                 </div>
               </div>

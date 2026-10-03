@@ -13,6 +13,13 @@ const nextConfig: NextConfig = {
             },
         ],
     },
+    // /solutions has no index page (only sub-pages) but is linked from the
+    // sitemap; send visitors and crawlers to the main services page.
+    async redirects() {
+        return [
+            { source: "/solutions", destination: "/solutions/devServices", permanent: false },
+        ];
+    },
 };
 
 export default nextConfig;
