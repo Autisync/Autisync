@@ -13,6 +13,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1.0,
         },
         {
+            url: `${BASE_URL}/pt`,
+            lastModified: now,
+            changeFrequency: "weekly",
+            priority: 1.0,
+            alternates: { languages: { en: BASE_URL, pt: `${BASE_URL}/pt` } },
+        },
+        {
+            url: `${BASE_URL}/pt/precos`,
+            lastModified: now,
+            changeFrequency: "monthly",
+            priority: 0.9,
+            alternates: { languages: { en: `${BASE_URL}/servicepackage`, pt: `${BASE_URL}/pt/precos` } },
+        },
+        {
             url: `${BASE_URL}/about`,
             lastModified: now,
             changeFrequency: "monthly",

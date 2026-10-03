@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { DM_Sans, Outfit } from "next/font/google";
+import localFont from "next/font/local";
 import BookingEmbed from "./BookingEmbed";
 import s from "./crm.module.css";
 
-const display = Outfit({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-crm-display" });
-const body = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-crm-body" });
+// Self-hosted variable fonts (see src/app/layout.tsx for why).
+const display = localFont({ src: "../fonts/Outfit-Variable.woff2", weight: "100 900", variable: "--font-crm-display", display: "swap" });
+const body = localFont({ src: "../fonts/DMSans-Variable.woff2", weight: "100 1000", variable: "--font-crm-body", display: "swap" });
 
 const URL = "https://www.autisync.com/crm";
 const TITLE = "Autisync CRM: All your clients in one dashboard";

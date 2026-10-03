@@ -11,7 +11,14 @@ export const metadata: Metadata = {
     title: { absolute: "Autisync — Web Design, Branding & Digital Agency | Angola · UK · Portugal" },
     description:
         "Websites, brand identities, social media and AI automation for growing businesses in Angola, the UK and Portugal. Clear prices: websites from Kz 495.000 / £1,490. Trusted by Florentek, Grupo Girassol, Blue Horizon and more.",
-    alternates: { canonical: "https://www.autisync.com" },
+    alternates: {
+        canonical: "https://www.autisync.com",
+        languages: {
+            "en": "https://www.autisync.com",
+            "pt": "https://www.autisync.com/pt",
+            "x-default": "https://www.autisync.com",
+        },
+    },
     openGraph: {
         title: "Autisync — We Systemize Your Success",
         description:

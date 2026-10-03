@@ -8,6 +8,9 @@ import {
     guessCurrency,
     type Currency,
 } from "@/lib/website-packages";
+import { ptUi } from "@/lib/i18n/pt";
+
+export type Locale = "en" | "pt";
 
 const STORAGE_KEY = "autisync-currency";
 
@@ -45,26 +48,29 @@ export function usePackageCurrency(): [Currency, (c: Currency) => void] {
 export function CurrencyToggle({
     value,
     onChange,
+    locale = "en",
 }: {
     value: Currency;
     onChange: (c: Currency) => void;
+    locale?: Locale;
 }) {
     return (
         <div className="flex justify-center mt-8">
             <div
                 role="radiogroup"
-                aria-label="Show prices in"
+                aria-label={locale === "pt" ? ptUi.showPricesIn : "Show prices in"}
                 className="inline-flex p-1 bg-white rounded-full shadow-sm ring-1 ring-gray-200"
             >
                 {currencies.map((c) => {
                     const active = c.code === value;
+                    const region = locale === "pt" ? ptUi.regions[c.code] : c.region;
                     return (
                         <button
                             key={c.code}
                             type="button"
                             role="radio"
                             aria-checked={active}
-                            title={c.region}
+                            title={region}
                             onClick={() => onChange(c.code)}
                             className={
                                 "px-4 py-1.5 text-sm font-semibold rounded-full transition-colors " +
@@ -73,7 +79,7 @@ export function CurrencyToggle({
                                     : "text-gray-600 hover:text-gray-900")
                             }
                         >
-                            {c.label} <span className="hidden sm:inline font-normal opacity-80">· {c.region}</span>
+                            {c.label} <span className="hidden sm:inline font-normal opacity-80">· {region}</span>
                         </button>
                     );
                 })}
@@ -86,26 +92,37 @@ export function CurrencyToggle({
 export function TierPrice({
     amount,
     currency,
-    note = "one-off · 50% to start, 50% at launch",
+    note,
+    locale = "en",
 }: {
     amount: number;
     currency: Currency;
     note?: string;
+    locale?: Locale;
 }) {
+    const label = locale === "pt" ? ptUi.from : "From";
+    const sub = note ?? (locale === "pt" ? ptUi.oneOff : "one-off · 50% to start, 50% at launch");
     return (
         <span className="block">
             <small className="block text-xs font-semibold uppercase tracking-wide text-[var(--autisync-gold,#b98b2f)]">
-                From
+                {label}
             </small>
             <span className="text-4xl font-bold tracking-tight text-gray-900">
                 {formatPrice(amount, currency)}
             </span>
-            <span className="block mt-1 text-xs text-gray-500">{note}</span>
+            <span className="block mt-1 text-xs text-gray-500">{sub}</span>
         </span>
     );
 }
 
-export function CarePlanNote({ currency }: { currency: Currency }) {
+export function CarePlanNote({ currency, locale = "en" }: { currency: Currency; locale?: Locale }) {
+    if (locale === "pt") {
+        return (
+            <p className="max-w-3xl mx-auto mt-10 text-sm leading-6 text-center text-gray-600">
+                {ptUi.carePlan(formatPrice(carePlanMonthly[currency], currency))}
+            </p>
+        );
+    }
     return (
         <p className="max-w-3xl mx-auto mt-10 text-sm leading-6 text-center text-gray-600">
             Hosting and domain are free for the first year. After that, our{" "}

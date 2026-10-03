@@ -53,12 +53,12 @@ const logos = [
     },
 ];
 
-export default function Clients() {
+export default function Clients({ title = "Trusted by" } = {}) {
     return (
         <div className="py-16 bg-gray-100 sm:py-16">
             <div className="px-6 mx-auto max-w-7xl lg:px-8">
                 <h2 className="text-3xl font-semibold leading-8 text-center text-gray-700 ">
-                    Trusted by
+                    {title}
                 </h2>
                 <div className="grid items-center max-w-lg grid-cols-3 mx-auto mt-10 gap-x-4 gap-y-10 sm:max-w-xl sm:grid-cols-5 sm:gap-x-2 lg:mx-0 lg:max-w-none lg:grid-cols-5">
                     {logos.map((logo) => {

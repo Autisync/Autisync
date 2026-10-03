@@ -6,6 +6,7 @@ import { Menu, X, ChevronDown, Phone, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { AnchorButton } from "@/app/components/AnchorButton";
+import { usePathname } from "next/navigation";
 
 import {
   ChartBarIcon,
@@ -346,6 +347,36 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
 }
 
 // ─────────────────────────────────────────────
+// LANGUAGE SWITCH (EN ⇄ PT)
+// ─────────────────────────────────────────────
+
+/** English page ⇄ its Portuguese twin. Pages without a twin go to the PT home. */
+const PT_TWIN: Record<string, string> = { "/": "/pt", "/servicepackage": "/pt/precos" };
+const EN_TWIN: Record<string, string> = { "/pt": "/", "/pt/precos": "/servicepackage" };
+
+function LangSwitch({ onNavigate }: { onNavigate?: () => void }) {
+  const raw = usePathname() || "/";
+  const path = raw.length > 1 ? raw.replace(/\/$/, "") : raw;
+  const isPt = path === "/pt" || path.startsWith("/pt/");
+  const href = isPt ? EN_TWIN[path] ?? "/" : PT_TWIN[path] ?? "/pt";
+  return (
+      <a
+          href={href}
+          hrefLang={isPt ? "en" : "pt"}
+          lang={isPt ? "en" : "pt"}
+          onClick={onNavigate}
+          aria-label={isPt ? "Switch to English" : "Mudar para português"}
+          className="inline-flex items-center rounded-full border border-gray-200 px-2.5 py-1 text-xs font-semibold text-gray-700
+            hover:border-[var(--autisync-gold,#B98B2F)] hover:text-[var(--autisync-gold,#B98B2F)] transition-colors duration-150"
+      >
+        <span className={isPt ? "text-gray-400" : "text-[var(--autisync-gold,#B98B2F)]"}>EN</span>
+        <span className="mx-1 text-gray-300">/</span>
+        <span className={isPt ? "text-[var(--autisync-gold,#B98B2F)]" : "text-gray-400"}>PT</span>
+      </a>
+  );
+}
+
+// ─────────────────────────────────────────────
 // MAIN NAVBAR
 // ─────────────────────────────────────────────
 
@@ -386,10 +417,16 @@ export default function Navbar() {
               </nav>
 
               {/* ── Desktop CTA ── */}
-              <div className="hidden md:flex items-center">
+              <div className="hidden md:flex items-center gap-3">
+                <LangSwitch />
                 <AnchorButton href="tel:+244927114400" variant="alt" size="sm">
                   Call Us
                 </AnchorButton>
+              </div>
+
+              {/* ── Mobile language switch ── */}
+              <div className="md:hidden ml-auto mr-2">
+                <LangSwitch onNavigate={() => setMobileOpen(false)} />
               </div>
 
               {/* ── Mobile hamburger ── */}

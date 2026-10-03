@@ -1,11 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import React from "react";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+// Fonts are self-hosted (src/app/fonts, SIL Open Font License) rather than
+// fetched from Google at build time: Google's newer font URLs break the
+// Turbopack build on Vercel, and local files also load faster.
+const geistSans = localFont({
+    src: "./fonts/Geist-Variable.woff2",
+    weight: "100 900",
+    variable: "--font-geist-sans",
+    display: "swap",
+});
+const geistMono = localFont({
+    src: "./fonts/GeistMono-Variable.woff2",
+    weight: "100 900",
+    variable: "--font-geist-mono",
+    display: "swap",
+});
 
 const BASE_URL = "https://www.autisync.com";
 

@@ -52,6 +52,11 @@ Bundle:
 - [IT consultation & support](${BASE}/solutions/itConsultation)
 - [Autisync CRM](${BASE}/crm): Autisync's customer relationship manager for WhatsApp, Instagram, Facebook and email
 - [Contact](${BASE}/contact)
+
+## Em português
+
+- [Página inicial em português](${BASE}/pt): websites, branding e marketing digital em Angola
+- [Preços em português](${BASE}/pt/precos): todos os pacotes, preços em Kz e perguntas frequentes
 `;
     return new Response(body, {
         headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=3600" },
