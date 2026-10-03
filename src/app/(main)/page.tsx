@@ -8,9 +8,9 @@ import Clients from "@/app/(main)/solutions/clients";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "We Systemize Your Success",
+    title: { absolute: "Autisync — Web Design, Branding & Digital Agency | Angola · UK · Portugal" },
     description:
-        "Autisync empowers service businesses with AI automation, creative design, and seamless system integration — from branding to backend. UK · Portugal · Namibia · Angola.",
+        "Websites, brand identities, social media and AI automation for growing businesses in Angola, the UK and Portugal. Clear prices: websites from Kz 495.000 / £1,490. Trusted by Florentek, Grupo Girassol, Blue Horizon and more.",
     alternates: { canonical: "https://www.autisync.com" },
     openGraph: {
         title: "Autisync — We Systemize Your Success",

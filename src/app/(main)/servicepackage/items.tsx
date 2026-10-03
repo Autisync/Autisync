@@ -177,9 +177,9 @@ export default function Items() {
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-xl font-bold leading-6 text-[#3B3B3B]">
+          <h2 className="text-xl font-bold leading-6 text-[#3B3B3B]">
             Services and Products
-          </h1>
+          </h2>
         </div>
       </div>
 

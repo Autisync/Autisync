@@ -222,13 +222,13 @@ export default function Landing() {
                 <h1 className="pb-4 text-5xl font-semibold text-white">
                   We Systemize Your Success.
                 </h1>
-                <h3 className="font-thin text-gray-200">
+                <p className="font-thin text-gray-200">
                   From branding to backend - we automate your journey.
-                </h3>
+                </p>
                 <p className="mt-4 text-lg text-gray-200">
-                  AutiSync empowers service businesses with AI automation,
-                  creative design and seamless system integration. Everything
-                  done for you, from first click to booked call.
+                  Autisync builds websites, brand identities, social media and
+                  AI automation for growing businesses in Angola, the UK and
+                  Portugal. Everything done for you, from first click to booked call.
                 </p>
               </div>
               <br />

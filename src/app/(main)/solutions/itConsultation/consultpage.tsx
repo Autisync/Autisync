@@ -246,10 +246,10 @@ export default function Example() {
 
             {/* Map */}
             <div className="px-6 py-20 bg-[#1C1C1C]">
-                <h1 className="mb-12 text-2xl font-semibold leading-tight text-center text-gray-50 xl:text-5xl md:text-4xl sm:mb-0">
-                    Over 4 Years Providing <br className="hidden md:block" />
+                <h2 className="mb-12 text-2xl font-semibold leading-tight text-center text-gray-50 xl:text-5xl md:text-4xl sm:mb-0">
+                    Over 5 Years Providing <br className="hidden md:block" />
                     IT Consultation
-                </h1>
+                </h2>
                 <div className="relative items-center justify-center mt-4 md:mt-14 sm:flex">
                     <Image
                         src="/map.png"

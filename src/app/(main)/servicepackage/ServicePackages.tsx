@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { CheckIcon } from "@heroicons/react/24/solid";
 import { PhoneIcon } from "@heroicons/react/24/outline";
@@ -10,6 +10,7 @@ import Packages from "./packages";
 import { CurrencyToggle, TierPrice, usePackageCurrency } from "@/app/components/PackagePricing";
 import { formatPrice, websiteTiers, type Currency } from "@/lib/website-packages";
 import { brandingTiers, launchBundle, socialTiers, socialTerms, type ServiceTier } from "@/lib/service-packages";
+import { faqSchema, pricingFaq } from "@/lib/faq";
 
 /* ------------------------------ Shared bits ------------------------------- */
 
@@ -217,12 +218,12 @@ export default function ServicePackagesPage() {
             <div className="py-16 mt-12 px-6 mx-auto max-w-7xl">
                 {/* Top intro */}
                 <div className="text-center mb-12 max-w-3xl mx-auto">
-                    <h2 className="text-base font-base text-[#B28228]">
-                        Flexible Solutions for Your Brand
-                    </h2>
-                    <p className="mt-2 text-4xl font-bold tracking-tight text-[#3B3B3B] sm:text-5xl">
-                        Let&apos;s Tailor the<br/>Right Package for You
+                    <p className="text-base font-base text-[#B28228]">
+                        Website, Branding &amp; Social Media Packages
                     </p>
+                    <h1 className="mt-2 text-4xl font-bold tracking-tight text-[#3B3B3B] sm:text-5xl">
+                        Let&apos;s Tailor the<br/>Right Package for You
+                    </h1>
                     <p className="mt-4 text-lg text-gray-600">
                         Clear starting prices, no surprises. Pick a package, or message us
                         and we&apos;ll shape it around your business.
@@ -244,6 +245,8 @@ export default function ServicePackagesPage() {
                                 {/* Header */}
                                 <button
                                     type="button"
+                                    aria-expanded={isOpen}
+                                    aria-controls={`section-${section.id}`}
                                     onClick={() =>
                                         setOpenSection((prev) =>
                                             prev === section.id ? "" : section.id
@@ -269,25 +272,45 @@ export default function ServicePackagesPage() {
                                 </button>
 
                                 {/* Content */}
-                                <AnimatePresence initial={false}>
-                                    {isOpen && (
-                                        <motion.div
-                                            key="content"
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: "auto", opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            transition={{ duration: 0.35, ease: "easeInOut" }}
-                                        >
-                                            <div className="-t -gray-100 px-6 py-8">
-                                                {section.content}
-                                            </div>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
+                                {/*
+                                  Always rendered (only collapsed), so every package and
+                                  price is in the HTML that Google and AI crawlers read.
+                                */}
+                                <motion.div
+                                    id={`section-${section.id}`}
+                                    initial={false}
+                                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                                    transition={{ duration: 0.35, ease: "easeInOut" }}
+                                    className="overflow-hidden"
+                                    inert={!isOpen}
+                                >
+                                    <div className="border-t border-gray-100 px-6 py-8">
+                                        {section.content}
+                                    </div>
+                                </motion.div>
                             </div>
                         );
                     })}
                 </div>
+
+                {/* Pricing FAQ — visible text + FAQPage schema (SEO / AI answers) */}
+                <section aria-labelledby="pricing-faq" className="mt-16 max-w-4xl mx-auto">
+                    <h2 id="pricing-faq" className="text-3xl font-bold tracking-tight text-center text-[#3B3B3B]">
+                        Pricing questions, answered
+                    </h2>
+                    <dl className="mt-8 divide-y divide-gray-200 rounded-2xl bg-white shadow-md ring-1 ring-gray-200">
+                        {pricingFaq.map(({ q, a }) => (
+                            <div key={q} className="px-6 py-5">
+                                <dt className="font-semibold text-[#3B3B3B]">{q}</dt>
+                                <dd className="mt-2 text-sm leading-6 text-gray-600">{a}</dd>
+                            </div>
+                        ))}
+                    </dl>
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                    />
+                </section>
 
                 {/* Contact CTA (fixed at bottom) */}
                 <div className="mt-12 text-center">

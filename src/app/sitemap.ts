@@ -43,12 +43,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
         {
-            url: `${BASE_URL}/solutions`,
-            lastModified: now,
-            changeFrequency: "monthly",
-            priority: 0.8,
-        },
-        {
             url: `${BASE_URL}/solutions/devServices`,
             lastModified: now,
             changeFrequency: "monthly",
@@ -71,6 +65,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: now,
             changeFrequency: "monthly",
             priority: 0.7,
+        },
+        {
+            url: `${BASE_URL}/llms.txt`,
+            lastModified: now,
+            changeFrequency: "monthly",
+            priority: 0.5,
         },
         {
             url: `${BASE_URL}/PrivacyPolicy`,

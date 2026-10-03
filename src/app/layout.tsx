@@ -12,12 +12,12 @@ const BASE_URL = "https://www.autisync.com";
 export const metadata: Metadata = {
     metadataBase: new URL(BASE_URL),
     title: {
-        default: "Autisync — Creative Digital Agency | UK, Portugal, Namibia & Angola",
+        default: "Autisync — Web Design, Branding & Digital Agency | Angola · UK · Portugal",
         template: "%s | Autisync",
     },
     manifest: "/site.webmanifest",
     description:
-        "Autisync is a creative digital agency offering web development, graphic design, social media management, IT support, e-commerce setup, and email marketing across the UK, Portugal, Namibia, and Angola.",
+        "Autisync is a digital agency building websites, brand identities, social media and AI automation for businesses in Angola, Namibia, the UK and Portugal. Websites from Kz 495.000 / £1,490.",
     keywords: [
         "digital agency", "web development", "graphic design", "IT support",
         "social media management", "e-commerce", "email marketing", "AI automation",
@@ -87,8 +87,10 @@ export const metadata: Metadata = {
 // Organisation JSON-LD schema — appears on every page
 const orgSchema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "ProfessionalService"],
+    "@id": `${BASE_URL}/#organization`,
     name: "Autisync",
+    alternateName: "AutiSync",
     // The registered entity behind the trading name. Meta's business
     // verification looks for the razão social on the site; structured data is
     // the machine-readable half of the footer line that carries it.
@@ -97,20 +99,38 @@ const orgSchema = {
     url: BASE_URL,
     logo: `${BASE_URL}/Autisync.svg`,
     description:
-        "Creative digital agency offering web development, graphic design, IT support, and digital marketing.",
+        "Digital agency building websites, brand identities, social media management and AI automation for service businesses in Angola, Namibia, the United Kingdom and Portugal.",
     foundingDate: "2021",
+    email: "info@autisync.com",
+    telephone: "+244927114400",
+    priceRange: "Kz 150.000 – Kz 2.500.000",
+    image: `${BASE_URL}/og-image.png`,
+    knowsAbout: [
+        "Web design", "Web development", "Brand identity", "Logo design",
+        "Social media management", "Search engine optimisation", "CRM setup",
+        "AI automation", "IT support",
+    ],
     contactPoint: [
         {
             "@type": "ContactPoint",
+            telephone: "+244927114400",
+            contactType: "sales",
+            areaServed: ["AO", "NA"],
+            availableLanguage: ["Portuguese", "English"],
+        },
+        {
+            "@type": "ContactPoint",
             telephone: "+447883317646",
-            contactType: "customer service",
-            areaServed: ["GB", "PT", "NA", "AO"],
+            contactType: "sales",
+            areaServed: ["GB", "PT"],
             availableLanguage: ["English", "Portuguese"],
         },
     ],
+    // Registered office, as printed in the footer.
     address: {
         "@type": "PostalAddress",
-        addressCountry: "GB",
+        addressLocality: "Talatona, Luanda",
+        addressCountry: "AO",
     },
     sameAs: [
         "https://www.facebook.com/autisync",
@@ -126,6 +146,17 @@ const orgSchema = {
     ],
 };
 
+// WebSite schema — ties pages to the organisation for search and AI answers
+const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${BASE_URL}/#website`,
+    url: BASE_URL,
+    name: "Autisync",
+    inLanguage: "en",
+    publisher: { "@id": `${BASE_URL}/#organization` },
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en">
@@ -133,6 +164,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <Analytics />
         {children}

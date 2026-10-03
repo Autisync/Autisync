@@ -2,16 +2,14 @@ import type { Metadata } from "next";
 import Questionnaire from "./Questionnaire"; // or whatever your current component is named
 
 export const metadata: Metadata = {
-  title: "About Us",
+  // Was a copy of the About page's metadata (same title + canonical), which
+  // told Google this page was a duplicate of /about. It's a form, so keep it
+  // out of the index (robots.txt also disallows it).
+  title: "Start Your Project — Service Questionnaire",
   description:
-      "Meet the Autisync team — a creative digital agency helping businesses across the UK, Portugal, Namibia, and Angola modernise their brand, systems, and customer experience.",
-  alternates: { canonical: "https://www.autisync.com/about" },
-  openGraph: {
-    title: "About Autisync — Our Story, Team & Values",
-    description:
-        "From startups to enterprises — Autisync is your long-term technology partner for digital transformation.",
-    url: "https://www.autisync.com/about",
-  },
+      "Tell Autisync about your business and project in a few minutes, and we'll come back with the right package and a proposal.",
+  alternates: { canonical: "https://www.autisync.com/ServiceQuestionaire" },
+  robots: { index: false, follow: true },
 };
 
 export default function QuestionnairePage() {

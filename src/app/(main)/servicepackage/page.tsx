@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import ServicePackages from "./ServicePackages"; // or whatever your current component is named
 
 export const metadata: Metadata = {
-  title: "Service Packages",
+  title: "Prices: Website, Branding & Social Media Packages",
   description:
       "Autisync packages with clear prices: websites from Kz 495.000 / £1,490, branding from Kz 180.000 / £490, social media management from Kz 150.000 / £450 a month, and the Brand & Website Launch bundle.",
   alternates: { canonical: "https://www.autisync.com/servicepackage" },
   openGraph: {
-    title: "Autisync Service Packages — Startup to Enterprise",
+    title: "Autisync Prices — Websites, Branding & Social Media Packages",
     description:
         "Affordable digital packages combining stunning design, automation, and strategy. Every package scales with your growth.",
     url: "https://www.autisync.com/servicepackage",
