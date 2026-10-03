@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import SEO from "./seopage"; // or whatever your current component is named
+import { alternatesFor } from "@/lib/i18n/routes";
+import SEO from "./seopage";
 
 export const metadata: Metadata = {
   title: "SEO & Digital Marketing",
   description:
       "Autisync's SEO and digital marketing services — social media management, email campaigns, content strategy, and analytics to grow your online presence.",
-  alternates: { canonical: "https://www.autisync.com/solutions/seo" },
+  alternates: alternatesFor("/solutions/seo", "en"),
   openGraph: {
     title: "SEO & Digital Marketing — Autisync",
     description:

@@ -3,6 +3,37 @@
 import * as React from "react";
 import Link from "next/link";
 import CallToAction from "@/app/components/CallToAction";
+import { usePathname } from "next/navigation";
+import { isPtPath } from "@/lib/i18n/routes";
+
+const FOOTER = {
+  en: {
+    h: ["Scale ", "your digital", "presence and ", "operations."],
+    p: "We provide an integrated approach, leveraging AI and automation across marketing, custom software, and design to reduce costs, ensure brand consistency, and drive measurable growth.",
+    useful: "Useful Links",
+    resources: "Resources",
+    links: [
+      ["About Us", "/about"], ["Portfolio", "/portfolio"], ["Solutions", "/solutions/devServices"], ["Service Packages", "/servicepackage"],
+    ],
+    res: [["Service Questionnaire", "/ServiceQuestionaire"], ["Contact Us", "/contact"]],
+    privacy: "Privacy Policy", terms: "Terms of Use",
+    rights: "All rights reserved.",
+    trading: "Autisync is a trading name of Maheldom Consulting, Lda",
+  },
+  pt: {
+    h: ["Faça crescer ", "a sua presença", "digital e as suas ", "operações."],
+    p: "Uma abordagem integrada, com IA e automação no marketing, no software à medida e no design, para reduzir custos, manter a marca coerente e gerar crescimento mensurável.",
+    useful: "Links Úteis",
+    resources: "Recursos",
+    links: [
+      ["Sobre Nós", "/pt/sobre"], ["Portfólio", "/pt/portfolio"], ["Serviços", "/pt/servicos/desenvolvimento"], ["Preços e Pacotes", "/pt/precos"],
+    ],
+    res: [["Questionário de Serviços", "/pt/questionario"], ["Contacto", "/pt/contacto"]],
+    privacy: "Política de Privacidade", terms: "Termos de Utilização",
+    rights: "Todos os direitos reservados.",
+    trading: "Autisync é uma marca comercial da Maheldom Consulting, Lda",
+  },
+};
 
 const navigation = {
   social: [
@@ -104,9 +135,11 @@ const navigation = {
 };
 
 export default function Footer() {
+  const pt = isPtPath(usePathname() || "/");
+  const c = pt ? FOOTER.pt : FOOTER.en;
   return (
     <footer className="relative pt-8 pb-6 bg-[#1C1C1C] text-gray-200">
-      <CallToAction />
+      <CallToAction pt={pt} />
 
       {/* top wedge */}
       <div
@@ -127,15 +160,13 @@ export default function Footer() {
         <div className="flex flex-wrap text-center lg:text-left">
           {/* Left column */}
           <div className="w-full px-4 lg:w-6/12">
-            <h4 className="text-3xl font-semibold text-white capitalize">
-              <span className="text-[#B28228]">Scale </span>
-              your digital <br />
-              presence and <span className="text-[#B28228]">operations.</span>
+            <h4 className={`text-3xl font-semibold text-white ${pt ? "" : "capitalize"}`}>
+              <span className="text-[#B28228]">{c.h[0]}</span>
+              {c.h[1]} <br />
+              {c.h[2]}<span className="text-[#B28228]">{c.h[3]}</span>
             </h4>
             <p className="mt-0 mb-2 text-base text-gray-400">
-              We provide an integrated approach, leveraging AI and automation
-              across marketing, custom software, and design to reduce costs,
-              ensure brand consistency, and drive measurable growth.
+              {c.p}
             </p>
             <div className="flex justify-center mt-6 space-x-6 lg:justify-start" />
           </div>
@@ -146,82 +177,43 @@ export default function Footer() {
               {/* Useful links */}
               <div className="w-full px-4 ml-auto lg:w-4/12">
                 <span className="block mb-2 text-sm font-semibold uppercase">
-                  Useful Links
+                  {c.useful}
                 </span>
                 <ul className="list-none">
-                  <li>
-                    <Link
-                      href="/about"
-                      className="block pb-2 text-sm hover:text-[#B28228]"
-                    >
-                      About Us
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/portfolio"
-                      className="block pb-2 text-sm hover:text-[#B28228]"
-                    >
-                      Portfolio
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/solutions/devServices"
-                      className="block pb-2 text-sm hover:text-[#B28228]"
-                    >
-                      Solutions
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/servicepackage"
-                      className="block pb-2 text-sm hover:text-[#B28228]"
-                    >
-                      Service Packages
-                    </Link>
-                  </li>
+                  {c.links.map(([label, href]) => (
+                    <li key={href}>
+                      <Link href={href} className="block pb-2 text-sm hover:text-[#B28228]">
+                        {label}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
               {/* Resources */}
               <div className="w-full px-4 lg:w-4/12">
                 <span className="block mb-2 text-sm font-semibold uppercase">
-                  Resources
+                  {c.resources}
                 </span>
                 <ul className="list-none">
                   <li>
-                    <Link
-                      href="/ServiceQuestionaire"
-                      className="block pb-2 text-sm hover:text-[#B28228]"
-                    >
-                      Service Questionnaire
+                    <Link href={c.res[0][1]} className="block pb-2 text-sm hover:text-[#B28228]">
+                      {c.res[0][0]}
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      href="/PrivacyPolicy/"
-                      target="_blank"
-                      className="block pb-2 text-sm hover:text-[#B28228]"
-                    >
-                      Privacy Policy
+                    <Link href="/PrivacyPolicy/" target="_blank" className="block pb-2 text-sm hover:text-[#B28228]">
+                      {c.privacy}
                     </Link>
                   </li>
                   <li>
-                    <Link
-                        href="/TermsofUse/"
-                        target="_blank"
-                        className="block pb-2 text-sm hover:text-[#B28228]"
-                    >
-                      Terms of Use
+                    <Link href="/TermsofUse/" target="_blank" className="block pb-2 text-sm hover:text-[#B28228]">
+                      {c.terms}
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      href="/contact"
-                      className="block pb-2 text-sm hover:text-[#B28228]"
-                    >
-                      Contact Us
+                    <Link href={c.res[1][1]} className="block pb-2 text-sm hover:text-[#B28228]">
+                      {c.res[1][0]}
                     </Link>
                   </li>
                 </ul>
@@ -261,10 +253,10 @@ export default function Footer() {
               needs to know who they are dealing with.
             */}
             <p className="py-1 text-sm text-gray-400">
-              © {new Date().getFullYear()} Autisync. All rights reserved.
+              © {new Date().getFullYear()} Autisync. {c.rights}
               <br />
               <span className="font-light">
-                Autisync is a trading name of Maheldom Consulting, Lda
+                {c.trading}
               </span>
               <br />
               <span className="font-light">

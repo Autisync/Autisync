@@ -31,47 +31,47 @@ import { siteStats } from "@/lib/site-stats";
 // ];
 const services = [
     {
-        name: "Application/Web support",
+        name: "Suporte a aplicações e websites",
         description:
-            "To ensure the optimal functionality and alignment of your business apps/sites with current needs.",
+            "Garantir que as aplicações e os websites da sua empresa funcionam na perfeição e respondem às necessidades atuais.",
     },
     {
-        name: "IT infrastructure management",
+        name: "Gestão de infraestruturas de TI",
         description:
-            "To ensure stability and flexibility in your IT infrastructure.",
+            "Garantir estabilidade e flexibilidade na sua infraestrutura de TI.",
     },
     {
-        name: "Technology consulting",
+        name: "Consultoria tecnológica",
         description:
-            "To leverage transformative digital technologies and drive disruptive change within your business.",
+            "Tirar partido de tecnologias digitais transformadoras e impulsionar uma verdadeira mudança no seu negócio.",
     },
     {
-        name: "IT operations consulting",
+        name: "Consultoria de operações de TI",
         description:
-            "To establish resilient IT capabilities that can effectively support your business plans in a sustainable manner.",
+            "Criar capacidades de TI resilientes que suportem os planos da sua empresa de forma eficaz e sustentável.",
     },
     {
-        name: "IT assessment",
+        name: "Avaliação de TI",
         description:
-            "To proactively identify opportunities for enhancing efficiency, security, compliance, and cost reduction within your IT infrastructure.",
+            "Identificar de forma proativa oportunidades para melhorar a eficiência, a segurança e a conformidade, e reduzir custos na sua infraestrutura de TI.",
     },
     {
-        name: "IT outsourcing",
+        name: "Outsourcing de TI",
         description:
-            "To effectively execute IT initiatives and undertake essential IT functions that may require additional resources beyond your current capacity.",
+            "Executar projetos de TI e assegurar funções essenciais que exijam mais recursos do que a sua equipa tem disponíveis.",
     },
     {
-        name: "IT strategy consulting",
+        name: "Consultoria de estratégia de TI",
         description:
-            "To ensure seamless alignment of your IT assets with both present and future business objectives.",
+            "Alinhar os seus recursos de TI com os objetivos de negócio atuais e futuros.",
     },
     {
-        name: "Digital transformation consulting",
+        name: "Consultoria de transformação digital",
         description:
-            "To enhance your business efficiency through strategic planning, prioritization, and guidance for your digital transformation initiatives.",
+            "Aumentar a eficiência da sua empresa com planeamento estratégico, definição de prioridades e acompanhamento das suas iniciativas de transformação digital.",
     },
 ];
-export default function Example() {
+export default function ConsultoriaTiClient() {
     return (
         <>
             {/* Landing */}
@@ -113,23 +113,23 @@ export default function Example() {
                         <div className="lg:pr-4">
                             <div className="lg:max-w-lg">
                                 <h1 className="mt-10 text-base font-base text-[var(--autisync-gold,#B98B2F)]">
-                                    IT Consultation Services.
+                                    Serviços de consultoria de TI
                                 </h1>
                                 <h2 className=" text-4xl font-bold tracking-tight text-gray-700 sm:text-6xl">
-                                    Empowering Your Business through Strategic IT Consultation
+                                    Fortaleça a sua empresa com consultoria estratégica de TI
                                 </h2>{" "}
                                 <p className="mt-6 text-base leading-8 text-gray-600">
-                                    With over 5 years of experience, we specialize in providing
-                                    strategic IT consultation to businesses across various
-                                    industries. Our mission is to empower businesses through
-                                    innovative technology solutions and expert guidance.
+                                    Com mais de 5 anos de experiência, somos especialistas em
+                                    consultoria estratégica de TI para empresas de vários setores.
+                                    A nossa missão é dar força às empresas com soluções
+                                    tecnológicas inovadoras e acompanhamento especializado.
                                 </p>
                                 <br />
                                 <Link
                                     className="px-4 py-3 mb-1 text-xs  text-white uppercase transition-all duration-150 ease-linear bg-[var(--autisync-gold,#B98B2F)] rounded shadow outline-none hover:bg-[#1C1C1C] hover:shadow-md focus:outline-none sm:mr-2"
-                                    href="/servicepackage/"
+                                    href="/pt/precos"
                                 >
-                                    Checkout Our Packages
+                                    Ver os nossos pacotes
                                 </Link>
                             </div>
                         </div>
@@ -146,66 +146,66 @@ export default function Example() {
                         <div className="lg:pr-4">
                             <div className="max-w-xl text-base leading-7 text-gray-600 lg:max-w-lg">
                                 <p>
-                                    Our expertise covers a wide range of IT domains, including
-                                    infrastructure optimization, software development,
-                                    cybersecurity, cloud integration, and digital transformation.
-                                    We craft comprehensive solutions that align with your business
-                                    objectives and drive operational excellence. By leveraging
-                                    cutting-edge technologies, we help you stay ahead of the
-                                    competition and adapt to changing market demands.
+                                    A nossa experiência abrange várias áreas de TI, incluindo
+                                    otimização de infraestruturas, desenvolvimento de software,
+                                    cibersegurança, integração na cloud e transformação digital.
+                                    Criamos soluções completas, alinhadas com os objetivos do seu
+                                    negócio, que promovem a excelência operacional. Com tecnologias
+                                    de ponta, ajudamos a sua empresa a manter-se à frente da
+                                    concorrência e a adaptar-se às exigências do mercado.
                                 </p>
                                 <ul role="list" className="mt-8 space-y-8 text-gray-600">
                                     <li className="flex gap-x-3">
                                         {/* <CloudArrowUpIcon className="flex-none w-5 h-5 mt-1 text-indigo-600" aria-hidden="true" /> */}
                                         <span>
                       <strong className="font-semibold text-[var(--autisync-gold,#B98B2F)]">
-                        Expert Guidance:
+                        Acompanhamento especializado:
                       </strong>{" "}
-                                            Our consultants are industry experts who stay updated with
-                      the latest trends, regulations, and emerging technologies.
-                      We provide strategic guidance and actionable
-                      recommendations to help you make informed IT decisions.
+                                            Os nossos consultores conhecem bem o setor e acompanham
+                      as últimas tendências, regulamentos e tecnologias emergentes.
+                      Damos orientação estratégica e recomendações práticas
+                      para que tome decisões de TI informadas.
                     </span>
                                     </li>
                                     <li className="flex gap-x-3">
                                         {/* <LockClosedIcon className="flex-none w-5 h-5 mt-1 text-indigo-600" aria-hidden="true" /> */}
                                         <span>
                       <strong className="font-semibold text-[var(--autisync-gold,#B98B2F)]">
-                        Collaborative Approach:
+                        Abordagem colaborativa:
                       </strong>{" "}
-                                            We believe in collaboration and teamwork. Throughout the
-                      consultation process, we work closely with your team,
-                      ensuring open communication and shared ownership.
+                                            Acreditamos na colaboração e no trabalho em equipa. Ao longo
+                      de todo o processo, trabalhamos lado a lado com a sua equipa,
+                      com comunicação aberta e responsabilidade partilhada.
                     </span>
                                     </li>
                                     <li className="flex gap-x-3">
                                         {/* <ServerIcon className="flex-none w-5 h-5 mt-1 text-indigo-600" aria-hidden="true" /> */}
                                         <span>
                       <strong className="font-semibold text-[var(--autisync-gold,#B98B2F)]">
-                        Comprehensive Support:
+                        Suporte completo:
                       </strong>{" "}
-                                            Our support extends beyond consultation. We offer ongoing
-                      support, project management, training, and maintenance
-                      services.
+                                            O nosso apoio vai além da consultoria. Oferecemos suporte
+                      técnico contínuo, gestão de projetos, formação e serviços de
+                      manutenção.
                     </span>
                                     </li>
                                 </ul>
                                 <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-700">
-                                    Ready to take your business to new heights?
+                                    Pronto para levar a sua empresa mais longe?
                                 </h2>
                                 <p className="mt-6">
-                                    Contact us today for a complimentary consultation and let us
-                                    show you how our IT consultation services can transform your
-                                    organization.{" "}
+                                    Contacte-nos hoje para uma consulta gratuita e descubra como os
+                                    nossos serviços de consultoria de TI podem transformar a sua
+                                    organização.{" "}
                                     <span className="font-bold">
-                    Call us at{" "}
+                    Ligue para o{" "}
                                         <Link
                                             href="tel:+244927114400"
                                             className="text-gray-500 hover:text-[var(--autisync-gold,#B98B2F)]"
                                         >
                       [+244 927-114-400]{" "}
                     </Link>
-                    to get started.
+                    para começar.
                   </span>
                                 </p>
                             </div>
@@ -227,7 +227,7 @@ export default function Example() {
                                     {service.name}
                                 </h5>
                                 <p className="text-gray-500 group-hover:text-white text-sm">
-                                    <span className="font-bold text-[var(--autisync-gold,#B98B2F)]">Aim: </span>
+                                    <span className="font-bold text-[var(--autisync-gold,#B98B2F)]">Objetivo: </span>
                                     {service.description}
                                 </p>
                             </div>
@@ -236,10 +236,10 @@ export default function Example() {
                     <br />
                     <div className="">
                         <Link
-                            href="/ServiceQuestionaire"
+                            href="/pt/questionario"
                             className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-[#1C1C1C] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white hover:text-gray-100"
                         >
-                            How can We Attend to Your IT Needs?
+                            Como podemos responder às suas necessidades de TI?
                         </Link>
                     </div>
                 </div>
@@ -248,20 +248,20 @@ export default function Example() {
             {/* Map */}
             <div className="px-6 py-20 bg-[#1C1C1C]">
                 <h2 className="mb-12 text-2xl font-semibold leading-tight text-center text-gray-50 xl:text-5xl md:text-4xl sm:mb-0">
-                    Over 5 Years Providing <br className="hidden md:block" />
-                    IT Consultation
+                    Mais de 5 anos a prestar <br className="hidden md:block" />
+                    consultoria de TI
                 </h2>
                 <div className="relative items-center justify-center mt-4 md:mt-14 sm:flex">
                     <Image
                         src="/map.png"
-                        alt="world map image"
+                        alt="Mapa-mundo"
                         className="hidden object-cover w-full xl:h-full h-96 sm:block"
                         width={1200}
                         height={1200}
                     />
                     <Image
                         src="/map-mob.png"
-                        alt="world map image"
+                        alt="Mapa-mundo"
                         className="absolute z-0 block object-cover w-full -mt-10 sm:hidden h-96"
                         width={1200}
                         height={1200}
@@ -269,20 +269,20 @@ export default function Example() {
                     <div className="relative left-0 z-20 w-full p-4 mt-4 bg-white shadow-lg xl:p-6 sm:w-auto sm:absolute xl:ml-56 sm:ml-12 xl:-mt-40 sm:-mt-12">
                         <p className="text-3xl font-semibold text-gray-800">{siteStats.projects}+</p>
                         <p className="mt-2 text-base leading-4 text-gray-600 xl:mt-4">
-                            Projects Completed & <br />
-                            more under development
+                            Projetos concluídos e <br />
+                            mais em desenvolvimento
                         </p>
                     </div>
                     <div className="relative z-20 w-full p-4 mt-4 bg-white shadow-lg xl:p-6 sm:w-auto sm:absolute xl:mt-80 sm:mt-56 xl:-ml-0 sm:-ml-12">
                         <p className="text-3xl font-semibold text-gray-800">11+</p>
                         <p className="mt-2 text-base leading-4 text-gray-600 xl:mt-4">
-                            Collaborators & Growing
+                            Colaboradores, e a crescer
                         </p>
                     </div>
                     <div className="relative right-0 z-20 w-full p-4 mt-4 bg-white shadow-lg xl:p-6 sm:w-auto sm:absolute md:mt-0 sm:-mt-5 xl:mr-56 sm:mr-24">
                         <p className="text-3xl font-semibold text-gray-800">4+</p>
                         <p className="mt-2 text-base leading-4 text-gray-600 xl:mt-4">
-                            Growing Partners. <br /> Join Us!
+                            Parceiros em crescimento. <br /> Junte-se a nós!
                         </p>
                     </div>
                 </div>

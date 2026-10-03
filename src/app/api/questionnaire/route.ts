@@ -487,7 +487,7 @@ export async function POST(req: NextRequest) {
 
   const fromEmail = process.env.OUTLOOK_FROM_EMAIL ?? process.env.SMTP_USER ?? "";
   const noReplyEmail = process.env.OUTLOOK_NOREPLY_EMAIL ?? fromEmail;
-  const supportEmail = process.env.OUTLOOK_SUPPORT_EMAIL ?? "support@austisync.com";
+  const supportEmail = process.env.OUTLOOK_SUPPORT_EMAIL ?? "support@autisync.com";
   const toEmail =
     process.env.OUTLOOK_QUESTIONNAIRE_TO_EMAIL ??
     process.env.OUTLOOK_TO_EMAIL ??

@@ -57,6 +57,13 @@ Bundle:
 
 - [Página inicial em português](${BASE}/pt): websites, branding e marketing digital em Angola
 - [Preços em português](${BASE}/pt/precos): todos os pacotes, preços em Kz e perguntas frequentes
+- [Sobre a Autisync](${BASE}/pt/sobre)
+- [Portfólio](${BASE}/pt/portfolio)
+- [Criação de websites e aplicações](${BASE}/pt/servicos/desenvolvimento)
+- [Design gráfico e branding](${BASE}/pt/servicos/design-grafico)
+- [SEO e marketing digital](${BASE}/pt/servicos/seo-marketing)
+- [Consultoria e suporte de TI](${BASE}/pt/servicos/consultoria-ti)
+- [Contacto](${BASE}/pt/contacto)
 `;
     return new Response(body, {
         headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=3600" },

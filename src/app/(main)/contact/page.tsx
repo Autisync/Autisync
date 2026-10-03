@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import Contact from "./Contact"; // or whatever your current component is named
+import { alternatesFor } from "@/lib/i18n/routes";
+import Contact from "./Contact";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
       "Get in touch with Autisync. We're available across the UK, Portugal, Namibia, and Angola. Start a conversation about your next digital project.",
-  alternates: { canonical: "https://www.autisync.com/contact" },
+  alternates: alternatesFor("/contact", "en"),
   openGraph: {
     title: "Contact Autisync",
     description:

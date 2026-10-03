@@ -6,29 +6,35 @@ import TurnstileWidget from "@/app/components/TurnstileWidget";
 import { siteStats } from "@/lib/site-stats";
 
 const offices = [
-    { id: 1, city: "Europe", address: ["(+44) 788 331 7646"] },
-    { id: 2, city: "Namibia & Angola", address: ["(+244) 927 114 400", "(+264) 927 114 403"] },
-    { id: 3, city: "General contact", address: ["info@autisync.com"] },
+    { id: 1, city: "Europa", address: ["(+44) 788 331 7646"] },
+    { id: 2, city: "Namíbia e Angola", address: ["(+244) 927 114 400", "(+264) 927 114 403"] },
+    { id: 3, city: "Contacto geral", address: ["info@autisync.com"] },
 ];
 
 const SERVICE_OPTIONS = [
-    "Web Development",
-    "Mobile App Development",
-    "Graphic Design & Branding",
-    "SEO & Digital Marketing",
-    "IT Consultation",
-    "Other",
+    "Desenvolvimento Web",
+    "Desenvolvimento de Apps Móveis",
+    "Design Gráfico e Branding",
+    "SEO e Marketing Digital",
+    "Consultoria de TI",
+    "Outro",
 ];
 
 const BUDGET_OPTIONS = [
-    "Under 5,000 (local currency)",
-    "5,000 - 15,000 (local currency)",
-    "15,000 - 30,000 (local currency)",
-    "30,000+ (local currency)",
-    "Not Sure Yet",
+    "Menos de 5.000 (moeda local)",
+    "5.000 - 15.000 (moeda local)",
+    "15.000 - 30.000 (moeda local)",
+    "30.000+ (moeda local)",
+    "Ainda não sei",
 ];
 
-const CONTACT_METHOD_OPTIONS = ["Email", "Phone", "WhatsApp"];
+const CONTACT_METHOD_OPTIONS = ["Email", "Telefone", "WhatsApp"];
+
+// The API answers in English; show its known messages in Portuguese.
+const SERVER_ERRORS_PT: Record<string, string> = {
+    "Invalid submission.": "Submissão inválida. Verifique os dados e tente novamente.",
+    "Unable to process request.": "Não foi possível processar o pedido. Tente novamente mais tarde.",
+};
 
 interface FormState {
     fullName: string;
@@ -56,7 +62,7 @@ const EMPTY_FORM: FormState = {
     consent: false,
 };
 
-export default function Contact() {
+export default function ContactoClient() {
     const [form, setForm] = useState<FormState>(EMPTY_FORM);
     const [website, setWebsite] = useState("");
     const [formStartedAt, setFormStartedAt] = useState<number>(() => Date.now());
@@ -83,17 +89,17 @@ export default function Contact() {
 
     function validate(): boolean {
         const next: Partial<Record<keyof FormState, string>> = {};
-        if (!form.fullName.trim()) next.fullName = "Full name is required.";
+        if (!form.fullName.trim()) next.fullName = "O nome completo é obrigatório.";
         if (!form.email.trim()) {
-            next.email = "Email address is required.";
+            next.email = "O endereço de email é obrigatório.";
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-            next.email = "Please enter a valid email address.";
+            next.email = "Introduza um endereço de email válido.";
         }
-        if (!form.serviceInterestedIn) next.serviceInterestedIn = "Please select a service.";
-        if (!form.consent) next.consent = "You must agree to be contacted before submitting.";
+        if (!form.serviceInterestedIn) next.serviceInterestedIn = "Selecione um serviço.";
+        if (!form.consent) next.consent = "Tem de aceitar ser contactado antes de enviar.";
         setErrors(next);
         if (!turnstileSiteKey || !turnstileToken) {
-            setErrorMessage("Please complete the verification check before submitting.");
+            setErrorMessage("Conclua a verificação de segurança antes de enviar.");
             return false;
         }
         return Object.keys(next).length === 0;
@@ -122,7 +128,7 @@ export default function Contact() {
 
         const payload = {
             source: "website-contact",
-            page: "/contact",
+            page: "/pt/contacto",
             ...form,
             website,
             form_started_at: formStartedAt,
@@ -146,7 +152,9 @@ export default function Contact() {
             });
             const data = await res.json();
             if (!res.ok) {
-                setErrorMessage(data.error ?? "Something went wrong. Please try again.");
+                setErrorMessage(
+                    (data.error && SERVER_ERRORS_PT[data.error]) ?? "Ocorreu um erro. Tente novamente."
+                );
                 setStatus("error");
             } else {
                 setStatus("success");
@@ -156,7 +164,7 @@ export default function Contact() {
                 setFormStartedAt(Date.now());
             }
         } catch {
-            setErrorMessage("Network error. Please check your connection and try again.");
+            setErrorMessage("Erro de rede. Verifique a sua ligação e tente novamente.");
             setStatus("error");
         }
     }
@@ -176,8 +184,9 @@ export default function Contact() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "ContactPage",
-                        name: "Contact Autisync",
-                        url: "https://www.autisync.com/contact",
+                        name: "Contactar a Autisync",
+                        inLanguage: "pt",
+                        url: "https://www.autisync.com/pt/contacto",
                         mainEntity: {
                             "@type": "Organization",
                             name: "Autisync",
@@ -206,13 +215,13 @@ export default function Contact() {
                         <div className="w-full px-4 ml-auto mr-auto text-center lg:w-6/12">
                             <div className="p-4">
                                 <h1 className="text-5xl font-semibold text-white">
-                                    Get in touch with us.
+                                    Fale connosco.
                                 </h1>
                                 <p className="mt-4 text-lg text-gray-200">
-                                    Need finding the right fit for your business? - We are here to
-                                    help. If you need a solution to a specific challenge, or just
-                                    want to know more about what we offer, get in touch with the
-                                    right people at Autisync.
+                                    Procura a solução certa para a sua empresa? Estamos aqui para
+                                    ajudar. Se precisa de resolver um desafio específico, ou apenas
+                                    quer saber mais sobre o que oferecemos, fale com as pessoas
+                                    certas na Autisync.
                                 </p>
                             </div>
                         </div>
@@ -246,7 +255,7 @@ export default function Contact() {
                                 <div className="flex justify-center w-full px-4 lg:w-3/12 lg:order-2">
                                     <div className="relative">
                                         <img
-                                            alt="Autisync team"
+                                            alt="Equipa Autisync"
                                             src="/img/team-2-800x800.jpg"
                                             className="absolute h-auto -m-16 -ml-20 align-middle border-none rounded-full shadow-xl lg:-ml-16 max-w-150-px"
                                         />
@@ -256,10 +265,10 @@ export default function Contact() {
                                 <div className="w-full px-4 lg:w-4/12 lg:order-3 lg:text-right lg:self-center">
                                     <div className="px-3 py-0 mt-32 sm:mt-0">
                                         <Link
-                                            href="/servicepackage"
+                                            href="/pt/precos"
                                             className="px-4 py-2 mb-1 text-xs text-white uppercase duration-150 ease-linear bg-[#1C1C1C] rounded shadow outline-none hover:bg-[var(--autisync-gold,#B98B2F)] hover:shadow-md focus:outline-none sm:mr-2 transition-all hover:shadow-[0_16px_30px_rgba(0,0,0,0.18)]/10"
                                         >
-                                            Service Package
+                                            Pacotes de Serviços
                                         </Link>
                                     </div>
                                 </div>
@@ -268,15 +277,15 @@ export default function Contact() {
                                     <div className="flex justify-center py-0 pt-8 lg:pt-4">
                                         <div className="p-3 mr-4 text-center">
                                             <span className="block text-xl font-bold tracking-wide text-gray-600 uppercase">239</span>
-                                            <span className="text-sm text-gray-400">Queries</span>
+                                            <span className="text-sm text-gray-400">Pedidos</span>
                                         </div>
                                         <div className="p-3 mr-4 text-center">
                                             <span className="block text-xl font-bold tracking-wide text-gray-600 uppercase">2</span>
-                                            <span className="text-sm text-gray-400">Support Line</span>
+                                            <span className="text-sm text-gray-400">Linhas de Suporte</span>
                                         </div>
                                         <div className="p-3 text-center lg:mr-4">
                                             <span className="block text-xl font-bold tracking-wide text-gray-600 uppercase">{siteStats.satisfaction}%</span>
-                                            <span className="text-sm text-gray-400">Customer Satisfaction</span>
+                                            <span className="text-sm text-gray-400">Satisfação dos Clientes</span>
                                         </div>
                                     </div>
                                 </div>
@@ -297,15 +306,15 @@ export default function Contact() {
                                                             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                                         </svg>
                                                     </div>
-                                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Message sent!</h3>
+                                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Mensagem enviada!</h3>
                                                     <p className="text-gray-500 max-w-sm mx-auto text-sm">
-                                                        Thank you for reaching out. A member of our team will get back to you within one business day.
+                                                        Obrigado pelo seu contacto. Um membro da nossa equipa responderá no prazo de um dia útil.
                                                     </p>
                                                     <button
                                                         onClick={() => setStatus("idle")}
                                                         className="mt-6 text-sm text-[#B98B2F] underline-offset-2 hover:underline"
                                                     >
-                                                        Send another message
+                                                        Enviar outra mensagem
                                                     </button>
                                                 </div>
                                             ) : (
@@ -325,9 +334,9 @@ export default function Contact() {
                                                     </div>
                                                     <input type="hidden" name="form_started_at" value={formStartedAt} readOnly />
 
-                                                    <h2 className="text-xl font-bold text-gray-900 mb-1">Send us a message</h2>
+                                                    <h2 className="text-xl font-bold text-gray-900 mb-1">Envie-nos uma mensagem</h2>
                                                     <p className="text-sm text-gray-500 mb-6">
-                                                        Fill in the form below and we&apos;ll respond within one business day.
+                                                        Preencha o formulário abaixo e responderemos no prazo de um dia útil.
                                                     </p>
 
                                                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -335,12 +344,12 @@ export default function Contact() {
                                                         {/* Full Name */}
                                                         <div>
                                                             <label className={labelClass} htmlFor="fullName">
-                                                                Full Name <span className="text-red-400">*</span>
+                                                                Nome Completo <span className="text-red-400">*</span>
                                                             </label>
                                                             <input
                                                                 id="fullName" name="fullName" type="text"
                                                                 value={form.fullName} onChange={handleChange}
-                                                                placeholder="Jane Smith" autoComplete="name"
+                                                                placeholder="Ana Silva" autoComplete="name"
                                                                 className={inputClass("fullName")}
                                                             />
                                                             {errors.fullName && <p className="mt-1 text-xs text-red-500">{errors.fullName}</p>}
@@ -348,11 +357,11 @@ export default function Contact() {
 
                                                         {/* Company Name */}
                                                         <div>
-                                                            <label className={labelClass} htmlFor="companyName">Company Name</label>
+                                                            <label className={labelClass} htmlFor="companyName">Nome da Empresa</label>
                                                             <input
                                                                 id="companyName" name="companyName" type="text"
                                                                 value={form.companyName} onChange={handleChange}
-                                                                placeholder="Acme Ltd" autoComplete="organization"
+                                                                placeholder="Empresa, Lda." autoComplete="organization"
                                                                 className={inputClass("companyName")}
                                                             />
                                                         </div>
@@ -360,12 +369,12 @@ export default function Contact() {
                                                         {/* Email */}
                                                         <div>
                                                             <label className={labelClass} htmlFor="email">
-                                                                Email Address <span className="text-red-400">*</span>
+                                                                Endereço de Email <span className="text-red-400">*</span>
                                                             </label>
                                                             <input
                                                                 id="email" name="email" type="email"
                                                                 value={form.email} onChange={handleChange}
-                                                                placeholder="jane@example.com" autoComplete="email"
+                                                                placeholder="ana@exemplo.com" autoComplete="email"
                                                                 className={inputClass("email")}
                                                             />
                                                             {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
@@ -373,22 +382,22 @@ export default function Contact() {
 
                                                         {/* Phone */}
                                                         <div>
-                                                            <label className={labelClass} htmlFor="phone">Phone Number</label>
+                                                            <label className={labelClass} htmlFor="phone">Telefone / Telemóvel</label>
                                                             <input
                                                                 id="phone" name="phone" type="tel"
                                                                 value={form.phone} onChange={handleChange}
-                                                                placeholder="+44 7700 000000" autoComplete="tel"
+                                                                placeholder="+244 900 000 000" autoComplete="tel"
                                                                 className={inputClass("phone")}
                                                             />
                                                         </div>
 
                                                         {/* Business Location */}
                                                         <div>
-                                                            <label className={labelClass} htmlFor="businessLocation">Business Location</label>
+                                                            <label className={labelClass} htmlFor="businessLocation">Localização da Empresa</label>
                                                             <input
                                                                 id="businessLocation" name="businessLocation" type="text"
                                                                 value={form.businessLocation} onChange={handleChange}
-                                                                placeholder="London, UK"
+                                                                placeholder="Luanda, Angola"
                                                                 className={inputClass("businessLocation")}
                                                             />
                                                         </div>
@@ -396,14 +405,14 @@ export default function Contact() {
                                                         {/* Service Interested In */}
                                                         <div>
                                                             <label className={labelClass} htmlFor="serviceInterestedIn">
-                                                                Service Interested In <span className="text-red-400">*</span>
+                                                                Serviço Pretendido <span className="text-red-400">*</span>
                                                             </label>
                                                             <select
                                                                 id="serviceInterestedIn" name="serviceInterestedIn"
                                                                 value={form.serviceInterestedIn} onChange={handleChange}
                                                                 className={inputClass("serviceInterestedIn")}
                                                             >
-                                                                <option value="">Select a service...</option>
+                                                                <option value="">Selecione um serviço...</option>
                                                                 {SERVICE_OPTIONS.map((s) => (
                                                                     <option key={s} value={s}>{s}</option>
                                                                 ))}
@@ -415,14 +424,14 @@ export default function Contact() {
 
                                                         {/* Budget Range */}
                                                         <div>
-                                                            <label className={labelClass} htmlFor="budgetRange">Budget Range</label>
-                                                            <p className="mb-1 text-xs text-gray-400">Please use your local currency.</p>
+                                                            <label className={labelClass} htmlFor="budgetRange">Orçamento Previsto</label>
+                                                            <p className="mb-1 text-xs text-gray-400">Indique o valor na sua moeda local.</p>
                                                             <select
                                                                 id="budgetRange" name="budgetRange"
                                                                 value={form.budgetRange} onChange={handleChange}
                                                                 className={inputClass("budgetRange")}
                                                             >
-                                                                <option value="">Select a range...</option>
+                                                                <option value="">Selecione um intervalo...</option>
                                                                 {BUDGET_OPTIONS.map((b) => (
                                                                     <option key={b} value={b}>{b}</option>
                                                                 ))}
@@ -431,13 +440,13 @@ export default function Contact() {
 
                                                         {/* Preferred Contact Method */}
                                                         <div>
-                                                            <label className={labelClass} htmlFor="preferredContactMethod">Preferred Contact Method</label>
+                                                            <label className={labelClass} htmlFor="preferredContactMethod">Forma de Contacto Preferida</label>
                                                             <select
                                                                 id="preferredContactMethod" name="preferredContactMethod"
                                                                 value={form.preferredContactMethod} onChange={handleChange}
                                                                 className={inputClass("preferredContactMethod")}
                                                             >
-                                                                <option value="">Select...</option>
+                                                                <option value="">Selecione...</option>
                                                                 {CONTACT_METHOD_OPTIONS.map((m) => (
                                                                     <option key={m} value={m}>{m}</option>
                                                                 ))}
@@ -446,11 +455,11 @@ export default function Contact() {
 
                                                         {/* Message */}
                                                         <div className="sm:col-span-2">
-                                                            <label className={labelClass} htmlFor="message">Message</label>
+                                                            <label className={labelClass} htmlFor="message">Mensagem</label>
                                                             <textarea
                                                                 id="message" name="message" rows={4}
                                                                 value={form.message} onChange={handleChange}
-                                                                placeholder="Tell us about your project or challenge..."
+                                                                placeholder="Fale-nos do seu projeto ou desafio..."
                                                                 className={`${inputClass("message")} resize-none`}
                                                             />
                                                         </div>
@@ -464,9 +473,9 @@ export default function Contact() {
                                                                     className="mt-0.5 h-4 w-4 shrink-0 rounded border-gray-300 accent-[#B98B2F]"
                                                                 />
                                                                 <span className="text-xs text-gray-500 leading-relaxed">
-                                                                    I agree to be contacted by Autisync regarding my enquiry. View our{" "}
+                                                                    Aceito ser contactado pela Autisync sobre o meu pedido. Consulte a nossa{" "}
                                                                     <Link href="/PrivacyPolicy" className="text-[#B98B2F] hover:underline">
-                                                                        Privacy Policy
+                                                                        Política de Privacidade
                                                                     </Link>.
                                                                 </span>
                                                             </label>
@@ -483,7 +492,7 @@ export default function Contact() {
 
                                                     <div className="mt-5 rounded-lg border border-gray-200 bg-white p-4">
                                                         <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
-                                                            Security verification
+                                                            Verificação de segurança
                                                         </p>
                                                         {turnstileSiteKey ? (
                                                             <TurnstileWidget
@@ -493,7 +502,7 @@ export default function Contact() {
                                                             />
                                                         ) : (
                                                             <p className="text-xs text-red-600">
-                                                                Verification is currently unavailable. Please try again later.
+                                                                A verificação está indisponível de momento. Tente novamente mais tarde.
                                                             </p>
                                                         )}
                                                     </div>
@@ -505,7 +514,7 @@ export default function Contact() {
                                                             disabled={status === "loading" || !turnstileToken || !turnstileSiteKey}
                                                             className="w-full px-6 py-3 text-sm font-semibold text-white uppercase tracking-wider rounded-lg bg-[#1C1C1C] hover:bg-[#B98B2F] disabled:opacity-60 disabled:cursor-not-allowed transition-colors duration-200 shadow-sm"
                                                         >
-                                                            {status === "loading" ? "Sending..." : "Send Message"}
+                                                            {status === "loading" ? "A enviar..." : "Enviar Mensagem"}
                                                         </button>
                                                     </div>
                                                 </form>
@@ -513,17 +522,17 @@ export default function Contact() {
                                         </div>
 
                                         <p className="mt-3 text-xs text-gray-500 text-center">
-                                            Protected by Autisync - your details are safe with us.
+                                            Protegido pela Autisync — os seus dados estão seguros connosco.
                                         </p>
 
                                         {/* Contact Info */}
                                         <div className="mt-14">
                                             <h2 className="mb-4 text-3xl font-bold tracking-tight text-gray-900 text-center">
-                                                Our contact information
+                                                Os nossos contactos
                                             </h2>
                                             <p className="mb-10 text-lg text-gray-600 text-center max-w-[600px] mx-auto">
-                                                Customer care is our top priority. Client satisfaction is our gain,
-                                                and we look forward to hearing from you and working with you.
+                                                O apoio ao cliente é a nossa prioridade e a satisfação dos clientes
+                                                é a nossa recompensa. Teremos todo o gosto em falar consigo e trabalhar em conjunto.
                                             </p>
                                             <div className="grid grid-cols-1 gap-10 text-center sm:grid-cols-3">
                                                 {offices.map((office) => (

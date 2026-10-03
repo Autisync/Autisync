@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Questionnaire from "./Questionnaire"; // or whatever your current component is named
+import { alternatesFor } from "@/lib/i18n/routes";
+import Questionnaire from "./Questionnaire";
 
 export const metadata: Metadata = {
   // Was a copy of the About page's metadata (same title + canonical), which
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   title: "Start Your Project — Service Questionnaire",
   description:
       "Tell Autisync about your business and project in a few minutes, and we'll come back with the right package and a proposal.",
-  alternates: { canonical: "https://www.autisync.com/ServiceQuestionaire" },
+  alternates: alternatesFor("/ServiceQuestionaire", "en"),
   robots: { index: false, follow: true },
 };
 

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import Development from "./development"; // or whatever your current component is named
+import { alternatesFor } from "@/lib/i18n/routes";
+import Development from "./development";
 
 export const metadata: Metadata = {
     title: "Web & App Development",
     description:
         "Custom website and application development by Autisync. From marketing sites to full-stack web apps — built with Next.js, React, and modern technologies.",
-    alternates: { canonical: "https://www.autisync.com/solutions/devServices" },
+    alternates: alternatesFor("/solutions/devServices", "en"),
     openGraph: {
         title: "Web & App Development — Autisync",
         description:

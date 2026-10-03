@@ -1,6 +1,22 @@
 import React, { useEffect } from "react";
 
-export default function CallToAction() {
+const COPY = {
+  en: {
+    title: "Why Build Something with Us?",
+    cost: ["Cost Effective", "Service & support that allow you to get the best from your I.T./software investment."],
+    customer: ["Customer-Centric", "Positioning a customer-first, quality-first approach as the foundation of our business."],
+    growth: ["Growth-Capability", "Our strategy is to attain and build business relationships to aid business growth."],
+  },
+  pt: {
+    title: "Porquê construir connosco?",
+    cost: ["Custo Eficiente", "Serviço e suporte para tirar o máximo partido do seu investimento em TI e software."],
+    customer: ["Foco no Cliente", "O cliente e a qualidade em primeiro lugar são a base do nosso negócio."],
+    growth: ["Capacidade de Crescimento", "Construímos relações duradouras que ajudam o seu negócio a crescer."],
+  },
+};
+
+export default function CallToAction({ pt = false }) {
+  const c = pt ? COPY.pt : COPY.en;
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://brand.autisync.com/js/form_embed.js";
@@ -29,7 +45,7 @@ export default function CallToAction() {
           <div className="flex flex-wrap justify-center text-center">
             <div className="w-full px-4 lg:w-6/12">
               <h2 className="text-4xl font-semibold text-white">
-                Why Build Something with Us?
+                {c.title}
               </h2>
             </div>
           </div>
@@ -63,11 +79,10 @@ export default function CallToAction() {
               </div>
 
               <h6 className="mt-5 text-xl font-semibold text-white">
-                Cost Effective
+                {c.cost[0]}
               </h6>
               <p className="mt-2 mb-4 text-gray-400">
-                Service & support that allow you to get the best from your
-                I.T./software investment.
+                {c.cost[1]}
               </p>
             </div>
 
@@ -95,11 +110,10 @@ export default function CallToAction() {
               </div>
 
               <h5 className="mt-5 text-xl font-semibold text-white">
-                Customer-Centric
+                {c.customer[0]}
               </h5>
               <p className="mt-2 mb-4 text-gray-400">
-                Positioning a customer-first, quality-first approach as the
-                foundation of our business.
+                {c.customer[1]}
               </p>
             </div>
 
@@ -129,11 +143,10 @@ export default function CallToAction() {
               </div>
 
               <h5 className="mt-5 text-xl font-semibold text-white">
-                Growth-Capability
+                {c.growth[0]}
               </h5>
               <p className="mt-2 mb-4 text-gray-400">
-                Our strategy is to attain and build business relationships to
-                aid business growth.
+                {c.growth[1]}
               </p>
             </div>
           </div>

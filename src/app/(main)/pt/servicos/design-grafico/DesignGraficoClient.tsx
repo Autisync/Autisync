@@ -4,47 +4,47 @@ import Link from "next/link";
 
 const features = [
     {
-        name: "Professional Logo Design",
+        name: "Design profissional de logótipos",
         description:
-            "A well-designed logo builds trust by validating your professionalism and get's people to stick around. It tells potential clients who you are, what you do, and how that benefits them.",
+            "Um logótipo bem desenhado transmite profissionalismo, gera confiança e faz com que as pessoas se lembrem de si. Mostra a potenciais clientes quem é, o que faz e de que forma isso os beneficia.",
         href: "https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1730&q=80",
     },
     {
-        name: "Print Media & Stationery Design",
+        name: "Design para impressão e papelaria",
         description:
-            "Excellent way to reach new markets, build brand recognition and create brand awareness and it produces the templates used for important internal and external communication in a business",
+            "Uma excelente forma de chegar a novos mercados e reforçar o reconhecimento da marca, criando os modelos usados na comunicação interna e externa da sua empresa.",
         href: "https://images.unsplash.com/photo-1416339134316-0e91dc9ded92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
     },
     {
-        name: "Web (UX/UI) Design & Internet Advertising",
+        name: "Web design (UX/UI) e publicidade online",
         description:
-            "A well-designed website can help you form a good impression on your prospective customers. It can also help you nurture your leads and get more conversions. ",
+            "Um website bem desenhado causa boa impressão junto de potenciais clientes, ajuda a acompanhar os seus contactos e gera mais conversões.",
         href: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
     },
 ];
 
 const services = [
     {
-        name: "Professional Logo Design",
-        description: "Logo | Brand Book | Mockups",
+        name: "Design de logótipo",
+        description: "Logótipo | Manual de marca | Mockups",
     },
     {
-        name: "Stationery Design",
+        name: "Design de papelaria",
         description:
-            "Company Stationery Mockups | look and feel of your company's communication material.",
+            "Mockups de papelaria empresarial | imagem consistente em todos os materiais de comunicação da sua empresa.",
     },
     {
-        name: "Print Media Design",
+        name: "Design para impressão",
         description:
-            "Company Profiles | Flyers | Posters | Business Cards | Advertisement Print Material and More",
+            "Perfis de empresa | Flyers | Cartazes | Cartões de visita | Material publicitário impresso e muito mais",
     },
     {
-        name: "Multimedia Design",
+        name: "Design multimédia",
         description:
-            "Animated Movie | Digital Videos | Graphics & Visual Effects | UX/UI Design",
+            "Animação | Vídeos digitais | Grafismo e efeitos visuais | Design UX/UI",
     },
 ];
-export default function CreativeDesign() {
+export default function DesignGraficoClient() {
     return (
         <>
             {/* Landing */}
@@ -75,22 +75,22 @@ export default function CreativeDesign() {
                 <div className="px-6 pt-10 pb-24 mx-auto max-w-7xl sm:pb-32 lg:flex lg:px-8 lg:py-20">
                     <div className="max-w-2xl mx-auto lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8">
                         <h1 className="mt-10 text-lg text-[var(--autisync-gold,#B98B2F)]">
-                            First Impressions Count
+                            A primeira impressão conta
                         </h1>
                         <h2 className="text-4xl font-bold tracking-tight text-gray-700 sm:text-6xl">
 
-                            Creative Design & Multimedia
+                            Design Criativo e Multimédia
                         </h2>
                         <p className="mt-6 text-base leading-8 text-gray-600">
-                            Unique and Memorable Designs that stand out so that your customers
-                            easily identify your Brand, Service, and Product.
+                            Designs únicos e memoráveis que se destacam, para que os seus clientes
+                            reconheçam facilmente a sua marca, os seus serviços e os seus produtos.
                         </p>
                         <br />
                         <Link
                             className="px-4 py-3 mb-1 text-xs text-white uppercase transition-all duration-150 ease-linear bg-[#1C1C1C] rounded shadow outline-none hover:bg-[var(--autisync-gold,#B98B2F)] hover:shadow-md focus:outline-none sm:mr-2 transition-all hover:shadow-[0_16px_30px_rgba(0,0,0,0.18)]/10"
-                            href="/servicepackage/"
+                            href="/pt/precos"
                         >
-                            Check out Our Packages
+                            Ver os nossos pacotes
                         </Link>
                     </div>
                     <div className="flex max-w-2xl mx-auto mt-16 sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
@@ -98,7 +98,7 @@ export default function CreativeDesign() {
                             <div className="p-2 -m-2 bg-[#1C1C1C] rounded-xl ring-1 ring-inset ring-gray-800 lg:-m-4 lg:rounded-2xl lg:p-4">
                                 <Image
                                     src="https://images.unsplash.com/photo-1518893494013-481c1d8ed3fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
-                                    alt="App screenshot"
+                                    alt="Exemplo de trabalho de design"
                                     width={1200}
                                     height={1200}
                                     className="w-[40rem] rounded-md shadow-2xl ring-1 ring-gray-900/10"
@@ -114,15 +114,14 @@ export default function CreativeDesign() {
                 <div className="px-6 mx-auto max-w-7xl lg:px-8">
                     <div className="max-w-2xl mx-auto lg:text-center">
                         <h2 className="text-base leading-7 text-[var(--autisync-gold,#B98B2F)] font-base">
-                            Growth through Digitalization
+                            Crescimento através da digitalização
                         </h2>
                         <p className="mt-2 text-3xl font-bold tracking-tight text-gray-700 sm:text-4xl">
-                            Bespoke & Identifying Designs
+                            Designs à medida, com identidade própria
                         </p>
                         <p className="mt-3 text-base text-gray-600">
-                            Developing the overall layout and production design for
-                            applications such as advertisements, information platforms,
-                            brochures, magazines, and reports.
+                            Criamos o layout e o design de produção de anúncios, plataformas
+                            informativas, brochuras, revistas e relatórios.
                         </p>
                     </div>
                     <div className="max-w-2xl mx-auto mt-16 sm:mt-20 lg:mt-24 lg:max-w-none">
@@ -135,7 +134,7 @@ export default function CreativeDesign() {
                                             src={feature.href}
                                             width={1000}
                                             height={1000}
-                                            alt="image description"
+                                            alt={feature.name}
                                         />
                                         <figcaption className="absolute px-4 text-lg text-white bottom-6">
                                             <p>{feature.name}</p>
@@ -195,17 +194,17 @@ export default function CreativeDesign() {
                         </svg>
                         <div className="max-w-md mx-auto text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
                             <h2 className="text-3xl font-bold tracking-tight text-[#1C1C1C] sm:text-4xl">
-                                Visionary Organizations Use{" "}
-                                <span className="text-[var(--autisync-gold,#B98B2F)]">Creative Design</span> to Improve
-                                Customer Experience
+                                Organizações visionárias usam o{" "}
+                                <span className="text-[var(--autisync-gold,#B98B2F)]">design criativo</span> para melhorar
+                                a experiência do cliente
                             </h2>
                             <div className="flex items-center justify-center mt-10 gap-x-6 lg:justify-start">
                                 <Link
-                                    href="https://wa.me/+447883317646"
+                                    href="https://wa.me/+447883317646?text=Ol%C3%A1%20Autisync%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20vossos%20servi%C3%A7os%20de%20design%20gr%C3%A1fico."
                                     target="_blank"
                                     className="group rounded-md bg-white px-3.5 py-2.5 text-sm text-gray-900 shadow-sm hover:bg-[#1C1C1C] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                                 >
-                                    Call Us{" "}
+                                    Fale connosco{" "}
                                     <span className="group-hover:text-[var(--autisync-gold,#B98B2F)] ">
                     (WhatsApp)
                   </span>
@@ -214,7 +213,7 @@ export default function CreativeDesign() {
                                     href="mailto:info@autisync.com"
                                     className="text-sm font-semibold leading-6 text-[#1C1C1C] hover:text-[var(--autisync-gold,#B98B2F)]"
                                 >
-                                    Book a Consultation <span aria-hidden="true">→</span>
+                                    Marcar uma consulta <span aria-hidden="true">→</span>
                                 </Link>
                             </div>
                         </div>
@@ -222,7 +221,7 @@ export default function CreativeDesign() {
                             <Image
                                 className="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
                                 src="https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
-                                alt="App screenshot"
+                                alt="Exemplo de trabalho de design"
                                 width={1824}
                                 height={1080}
                             />

@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { AnchorButton } from "@/app/components/AnchorButton";
 import { usePathname } from "next/navigation";
+import { isPtPath, toEn, toPt } from "@/lib/i18n/routes";
 
 import {
   ChartBarIcon,
@@ -46,6 +47,44 @@ const solutions = [
   },
 ];
 
+const solutionsPt = [
+  {
+    name: "Design Criativo e Multimédia",
+    description: "Logótipos · Papelaria · Web Design · Impressão · Multimédia",
+    href: "/pt/servicos/design-grafico",
+    icon: ChartBarIcon,
+  },
+  {
+    name: "SEO e Marketing Digital",
+    description: "Otimização para o Google, palavras-chave, análise e crescimento da marca",
+    href: "/pt/servicos/seo-marketing",
+    icon: CursorArrowRaysIcon,
+  },
+  {
+    name: "Consultoria de TI",
+    description: "Suporte Técnico · Consultoria de TI · Redes Sociais · Segurança",
+    href: "/pt/servicos/consultoria-ti",
+    icon: ShieldCheckIcon,
+  },
+  {
+    name: "Desenvolvimento",
+    description: "Aplicações Web · Mobile · Sistemas Empresariais · CMS · Integrações",
+    href: "/pt/servicos/desenvolvimento",
+    icon: Squares2X2Icon,
+  },
+];
+
+const callsToActionPt = [
+  { name: "Questionário", href: "/pt/questionario" },
+  { name: "Preços e Pacotes", href: "/pt/precos" },
+];
+
+const navLinksPt = [
+  { label: "Sobre",     href: "/pt/sobre" },
+  { label: "Portfólio", href: "/pt/portfolio" },
+  { label: "Contacto",  href: "/pt/contacto" },
+];
+
 const callsToAction = [
   { name: "Questionnaire",    href: "/ServiceQuestionaire/" },
   { name: "Service Packages", href: "/servicepackage/" },
@@ -56,6 +95,26 @@ const navLinks = [
   { label: "Portfolio", href: "/portfolio" },
   { label: "Contact",   href: "/contact" },
 ];
+
+/** Menu content in the language of the current page (/pt/… → Portuguese). */
+function useNav() {
+  const pt = isPtPath(usePathname() || "/");
+  return pt
+    ? {
+        pt,
+        solutions: solutionsPt,
+        callsToAction: callsToActionPt,
+        navLinks: navLinksPt,
+        t: { services: "Serviços", callUs: "Ligar", callUsNow: "Ligue Já", regions: "Angola · Namíbia · Portugal · Reino Unido", openMenu: "Abrir menu", closeMenu: "Fechar menu", home: "/pt" },
+      }
+    : {
+        pt,
+        solutions,
+        callsToAction,
+        navLinks,
+        t: { services: "Services", callUs: "Call Us", callUsNow: "Call Us Now", regions: "UK · Portugal · Angola · Namibia", openMenu: "Open menu", closeMenu: "Close menu", home: "/" },
+      };
+}
 
 // ─────────────────────────────────────────────
 // SHARED EASING
@@ -104,6 +163,7 @@ const FOOTER_TRANSITION: Transition = { delay: 0.25, duration: 0.3, ease: EASE }
 // ─────────────────────────────────────────────
 
 function DesktopFlyout() {
+  const { solutions, callsToAction, t } = useNav();
   const [open, setOpen] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -121,7 +181,7 @@ function DesktopFlyout() {
             className={`flex items-center gap-1 text-sm font-medium transition-colors duration-150
           ${open ? "text-[var(--autisync-gold,#B98B2F)]" : "text-gray-700 hover:text-[var(--autisync-gold,#B98B2F)]"}`}
         >
-          Services
+          {t.services}
           <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
             <ChevronDown className="w-3.5 h-3.5" />
           </motion.span>
@@ -187,6 +247,7 @@ function DesktopFlyout() {
 // ─────────────────────────────────────────────
 
 function MobileMenu({ onClose }: { onClose: () => void }) {
+  const { solutions, callsToAction, navLinks, t } = useNav();
   const [servicesOpen, setServicesOpen] = useState(true);
 
   // Lock body scroll while open
@@ -227,7 +288,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
                 onClick={() => setServicesOpen(v => !v)}
                 className="flex w-full items-center justify-between py-3 text-base font-semibold text-gray-900"
             >
-              <span>Services</span>
+              <span>{t.services}</span>
               <motion.span animate={{ rotate: servicesOpen ? 180 : 0 }} transition={{ duration: 0.22 }}>
                 <ChevronDown className="w-4 h-4 text-gray-500" />
               </motion.span>
@@ -336,10 +397,10 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
             hover:bg-[#7a5a1d] active:scale-[0.97] transition-all duration-150"
           >
             <Phone className="w-4 h-4" />
-            Call Us Now
+            {t.callUsNow}
           </a>
           <p className="text-center text-[10px] text-gray-400 tracking-wide uppercase">
-            UK · Portugal · Angola · Namibia
+            {t.regions}
           </p>
         </motion.div>
       </motion.div>
@@ -350,15 +411,10 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
 // LANGUAGE SWITCH (EN ⇄ PT)
 // ─────────────────────────────────────────────
 
-/** English page ⇄ its Portuguese twin. Pages without a twin go to the PT home. */
-const PT_TWIN: Record<string, string> = { "/": "/pt", "/servicepackage": "/pt/precos" };
-const EN_TWIN: Record<string, string> = { "/pt": "/", "/pt/precos": "/servicepackage" };
-
 function LangSwitch({ onNavigate }: { onNavigate?: () => void }) {
-  const raw = usePathname() || "/";
-  const path = raw.length > 1 ? raw.replace(/\/$/, "") : raw;
-  const isPt = path === "/pt" || path.startsWith("/pt/");
-  const href = isPt ? EN_TWIN[path] ?? "/" : PT_TWIN[path] ?? "/pt";
+  const path = usePathname() || "/";
+  const isPt = isPtPath(path);
+  const href = isPt ? toEn(path) : toPt(path);
   return (
       <a
           href={href}
@@ -381,6 +437,7 @@ function LangSwitch({ onNavigate }: { onNavigate?: () => void }) {
 // ─────────────────────────────────────────────
 
 export default function Navbar() {
+  const { navLinks, t } = useNav();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -390,7 +447,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between h-14">
 
               {/* ── Logo ── */}
-              <Link href="/" className="flex-shrink-0" onClick={() => setMobileOpen(false)}>
+              <Link href={t.home} className="flex-shrink-0" onClick={() => setMobileOpen(false)}>
                 <span className="sr-only">Autisync</span>
                 <Image
                     className="w-auto h-8 sm:h-10"
@@ -420,7 +477,7 @@ export default function Navbar() {
               <div className="hidden md:flex items-center gap-3">
                 <LangSwitch />
                 <AnchorButton href="tel:+244927114400" variant="alt" size="sm">
-                  Call Us
+                  {t.callUs}
                 </AnchorButton>
               </div>
 
@@ -432,7 +489,7 @@ export default function Navbar() {
               {/* ── Mobile hamburger ── */}
               <button
                   onClick={() => setMobileOpen(v => !v)}
-                  aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                  aria-label={mobileOpen ? t.closeMenu : t.openMenu}
                   aria-expanded={mobileOpen}
                   className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg
                 hover:bg-gray-100 active:bg-gray-200 transition-colors duration-150"

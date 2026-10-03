@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import AboutClient from "./AboutClient"; // or whatever your current component is named
+import { alternatesFor } from "@/lib/i18n/routes";
+import AboutClient from "./AboutClient";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
       "Meet the Autisync team — a creative digital agency helping businesses across the UK, Portugal, Namibia, and Angola modernise their brand, systems, and customer experience.",
-  alternates: { canonical: "https://www.autisync.com/about" },
+  alternates: alternatesFor("/about", "en"),
   openGraph: {
     title: "About Autisync — Our Story, Team & Values",
     description:

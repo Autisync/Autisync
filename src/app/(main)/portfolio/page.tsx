@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import Portfolio from "@/app/(main)/portfolio/Portfolio"; // or whatever your current component is named
+import { alternatesFor } from "@/lib/i18n/routes";
+import Portfolio from "@/app/(main)/portfolio/Portfolio";
 
 export const metadata: Metadata = {
     title: "Portfolio",
     description:
         "Explore Autisync's portfolio of websites, web apps, graphic design, IT infrastructure, and marketing campaigns delivered for clients across multiple industries.",
-    alternates: { canonical: "https://www.autisync.com/portfolio" },
+    alternates: alternatesFor("/portfolio", "en"),
     openGraph: {
         title: "Autisync Portfolio — Work We're Proud Of",
         description:

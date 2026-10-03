@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import GraphicPage from "./graphicPage"; // or whatever your current component is named
+import { alternatesFor } from "@/lib/i18n/routes";
+import GraphicPage from "./graphicPage";
 
 export const metadata: Metadata = {
     title: "Graphic Design",
     description:
         "Brand identities, logos, print collateral, social media kits, and more. Autisync's graphic design team crafts visuals that make lasting impressions.",
-    alternates: { canonical: "https://www.autisync.com/solutions/graphicDesign" },
+    alternates: alternatesFor("/solutions/graphicDesign", "en"),
     openGraph: {
         title: "Graphic Design Services — Autisync",
         description:

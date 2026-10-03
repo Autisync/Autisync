@@ -240,7 +240,7 @@ function buildHtml(d: ContactPayload, meta?: InternalLeadMeta): string {
 }
 
 function buildConfirmationText(d: ContactPayload): string {
-  const supportEmail = process.env.OUTLOOK_SUPPORT_EMAIL ?? "support@austisync.com";
+  const supportEmail = process.env.OUTLOOK_SUPPORT_EMAIL ?? "support@autisync.com";
   return [
     `Hi ${d.fullName || "there"},`,
     "",
@@ -259,7 +259,7 @@ function buildConfirmationText(d: ContactPayload): string {
 }
 
 function buildConfirmationHtml(d: ContactPayload): string {
-  const supportEmail = process.env.OUTLOOK_SUPPORT_EMAIL ?? "support@austisync.com";
+  const supportEmail = process.env.OUTLOOK_SUPPORT_EMAIL ?? "support@autisync.com";
   const fullName = d.fullName || "there";
 
   return `<!DOCTYPE html>
@@ -494,7 +494,7 @@ export async function POST(req: NextRequest) {
   const fromEmail = process.env.OUTLOOK_FROM_EMAIL ?? process.env.OUTLOOK_SMTP_USER ?? "";
   const toEmail = process.env.OUTLOOK_TO_EMAIL ?? "info@autisync.com";
   const noReplyEmail = process.env.OUTLOOK_NOREPLY_EMAIL ?? fromEmail;
-  const supportEmail = process.env.OUTLOOK_SUPPORT_EMAIL ?? "support@austisync.com";
+  const supportEmail = process.env.OUTLOOK_SUPPORT_EMAIL ?? "support@autisync.com";
 
   const useGraph =
     process.env.MICROSOFT_TENANT_ID &&
