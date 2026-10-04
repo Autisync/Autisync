@@ -20,7 +20,8 @@ export type Market = {
     name: string;
     namePt: string;
     currency: Currency;
-    flag: string;
+    /** ISO 3166-1 alpha-2, lower case, for the flag image (flagcdn.com). */
+    iso: string;
     /** Phone shown in the "Call us" button for this market. */
     phone: { display: string; href: string };
     timeZones: string[];
@@ -29,22 +30,22 @@ export type Market = {
 
 export const markets: Market[] = [
     {
-        code: "AO", name: "Angola", namePt: "Angola", currency: "AOA", flag: "🇦🇴",
+        code: "AO", name: "Angola", namePt: "Angola", currency: "AOA", iso: "ao",
         phone: { display: "(+244) 927 114 400", href: "tel:+244927114400" },
         timeZones: ["Africa/Luanda"], languages: ["pt-ao"],
     },
     {
-        code: "NA", name: "Namibia", namePt: "Namíbia", currency: "NAD", flag: "🇳🇦",
+        code: "NA", name: "Namibia", namePt: "Namíbia", currency: "NAD", iso: "na",
         phone: { display: "(+264) 927 114 403", href: "tel:+264927114403" },
         timeZones: ["Africa/Windhoek"], languages: ["en-na", "af-na"],
     },
     {
-        code: "GB", name: "United Kingdom", namePt: "Reino Unido", currency: "GBP", flag: "🇬🇧",
+        code: "GB", name: "United Kingdom", namePt: "Reino Unido", currency: "GBP", iso: "gb",
         phone: { display: "(+44) 788 331 7646", href: "tel:+447883317646" },
         timeZones: ["Europe/London", "Europe/Belfast"], languages: ["en-gb"],
     },
     {
-        code: "PT", name: "Portugal", namePt: "Portugal", currency: "EUR", flag: "🇵🇹",
+        code: "PT", name: "Portugal", namePt: "Portugal", currency: "EUR", iso: "pt",
         phone: { display: "(+44) 788 331 7646", href: "tel:+447883317646" },
         timeZones: ["Europe/Lisbon", "Atlantic/Azores", "Atlantic/Madeira"], languages: ["pt-pt", "pt"],
     },

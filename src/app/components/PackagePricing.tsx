@@ -24,6 +24,28 @@ export type Locale = "en" | "pt";
 const DISMISSED_KEY = "autisync-market-asked";
 
 /**
+ * A small flag image. Emoji flags were the obvious choice and render as two
+ * grey letters on Windows, which is where most of our visitors are; a 20px
+ * PNG from flagcdn (public domain) looks the same everywhere.
+ */
+export function Flag({ market, size = 20, className = "" }: { market: Market; size?: number; className?: string }) {
+    const h = Math.round(size * 0.75);
+    return (
+        // eslint-disable-next-line @next/next/no-img-element -- 1 KB flag, no need for the image pipeline
+        <img
+            src={`https://flagcdn.com/w${size <= 20 ? 20 : 40}/${market.iso}.png`}
+            srcSet={`https://flagcdn.com/w${size <= 20 ? 40 : 80}/${market.iso}.png 2x`}
+            width={size}
+            height={h}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            className={"inline-block rounded-[2px] shadow-[0_0_0_1px_rgba(0,0,0,.08)] align-[-2px] " + className}
+        />
+    );
+}
+
+/**
  * The visitor's market: the saved choice, the URL's, or a guess from the
  * browser. `confirmed` is false until they have tapped a market (or said the
  * guess is right), which is when the chip stops asking. Every copy of this
@@ -180,7 +202,7 @@ export function CurrencyToggle({
                                     : "text-gray-600 hover:text-gray-900")
                             }
                         >
-                            <span aria-hidden="true" className="mr-1.5">{m.flag}</span>
+                            <Flag market={m} className="mr-1.5" />
                             <span className="sm:hidden">{m.code === "GB" ? (locale === "pt" ? "Reino Unido" : "UK") : marketName(m, locale)}</span>
                             <span className="hidden sm:inline">{marketName(m, locale)}</span>
                         </button>
@@ -195,7 +217,7 @@ export function CurrencyToggle({
                     className="autisync-chip mt-3 max-w-md w-full sm:w-auto rounded-2xl border border-[var(--autisync-gold,#b98b2f)]/40 bg-white px-4 py-3 shadow-lg text-left"
                 >
                     <div className="flex items-start gap-3">
-                        <span aria-hidden="true" className="text-2xl leading-none">{market.flag}</span>
+                        <Flag market={market} size={32} className="mt-0.5" />
                         <div className="min-w-0 flex-1 text-sm text-gray-700">
                             <p className="font-medium text-gray-900">{t.showing(current)}</p>
                             {!picking ? (
@@ -229,7 +251,7 @@ export function CurrencyToggle({
                                                 onClick={() => choose(m)}
                                                 className="px-3 py-1.5 text-sm font-semibold rounded-full ring-1 ring-gray-300 text-gray-700 hover:ring-[var(--autisync-gold,#b98b2f)] hover:text-gray-900"
                                             >
-                                                <span aria-hidden="true" className="mr-1">{m.flag}</span>{marketName(m, locale)}
+                                                <Flag market={m} size={16} className="mr-1" />{marketName(m, locale)}
                                             </button>
                                         ))}
                                     </div>
