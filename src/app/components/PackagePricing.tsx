@@ -6,6 +6,7 @@ import {
     formatPrice,
     type Currency,
 } from "@/lib/website-packages";
+import { approxUsd, useUsdRates } from "@/lib/fx";
 import {
     MARKET_EVENT,
     guessMarket,
@@ -268,20 +269,69 @@ export function CurrencyToggle({
     );
 }
 
-/** "From Kz 495.000" with a small note underneath (one-off terms by default). */
+/** "≈ $397" under a kwanza or N$ figure, once the day's rate has arrived. */
+export function ApproxUsd({ amount, currency, className = "" }: { amount: number; currency: Currency; className?: string }) {
+    const rates = useUsdRates();
+    const text = approxUsd(amount, currency, rates);
+    if (!text) return null;
+    return (
+        <span className={"block text-sm font-medium text-gray-500 tabular-nums " + className} title={rates?.asOf ? `Rate of ${rates.asOf}` : undefined}>
+            {text}
+        </span>
+    );
+}
+
+const ongoingText = {
+    en: {
+        year1: "Domain, hosting & email included for the first year.",
+        after: (price: string) => `From year 2: ${price}/month for hosting, email, backups & 2h of changes.`,
+        none: "One-off. Nothing to pay afterwards.",
+    },
+    pt: {
+        year1: "Domínio, alojamento e e-mail incluídos no primeiro ano.",
+        after: (price: string) => `A partir do 2.º ano: ${price}/mês por alojamento, e-mail, cópias de segurança e 2h de alterações.`,
+        none: "Pagamento único. Nada a pagar depois.",
+    },
+};
+
+/** The year-one inclusions and the Care Plan from year two, as one small block. */
+export function OngoingNote({ currency, locale = "en", dark = false }: { currency: Currency; locale?: Locale; dark?: boolean }) {
+    const o = ongoingText[locale];
+    const rates = useUsdRates();
+    const care = carePlanMonthly[currency];
+    const usd = approxUsd(care, currency, rates);
+    const careText = `${formatPrice(care, currency)}${usd ? ` (${usd})` : ""}`;
+    return (
+        <span className={"mt-3 block rounded-lg px-3 py-2 text-xs leading-5 ring-1 " + (dark ? "bg-white/5 text-gray-300 ring-white/10" : "bg-gray-50 text-gray-600 ring-gray-200/80")}>
+            <span className="block">{o.year1}</span>
+            <span className={"block font-medium " + (dark ? "text-white" : "text-gray-800")}>{o.after(careText)}</span>
+        </span>
+    );
+}
+
+/**
+ * "From Kz 495.000" with the terms under it. Says what the figure buys and
+ * what comes after it: a website price is for year one, with domain, hosting
+ * and email inside it, and the Care Plan starts in year two. A client who
+ * learns that from the second-year invoice was not told the price.
+ */
 export function TierPrice({
     amount,
     currency,
     note,
     locale = "en",
+    ongoing,
 }: {
     amount: number;
     currency: Currency;
     note?: string;
     locale?: Locale;
+    /** "website": year-one inclusions + Care Plan from year 2; "none": one-off, nothing after. */
+    ongoing?: "website" | "none";
 }) {
     const label = locale === "pt" ? ptUi.from : "From";
     const sub = note ?? (locale === "pt" ? ptUi.oneOff : "one-off · 50% to start, 50% at launch");
+    const o = ongoingText[locale];
     return (
         <span className="block">
             <small className="block text-xs font-semibold uppercase tracking-wide text-[var(--autisync-gold,#b98b2f)]">
@@ -290,16 +340,24 @@ export function TierPrice({
             <span className="text-4xl font-bold tracking-tight text-gray-900">
                 {formatPrice(amount, currency)}
             </span>
+            <ApproxUsd amount={amount} currency={currency} />
             <span className="block mt-1 text-xs text-gray-500">{sub}</span>
+            {ongoing === "website" && <OngoingNote currency={currency} locale={locale} />}
+            {ongoing === "none" && (
+                <span className="mt-2 block text-xs text-gray-500">{o.none}</span>
+            )}
         </span>
     );
 }
 
 export function CarePlanNote({ currency, locale = "en" }: { currency: Currency; locale?: Locale }) {
+    const rates = useUsdRates();
+    const usd = approxUsd(carePlanMonthly[currency], currency, rates);
+    const careText = `${formatPrice(carePlanMonthly[currency], currency)}${usd ? ` (${usd})` : ""}`;
     if (locale === "pt") {
         return (
             <p className="max-w-3xl mx-auto mt-10 text-sm leading-6 text-center text-gray-600">
-                {ptUi.carePlan(formatPrice(carePlanMonthly[currency], currency))}
+                {ptUi.carePlan(careText)}
             </p>
         );
     }
@@ -309,7 +367,7 @@ export function CarePlanNote({ currency, locale = "en" }: { currency: Currency; 
             <span className="font-semibold text-gray-800">Care Plan</span> keeps your site
             hosted, backed up, updated and secure, with 2 hours of changes a month, for{" "}
             <span className="font-semibold text-gray-800">
-                {formatPrice(carePlanMonthly[currency], currency)}/month
+                {careText}/month
             </span>
             .
         </p>

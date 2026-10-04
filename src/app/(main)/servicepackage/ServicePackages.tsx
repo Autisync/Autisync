@@ -7,7 +7,7 @@ import { CheckIcon } from "@heroicons/react/24/solid";
 import { PhoneIcon } from "@heroicons/react/24/outline";
 import Items from "./items";
 import Packages from "./packages";
-import { CurrencyToggle, TierPrice, usePackageCurrency } from "@/app/components/PackagePricing";
+import { ApproxUsd, CurrencyToggle, OngoingNote, TierPrice, usePackageCurrency } from "@/app/components/PackagePricing";
 import { formatPrice, websiteTiers, type Currency } from "@/lib/website-packages";
 import { brandingTiers, launchBundle, socialTiers, socialTerms, type ServiceTier } from "@/lib/service-packages";
 import { faqSchema, pricingFaq } from "@/lib/faq";
@@ -42,7 +42,7 @@ function TierCard({ tier, currency, kind }: { tier: ServiceTier; currency: Curre
                 </div>
                 <p className="mt-2 text-sm text-gray-600">{tier.description}</p>
                 <div className="mt-5">
-                    <TierPrice amount={tier.price[currency]} currency={currency} note={tier.detail} />
+                    <TierPrice amount={tier.price[currency]} currency={currency} note={tier.detail} ongoing={kind === "Branding" ? "none" : undefined} />
                 </div>
                 <ul className="mt-6 space-y-2 text-sm text-gray-700">
                     {tier.features.map((feature) => (
@@ -103,7 +103,9 @@ const LaunchBundle = ({ currency }: { currency: Currency }) => {
                 <div className="flex flex-col justify-center rounded-2xl bg-white/5 p-6 ring-1 ring-white/10 lg:col-span-2">
                     <p className="text-sm text-gray-400 line-through">{separately} separately</p>
                     <p className="mt-1 text-4xl font-extrabold">{price}</p>
+                    <ApproxUsd amount={launchBundle.price[currency]} currency={currency} className="text-gray-300" />
                     <p className="mt-1 text-xs text-gray-400">one-off · 50% to start, 50% at launch</p>
+                    <OngoingNote currency={currency} dark />
                     <a
                         href={whatsappLink(`Hi Autisync, I'm interested in the ${launchBundle.name} bundle (${price}).`)}
                         target="_blank"

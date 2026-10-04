@@ -6,7 +6,7 @@
  * package data files.
  */
 import { CheckIcon } from "@heroicons/react/24/solid";
-import { CarePlanNote, CurrencyToggle, TierPrice, usePackageCurrency } from "@/app/components/PackagePricing";
+import { ApproxUsd, CarePlanNote, CurrencyToggle, OngoingNote, TierPrice, usePackageCurrency } from "@/app/components/PackagePricing";
 import { formatPrice, websiteTiers, type Currency } from "@/lib/website-packages";
 import { brandingTiers, launchBundle, socialTiers } from "@/lib/service-packages";
 import { ptBranding, ptBundle, ptSocial, ptSocialTerms, ptUi, ptWebsite } from "@/lib/i18n/pt";
@@ -39,7 +39,7 @@ function Card({ tier, copy, kind, currency }: { tier: Tier; copy: Copy; kind: st
                 </div>
                 <p className="mt-2 text-sm text-gray-600">{copy.description}</p>
                 <div className="mt-5">
-                    <TierPrice amount={tier.price[currency]} currency={currency} note={copy.detail} locale="pt" />
+                    <TierPrice amount={tier.price[currency]} currency={currency} note={copy.detail} locale="pt" ongoing={kind === "Website" ? "website" : kind === "Branding" ? "none" : undefined} />
                 </div>
                 <ul className="mt-6 space-y-2 text-sm text-gray-700">
                     {copy.features.map((f) => (
@@ -96,7 +96,9 @@ export function PtBundle({ currency }: { currency: Currency }) {
                 <div className="flex flex-col justify-center rounded-2xl bg-white/5 p-6 ring-1 ring-white/10 lg:col-span-2">
                     <p className="text-sm text-gray-400 line-through">{separately} em separado</p>
                     <p className="mt-1 text-4xl font-extrabold">{price}</p>
+                    <ApproxUsd amount={launchBundle.price[currency]} currency={currency} className="text-gray-300" />
                     <p className="mt-1 text-xs text-gray-400">{ptUi.oneOff}</p>
+                    <OngoingNote currency={currency} locale="pt" dark />
                     <a
                         href={wa(ptUi.whatsapp(ptBundle.name, price))}
                         target="_blank"

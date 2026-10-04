@@ -68,7 +68,7 @@ export default function Packages({ currency: shared }: { currency?: Currency } =
                   {tier.description}
                 </p>
                 <div className="mt-6">
-                  <TierPrice amount={tier.price[currency]} currency={currency} />
+                  <TierPrice amount={tier.price[currency]} currency={currency} ongoing="website" />
                 </div>
                 <ul
                   role="list"
