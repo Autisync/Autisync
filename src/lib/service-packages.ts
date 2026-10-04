@@ -26,7 +26,7 @@ export const brandingTiers: ServiceTier[] = [
         id: "branding-essentials",
         name: "Essentials",
         description: "A professional logo and the basics to start trading with confidence.",
-        price: { AOA: 180_000, GBP: 490, EUR: 560 },
+        price: { AOA: 180_000, NAD: 3_200, GBP: 490, EUR: 560 },
         detail: "one-off · delivered in ~10 days",
         features: [
             "Logo design — 2 concepts, 3 revision rounds",
@@ -41,7 +41,7 @@ export const brandingTiers: ServiceTier[] = [
         id: "branding-identity",
         name: "Identity",
         description: "A complete, consistent brand your team can use everywhere.",
-        price: { AOA: 450_000, GBP: 1_450, EUR: 1_650 },
+        price: { AOA: 450_000, NAD: 7_950, GBP: 1_450, EUR: 1_650 },
         detail: "one-off · delivered in ~21 days",
         features: [
             "Everything in Essentials",
@@ -58,7 +58,7 @@ export const brandingTiers: ServiceTier[] = [
         id: "branding-corporate",
         name: "Corporate",
         description: "Full corporate identity for established companies, sites and fleets.",
-        price: { AOA: 1_200_000, GBP: 3_900, EUR: 4_500 },
+        price: { AOA: 1_200_000, NAD: 21_200, GBP: 3_900, EUR: 4_500 },
         detail: "one-off · delivered in ~35 days",
         features: [
             "Everything in Identity",
@@ -79,7 +79,7 @@ export const socialTiers: ServiceTier[] = [
         id: "social-essential",
         name: "Essential",
         description: "A consistent, professional presence on the platforms that matter.",
-        price: { AOA: 150_000, GBP: 450, EUR: 520 },
+        price: { AOA: 150_000, NAD: 2_650, GBP: 450, EUR: 520 },
         detail: "per month · 3-month minimum",
         features: [
             "12 posts / month, including 4 reels",
@@ -92,7 +92,7 @@ export const socialTiers: ServiceTier[] = [
         id: "social-growth",
         name: "Growth",
         description: "More video, paid reach and a team answering your audience.",
-        price: { AOA: 280_000, GBP: 850, EUR: 980 },
+        price: { AOA: 280_000, NAD: 4_950, GBP: 850, EUR: 980 },
         detail: "per month · 3-month minimum",
         features: [
             "16 posts / month, including 8 reels",
@@ -107,7 +107,7 @@ export const socialTiers: ServiceTier[] = [
         id: "social-premium",
         name: "Premium",
         description: "Full-service content and campaigns built to bring in leads.",
-        price: { AOA: 480_000, GBP: 1_600, EUR: 1_850 },
+        price: { AOA: 480_000, NAD: 8_500, GBP: 1_600, EUR: 1_850 },
         detail: "per month · 3-month minimum",
         features: [
             "20 posts / month, including 12 reels",
@@ -134,8 +134,8 @@ export const launchBundle = {
     tagline: "Look like the company you’re becoming — in 30 days.",
     description:
         "Your complete brand identity and a 10-page professional website, designed together so everything matches from day one. Tender-ready, bilingual on request.",
-    price: { AOA: 1_250_000, GBP: 3_950, EUR: 4_490 } as Record<Currency, number>,
-    separately: { AOA: 1_400_000, GBP: 4_400, EUR: 5_040 } as Record<Currency, number>,
+    price: { AOA: 1_250_000, NAD: 22_100, GBP: 3_950, EUR: 4_490 } as Record<Currency, number>,
+    separately: { AOA: 1_400_000, NAD: 24_700, GBP: 4_400, EUR: 5_040 } as Record<Currency, number>,
     features: [
         "Branding Identity package (logo, guidelines, stationery, 300 cards)",
         "Small Business website (10 pages, SEO, domain & hosting 1st year)",

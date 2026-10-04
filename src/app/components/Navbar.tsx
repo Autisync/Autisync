@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useMarket } from "@/app/components/PackagePricing";
 import { AnimatePresence, motion, type Variants, type Transition } from "framer-motion";
 import { Menu, X, ChevronDown, Phone, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -247,6 +248,9 @@ function DesktopFlyout() {
 // ─────────────────────────────────────────────
 
 function MobileMenu({ onClose }: { onClose: () => void }) {
+  // The number for where the visitor is: a Namibian caller gets the +264
+  // line, not Luanda.
+  const { market } = useMarket();
   const { solutions, callsToAction, navLinks, t } = useNav();
   const [servicesOpen, setServicesOpen] = useState(true);
 
@@ -389,7 +393,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
             className="flex-shrink-0 px-5 py-5 border-t border-gray-100 bg-white space-y-3"
         >
           <a
-              href="tel:+244927114400"
+              href={market.phone.href}
               onClick={onClose}
               className="flex items-center justify-center gap-2.5 w-full rounded-xl
             bg-[var(--autisync-gold,#B98B2F)] px-4 py-3.5 text-sm font-semibold text-white
@@ -439,6 +443,7 @@ function LangSwitch({ onNavigate }: { onNavigate?: () => void }) {
 export default function Navbar() {
   const { navLinks, t } = useNav();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { market } = useMarket();
 
   return (
       <>
@@ -476,7 +481,7 @@ export default function Navbar() {
               {/* ── Desktop CTA ── */}
               <div className="hidden md:flex items-center gap-3">
                 <LangSwitch />
-                <AnchorButton href="tel:+244927114400" variant="alt" size="sm">
+                <AnchorButton href={market.phone.href} variant="alt" size="sm">
                   {t.callUs}
                 </AnchorButton>
               </div>

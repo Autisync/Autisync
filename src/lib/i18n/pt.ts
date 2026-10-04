@@ -186,7 +186,7 @@ export const ptUi = {
     mostPopular: "Mais Popular",
     choose: (name: string) => `Escolher ${name}`,
     showPricesIn: "Mostrar preços em",
-    regions: { AOA: "Angola · Namíbia", GBP: "Reino Unido", EUR: "Portugal · UE" } as Record<Currency, string>,
+    regions: { AOA: "Angola", NAD: "Namíbia", GBP: "Reino Unido", EUR: "Portugal · UE" } as Record<Currency, string>,
     carePlan: (price: string) =>
         `O domínio e o alojamento são grátis no primeiro ano. Depois, o nosso Plano de Manutenção mantém o seu site alojado, com cópias de segurança, atualizado e seguro, com 2 horas de alterações por mês, por ${price}/mês.`,
     whatsapp: (pkg: string, price: string) => `Olá Autisync, tenho interesse no pacote ${pkg} (${price}).`,

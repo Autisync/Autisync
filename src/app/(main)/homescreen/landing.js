@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { HeroMarketLine } from "@/app/components/MarketCopy";
 
 /* ========= 3D Icon Wrapper (with hover) ========= */
 
@@ -225,11 +226,7 @@ export default function Landing() {
                 <p className="font-thin text-gray-200">
                   From branding to backend - we automate your journey.
                 </p>
-                <p className="mt-4 text-lg text-gray-200">
-                  Autisync builds websites, brand identities, social media and
-                  AI automation for growing businesses in Angola, the UK and
-                  Portugal. Everything done for you, from first click to booked call.
-                </p>
+                <HeroMarketLine />
               </div>
               <br />
                 <Link href={"/ServiceQuestionaire"}
