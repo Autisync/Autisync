@@ -1,0 +1,18 @@
+<!doctype html><meta charset="utf-8"><title>relay</title>
+<script>
+// Tiny helper used only while attaching our own marketing files to LinkedIn
+// posts from the page admin: the LinkedIn page cannot fetch other origins,
+// but this frame (same origin as the files) can, and hands the bytes up.
+addEventListener('message', async (e) => {
+  const d = e.data || {};
+  if (d.type !== 'autisync-fetch' || typeof d.file !== 'string' || !/^[\w.-]+$/.test(d.file)) return;
+  try {
+    const r = await fetch('/marketing/linkedin/' + d.file, { cache: 'no-store' });
+    const buf = await r.arrayBuffer();
+    e.source.postMessage({ type: 'autisync-file', file: d.file, ok: r.ok, mime: r.headers.get('content-type'), buf }, e.origin, [buf]);
+  } catch (err) {
+    e.source.postMessage({ type: 'autisync-file', file: d.file, ok: false, error: String(err) }, e.origin);
+  }
+});
+parent.postMessage({ type: 'autisync-relay-ready' }, '*');
+</script>
