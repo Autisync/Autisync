@@ -136,7 +136,7 @@ export default function CrmLandingPage() {
                                 <a className={`${s.btn} ${s.btnGold}`} href="#book">Book a discovery call</a>
                                 <a className={`${s.btn} ${s.btnGhost}`} href="#features">See what&apos;s inside</a>
                             </div>
-                            <p className={s.trust}>For service businesses in the UK, Portugal, Namibia and Angola.</p>
+                            <p className={s.trust}>For service businesses in the UK, Portugal, Namibia and Angola. Estate or letting agency? <Link href="/crm/estate-agents" style={{ color: "var(--gold)" }}>See the property CRM and prices →</Link></p>
                         </div>
                         <figure className={s.shot}>
                             <Image
@@ -203,6 +203,7 @@ export default function CrmLandingPage() {
                             {["Clinics", "Salons & studios", "Consultants", "Legal & finance", "Agencies", "Trades & field services"].map((c) => (
                                 <span className={s.chip} key={c}>{c}</span>
                             ))}
+                            <Link className={s.chip} href="/crm/estate-agents" style={{ borderColor: "var(--gold-2)", color: "var(--fg)", textDecoration: "none" }}>Estate & letting agents →</Link>
                         </div>
                     </div>
                 </section>

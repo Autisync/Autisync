@@ -1,0 +1,263 @@
+/* Estate-agency landing page: additions to crm.module.css (same tokens). */
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.langLink {
+  font-size: 15px;
+  color: var(--muted) !important;
+  text-decoration: none;
+}
+.langLink:hover {
+  color: var(--fg) !important;
+}
+
+.featGrid3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.shots {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 0.68fr 1fr;
+  gap: 24px;
+  align-items: end;
+}
+.miniShot {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg-2);
+}
+.miniShot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* prices */
+.priceSec {
+  background: linear-gradient(180deg, transparent, rgba(185, 139, 47, 0.05) 30%, transparent);
+}
+.marketRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: -20px 0 28px;
+  font-size: 15px;
+}
+.marketChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font: 500 15px/1 var(--body);
+  cursor: pointer;
+}
+.marketChip:hover {
+  color: var(--fg);
+}
+.marketOn {
+  border-color: var(--gold-2);
+  color: var(--fg);
+  background: var(--gold-soft);
+}
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.plan {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px 24px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--bg-2);
+}
+.planHot {
+  border-color: var(--gold-2);
+  box-shadow: 0 0 0 1px var(--gold-2), 0 24px 60px -30px rgba(185, 139, 47, 0.55);
+}
+.hotTag {
+  position: absolute;
+  top: -12px;
+  left: 24px;
+  background: var(--gold-2);
+  color: #141414;
+  font: 700 12px/1 var(--body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+.price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+}
+.price b {
+  font: 700 clamp(30px, 3vw, 38px) / 1 var(--display);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.price span {
+  color: var(--muted);
+  font-size: 15px;
+}
+.planList {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 15px;
+  flex: 1;
+}
+.planList li {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 8px;
+  align-items: start;
+}
+.planList svg,
+.promise svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--gold);
+  margin-top: 2px;
+}
+.planBtn {
+  width: 100%;
+}
+.small {
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+.every {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 32px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.every h3 {
+  margin-bottom: 14px;
+}
+.promises {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+.promise {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--gold-soft);
+  font-weight: 600;
+}
+
+/* comparison */
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.cmp {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 620px;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.cmp th,
+.cmp td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.cmp tbody tr:last-child th,
+.cmp tbody tr:last-child td {
+  border-bottom: 0;
+}
+.cmp thead th {
+  font: 600 15px/1.3 var(--body);
+  color: var(--muted);
+}
+.cmp small {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.cmp .us {
+  background: var(--gold-soft);
+  color: var(--fg);
+}
+.cmp .us b {
+  font-size: 18px;
+}
+
+.stepsPt .step::before,
+.stepsPt > div::before {
+  content: "Passo " counter(step) !important;
+}
+
+.portals {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  padding: 20px 24px;
+  border-left: 3px solid var(--gold-2);
+  background: var(--bg-2);
+  border-radius: 0 12px 12px 0;
+}
+.portals p {
+  margin: 0;
+  color: var(--muted);
+}
+
+@media (max-width: 1060px) {
+  .plans {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .featGrid3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .plans,
+  .featGrid3,
+  .shots,
+  .every,
+  .portals {
+    grid-template-columns: 1fr;
+  }
+  .navRight {
+    gap: 10px;
+  }
+  .every {
+    padding: 22px;
+  }
+}

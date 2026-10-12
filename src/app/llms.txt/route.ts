@@ -6,6 +6,7 @@
 import { carePlanMonthly, formatPrice, websiteTiers } from "@/lib/website-packages";
 import { brandingTiers, launchBundle, socialTiers } from "@/lib/service-packages";
 import { siteStats } from "@/lib/site-stats";
+import { agencyPlans, extraUser } from "@/lib/estate-agency-plans";
 
 export const dynamic = "force-static";
 
@@ -41,6 +42,15 @@ ${socialTiers.map((t) => `- ${t.name}: ${p(t.price)} per month — ${t.features[
 Bundle:
 - ${launchBundle.name}: ${p(launchBundle.price)} — Branding Identity + Small Business website, about 30 days (${p(launchBundle.separately)} if bought separately).
 
+## Autisync CRM for estate and letting agencies
+
+A CRM for property agencies in the UK, Portugal and Angola: properties with photos, video, map and documents; viewings booked from the agent's free times with reminders and no-show follow-up; an AI assistant that answers enquiries out of hours with the right homes and a viewing link; buyer and tenant matching emails; the agency's website updated automatically or reading a listings API; rent billing and compliance reminders; import from Alto, Reapit, Jupix, Street, eGO, Casafari and idealista. Portugal: AMI licence and energy class enforced on every ad. Priced per agency, not per user; monthly, no setup fee, migration included.
+
+Plans (per month, ex-VAT; UK £ / EU € / Angola Kz):
+${agencyPlans.map((pl) => `- ${pl.name}: ${formatPrice(pl.price.GBP, "GBP")} / ${formatPrice(pl.price.EUR, "EUR")} / ${formatPrice(pl.price.AOA, "AOA")}${pl.perBranch ? " per branch" : ""} — ${pl.users} users${pl.perBranch ? " per branch" : ""}, ${pl.listings === null ? "unlimited listings" : `${pl.listings} listings`}${pl.aiReplies ? `, AI assistant ${pl.aiReplies} replies a month` : ""}`).join("\n")}
+- Extra user: ${formatPrice(extraUser.GBP, "GBP")} / ${formatPrice(extraUser.EUR, "EUR")} a month.
+- Pages: ${BASE}/crm/estate-agents (English), ${BASE}/crm/imobiliarias (Português)
+
 ## Pages
 
 - [Prices and packages](${BASE}/servicepackage): all packages, prices and a pricing FAQ
@@ -51,6 +61,7 @@ Bundle:
 - [SEO & digital marketing](${BASE}/solutions/seo)
 - [IT consultation & support](${BASE}/solutions/itConsultation)
 - [Autisync CRM](${BASE}/crm): Autisync's customer relationship manager for WhatsApp, Instagram, Facebook and email
+- [CRM for estate & letting agents](${BASE}/crm/estate-agents): properties, viewings, AI assistant, prices per agency
 - [Contact](${BASE}/contact)
 
 ## Em português
@@ -63,6 +74,7 @@ Bundle:
 - [Design gráfico e branding](${BASE}/pt/servicos/design-grafico)
 - [SEO e marketing digital](${BASE}/pt/servicos/seo-marketing)
 - [Consultoria e suporte de TI](${BASE}/pt/servicos/consultoria-ti)
+- [CRM para imobiliárias](${BASE}/crm/imobiliarias): imóveis, visitas, assistente de IA, preços por agência
 - [Contacto](${BASE}/pt/contacto)
 `;
     return new Response(body, {

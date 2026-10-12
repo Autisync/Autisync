@@ -51,6 +51,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
         },
         {
+            url: `${BASE_URL}/crm/estate-agents`,
+            lastModified: now,
+            changeFrequency: "monthly",
+            priority: 0.9,
+            alternates: { languages: { en: `${BASE_URL}/crm/estate-agents`, pt: `${BASE_URL}/crm/imobiliarias` } },
+        },
+        {
+            url: `${BASE_URL}/crm/imobiliarias`,
+            lastModified: now,
+            changeFrequency: "monthly",
+            priority: 0.9,
+            alternates: { languages: { en: `${BASE_URL}/crm/estate-agents`, pt: `${BASE_URL}/crm/imobiliarias` } },
+        },
+        {
             url: `${BASE_URL}/servicepackage`,
             lastModified: now,
             changeFrequency: "monthly",
