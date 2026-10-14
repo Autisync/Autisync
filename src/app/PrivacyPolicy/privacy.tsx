@@ -192,7 +192,7 @@ const sections = [
                 body: `If you have any questions, concerns, or requests regarding this Privacy Policy or the way we handle your personal data, please contact us:`,
                 list: [
                     `Email: info@autisync.com`,
-                    `WhatsApp: +44 788 331 7646`,
+                    `WhatsApp: +44 779 586 6571`,
                     `Website: https://www.autisync.com`,
                 ],
             },

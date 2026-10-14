@@ -139,7 +139,7 @@ export default function SeoMarketingClient() {
                                 Ver pacotes de serviços
                             </Link>
                             <Link
-                                href="https://wa.me/+447883317646?text=Ol%C3%A1%20Autisync%2C%20gostaria%20de%20pedir%20uma%20an%C3%A1lise%20de%20SEO%20gratuita."
+                                href="https://wa.me/+447795866571?text=Ol%C3%A1%20Autisync%2C%20gostaria%20de%20pedir%20uma%20an%C3%A1lise%20de%20SEO%20gratuita."
                                 target="_blank"
                                 className="text-sm font-medium text-gray-700 hover:text-[var(--autisync-gold,#B98B2F)] underline underline-offset-4"
                             >
@@ -293,7 +293,7 @@ export default function SeoMarketingClient() {
                             </ul>
                             <div className="mt-6 flex flex-wrap gap-3">
                                 <Link
-                                    href="https://wa.me/+447883317646?text=Ol%C3%A1%20Autisync%2C%20gostaria%20de%20falar%20sobre%20SEO%20e%20marketing%20digital%20para%20a%20minha%20empresa."
+                                    href="https://wa.me/+447795866571?text=Ol%C3%A1%20Autisync%2C%20gostaria%20de%20falar%20sobre%20SEO%20e%20marketing%20digital%20para%20a%20minha%20empresa."
                                     target="_blank"
                                     className="inline-flex items-center rounded-md bg-white px-4 py-2 text-xs font-semibold text-gray-900 shadow-sm hover:bg-gray-200"
                                 >
@@ -369,7 +369,7 @@ export default function SeoMarketingClient() {
 
                         <div className="flex items-center justify-center mt-10 gap-x-6">
                             <Link
-                                href="https://wa.me/+447883317646?text=Ol%C3%A1%20Autisync%2C%20gostaria%20de%20falar%20sobre%20SEO%20e%20marketing%20digital%20para%20a%20minha%20empresa."
+                                href="https://wa.me/+447795866571?text=Ol%C3%A1%20Autisync%2C%20gostaria%20de%20falar%20sobre%20SEO%20e%20marketing%20digital%20para%20a%20minha%20empresa."
                                 target="_blank"
                                 className="rounded-md group bg-white px-3.5 py-2.5 text-sm text-gray-900 shadow-sm hover:bg-gray-200 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                             >

@@ -14,7 +14,7 @@ import { faqSchema, pricingFaq } from "@/lib/faq";
 
 /* ------------------------------ Shared bits ------------------------------- */
 
-const WHATSAPP = "https://wa.me/447883317646";
+const WHATSAPP = "https://wa.me/447795866571";
 
 function whatsappLink(message: string) {
     return `${WHATSAPP}?text=${encodeURIComponent(message)}`;

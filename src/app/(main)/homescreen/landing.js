@@ -382,7 +382,7 @@ export default function Landing() {
                 provider. We’re your long-term technology partner.
               </p>
               <Link
-                href="https://wa.me/+447883317646"
+                href="https://wa.me/+447795866571"
                 target="_blank"
                 className="mt-8 font-bold text-gray-800 hover:text-[var(--autisync-gold,#b98b2f)]/90"
               >

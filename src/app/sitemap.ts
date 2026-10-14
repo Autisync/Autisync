@@ -161,6 +161,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "yearly",
             priority: 0.3,
         },
+        // Step-inside websites and the free tools (SEO problem pages).
+        ...["/websites/step-inside", "/tools", "/tools/missed-call-cost", "/tools/website-cost"].map((path) => ({
+            url: `${BASE_URL}${path}`,
+            lastModified: now,
+            changeFrequency: "monthly" as const,
+            priority: path === "/tools" ? 0.6 : 0.8,
+        })),
         // Autisync CRM's own legal pages. Meta's App Review fetches these, so
         // they need to be indexable and reachable, not only linked.
         {

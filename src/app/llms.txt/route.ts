@@ -25,7 +25,7 @@ Key facts:
 - Track record: ${siteStats.projects}+ projects for ${siteStats.clients}+ clients over ${siteStats.years}+ years, mainly corporate B2B companies in engineering, oil & gas, construction, telecoms, finance and healthcare.
 - Clients include: Florentek Engineering, Grupo Girassol, Blue Horizon, Salustra Group, Mavunzuka & Filhos, Segucyber, Evolution Technologies, Shivali Investments, Ninth Vision, Occucare Medical, Omatapalo, Your Pharmacy.
 - Payment terms: website and branding projects are 50% to start and 50% at launch.
-- Contact: WhatsApp +44 7883 317646 · Angola +244 927 114 400 · info@autisync.com
+- Contact: WhatsApp +44 7795 866571 · Angola +244 927 114 400 · info@autisync.com
 
 ## Prices (starting prices; Angola Kz / UK £ / EU €)
 
@@ -62,6 +62,9 @@ ${agencyPlans.map((pl) => `- ${pl.name}: ${formatPrice(pl.price.GBP, "GBP")} / $
 - [IT consultation & support](${BASE}/solutions/itConsultation)
 - [Autisync CRM](${BASE}/crm): Autisync's customer relationship manager for WhatsApp, Instagram, Facebook and email
 - [CRM for estate & letting agents](${BASE}/crm/estate-agents): properties, viewings, AI assistant, prices per agency
+- [Step-inside websites](${BASE}/websites/step-inside): a website that opens with a scroll-driven walk from the street into the business
+- [Missed call cost calculator](${BASE}/tools/missed-call-cost): free tool for trades and local businesses
+- [Website cost estimator (UK)](${BASE}/tools/website-cost): free tool, Autisync package prices including year two
 - [Contact](${BASE}/contact)
 
 ## Em português

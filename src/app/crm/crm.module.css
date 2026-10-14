@@ -514,10 +514,8 @@ textarea.input {
   scroll-margin-top: 68px;
 }
 .bookingCard {
-  background: #ffffff;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  overflow: hidden;
+  /* The booking section brings its own card (components/BookingWidget). */
+  max-width: 760px;
 }
 .bookFallback {
   margin-top: 14px !important;

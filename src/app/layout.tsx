@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 import React from "react";
 
 // Fonts are self-hosted (src/app/fonts, SIL Open Font License) rather than
@@ -133,7 +134,7 @@ const orgSchema = {
         },
         {
             "@type": "ContactPoint",
-            telephone: "+447883317646",
+            telephone: "+447795866571",
             contactType: "sales",
             areaServed: ["GB", "PT"],
             availableLanguage: ["English", "Portuguese"],
@@ -170,6 +171,13 @@ const websiteSchema = {
     publisher: { "@id": `${BASE_URL}/#organization` },
 };
 
+// Autisync's own visitor tracker (CRM → Visitors): which pages people open,
+// which sections they reach, where they stop, and bookings made. No cookies.
+// Set NEXT_PUBLIC_AUTISYNC_TRACK_KEY to the key from Visitors → Tracking →
+// "Track another website"; without it nothing loads.
+const TRACK_KEY = process.env.NEXT_PUBLIC_AUTISYNC_TRACK_KEY;
+const APP_URL = (process.env.NEXT_PUBLIC_AUTISYNC_APP_URL || "https://app.autisync.com").replace(/\/+$/, "");
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en">
@@ -183,6 +191,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <Analytics />
+        {TRACK_KEY ? <Script src={`${APP_URL}/t.js`} data-site={TRACK_KEY} strategy="afterInteractive" /> : null}
         {children}
 
         </body>

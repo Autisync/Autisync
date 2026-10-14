@@ -239,7 +239,7 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
                                 {t.checks.map((c) => <li key={c}><Check />{c}</li>)}
                             </ul>
                         </div>
-                        <div className={s.bookingCard}><BookingEmbed /></div>
+                        <div className={s.bookingCard}><BookingEmbed lang={pt ? "pt" : "en"} /></div>
                         <p className={s.bookFallback}>
                             {t.fallback}{" "}
                             <a href="https://book.autisync.com/apps/appointments/p/autisync-agency" target="_blank" rel="noopener noreferrer">{t.fallbackLink}</a>

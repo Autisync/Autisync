@@ -66,7 +66,7 @@ const stats = [
     { value: `${siteStats.countries}`, label: "países: Angola, Namíbia, Reino Unido, Portugal" },
 ];
 
-const WHATSAPP = `https://wa.me/447883317646?text=${encodeURIComponent("Olá Autisync, gostaria de falar sobre um projeto.")}`;
+const WHATSAPP = `https://wa.me/447795866571?text=${encodeURIComponent("Olá Autisync, gostaria de falar sobre um projeto.")}`;
 
 export default function PtHome() {
     return (

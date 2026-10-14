@@ -59,7 +59,7 @@ export default function PrecosPage() {
 
                 <div className="mt-12 text-center">
                     <a
-                        href={`https://wa.me/447883317646?text=${encodeURIComponent("Olá Autisync, gostaria de ajuda para escolher o pacote certo.")}`}
+                        href={`https://wa.me/447795866571?text=${encodeURIComponent("Olá Autisync, gostaria de ajuda para escolher o pacote certo.")}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center px-6 py-3 font-semibold text-white bg-[#B28228] rounded-md shadow-lg hover:bg-gray-900 transition"

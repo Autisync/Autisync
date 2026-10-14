@@ -235,7 +235,7 @@ const sections = [
                 body: `If you have any questions about these Terms of Use, please contact us:`,
                 list: [
                     `Email: info@autisync.com`,
-                    `WhatsApp: +44 788 331 7646`,
+                    `WhatsApp: +44 779 586 6571`,
                     `Website: https://www.autisync.com`,
                 ],
             },

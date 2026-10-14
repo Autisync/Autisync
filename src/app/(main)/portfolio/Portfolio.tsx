@@ -1393,7 +1393,7 @@ export default function Portfolio() {
                             Let&apos;s collaborate and turn your next idea into a flagship digital experience
                         </motion.p>
                         <motion.a
-                            href="https://wa.me/+447883317646"
+                            href="https://wa.me/+447795866571"
                             target="_blank"
                             rel="noopener noreferrer"
                             initial={{ opacity: 0, y: 20 }}

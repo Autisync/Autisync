@@ -41,12 +41,12 @@ export const markets: Market[] = [
     },
     {
         code: "GB", name: "United Kingdom", namePt: "Reino Unido", currency: "GBP", iso: "gb",
-        phone: { display: "(+44) 788 331 7646", href: "tel:+447883317646" },
+        phone: { display: "(+44) 779 586 6571", href: "tel:+447795866571" },
         timeZones: ["Europe/London", "Europe/Belfast"], languages: ["en-gb"],
     },
     {
         code: "PT", name: "Portugal", namePt: "Portugal", currency: "EUR", iso: "pt",
-        phone: { display: "(+44) 788 331 7646", href: "tel:+447883317646" },
+        phone: { display: "(+44) 779 586 6571", href: "tel:+447795866571" },
         timeZones: ["Europe/Lisbon", "Atlantic/Azores", "Atlantic/Madeira"], languages: ["pt-pt", "pt"],
     },
 ];

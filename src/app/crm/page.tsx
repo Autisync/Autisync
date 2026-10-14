@@ -233,7 +233,7 @@ export default function CrmLandingPage() {
                             <a href="https://book.autisync.com/apps/appointments/p/autisync-agency" target="_blank" rel="noopener noreferrer">
                                 Open the booking page in a new tab
                             </a>
-                            , or message us on WhatsApp at +44 7883 317646.
+                            , or message us on WhatsApp at +44 7795 866571.
                         </p>
                     </div>
                 </section>

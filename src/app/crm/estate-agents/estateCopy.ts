@@ -63,7 +63,7 @@ export const ESTATE_COPY = {
         bookEyebrow: "Book a demo", bookTitle: "See it with your own listings.",
         bookSub: "Pick a time. We will show you the CRM with a few of your properties, and the price for your team.",
         checks: ["30 minutes, on video", "Your own properties in the demo", "No commitment"],
-        fallback: "Calendar not loading?", fallbackLink: "Open the booking page in a new tab", fallbackTail: ", or message us on WhatsApp at +44 7883 317646.",
+        fallback: "Calendar not loading?", fallbackLink: "Open the booking page in a new tab", fallbackTail: ", or message us on WhatsApp at +44 7795 866571.",
         footer: "A trading name of Maheldom Consulting, Lda",
     },
     pt: {
@@ -121,7 +121,7 @@ export const ESTATE_COPY = {
         bookEyebrow: "Marcar demonstração", bookTitle: "Veja-o com os seus próprios imóveis.",
         bookSub: "Escolha uma hora. Mostramos o CRM com alguns dos seus imóveis, e o preço para a sua equipa.",
         checks: ["30 minutos, por vídeo", "Os seus imóveis na demonstração", "Sem compromisso"],
-        fallback: "O calendário não carrega?", fallbackLink: "Abra a página de marcação num novo separador", fallbackTail: ", ou envie-nos uma mensagem no WhatsApp para +44 7883 317646.",
+        fallback: "O calendário não carrega?", fallbackLink: "Abra a página de marcação num novo separador", fallbackTail: ", ou envie-nos uma mensagem no WhatsApp para +44 7795 866571.",
         footer: "Nome comercial da Maheldom Consulting, Lda",
     },
 } as const;

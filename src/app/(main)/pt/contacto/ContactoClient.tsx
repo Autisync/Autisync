@@ -6,7 +6,7 @@ import TurnstileWidget from "@/app/components/TurnstileWidget";
 import { siteStats } from "@/lib/site-stats";
 
 const offices = [
-    { id: 1, city: "Europa", address: ["(+44) 788 331 7646"] },
+    { id: 1, city: "Europa", address: ["(+44) 779 586 6571"] },
     { id: 2, city: "Namíbia e Angola", address: ["(+244) 927 114 400", "(+264) 927 114 403"] },
     { id: 3, city: "Contacto geral", address: ["info@autisync.com"] },
 ];
@@ -191,7 +191,7 @@ export default function ContactoClient() {
                             "@type": "Organization",
                             name: "Autisync",
                             email: "info@autisync.com",
-                            telephone: "+447883317646",
+                            telephone: "+447795866571",
                             url: "https://www.autisync.com",
                         },
                     }),
