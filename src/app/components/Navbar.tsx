@@ -43,7 +43,7 @@ const solutions = [
   {
     name: "Development Services",
     description: "Web Apps · Mobile · Enterprise Systems · CMS · Integrations",
-    href: "/solutions/devServices/",
+    href: "/solutions/devServices",
     icon: Squares2X2Icon,
   },
 ];
@@ -87,8 +87,8 @@ const navLinksPt = [
 ];
 
 const callsToAction = [
-  { name: "Questionnaire",    href: "/ServiceQuestionaire/" },
-  { name: "Service Packages", href: "/servicepackage/" },
+  { name: "Questionnaire",    href: "/ServiceQuestionaire" },
+  { name: "Service Packages", href: "/servicepackage" },
 ];
 
 const navLinks = [

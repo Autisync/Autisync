@@ -14,6 +14,7 @@ const FOOTER = {
     resources: "Resources",
     links: [
       ["About Us", "/about"], ["Portfolio", "/portfolio"], ["Solutions", "/solutions/devServices"], ["Service Packages", "/servicepackage"],
+      ["Autisync CRM", "/crm"], ["CRM for Estate Agents", "/crm/estate-agents"], ["Step-Inside Websites", "/websites/step-inside"], ["Free Tools", "/tools"],
     ],
     res: [["Service Questionnaire", "/ServiceQuestionaire"], ["Contact Us", "/contact"]],
     privacy: "Privacy Policy", terms: "Terms of Use",
@@ -27,6 +28,7 @@ const FOOTER = {
     resources: "Recursos",
     links: [
       ["Sobre Nós", "/pt/sobre"], ["Portfólio", "/pt/portfolio"], ["Serviços", "/pt/servicos/desenvolvimento"], ["Preços e Pacotes", "/pt/precos"],
+      ["CRM para Imobiliárias", "/crm/imobiliarias"],
     ],
     res: [["Questionário de Serviços", "/pt/questionario"], ["Contacto", "/pt/contacto"]],
     privacy: "Política de Privacidade", terms: "Termos de Utilização",
@@ -202,12 +204,12 @@ export default function Footer() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/PrivacyPolicy/" target="_blank" className="block pb-2 text-sm hover:text-[#B28228]">
+                    <Link href="/PrivacyPolicy" target="_blank" className="block pb-2 text-sm hover:text-[#B28228]">
                       {c.privacy}
                     </Link>
                   </li>
                   <li>
-                    <Link href="/TermsofUse/" target="_blank" className="block pb-2 text-sm hover:text-[#B28228]">
+                    <Link href="/TermsofUse" target="_blank" className="block pb-2 text-sm hover:text-[#B28228]">
                       {c.terms}
                     </Link>
                   </li>

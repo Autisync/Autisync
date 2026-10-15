@@ -2,8 +2,13 @@ import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://www.autisync.com";
 
+// When the pages last really changed. A lastmod of "now" on every request
+// tells Google nothing, so it learns to ignore it; a real date gets pages
+// recrawled when they change. Bump it when the site's content changes.
+const UPDATED = new Date("2026-10-15");
+
 export default function sitemap(): MetadataRoute.Sitemap {
-    const now = new Date();
+    const now = UPDATED;
 
     return [
         {
@@ -93,12 +98,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: now,
             changeFrequency: "monthly",
             priority: 0.7,
-        },
-        {
-            url: `${BASE_URL}/llms.txt`,
-            lastModified: now,
-            changeFrequency: "monthly",
-            priority: 0.5,
         },
         {
             url: `${BASE_URL}/pt/sobre`,

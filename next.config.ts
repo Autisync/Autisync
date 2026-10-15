@@ -13,8 +13,8 @@ const nextConfig: NextConfig = {
             },
         ],
     },
-    // /solutions has no index page (only sub-pages) but is linked from the
-    // sitemap; send visitors and crawlers to the main services page.
+    // /solutions has no index page (only sub-pages); send visitors and
+    // crawlers to the main services page.
     // Marketing assets (LinkedIn graphics) are fetched cross-origin by the
     // LinkedIn composer when we attach them to posts.
     async headers() {
@@ -27,7 +27,11 @@ const nextConfig: NextConfig = {
     },
     async redirects() {
         return [
-            { source: "/solutions", destination: "/solutions/devServices", permanent: false },
+            { source: "/solutions", destination: "/solutions/devServices", permanent: true },
+            // Old addresses Google still asks for (Search Console: Not found).
+            { source: "/home", destination: "/", permanent: true },
+            { source: "/homepage", destination: "/", permanent: true },
+            { source: "/messaging", destination: "/crm", permanent: true },
         ];
     },
 };
