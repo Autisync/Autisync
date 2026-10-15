@@ -173,9 +173,10 @@ const websiteSchema = {
 
 // Autisync's own visitor tracker (CRM → Visitors): which pages people open,
 // which sections they reach, where they stop, and bookings made. No cookies.
-// Set NEXT_PUBLIC_AUTISYNC_TRACK_KEY to the key from Visitors → Tracking →
-// "Track another website"; without it nothing loads.
-const TRACK_KEY = process.env.NEXT_PUBLIC_AUTISYNC_TRACK_KEY;
+// The key is autisync.com's, from Visitors → Tracking. It is public (it sits
+// in the page), so it lives here; NEXT_PUBLIC_AUTISYNC_TRACK_KEY overrides it
+// and an empty value turns tracking off.
+const TRACK_KEY = process.env.NEXT_PUBLIC_AUTISYNC_TRACK_KEY ?? "as_8977a056d170c44dc266d420";
 const APP_URL = (process.env.NEXT_PUBLIC_AUTISYNC_APP_URL || "https://app.autisync.com").replace(/\/+$/, "");
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
