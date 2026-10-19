@@ -21,6 +21,7 @@ export const EN_TO_PT: Record<string, string> = {
     "/crm": "/pt/crm",
     "/crm/estate-agents": "/crm/imobiliarias",
     "/websites/step-inside": "/pt/websites/demonstracao",
+    "/quiz": "/pt/diagnostico",
     "/tools": "/pt/ferramentas",
     "/tools/missed-call-cost": "/pt/ferramentas/custo-chamadas-perdidas",
     "/tools/website-cost": "/pt/ferramentas/custo-website",

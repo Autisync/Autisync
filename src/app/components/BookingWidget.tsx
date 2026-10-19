@@ -87,7 +87,10 @@ function money(price: string | null, currency: string, lang: Lang) {
     catch { return `${n} ${currency}`; }
 }
 
-export default function BookingWidget({ lang = "en" }: { lang?: Lang }) {
+export interface BookingPrefill { name?: string; email?: string; phone?: string; company?: string; topic?: string }
+
+/** prefill: details the visitor has already given on this page (the quiz), so they are not asked twice. */
+export default function BookingWidget({ lang = "en", prefill }: { lang?: Lang; prefill?: BookingPrefill }) {
     const t = COPY[lang];
     const locale = lang === "pt" ? "pt-PT" : "en-GB";
 
@@ -99,7 +102,10 @@ export default function BookingWidget({ lang = "en" }: { lang?: Lang }) {
     const [offset, setOffset] = useState(0);
     const [day, setDay] = useState<Ymd | null>(null);
     const [slot, setSlot] = useState<Slot | null>(null);
-    const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", topic: "", website: "" });
+    const [form, setForm] = useState({
+        name: prefill?.name || "", email: prefill?.email || "", phone: prefill?.phone || "",
+        company: prefill?.company || "", topic: prefill?.topic || "", website: "",
+    });
     const [formErr, setFormErr] = useState<string | null>(null);
     const [sending, setSending] = useState(false);
     const [sendErr, setSendErr] = useState<string | null>(null);
