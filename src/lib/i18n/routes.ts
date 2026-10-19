@@ -18,6 +18,15 @@ export const EN_TO_PT: Record<string, string> = {
     "/solutions/graphicDesign": "/pt/servicos/design-grafico",
     "/solutions/seo": "/pt/servicos/seo-marketing",
     "/solutions/itConsultation": "/pt/servicos/consultoria-ti",
+    "/crm": "/pt/crm",
+    "/crm/estate-agents": "/crm/imobiliarias",
+    "/websites/step-inside": "/pt/websites/demonstracao",
+    "/tools": "/pt/ferramentas",
+    "/tools/missed-call-cost": "/pt/ferramentas/custo-chamadas-perdidas",
+    "/tools/website-cost": "/pt/ferramentas/custo-website",
+    "/legal/privacy": "/pt/legal/privacidade",
+    "/legal/terms": "/pt/legal/termos",
+    "/legal/data-deletion": "/pt/legal/eliminacao-de-dados",
 };
 
 export const PT_TO_EN: Record<string, string> = Object.fromEntries(

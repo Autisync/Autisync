@@ -53,12 +53,18 @@ const logos = [
     },
 ];
 
-export default function Clients({ title = "Trusted by" } = {}) {
+/** "Florentek logo" → "Logótipo Florentek" for the Portuguese page. */
+const ptAlt = (alt) => `Logótipo ${alt.replace(/\s*logo$/i, "")}`;
+
+/** @param {{ title?: string, lang?: "en" | "pt" }} [props] */
+export default function Clients({ title, lang = "en" } = {}) {
+    const pt = lang === "pt";
+    const heading = title ?? (pt ? "Empresas que confiam em nós" : "Trusted by");
     return (
         <div className="py-16 bg-gray-100 sm:py-16">
             <div className="px-6 mx-auto max-w-7xl lg:px-8">
                 <h2 className="text-3xl font-semibold leading-8 text-center text-gray-700 ">
-                    {title}
+                    {heading}
                 </h2>
                 <div className="grid items-center max-w-lg grid-cols-3 mx-auto mt-10 gap-x-4 gap-y-10 sm:max-w-xl sm:grid-cols-5 sm:gap-x-2 lg:mx-0 lg:max-w-none lg:grid-cols-5">
                     {logos.map((logo) => {
@@ -66,7 +72,7 @@ export default function Clients({ title = "Trusted by" } = {}) {
                             <Image
                                 className="object-contain w-full col-span-2 max-h-22 lg:col-span-1"
                                 src={logo.src}
-                                alt={logo.alt}
+                                alt={pt ? ptAlt(logo.alt) : logo.alt}
                                 width={500}
                                 height={500}
                             />

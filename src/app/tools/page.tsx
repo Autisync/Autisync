@@ -7,7 +7,10 @@ import f from "@/app/components/funnel.module.css";
 export const metadata: Metadata = {
     title: { absolute: "Free tools for small businesses | Autisync" },
     description: "Free calculators for local businesses: what missed calls cost you, and what a website costs in the UK.",
-    alternates: { canonical: "https://www.autisync.com/tools" },
+    alternates: {
+        canonical: "https://www.autisync.com/tools",
+        languages: { en: "https://www.autisync.com/tools", pt: "https://www.autisync.com/pt/ferramentas", "x-default": "https://www.autisync.com/tools" },
+    },
 };
 
 // Each tool answers something people search for, then points to the Autisync product that solves it.

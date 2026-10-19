@@ -5,7 +5,10 @@ export const metadata: Metadata = {
     title: "Autisync CRM Terms of Service",
     description:
         "The terms governing use of Autisync CRM: accounts, acceptable use, data ownership, third-party channels, payment and termination.",
-    alternates: { canonical: "https://www.autisync.com/legal/terms" },
+    alternates: {
+        canonical: "https://www.autisync.com/legal/terms",
+        languages: { en: "https://www.autisync.com/legal/terms", pt: "https://www.autisync.com/pt/legal/termos", "x-default": "https://www.autisync.com/legal/terms" },
+    },
     robots: { index: true, follow: true },
 };
 

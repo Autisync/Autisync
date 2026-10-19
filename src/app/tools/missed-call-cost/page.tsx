@@ -12,7 +12,10 @@ const DESCRIPTION =
 export const metadata: Metadata = {
     title: { absolute: TITLE },
     description: DESCRIPTION,
-    alternates: { canonical: URL },
+    alternates: {
+        canonical: URL,
+        languages: { en: "https://www.autisync.com/tools/missed-call-cost", pt: "https://www.autisync.com/pt/ferramentas/custo-chamadas-perdidas", "x-default": "https://www.autisync.com/tools/missed-call-cost" },
+    },
     openGraph: { type: "website", url: URL, siteName: "Autisync", title: TITLE, description: DESCRIPTION },
 };
 

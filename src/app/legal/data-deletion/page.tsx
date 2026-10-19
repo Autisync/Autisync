@@ -5,7 +5,10 @@ export const metadata: Metadata = {
     title: "Deleting your data",
     description:
         "How to have data removed that reached Autisync CRM through Facebook, Instagram or WhatsApp, and what happens when a business closes its account.",
-    alternates: { canonical: "https://www.autisync.com/legal/data-deletion" },
+    alternates: {
+        canonical: "https://www.autisync.com/legal/data-deletion",
+        languages: { en: "https://www.autisync.com/legal/data-deletion", pt: "https://www.autisync.com/pt/legal/eliminacao-de-dados", "x-default": "https://www.autisync.com/legal/data-deletion" },
+    },
     robots: { index: true, follow: true },
 };
 

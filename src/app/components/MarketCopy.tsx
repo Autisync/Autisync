@@ -2,6 +2,7 @@
 
 import { useMarket } from "@/app/components/PackagePricing";
 import { formatPrice, websiteTiers } from "@/lib/website-packages";
+import { useLang } from "@/lib/i18n/lang";
 
 /**
  * The one hero sentence that names where we work, written for the visitor's
@@ -13,7 +14,37 @@ import { formatPrice, websiteTiers } from "@/lib/website-packages";
  */
 export function HeroMarketLine() {
     const { market, ready } = useMarket();
+    const lang = useLang();
     const from = formatPrice(websiteTiers[0].price[market.currency], market.currency);
+    if (lang === "pt") {
+        // Portuguese needs the right preposition per country: em Angola, na Namíbia, no Reino Unido.
+        const inMarket: Record<string, string> = { AO: "em", NA: "na", GB: "no", PT: "em" };
+        const othersPt: Record<string, string> = {
+            AO: "no Reino Unido, em Portugal e na Namíbia",
+            NA: "em Angola, no Reino Unido e em Portugal",
+            GB: "em Portugal, em Angola e na Namíbia",
+            PT: "no Reino Unido, em Angola e na Namíbia",
+        };
+        if (!ready) {
+            return (
+                <p className="mt-4 text-lg text-gray-200">
+                    A Autisync cria websites, identidades de marca, gestão de redes sociais e
+                    automação com IA para empresas que querem crescer em Angola, na Namíbia, no Reino Unido
+                    e em Portugal. Tudo feito por nós, do primeiro clique à reunião marcada.
+                </p>
+            );
+        }
+        return (
+            <p className="mt-4 text-lg text-gray-200">
+                A Autisync cria websites, identidades de marca, gestão de redes sociais e automação com IA
+                para empresas que querem crescer {inMarket[market.code]}{" "}
+                <span className="font-semibold text-white">{market.namePt}</span>
+                {" "}e também {othersPt[market.code]}. Websites a partir de{" "}
+                <span className="font-semibold text-white">{from}</span>. Tudo feito por nós,
+                do primeiro clique à reunião marcada.
+            </p>
+        );
+    }
     const others: Record<string, string> = {
         AO: "the UK, Portugal and Namibia",
         NA: "Angola, the UK and Portugal",

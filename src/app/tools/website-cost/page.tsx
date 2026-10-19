@@ -13,7 +13,10 @@ const DESCRIPTION =
 export const metadata: Metadata = {
     title: { absolute: TITLE },
     description: DESCRIPTION,
-    alternates: { canonical: URL },
+    alternates: {
+        canonical: URL,
+        languages: { en: "https://www.autisync.com/tools/website-cost", pt: "https://www.autisync.com/pt/ferramentas/custo-website", "x-default": "https://www.autisync.com/tools/website-cost" },
+    },
     openGraph: { type: "website", url: URL, siteName: "Autisync", title: TITLE, description: DESCRIPTION },
 };
 

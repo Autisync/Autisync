@@ -19,6 +19,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useLang, type Lang } from "@/lib/i18n/lang";
 
 export type LegalBlock = {
     heading?: string;
@@ -41,6 +42,8 @@ export type LegalDocumentProps = {
     /** The boxed paragraph above the first section. */
     intro: string;
     sections: LegalSection[];
+    /** Defaults to the page's address (/pt/… is Portuguese). */
+    lang?: Lang;
 };
 
 /**
@@ -54,7 +57,7 @@ export type LegalDocumentProps = {
 // Two Google addresses are linked as well: the policy the Limited Use
 // statement refers to, and the page where a person revokes our access. A
 // privacy policy that names them should let the reader reach them.
-const LINKABLE = /([\w.+-]+@[\w-]+\.[\w.-]+)|(autisync\.com\/legal\/[a-z-]+)|((?:developers|myaccount)\.google\.com\/[\w\/-]+)/g;
+const LINKABLE = /([\w.+-]+@[\w-]+\.[\w.-]+)|(autisync\.com\/(?:pt\/)?legal\/[a-z-]+)|((?:developers|myaccount)\.google\.com\/[\w\/-]+)/g;
 
 function linkify(text: string): React.ReactNode[] {
     const out: React.ReactNode[] = [];
@@ -81,11 +84,30 @@ function linkify(text: string): React.ReactNode[] {
     return out;
 }
 
-const LEGAL_LINKS = [
-    { href: "/legal/privacy", label: "Privacy" },
-    { href: "/legal/terms", label: "Terms" },
-    { href: "/legal/data-deletion", label: "Data deletion" },
-];
+const LEGAL_LINKS: Record<Lang, { href: string; label: string }[]> = {
+    en: [
+        { href: "/legal/privacy", label: "Privacy" },
+        { href: "/legal/terms", label: "Terms" },
+        { href: "/legal/data-deletion", label: "Data deletion" },
+    ],
+    pt: [
+        { href: "/pt/legal/privacidade", label: "Privacidade" },
+        { href: "/pt/legal/termos", label: "Termos" },
+        { href: "/pt/legal/eliminacao-de-dados", label: "Eliminação de dados" },
+    ],
+};
+
+/** The words the shell itself says; the documents bring their own. */
+const UI: Record<Lang, { lastUpdated: string; contents: string; also: string; productOf: string; prevails: string | null }> = {
+    en: { lastUpdated: "Last updated", contents: "Contents", also: "Also", productOf: "Autisync is a product of", prevails: null },
+    pt: {
+        lastUpdated: "Última atualização",
+        contents: "Índice",
+        also: "Ver também",
+        productOf: "A Autisync é um produto da",
+        prevails: "Em caso de divergência, prevalece a versão em inglês.",
+    },
+};
 
 export default function LegalDocument({
     title,
@@ -93,7 +115,11 @@ export default function LegalDocument({
     standfirst,
     intro,
     sections,
+    lang: langProp,
 }: LegalDocumentProps) {
+    const urlLang = useLang();
+    const lang = langProp ?? urlLang;
+    const ui = UI[lang];
     return (
         <main className="min-h-screen bg-gray-50">
             {/* ── Hero ─────────────────────────────────────────────────────────── */}
@@ -126,8 +152,18 @@ export default function LegalDocument({
                         transition={{ duration: 0.55, delay: 0.12 }}
                         className="mt-4 text-sm text-gray-400"
                     >
-                        Last updated: {lastUpdated}
+                        {ui.lastUpdated}: {lastUpdated}
                     </motion.p>
+                    {ui.prevails && (
+                        <motion.p
+                            initial={{ opacity: 0, y: 16 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.55, delay: 0.15 }}
+                            className="mt-1 text-xs italic text-gray-500"
+                        >
+                            {ui.prevails}
+                        </motion.p>
+                    )}
                     <motion.p
                         initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -145,7 +181,7 @@ export default function LegalDocument({
                     <aside className="hidden lg:block">
                         <div className="sticky top-24">
                             <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-[#b98b2f]">
-                                Contents
+                                {ui.contents}
                             </p>
                             <nav className="space-y-1">
                                 {sections.map((s) => (
@@ -160,10 +196,10 @@ export default function LegalDocument({
                             </nav>
 
                             <p className="mt-8 mb-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-[#b98b2f]">
-                                Also
+                                {ui.also}
                             </p>
                             <nav className="space-y-1">
-                                {LEGAL_LINKS.map((l) => (
+                                {LEGAL_LINKS[lang].map((l) => (
                                     <Link
                                         key={l.href}
                                         href={l.href}
@@ -276,8 +312,7 @@ export default function LegalDocument({
                                 </a>
                             </p>
                             <p className="mt-4 text-xs text-gray-400">
-                                © {new Date().getFullYear()} Maheldom Consulting, Lda. Autisync is a product of
-                                Maheldom Consulting, Lda.
+                                © {new Date().getFullYear()} Maheldom Consulting, Lda. {ui.productOf} Maheldom Consulting, Lda.
                             </p>
                         </div>
                     </div>

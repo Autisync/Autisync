@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import s from "./StepInside.module.css";
+import { pick, useLang } from "@/lib/i18n/lang";
 
 /**
  * "Step inside" hero: a phone-filmed walk into the business, played by
@@ -12,6 +13,9 @@ import s from "./StepInside.module.css";
  *
  * Frames live in /public/<dir>/f_0001.webp … f_NNNN.webp. Pass a portrait
  * sequence as `mobile` so phones get a vertical walk-in.
+ *
+ * Its own built-in words (scroll hint, fallback labels) follow the page's
+ * language: Portuguese under /pt/…, English everywhere else.
  */
 export type FrameSet = { dir: string; count: number };
 
@@ -35,6 +39,7 @@ type Props = {
 const frameUrl = (set: FrameSet, i: number) => `${set.dir}/f_${String(i + 1).padStart(4, "0")}.webp`;
 
 export default function StepInside({ desktop, mobile, label, logo, poster, children, length = 4, overlay }: Props) {
+    const lang = useLang();
     const sectionRef = useRef<HTMLElement | null>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const introRef = useRef<HTMLDivElement | null>(null);
@@ -132,21 +137,21 @@ export default function StepInside({ desktop, mobile, label, logo, poster, child
     }, [desktop, mobile]);
 
     return (
-        <section ref={sectionRef} className={s.walk} style={{ height: `${length * 100}vh` }} aria-label={label ?? "Walk-in video"}>
+        <section ref={sectionRef} className={s.walk} style={{ height: `${length * 100}vh` }} aria-label={label ?? pick(lang, "Walk-in video", "Vídeo de entrada")}>
             <div className={s.sticky}>
                 <canvas
                     ref={canvasRef}
                     className={s.canvas}
                     style={poster ? { backgroundImage: `url(${poster})` } : undefined}
                     role="img"
-                    aria-label={label ?? "A walk from the street into the business"}
+                    aria-label={label ?? pick(lang, "A walk from the street into the business", "Um passeio da rua até ao interior do espaço")}
                 />
                 <div className={s.shade} aria-hidden="true" />
                 {children && <div ref={introRef} className={s.intro}>{children}</div>}
                 {logo && <div ref={logoRef} className={s.logo}>{logo}</div>}
                 {label && <div className={s.label}>{label}</div>}
                 {overlay && <div className={s.overlay}>{overlay}</div>}
-                <div ref={hintRef} className={s.hint} aria-hidden="true">Scroll to step inside<span /></div>
+                <div ref={hintRef} className={s.hint} aria-hidden="true">{pick(lang, "Scroll to step inside", "Deslize para entrar")}<span /></div>
             </div>
         </section>
     );

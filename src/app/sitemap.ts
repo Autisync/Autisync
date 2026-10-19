@@ -1,11 +1,12 @@
 import type { MetadataRoute } from "next";
+import { EN_TO_PT } from "@/lib/i18n/routes";
 
 const BASE_URL = "https://www.autisync.com";
 
 // When the pages last really changed. A lastmod of "now" on every request
 // tells Google nothing, so it learns to ignore it; a real date gets pages
 // recrawled when they change. Bump it when the site's content changes.
-const UPDATED = new Date("2026-10-15");
+const UPDATED = new Date("2026-10-19");
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const now = UPDATED;
@@ -54,6 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: now,
             changeFrequency: "monthly",
             priority: 0.9,
+            alternates: { languages: { en: `${BASE_URL}/crm`, pt: `${BASE_URL}${EN_TO_PT["/crm"]}` } },
         },
         {
             url: `${BASE_URL}/crm/estate-agents`,
@@ -160,12 +162,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "yearly",
             priority: 0.3,
         },
-        // Step-inside websites and the free tools (SEO problem pages).
-        ...["/websites/step-inside", "/tools", "/tools/missed-call-cost", "/tools/website-cost"].map((path) => ({
-            url: `${BASE_URL}${path}`,
+        // Step-inside websites and the free tools (SEO problem pages), each
+        // with its Portuguese twin.
+        ...["/websites/step-inside", "/tools", "/tools/missed-call-cost", "/tools/website-cost"].flatMap((path) => {
+            const languages = { en: `${BASE_URL}${path}`, pt: `${BASE_URL}${EN_TO_PT[path]}` };
+            const priority = path === "/tools" ? 0.6 : 0.8;
+            return [
+                { url: languages.en, lastModified: now, changeFrequency: "monthly" as const, priority, alternates: { languages } },
+                { url: languages.pt, lastModified: now, changeFrequency: "monthly" as const, priority, alternates: { languages } },
+            ];
+        }),
+        // The CRM page in Portuguese, and the legal pages' Portuguese twins.
+        ...["/crm", "/legal/privacy", "/legal/terms", "/legal/data-deletion"].map((path) => ({
+            url: `${BASE_URL}${EN_TO_PT[path]}`,
             lastModified: now,
-            changeFrequency: "monthly" as const,
-            priority: path === "/tools" ? 0.6 : 0.8,
+            changeFrequency: path === "/crm" ? ("monthly" as const) : ("yearly" as const),
+            priority: path === "/crm" ? 0.9 : 0.3,
+            alternates: { languages: { en: `${BASE_URL}${path}`, pt: `${BASE_URL}${EN_TO_PT[path]}` } },
         })),
         // Autisync CRM's own legal pages. Meta's App Review fetches these, so
         // they need to be indexable and reachable, not only linked.
@@ -174,18 +187,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: now,
             changeFrequency: "yearly",
             priority: 0.3,
+            alternates: { languages: { en: `${BASE_URL}/legal/privacy`, pt: `${BASE_URL}${EN_TO_PT["/legal/privacy"]}` } },
         },
         {
             url: `${BASE_URL}/legal/terms`,
             lastModified: now,
             changeFrequency: "yearly",
             priority: 0.3,
+            alternates: { languages: { en: `${BASE_URL}/legal/terms`, pt: `${BASE_URL}${EN_TO_PT["/legal/terms"]}` } },
         },
         {
             url: `${BASE_URL}/legal/data-deletion`,
             lastModified: now,
             changeFrequency: "yearly",
             priority: 0.3,
+            alternates: { languages: { en: `${BASE_URL}/legal/data-deletion`, pt: `${BASE_URL}${EN_TO_PT["/legal/data-deletion"]}` } },
         },
     ];
 }

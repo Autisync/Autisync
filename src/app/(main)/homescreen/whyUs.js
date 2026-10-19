@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { localHref } from "@/lib/i18n/routes";
 
 /* ===========================================================
    BRAND 3D GOLD BADGE ICONS (Matches Landing Page Style)
@@ -48,28 +49,50 @@ function BulletIcon() {
    Reasons & Tags
    ========================================== */
 
-const reasons = [
-  "AI-driven automation & CRM systems",
-  "Bespoke branding & design assets",
-  "Custom backend & app integrations",
-  "Lead generation & review campaigns",
-  "Mobile-ready, scalable solutions",
-];
+const reasons = {
+  en: [
+    "AI-driven automation & CRM systems",
+    "Bespoke branding & design assets",
+    "Custom backend & app integrations",
+    "Lead generation & review campaigns",
+    "Mobile-ready, scalable solutions",
+  ],
+  pt: [
+    "Automação com IA e sistemas de CRM",
+    "Branding e design feitos à medida",
+    "Integrações de sistemas e aplicações à medida",
+    "Campanhas para angariar contactos e avaliações",
+    "Soluções escaláveis e adaptadas a telemóvel",
+  ],
+};
 
-const tags = [
-  "AUTOMATION",
-  "RELIABILITY",
-  "PREMIUM DESIGN",
-  "99% UPTIME",
-  "SPEED",
-  "CUSTOMER-FIRST",
-];
+const tags = {
+  en: [
+    "AUTOMATION",
+    "RELIABILITY",
+    "PREMIUM DESIGN",
+    "99% UPTIME",
+    "SPEED",
+    "CUSTOMER-FIRST",
+  ],
+  pt: [
+    "AUTOMAÇÃO",
+    "FIABILIDADE",
+    "DESIGN PREMIUM",
+    "99% DE DISPONIBILIDADE",
+    "RAPIDEZ",
+    "O CLIENTE PRIMEIRO",
+  ],
+};
 
 /* ==========================================
    MAIN COMPONENT
    ========================================== */
 
-export default function WhyUs() {
+export default function WhyUs({ lang = "en" } = {}) {
+  const pt = lang === "pt";
+  const t = (en, ptText) => (pt ? ptText : en);
+  const l = pt ? "pt" : "en";
   return (
     <section className="relative py-20 bg-gray-100">
       {/* top wedge */}
@@ -93,17 +116,17 @@ export default function WhyUs() {
           <div className="w-full px-4 mt-20 ml-auto mr-auto md:w-6/12">
             <div className="relative flex flex-wrap justify-center gap-4">
               <img
-                alt="Automate Business"
+                alt={t("Automate Business", "Automatizar o negócio")}
                 className="w-full md:w-5/12 rounded-lg shadow-xl transition-transform duration-300 hover:scale-[1.02]"
                 src="https://images.pexels.com/photos/2422278/pexels-photo-2422278.jpeg"
               />
               <img
-                alt="Team Planning"
+                alt={t("Team Planning", "Planeamento em equipa")}
                 className="w-full md:w-5/12 rounded-lg shadow-xl transition-transform duration-300 hover:scale-[1.02]"
                 src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg"
               />
               <img
-                alt="Office Launch"
+                alt={t("Office Launch", "Lançamento de um projeto")}
                 className="w-full md:w-10/12 rounded-lg shadow-xl transition-transform duration-300 hover:scale-[1.02]"
                 src="https://images.pexels.com/photos/34521/space-shuttle-lift-off-liftoff-nasa.jpg"
               />
@@ -117,7 +140,7 @@ export default function WhyUs() {
               <RocketBadge className="mb-6" />
 
               <h3 className="text-3xl font-semibold text-gray-800">
-                Why Businesses Choose{" "}
+                {t("Why Businesses Choose", "Porque é que as empresas escolhem a")}{" "}
                 <span className="font-bold text-[var(--autisync-gold,#b98b2f)]">
                   AUTISYNC
                 </span>
@@ -125,7 +148,7 @@ export default function WhyUs() {
 
               {/* Bullet List */}
               <ul className="mt-6 space-y-4">
-                {reasons.map((text, index) => (
+                {reasons[l].map((text, index) => (
                   <li
                     key={index}
                     className="group flex items-start gap-3 transition-transform duration-200 hover:translate-x-1"
@@ -140,7 +163,7 @@ export default function WhyUs() {
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mt-6">
-                {tags.map((tag) => (
+                {tags[l].map((tag) => (
                   <span
                     key={tag}
                     className="inline-block px-3 py-1 text-xs font-semibold tracking-wide text-gray-100 uppercase bg-gray-900 rounded-full shadow transition-all duration-200 hover:text-[var(--autisync-gold,#b98b2f)]"
@@ -154,9 +177,9 @@ export default function WhyUs() {
 
               <Link
                   className="inline-flex justify-center mt-4 px-4 py-2 text-sm font-medium text-white bg-[var(--autisync-gold,#b98b2f)] border border-transparent rounded-md shadow-lg hover:bg-[#1C1C1C] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:mr-2 transition-all hover:shadow-[0_16px_30px_rgba(0,0,0,0.18)]/10"
-                  href="/servicepackage"
+                  href={localHref("/servicepackage", pt)}
               >
-                Service Packages
+                {t("Service Packages", "Pacotes de serviços")}
               </Link>
               </div>
             </div>

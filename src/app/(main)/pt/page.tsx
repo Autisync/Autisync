@@ -1,4 +1,9 @@
 import type { Metadata } from "next";
+import Landing from "@/app/(main)/homescreen/landing";
+import WhyUs from "@/app/(main)/homescreen/whyUs";
+import Packages from "@/app/(main)/homescreen/packages";
+import Team from "@/app/(main)/homescreen/team";
+import Tools from "@/app/(main)/homescreen/tools";
 import Clients from "@/app/(main)/solutions/clients";
 import { PtHomeOffer } from "./PtPackages";
 import { siteStats } from "@/lib/site-stats";
@@ -30,32 +35,32 @@ const services = [
     {
         title: "Criação de Websites",
         text: "Websites institucionais rápidos, bilingues e otimizados para o Google, com domínio, alojamento e e-mail incluídos.",
-        href: "/solutions/devServices",
+        href: "/pt/servicos/desenvolvimento",
     },
     {
         title: "Branding e Identidade Visual",
         text: "Logótipo, manual de normas, papelaria, fardas, EPI e grafismo de viaturas para a sua empresa.",
-        href: "/solutions/graphicDesign",
+        href: "/pt/servicos/design-grafico",
     },
     {
         title: "Gestão de Redes Sociais",
         text: "Publicações, reels e anúncios no Instagram, Facebook e LinkedIn que geram contactos, não só gostos.",
-        href: "/solutions/seo",
+        href: "/pt/servicos/seo-marketing",
     },
     {
         title: "SEO e Marketing Digital",
         text: "Apareça no Google e nas respostas de IA quando os seus clientes procuram o que faz.",
-        href: "/solutions/seo",
+        href: "/pt/servicos/seo-marketing",
     },
     {
         title: "Automação com IA e CRM",
         text: "Formulários, WhatsApp e e-mail ligados a um só CRM, para que nenhum contacto fique sem resposta.",
-        href: "/crm",
+        href: "/pt/crm",
     },
     {
         title: "Consultoria e Suporte de TI",
         text: "Configuração de equipamentos, redes, videovigilância e suporte técnico para o seu escritório.",
-        href: "/solutions/itConsultation",
+        href: "/pt/servicos/consultoria-ti",
     },
 ];
 
@@ -66,45 +71,29 @@ const stats = [
     { value: `${siteStats.countries}`, label: "países: Angola, Namíbia, Reino Unido, Portugal" },
 ];
 
-const WHATSAPP = `https://wa.me/447795866571?text=${encodeURIComponent("Olá Autisync, gostaria de falar sobre um projeto.")}`;
-
+/**
+ * The Portuguese home is the English home, section for section, in Portuguese
+ * (each section takes lang="pt"). The services grid and figures are extra
+ * Portuguese-only search copy; the launch bundle is the PT headline offer.
+ */
 export default function PtHome() {
     return (
         <div lang="pt">
-            {/* Hero */}
-            <section className="bg-[#1C1C1C] pt-32 pb-24 text-center text-white">
-                <div className="max-w-4xl px-6 mx-auto">
-                    <p className="text-sm font-semibold tracking-wide uppercase text-[#d1a94c]">
-                        Agência digital · Luanda · Windhoek · Lisboa · Londres
-                    </p>
-                    <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">
-                        Websites, marca e marketing digital para empresas que querem crescer
-                    </h1>
-                    <p className="mt-6 text-lg text-gray-300">
-                        A Autisync cria websites, identidades de marca, gestão de redes sociais e automação com IA
-                        para empresas em Angola, na Namíbia e em Portugal. Tudo feito por nós, do primeiro clique à
-                        reunião marcada.
-                    </p>
-                    <div className="flex flex-col justify-center gap-3 mt-8 sm:flex-row">
-                        <a
-                            href={WHATSAPP}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-6 py-3 font-semibold text-white rounded-md shadow-lg bg-[#B28228] hover:bg-[#d1a94c] transition"
-                        >
-                            Falar no WhatsApp
-                        </a>
-                        <a
-                            href="/pt/precos"
-                            className="px-6 py-3 font-semibold text-white border rounded-md border-white/40 hover:bg-white hover:text-[#1C1C1C] transition"
-                        >
-                            Ver preços
-                        </a>
-                    </div>
-                </div>
-            </section>
+            <Landing lang="pt" />
+            <Clients lang="pt" title="Empresas que confiam em nós" />
 
-            <Clients title="Empresas que confiam em nós" />
+            {/* Proof */}
+            <section className="py-16 bg-gray-100">
+                <dl className="grid max-w-5xl grid-cols-2 gap-8 px-6 mx-auto text-center lg:grid-cols-4">
+                    {stats.map((s) => (
+                        <div key={s.label}>
+                            <dt className="sr-only">{s.label}</dt>
+                            <dd className="text-4xl font-extrabold text-[#B28228]">{s.value}</dd>
+                            <dd className="mt-1 text-sm text-gray-600">{s.label}</dd>
+                        </div>
+                    ))}
+                </dl>
+            </section>
 
             {/* Services */}
             <section aria-labelledby="pt-servicos" className="py-20 bg-white">
@@ -127,20 +116,11 @@ export default function PtHome() {
                 </div>
             </section>
 
-            {/* Proof */}
-            <section className="py-16 bg-gray-100">
-                <dl className="grid max-w-5xl grid-cols-2 gap-8 px-6 mx-auto text-center lg:grid-cols-4">
-                    {stats.map((s) => (
-                        <div key={s.label}>
-                            <dt className="sr-only">{s.label}</dt>
-                            <dd className="text-4xl font-extrabold text-[#B28228]">{s.value}</dd>
-                            <dd className="mt-1 text-sm text-gray-600">{s.label}</dd>
-                        </div>
-                    ))}
-                </dl>
-            </section>
+            <WhyUs lang="pt" />
+            <Team lang="pt" />
+            <Packages />
 
-            {/* Offer */}
+            {/* Offer: the brand + website bundle, which the website cards above do not show */}
             <section aria-labelledby="pt-oferta" className="py-20 bg-[#F9F9F9]">
                 <div className="px-6 mx-auto max-w-7xl">
                     <div className="max-w-3xl mx-auto text-center">
@@ -157,6 +137,8 @@ export default function PtHome() {
                     </div>
                 </div>
             </section>
+
+            <Tools lang="pt" />
         </div>
     );
 }

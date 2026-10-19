@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { HeroMarketLine } from "@/app/components/MarketCopy";
+import { localHref } from "@/lib/i18n/routes";
 
 /* ========= 3D Icon Wrapper (with hover) ========= */
 
@@ -197,7 +198,9 @@ const WhoWeAreIcon = ({ className = "w-6 h-6" }) => (
     </svg>
 );
 
-export default function Landing() {
+export default function Landing({ lang = "en" } = {}) {
+  const pt = lang === "pt";
+  const t = (en, ptText) => (pt ? ptText : en);
   return (
     <>
       {/* Service info */}
@@ -221,17 +224,20 @@ export default function Landing() {
             <div className="w-full px-4 ml-auto mr-auto text-center lg:w-8/12">
               <div className="p-2">
                 <h1 className="pb-4 text-5xl font-semibold text-white">
-                  We Systemize Your Success.
+                  {t("We Systemize Your Success.", "Sistematizamos o seu sucesso.")}
                 </h1>
                 <p className="font-thin text-gray-200">
-                  From branding to backend - we automate your journey.
+                  {t(
+                    "From branding to backend - we automate your journey.",
+                    "Da marca aos sistemas — automatizamos todo o seu percurso."
+                  )}
                 </p>
                 <HeroMarketLine />
               </div>
               <br />
-                <Link href={"/ServiceQuestionaire"}
+                <Link href={localHref("/ServiceQuestionaire", pt)}
                       className="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-[var(--autisync-gold,#b98b2f)] border border-transparent rounded-md shadow-lg hover:bg-[#1C1C1C] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-                >Get Started with Us</Link>
+                >{t("Get Started with Us", "Comece connosco")}</Link>
             </div>
           </div>
         </div>
@@ -250,12 +256,13 @@ export default function Landing() {
                     <MarketingSeoIcon className="w-5 h-5 text-[var(--autisync-gold,#b98b2f)]" />
                   </ServiceIcon3D>
                   <h6 className="text-xl font-semibold text-gray-800">
-                    Marketing &amp; SEO
+                    {t("Marketing & SEO", "Marketing e SEO")}
                   </h6>
                   <p className="mt-2 mb-4 text-gray-500">
-                    Your virtual visual, including social media management needs
-                    to achieve the goal of increasing customer satisfaction and
-                    brand awareness to target audience.
+                    {t(
+                      "Your virtual visual, including social media management needs to achieve the goal of increasing customer satisfaction and brand awareness to target audience.",
+                      "A sua imagem digital, incluindo a gestão das redes sociais, pensada para aumentar a satisfação dos clientes e dar a conhecer a sua marca ao público certo."
+                    )}
                   </p>
                 </div>
               </div>
@@ -269,13 +276,13 @@ export default function Landing() {
                     <WebDevIcon className="w-5 h-5 text-[var(--autisync-gold,#b98b2f)]" />
                   </ServiceIcon3D>
                   <h6 className="text-xl font-semibold text-gray-800">
-                    Web Development
+                    {t("Web Development", "Desenvolvimento Web")}
                   </h6>
                   <p className="mt-2 mb-4 text-gray-500">
-                    It is clear that websites play a major role in the success
-                    of business marketing and operations. Start customizing,
-                    developing your website and take advantage of your success
-                    in being more visible to your potential clients.
+                    {t(
+                      "It is clear that websites play a major role in the success of business marketing and operations. Start customizing, developing your website and take advantage of your success in being more visible to your potential clients.",
+                      "Um bom website é peça-chave no marketing e no dia a dia de qualquer empresa. Crie um site à medida e torne a sua empresa mais visível para os seus potenciais clientes."
+                    )}
                   </p>
                 </div>
               </div>
@@ -289,12 +296,13 @@ export default function Landing() {
                     <ITSupportIcon className="w-5 h-5 text-[var(--autisync-gold,#b98b2f)]" />
                   </ServiceIcon3D>
                   <h6 className="text-xl font-semibold text-gray-800">
-                    IT Consultation / Technical Support
+                    {t("IT Consultation / Technical Support", "Consultoria de TI / Suporte Técnico")}
                   </h6>
                   <p className="mt-2 mb-4 text-gray-500">
-                    We help you assess technology options and line them up with
-                    how your business actually works, so every system you pay
-                    for supports your goals.
+                    {t(
+                      "We help you assess technology options and line them up with how your business actually works, so every system you pay for supports your goals.",
+                      "Ajudamos a avaliar as opções tecnológicas e a alinhá-las com a forma como a sua empresa realmente trabalha, para que cada sistema que paga sirva os seus objetivos."
+                    )}
                   </p>
                 </div>
               </div>
@@ -308,12 +316,13 @@ export default function Landing() {
                     <UiUxIcon className="w-5 h-5 text-gray-900" />
                   </ServiceIcon3D>
                   <h6 className="text-xl font-semibold text-gray-800">
-                    UI/UX Design
+                    {t("UI/UX Design", "Design UI/UX")}
                   </h6>
                   <p className="mt-2 mb-4 text-gray-500">
-                    User Interface and User Experience (UI/UX) design – our
-                    designers build interfaces in software or computerized
-                    devices, focusing on looks or style.
+                    {t(
+                      "User Interface and User Experience (UI/UX) design – our designers build interfaces in software or computerized devices, focusing on looks or style.",
+                      "Design de interface e de experiência do utilizador (UI/UX) – os nossos designers criam interfaces para software e dispositivos, com atenção ao aspeto e ao estilo."
+                    )}
                   </p>
                 </div>
               </div>
@@ -327,11 +336,13 @@ export default function Landing() {
                     <GraphicIcon className="w-5 h-5 text-gray-900" />
                   </ServiceIcon3D>
                   <h6 className="text-xl font-semibold text-gray-800">
-                    Graphic Design
+                    {t("Graphic Design", "Design Gráfico")}
                   </h6>
                   <p className="mt-2 mb-4 text-gray-500">
-                    Great Graphic Design allows you to make a positive first
-                    impression on those looking on.
+                    {t(
+                      "Great Graphic Design allows you to make a positive first impression on those looking on.",
+                      "Um bom design gráfico garante que a sua marca causa uma primeira impressão positiva em quem a vê."
+                    )}
                   </p>
                 </div>
               </div>
@@ -347,11 +358,13 @@ export default function Landing() {
                 </div>
                 <div className="flex-auto px-4 pb-5">
                   <h6 className="text-xl font-semibold text-gray-800">
-                    Software / App Development
+                    {t("Software / App Development", "Desenvolvimento de Software / Apps")}
                   </h6>
                   <p className="mt-2 mb-4 text-gray-500">
-                    Write a few lines about each one. A paragraph describing a
-                    feature will be enough. Keep your user engaged!
+                    {t(
+                      "Write a few lines about each one. A paragraph describing a feature will be enough. Keep your user engaged!",
+                      "Aplicações móveis e software à medida, ligados aos sistemas que já usa, para simplificar o trabalho da sua equipa e dos seus clientes."
+                    )}
                   </p>
                 </div>
               </div>
@@ -366,27 +379,27 @@ export default function Landing() {
                 <WhoWeAreIcon className="w-6 h-6 text-[var(--autisync-gold,#b98b2f)]" />
               </ServiceIcon3D>
               <h3 className="mb-2 text-3xl font-semibold leading-normal text-gray-800 transition-colors duration-200 group-hover:text-gray-900">
-                Who Are We?
+                {t("Who Are We?", "Quem Somos?")}
               </h3>
               <p className="mt-4 mb-4 leading-relaxed text-gray-600">
-                At AutiSync, we transform businesses through intelligent automation, premium
-                digital experiences, and seamless technology systems. We turn complex problems
-                into simple, scalable solutions — helping brands save time, increase
-                efficiency, and grow faster.
+                {t(
+                  "At AutiSync, we transform businesses through intelligent automation, premium digital experiences, and seamless technology systems. We turn complex problems into simple, scalable solutions — helping brands save time, increase efficiency, and grow faster.",
+                  "Na AutiSync, transformamos empresas com automação inteligente, experiências digitais de qualidade e sistemas tecnológicos que funcionam em conjunto. Tornamos problemas complexos em soluções simples e escaláveis — para que as marcas poupem tempo, sejam mais eficientes e cresçam mais depressa."
+                )}
               </p>
 
               <p className="mt-0 mb-4 leading-relaxed text-gray-600">
-                Whether you need AI-powered workflows, custom software, a branded website,
-                CRM setup, or ongoing tech support — we build systems that work together,
-                operate smoothly, and elevate your entire business. We’re not just a service
-                provider. We’re your long-term technology partner.
+                {t(
+                  "Whether you need AI-powered workflows, custom software, a branded website, CRM setup, or ongoing tech support — we build systems that work together, operate smoothly, and elevate your entire business. We’re not just a service provider. We’re your long-term technology partner.",
+                  "Quer precise de processos automatizados com IA, software à medida, um website com a sua marca, um CRM configurado ou suporte técnico contínuo — criamos sistemas que trabalham em conjunto, funcionam sem falhas e elevam toda a sua empresa. Não somos apenas um fornecedor. Somos o seu parceiro tecnológico de longo prazo."
+                )}
               </p>
               <Link
                 href="https://wa.me/+447795866571"
                 target="_blank"
                 className="mt-8 font-bold text-gray-800 hover:text-[var(--autisync-gold,#b98b2f)]/90"
               >
-                Get in touch with Sales
+                {t("Get in touch with Sales", "Fale com a nossa equipa comercial")}
               </Link>
             </div>
 
@@ -399,7 +412,7 @@ export default function Landing() {
                 "
               >
                 <img
-                  alt="Seamless services"
+                  alt={t("Seamless services", "Serviços sem interrupções")}
                   src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
                   className="w-full align-middle rounded-t-lg"
                 />
@@ -413,11 +426,13 @@ export default function Landing() {
                     <polygon className="text-gray-800 fill-current"></polygon>
                   </svg>
                   <h4 className="text-xl font-bold text-gray-600">
-                    Seamless Services
+                    {t("Seamless Services", "Serviços Sem Interrupções")}
                   </h4>
                   <p className="mt-2 font-light text-gray-600 text-md">
-                    Giving the necessary technical support to continue your work
-                    daily and long term activities uninterrupted and efficiently.
+                    {t(
+                      "Giving the necessary technical support to continue your work daily and long term activities uninterrupted and efficiently.",
+                      "Damos o suporte técnico necessário para que o trabalho do dia a dia e os projetos de longo prazo da sua empresa avancem sem interrupções e com eficiência."
+                    )}
                   </p>
                 </blockquote>
               </div>
