@@ -41,10 +41,23 @@ const FEAT_ICONS = [
     <><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z" /><path d="m9 12 2 2 4-4" /></>,
 ];
 
+const PM_ICONS = [
+    <><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" /><path d="M14 3v6h6" /><path d="m9 15 2 2 4-4" /></>,
+    <><rect x="2" y="6" width="20" height="13" rx="2" /><circle cx="12" cy="12.5" r="2.5" /><path d="M6 10v.01M18 15v.01" /></>,
+    <><path d="M4 4h16v16H4z" /><path d="M8 9h8M8 13h8M8 17h5" /></>,
+    <><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z" /></>,
+    <><path d="M9 3h6l1 3h4v15H4V6h4z" /><path d="m9 14 2 2 4-4" /></>,
+    <><circle cx="12" cy="13" r="8" /><path d="M12 9v4l2.5 2.5M9 2h6" /></>,
+];
+
 export default function EstateAgents({ locale }: { locale: Locale }) {
     const t = T[locale];
     const pt = locale === "pt";
-    const { market, setMarket } = useMarket();
+    const { market: detected, setMarket } = useMarket();
+    // The agency CRM is sold in the UK and Portugal; a visitor from elsewhere
+    // (Angola, Namibia) sees this page's own market.
+    const crmMarkets = markets.filter((m) => m.code === "GB" || m.code === "PT");
+    const market = crmMarkets.find((m) => m.code === detected.code) || crmMarkets.find((m) => m.code === (pt ? "PT" : "GB")) || detected;
     const cur = market.currency;
     const comparable = agencyPlans.filter((p) => p.id !== "multi");
 
@@ -132,6 +145,45 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
                     </div>
                 </section>
 
+                <section className={s.section} id="lettings" style={{ paddingTop: 0 }}>
+                    <div className={s.wrap}>
+                        <div className={s.head}>
+                            <span className={s.eyebrow}>{t.pmEyebrow}</span>
+                            <h2>{t.pmTitle}</h2>
+                            <p className={s.muted}>{t.pmSub}</p>
+                        </div>
+                        <div className={`${s.featGrid} ${e.featGrid3}`}>
+                            {t.pm.map((f, i) => (
+                                <div className={s.feat} key={f.t}>
+                                    <div className={s.featIcon}>
+                                        <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{PM_ICONS[i]}</svg>
+                                    </div>
+                                    <h3>{f.t}</h3>
+                                    <p>{f.d}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section className={s.section} id="connections" style={{ paddingTop: 0 }}>
+                    <div className={s.wrap}>
+                        <div className={s.head}>
+                            <span className={s.eyebrow}>{t.connEyebrow}</span>
+                            <h2>{t.connTitle}</h2>
+                        </div>
+                        <div className={`${s.featGrid} ${e.featGrid3}`}>
+                            {t.conns.map((c) => (
+                                <div className={s.feat} key={c.t}>
+                                    <h3>{c.t}</h3>
+                                    <p>{c.d}</p>
+                                    <p className={e.small}><b>{c.s}</b></p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
                 <section className={`${s.section} ${e.priceSec}`} id="prices">
                     <div className={s.wrap}>
                         <div className={s.head}>
@@ -141,7 +193,7 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
                         </div>
                         <div className={e.marketRow} role="group" aria-label={t.market}>
                             <span className={s.muted}>{t.market}</span>
-                            {markets.map((m) => (
+                            {crmMarkets.map((m) => (
                                 <button key={m.code} type="button" onClick={() => setMarket(m, true)}
                                     className={`${e.marketChip} ${m.code === market.code ? e.marketOn : ""}`} aria-pressed={m.code === market.code}>
                                     <Flag market={m} size={18} />{pt ? m.namePt : m.name}
@@ -181,6 +233,7 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
                     </div>
                 </section>
 
+                {pt ? null : (
                 <section className={s.section}>
                     <div className={s.wrap}>
                         <div className={s.head}>
@@ -210,6 +263,7 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
                         </div>
                     </div>
                 </section>
+                )}
 
                 <section className={s.section} style={{ paddingTop: 0 }}>
                     <div className={s.wrap}>

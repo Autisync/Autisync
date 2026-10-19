@@ -10,12 +10,12 @@ const body = localFont({ src: "../../fonts/DMSans-Variable.woff2", weight: "100 
 const URL = "https://www.autisync.com/crm/estate-agents";
 const TITLE = "Estate Agency CRM with AI Viewings | Autisync";
 const DESCRIPTION =
-    "CRM for estate and letting agents: properties, viewings that book themselves, an AI assistant that answers enquiries out of hours, and your website updated automatically. From £49 a month per agency, not per user. Migration included.";
+    "CRM for UK estate and letting agents: sales, lettings and property management, viewings that book themselves, Rightmove and OnTheMarket feeds, and an AI assistant that answers enquiries out of hours. From £49 a month per agency, not per user.";
 
 export const metadata: Metadata = {
     title: { absolute: TITLE },
     description: DESCRIPTION,
-    keywords: ["estate agency CRM", "letting agent software", "estate agent software UK", "property CRM", "viewing booking software", "AI for estate agents", "Apex27 alternative", "Reapit alternative", "Alto alternative"],
+    keywords: ["estate agency CRM", "letting agent software", "estate agent software UK", "property CRM", "viewing booking software", "AI for estate agents", "property management software UK", "lettings management software", "landlord statements software", "Rightmove feed CRM", "Apex27 alternative", "Reapit alternative", "Alto alternative"],
     alternates: { canonical: URL, languages: { en: URL, pt: "https://www.autisync.com/crm/imobiliarias", "x-default": URL } },
     openGraph: {
         type: "website", url: URL, siteName: "Autisync", title: TITLE, description: DESCRIPTION, locale: "en_GB",
@@ -44,7 +44,7 @@ function structuredData() {
             url: URL,
             description: DESCRIPTION,
             inLanguage: ["en", "pt", "es", "fr", "de"],
-            areaServed: ["GB", "PT", "AO", "NA"],
+            areaServed: ["GB"],
             publisher: { "@type": "Organization", name: "Autisync", url: "https://www.autisync.com" },
             offers: { "@type": "AggregateOffer", lowPrice: 49, highPrice: 299, priceCurrency: "GBP", offerCount: offers.length, offers },
             featureList: [

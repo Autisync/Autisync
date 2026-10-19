@@ -11,12 +11,12 @@ const URL = "https://www.autisync.com/crm/imobiliarias";
 const EN_URL = "https://www.autisync.com/crm/estate-agents";
 const TITLE = "CRM para Imobiliárias com IA e Marcação de Visitas | Autisync";
 const DESCRIPTION =
-    "CRM para imobiliárias: imóveis, visitas que se marcam sozinhas, assistente de IA que responde fora de horas e o seu site atualizado automaticamente. Licença AMI e classe energética em cada anúncio. Desde 55 € por mês por agência. Migração incluída.";
+    "CRM para imobiliárias em Portugal: venda, arrendamento e gestão de imóveis, visitas que se marcam sozinhas, ligação à CASAFARI e assistente de IA fora de horas. Licença AMI e classe energética em cada anúncio. Desde 55 € por mês por agência.";
 
 export const metadata: Metadata = {
     title: { absolute: TITLE },
     description: DESCRIPTION,
-    keywords: ["CRM imobiliário", "software para imobiliárias", "CRM para imobiliárias Portugal", "CRM imobiliário Angola", "marcação de visitas", "IA para imobiliárias", "alternativa eGO", "alternativa Casafari"],
+    keywords: ["CRM imobiliário", "software para imobiliárias", "CRM para imobiliárias Portugal", "software de gestão de arrendamento", "CRM com CASAFARI", "marcação de visitas", "IA para imobiliárias", "alternativa eGO", "alternativa Casafari"],
     alternates: { canonical: URL, languages: { en: EN_URL, pt: URL, "x-default": EN_URL } },
     openGraph: {
         type: "website", url: URL, siteName: "Autisync", title: TITLE, description: DESCRIPTION, locale: "pt_PT",
@@ -45,7 +45,7 @@ function structuredData() {
             url: URL,
             description: DESCRIPTION,
             inLanguage: ["en", "pt", "es", "fr", "de"],
-            areaServed: ["GB", "PT", "AO", "NA"],
+            areaServed: ["PT"],
             publisher: { "@type": "Organization", name: "Autisync", url: "https://www.autisync.com" },
             offers: { "@type": "AggregateOffer", lowPrice: 55, highPrice: 345, priceCurrency: "EUR", offerCount: offers.length, offers },
             featureList: [
