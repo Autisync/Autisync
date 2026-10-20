@@ -550,3 +550,63 @@
 .footLinks a:hover {
   color: var(--fg);
 }
+
+/* Phones: the first question and its four answers fit on the first screen.
+   Most visitors arrive from a Facebook or Instagram ad inside the app's own
+   browser (about 390 × 660 px visible). Before, only the top of the first
+   answer showed, and 96% left without answering. */
+@media (max-width: 900px) {
+  .hero {
+    padding-block: 14px 40px;
+  }
+  .grid {
+    gap: 14px;
+  }
+  .kicker {
+    font-size: 13px;
+  }
+  .page .title {
+    margin-top: 6px;
+    font-size: 25px;
+    line-height: 1.12;
+  }
+  .lead {
+    display: none;
+  }
+  .card {
+    padding: 14px;
+    border-radius: 18px;
+    scroll-margin-top: 64px;
+  }
+  .cardTop {
+    min-height: 22px;
+  }
+  .count {
+    font-size: 13px;
+  }
+  .page .question {
+    font-size: 20px;
+  }
+  .options {
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .option {
+    min-height: 52px;
+    padding: 9px 12px;
+    gap: 10px;
+  }
+  .key {
+    width: 24px;
+    height: 24px;
+  }
+  .optLabel {
+    font-size: 15px;
+  }
+  .optHint {
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

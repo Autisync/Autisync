@@ -36,6 +36,8 @@ function readUtm(): Record<string, string> {
     } catch { return here; }
 }
 
+const EARLY_TAP = `(function(){if(window.__quizEarlyOn)return;window.__quizEarlyOn=1;document.addEventListener('click',function(e){if(window.__quizReady)return;var b=e.target&&e.target.closest&&e.target.closest('[data-q0]');if(!b)return;window.__quizEarly=b.getAttribute('data-q0');b.setAttribute('aria-checked','true');b.style.borderColor='#c9a14a';},true);})();`;
+
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE = /^\+?[\d\s().-]{7,20}$/;
 
@@ -64,6 +66,19 @@ export default function QuizFunnel({ lang }: { lang: QuizLang }) {
     const shown = useRef<Set<number>>(new Set([0]));
 
     useEffect(() => { utm.current = readUtm(); }, []);
+
+    // An answer tapped before the page finished loading (slow phone, ad traffic):
+    // the small script under the card kept it, so it counts now instead of being lost.
+    useEffect(() => {
+        const w = window as unknown as { __quizReady?: boolean; __quizEarly?: string };
+        w.__quizReady = true;
+        const early = w.__quizEarly;
+        if (early && questions[0]?.options.some((o) => o.value === early)) {
+            w.__quizEarly = undefined;
+            choose(questions[0].key, early);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // Each question reached, once per visit: "Step 2/4 · What gets in the way most?"
     useEffect(() => {
@@ -214,6 +229,7 @@ export default function QuizFunnel({ lang }: { lang: QuizLang }) {
                                                     const on = answers[q.key] === o.value;
                                                     return (
                                                         <button key={o.value} type="button" role="radio" aria-checked={on}
+                                                            data-q0={step === 0 ? o.value : undefined}
                                                             className={`${s.option} ${on ? s.optionOn : ""}`} onClick={() => choose(q.key, o.value)}>
                                                             <span className={s.key} aria-hidden="true">{i + 1}</span>
                                                             <span className={s.optText}>
@@ -225,6 +241,11 @@ export default function QuizFunnel({ lang }: { lang: QuizLang }) {
                                                     );
                                                 })}
                                             </div>
+                                            {step === 0 ? (
+                                                // Before React has loaded, a tap on an answer would do nothing. This keeps
+                                                // the choice and marks it; the component picks it up as soon as it is ready.
+                                                <script dangerouslySetInnerHTML={{ __html: EARLY_TAP }} />
+                                            ) : null}
                                         </fieldset>
                                     ) : (
                                         // data-track-ignore: the tracker's own submit listener would count a
