@@ -29,7 +29,7 @@ const copy: CountryCopy = {
     h1: "Website design in Namibia, priced in Namibian dollars",
     intro:
         "We build websites for businesses in Windhoek and across Namibia: fast on a phone, easy to find on Google and connected to a CRM, so every enquiry reaches the person who has to answer it. Your domain, hosting and business email are included for the first year.",
-    primaryCta: { label: "Take the free 2-minute check", href: "/quiz" },
+    primaryCta: { label: "Take the free 1-minute check", href: "/quiz" },
     secondaryCta: { label: "See prices", href: "/servicepackage?market=na" },
     whyTitle: "What you get with a website built by us",
     why: [
@@ -125,7 +125,7 @@ const copy: CountryCopy = {
         },
     ],
     ctaTitle: "Ready for a website that brings in customers?",
-    ctaText: "Take the free 2-minute check and get a recommendation for your business, or message us on WhatsApp.",
+    ctaText: "Take the free 1-minute check and get a recommendation for your business, or message us on WhatsApp.",
     whatsappText: "Hi Autisync, I saw your Namibia website page and I'm interested in the {tier} package {price}.",
 };
 

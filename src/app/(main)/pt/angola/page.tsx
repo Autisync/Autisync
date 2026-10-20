@@ -125,7 +125,7 @@ const copy: CountryCopy = {
         },
     ],
     ctaTitle: "Pronto para ter um site que traz clientes?",
-    ctaText: "Faça o diagnóstico grátis de 2 minutos e receba uma recomendação para o seu negócio, ou fale connosco por WhatsApp.",
+    ctaText: "Faça o diagnóstico grátis de 1 minuto e receba uma recomendação para o seu negócio, ou fale connosco por WhatsApp.",
     whatsappText: "Olá Autisync, vi a página de criação de sites em Angola e tenho interesse no pacote {tier} {price}.",
 };
 
