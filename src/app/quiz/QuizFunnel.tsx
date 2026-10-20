@@ -126,8 +126,9 @@ export default function QuizFunnel({ lang }: { lang: QuizLang }) {
         const e: Record<string, string> = {};
         if (contact.nome.trim().length < 2) e.nome = c.errName;
         if (!PHONE.test(contact.telefone.trim()) || contact.telefone.replace(/\D/g, "").length < 7) e.telefone = c.errPhone;
-        if (!EMAIL.test(contact.email.trim())) e.email = c.errEmail;
-        if (!contact.consent) e.consent = c.errConsent;
+        // Email is optional: a phone (WhatsApp) is enough to reach them, and every
+        // extra required field was costing people at this step.
+        if (contact.email.trim() && !EMAIL.test(contact.email.trim())) e.email = c.errEmail;
         return e;
     };
 
@@ -252,6 +253,8 @@ export default function QuizFunnel({ lang }: { lang: QuizLang }) {
                                         // refused submit as a conversion; "Quiz sent" is sent once it is saved.
                                         <form noValidate onSubmit={submit} data-track-ignore="" className={s.form}>
                                             <h2 className={s.question}>{c.contactTitle}</h2>
+                                            {/* What they get, before they are asked for anything: the plan for their kind of business. */}
+                                            <p className={s.teaser}><span>{c.teaser}</span> {plan.title}</p>
                                             <p className={s.hint}>{c.contactHint}</p>
                                             <div aria-hidden="true" className={s.trap}>
                                                 <label>Website<input tabIndex={-1} autoComplete="off" value={contact.website} onChange={(e) => setContact((p) => ({ ...p, website: e.target.value }))} /></label>
@@ -276,12 +279,9 @@ export default function QuizFunnel({ lang }: { lang: QuizLang }) {
                                                     {err("email")}
                                                 </label>
                                             </div>
-                                            <label className={s.consent}>
-                                                <input type="checkbox" checked={contact.consent} onChange={(e) => setContact((p) => ({ ...p, consent: e.target.checked }))} />
-                                                <span>{c.consent}</span>
-                                            </label>
-                                            {err("consent")}
                                             <button type="submit" className={s.submit} disabled={sending}>{sending ? c.sending : c.submit}</button>
+                                            {/* Contact about the results they asked for: stated next to the button that sends. */}
+                                            <p className={s.small}>{c.consent}</p>
                                             {sendErr ? <p className={s.err} role="alert">{sendErr}</p> : null}
                                             <p className={s.small}>{c.privacyPre}<Link href={c.privacyHref}>{c.privacyLabel}</Link>.</p>
                                         </form>

@@ -347,6 +347,22 @@
   display: grid;
   gap: 14px;
 }
+.teaser {
+    margin: 4px 0 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(200, 155, 60, 0.12);
+    border: 1px solid rgba(200, 155, 60, 0.35);
+    font-size: 15px;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.teaser span {
+    font-weight: 400;
+    opacity: 0.8;
+}
+
 .hint {
   color: var(--muted);
   font-size: 15px;
