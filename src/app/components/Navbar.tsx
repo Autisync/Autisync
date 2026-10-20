@@ -13,6 +13,7 @@ import { isPtPath, toEn, toPt } from "@/lib/i18n/routes";
 import {
   ChartBarIcon,
   CursorArrowRaysIcon,
+  PhoneArrowDownLeftIcon,
   ShieldCheckIcon,
   Squares2X2Icon,
 } from "@heroicons/react/24/outline";
@@ -45,6 +46,12 @@ const solutions = [
     description: "Web Apps · Mobile · Enterprise Systems · CMS · Integrations",
     href: "/solutions/devServices",
     icon: Squares2X2Icon,
+  },
+  {
+    name: "CallCatch for Trades",
+    description: "Missed-call text-back: callers get a text from you in seconds",
+    href: "https://calls.autisync.com",
+    icon: PhoneArrowDownLeftIcon,
   },
 ];
 

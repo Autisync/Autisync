@@ -14,7 +14,7 @@ const FOOTER = {
     resources: "Resources",
     links: [
       ["About Us", "/about"], ["Portfolio", "/portfolio"], ["Solutions", "/solutions/devServices"], ["Service Packages", "/servicepackage"],
-      ["Autisync CRM", "/crm"], ["CRM for Estate Agents", "/crm/estate-agents"], ["Step-Inside Websites", "/websites/step-inside"], ["Free Tools", "/tools"],
+      ["Autisync CRM", "/crm"], ["CRM for Estate Agents", "/crm/estate-agents"], ["Step-Inside Websites", "/websites/step-inside"], ["CallCatch for Trades", "https://calls.autisync.com"], ["Free Tools", "/tools"],
     ],
     res: [["Service Questionnaire", "/ServiceQuestionaire"], ["Contact Us", "/contact"], ["Website Design in Namibia", "/namibia"], ["Websites in Angola (PT)", "/pt/angola"]],
     privacy: "Privacy Policy", terms: "Terms of Use",
