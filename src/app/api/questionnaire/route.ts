@@ -10,6 +10,7 @@ import {
   SpamDecision,
 } from "@/lib/security/spam-score";
 import { verifyTurnstile } from "@/lib/security/turnstile";
+import { questionnaireText, sendLeadToCrm } from "@/lib/crmLeads";
 
 const MIN_HUMAN_SUBMIT_MS = 3_000;
 const MAX_FORM_AGE_MS = 24 * 60 * 60 * 1000;
@@ -485,6 +486,25 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true }, { status: 200 });
   }
 
+  // Into the CRM first (when there is someone to reply to): kept even if the email fails.
+  const str = (k: string) => { const v = payload.answers[k]; return typeof v === "string" ? v.trim() : ""; };
+  const inCrm = submitterEmail
+    ? await sendLeadToCrm(
+        {
+          source: "website-questionnaire",
+          page: /question[aá]rio/i.test(payload.title) ? "/pt/questionario" : "/ServiceQuestionaire",
+          fullName: str("contact_name") || submitterEmail.split("@")[0],
+          companyName: str("contact_company") || str("brand_name") || str("business_name") || str("company_name"),
+          email: submitterEmail,
+          phone: str("contact_phone"),
+          serviceInterestedIn: payload.title,
+          message: questionnaireText(payload.title, payload.sections, payload.answers),
+        },
+        ip,
+        spam.decision === "review",
+      )
+    : false;
+
   const fromEmail = process.env.OUTLOOK_FROM_EMAIL ?? process.env.SMTP_USER ?? "";
   const noReplyEmail = process.env.OUTLOOK_NOREPLY_EMAIL ?? fromEmail;
   const supportEmail = process.env.OUTLOOK_SUPPORT_EMAIL ?? "support@autisync.com";
@@ -502,6 +522,7 @@ export async function POST(req: NextRequest) {
 
   if (!fromEmail || (!useGraph && !useSmtp)) {
     console.error("[questionnaire] No valid email transport configuration found.");
+    if (inCrm) return NextResponse.json({ ok: true }, { status: 200 });
     return processingError(503);
   }
 
@@ -544,6 +565,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (error) {
     console.error("[questionnaire] send error:", error);
+    if (inCrm) return NextResponse.json({ ok: true }, { status: 200 });
     return processingError(500);
   }
 }

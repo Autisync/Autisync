@@ -6,6 +6,7 @@ import { getRateLimiter } from "@/lib/security/rate-limit";
 import { getRequestMeta } from "@/lib/security/request-meta";
 import { assessSpam, SpamDecision } from "@/lib/security/spam-score";
 import { verifyTurnstile } from "@/lib/security/turnstile";
+import { sendLeadToCrm } from "@/lib/crmLeads";
 
 const MIN_HUMAN_SUBMIT_MS = 3_000;
 const MAX_FORM_AGE_MS = 24 * 60 * 60 * 1000;
@@ -491,6 +492,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true }, { status: 200 });
   }
 
+  // Into the CRM first: the enquiry is kept there even if the email fails.
+  const inCrm = await sendLeadToCrm(
+    {
+      source: data.source || "website-contact", page: data.page, fullName: data.fullName, companyName: data.companyName,
+      email: data.email, phone: data.phone, businessLocation: data.businessLocation, serviceInterestedIn: data.serviceInterestedIn,
+      budgetRange: data.budgetRange, preferredContactMethod: data.preferredContactMethod, message: data.message,
+      utm: data.utm, tracking: data.tracking,
+    },
+    ip,
+    spam.decision === "review",
+  );
+
   const fromEmail = process.env.OUTLOOK_FROM_EMAIL ?? process.env.OUTLOOK_SMTP_USER ?? "";
   const toEmail = process.env.OUTLOOK_TO_EMAIL ?? "info@autisync.com";
   const noReplyEmail = process.env.OUTLOOK_NOREPLY_EMAIL ?? fromEmail;
@@ -508,6 +521,7 @@ export async function POST(req: NextRequest) {
 
   if (!useGraph && !useSmtp) {
     console.error("[contact] No email transport configured.");
+    if (inCrm) return NextResponse.json({ ok: true }, { status: 200 });
     return processingError(503);
   }
 
@@ -528,6 +542,7 @@ export async function POST(req: NextRequest) {
     }
   } catch (error) {
     console.error("[contact] send error:", error);
+    if (inCrm) return NextResponse.json({ ok: true }, { status: 200 });
     return processingError(500);
   }
 
