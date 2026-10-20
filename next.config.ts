@@ -32,6 +32,10 @@ const nextConfig: NextConfig = {
             { source: "/home", destination: "/", permanent: true },
             { source: "/homepage", destination: "/", permanent: true },
             { source: "/messaging", destination: "/crm", permanent: true },
+            // One address for the site: Search Console was counting
+            // https://autisync.com/ and https://www.autisync.com/ as two
+            // pages, splitting what Google knows between them.
+            { source: "/:path*", has: [{ type: "host", value: "autisync.com" }], destination: "https://www.autisync.com/:path*", permanent: true },
         ];
     },
 };
