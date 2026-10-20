@@ -6,7 +6,7 @@ const BASE_URL = "https://www.autisync.com";
 // When the pages last really changed. A lastmod of "now" on every request
 // tells Google nothing, so it learns to ignore it; a real date gets pages
 // recrawled when they change. Bump it when the site's content changes.
-const UPDATED = new Date("2026-10-19");
+const UPDATED = new Date("2026-10-20");
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const now = UPDATED;
@@ -180,6 +180,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: path === "/crm" ? 0.9 : 0.3,
             alternates: { languages: { en: `${BASE_URL}${path}`, pt: `${BASE_URL}${EN_TO_PT[path]}` } },
         })),
+        // Country landing pages (searches like "criação de sites Angola").
+        {
+            url: `${BASE_URL}/pt/angola`,
+            lastModified: now,
+            changeFrequency: "monthly",
+            priority: 0.9,
+        },
+        {
+            url: `${BASE_URL}/namibia`,
+            lastModified: now,
+            changeFrequency: "monthly",
+            priority: 0.9,
+        },
         // Autisync CRM's own legal pages. Meta's App Review fetches these, so
         // they need to be indexable and reachable, not only linked.
         {
