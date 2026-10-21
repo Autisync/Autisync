@@ -38,6 +38,8 @@ export type CountryCopy = {
     from: string;
     mostPopular: string;
     careNote: (care: string) => string;
+    /** Contract, cancellation and renewal terms, shown under the care note. */
+    pricesTerms?: string;
     allPrices: { label: string; href: string };
     stepsTitle: string;
     steps: { title: string; text: string }[];
@@ -189,6 +191,7 @@ export default function CountryLanding({ c }: { c: CountryCopy }) {
                     })}
                 </div>
                 <p className="mt-6 text-sm text-gray-500">{c.careNote(care)}</p>
+                {c.pricesTerms && <p className="mt-2 max-w-3xl text-sm font-medium text-gray-700">{c.pricesTerms}</p>}
                 <Link href={c.allPrices.href} className="inline-block mt-2 text-sm font-semibold text-[#B28228] hover:underline">
                     {c.allPrices.label}
                 </Link>

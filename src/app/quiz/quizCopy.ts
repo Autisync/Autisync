@@ -185,7 +185,7 @@ export const PLANS: Record<QuizLang, Record<BusinessKind, Plan>> = {
     en: {
         trades: {
             title: "Every call answered, even when you're on a job.",
-            lead: "Missed calls become booked jobs: each caller gets a text back straight away, and every enquiry lands in one list with its quote.",
+            lead: "Missed calls become booked jobs: each caller on a mobile gets a text back straight away, and every enquiry lands in one list with its quote. Your calls are yours, never shared or sold.",
             points: [
                 { t: "Missed-call text back", d: "The caller hears from you in seconds, not hours, so they don't ring the next name on Google." },
                 { t: "Quotes that follow themselves up", d: "A friendly reminder goes out when a quote hasn't been answered." },
@@ -222,10 +222,10 @@ export const PLANS: Record<QuizLang, Record<BusinessKind, Plan>> = {
     },
     pt: {
         trades: {
-            title: "Todas as chamadas atendidas, mesmo quando está numa obra.",
-            lead: "As chamadas perdidas passam a trabalhos marcados: quem liga recebe logo uma mensagem e cada pedido fica numa lista, com o orçamento.",
+            title: "Nenhum pedido sem resposta, mesmo quando está numa obra.",
+            lead: "Quem lhe escreve no WhatsApp ou pelo site recebe resposta imediata, e cada pedido fica numa lista, com o orçamento.",
             points: [
-                { t: "Resposta automática a chamadas perdidas", d: "Quem ligou recebe notícias suas em segundos, e não liga ao próximo do Google." },
+                { t: "Resposta imediata no WhatsApp", d: "Quem lhe escreve recebe notícias suas em segundos, também fora de horas, e não procura o próximo do Google." },
                 { t: "Orçamentos com seguimento", d: "Sai um lembrete simpático quando um orçamento fica sem resposta." },
                 { t: "Avaliações depois de cada trabalho", d: "Os clientes satisfeitos são convidados a avaliar no Google enquanto está fresco." },
             ],
@@ -269,7 +269,7 @@ export const PROBLEM_LINE: Record<QuizLang, Record<ProblemKind, string>> = {
         website: "You said you need a proper website, so on the call we'll show you examples and what one would cost for your business.",
     },
     pt: {
-        calls: "Disse que as chamadas perdidas são o maior problema, por isso na chamada mostramos a resposta automática a funcionar num número real.",
+        calls: "Disse que as chamadas perdidas são o maior problema, por isso na chamada mostramos como pôr o WhatsApp e as marcações online à frente do telefone, com resposta imediata a quem lhe escreve.",
         enquiries: "Disse que precisa de mais pedidos, por isso na chamada vemos de onde podem vir: Google, o seu site e as redes sociais.",
         admin: "Disse que a papelada lhe tira demasiado tempo, por isso na chamada escolhemos as duas ou três tarefas que lhe podemos tirar primeiro.",
         website: "Disse que precisa de um site a sério, por isso na chamada mostramos exemplos e quanto custaria um para o seu negócio.",

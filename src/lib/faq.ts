@@ -25,7 +25,19 @@ export const pricingFaq: { q: string; a: string }[] = [
     },
     {
         q: "How do payments work?",
-        a: "Website and branding projects are paid 50% to start and 50% at launch, so the second half is only due once you are happy with the result live. Social media management is billed monthly with a 3-month minimum term.",
+        a: "Website and branding projects are paid 50% to start and 50% at launch, so the second half is only due once you are happy with the result live. Social media management is billed monthly with a 3-month minimum term, then month to month. Everything you take from us comes on one bill.",
+    },
+    {
+        q: "Is there a contract, and how do I cancel?",
+        a: "There is no 12-month contract. Monthly plans, such as the Care Plan and social media management, run month to month after any minimum shown on the plan (3 months for social media). To cancel, give 30 days' notice by email or from your account. We remind you 30 days before anything renews for a year, such as your domain.",
+    },
+    {
+        q: "Who owns my website, domain and data?",
+        a: "You do. Your domain is registered in your business's name, and you own your site and your data. You can export your contacts and records to Excel or CSV at any time. If you leave, we hand everything over within 30 days.",
+    },
+    {
+        q: "Who helps me once it's live?",
+        a: "We set everything up for you, and you get a named person from our team you can WhatsApp. Support hours are weekdays, 9:00 to 18:00 (London and Lisbon time).",
     },
     {
         q: "What happens after the first year of hosting?",

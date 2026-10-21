@@ -55,7 +55,7 @@ const copy: CountryCopy = {
         },
         {
             title: "One team, start to finish",
-            text: "You deal with the same people before, during and after launch, by phone, WhatsApp or email.",
+            text: "We set it all up. After launch you deal with a named person from our team, by WhatsApp, phone or email, on weekdays from 9:00 to 18:00 (London and Lisbon time).",
         },
     ],
     clientsTitle: "Businesses that work with us",
@@ -66,6 +66,8 @@ const copy: CountryCopy = {
     mostPopular: "Most popular",
     careNote: (care) =>
         `From year two, the care plan (hosting, email, backups, updates and 2 hours of changes a month) is ${care} a month.`,
+    pricesTerms:
+        "No 12-month contract: the Care Plan is monthly and you can cancel with 30 days' notice, by email or from your account. We remind you 30 days before your domain renews.",
     allPrices: { label: "See every package in detail", href: "/servicepackage?market=na" },
     servicesTitle: "Beyond the website",
     services: [
@@ -117,7 +119,15 @@ const copy: CountryCopy = {
         },
         {
             q: "How do I pay?",
-            a: "Prices are in Namibian dollars, and the payment terms are written into the proposal before we start.",
+            a: "Prices are in Namibian dollars, and the payment terms are written into the proposal before we start. Site, domain, email and CRM come from one partner, on one bill.",
+        },
+        {
+            q: "Am I tied into a contract?",
+            a: "There is no 12-month contract. The website is paid once; from year two the Care Plan is monthly and you can cancel with 30 days' notice, by email or from your account. We remind you 30 days before anything renews for a year, such as your domain.",
+        },
+        {
+            q: "Who owns the website and the data?",
+            a: "You do. The domain is registered in your business's name, and the site and your data are yours. Export your contacts and records to Excel or CSV any time; if you leave, we hand everything over within 30 days.",
         },
         {
             q: "Do you work outside Windhoek?",

@@ -54,8 +54,8 @@ const copy: CountryCopy = {
             text: "Estrutura, títulos e dados do negócio preparados para aparecer quando alguém pesquisa o seu serviço em Luanda ou na sua província.",
         },
         {
-            title: "Suporte em português",
-            text: "Fala com a mesma equipa antes, durante e depois do lançamento, por telefone, WhatsApp ou e-mail.",
+            title: "Uma pessoa da nossa equipa",
+            text: "Tratamos da configuração. Depois, fala com uma pessoa da nossa equipa, com nome, por WhatsApp, telefone ou e-mail, nos dias úteis das 9h às 18h (hora de Lisboa).",
         },
     ],
     clientsTitle: "Empresas que já trabalham connosco",
@@ -66,6 +66,8 @@ const copy: CountryCopy = {
     mostPopular: "Mais escolhido",
     careNote: (care) =>
         `A partir do 2.º ano, o plano de manutenção (alojamento, e-mail, cópias de segurança, atualizações e 2 horas de alterações por mês) custa ${care} por mês.`,
+    pricesTerms:
+        "Paga em Kwanzas. Sem fidelização de 12 meses: o plano de manutenção é mensal e cancela-se com 30 dias de aviso, por e-mail ou na sua conta. Avisamos 30 dias antes de o domínio renovar.",
     allPrices: { label: "Ver todos os pacotes e detalhes", href: "/pt/precos?market=ao" },
     servicesTitle: "Além do site",
     services: [
@@ -86,7 +88,7 @@ const copy: CountryCopy = {
         },
         {
             title: "CRM Autisync",
-            text: "Contactos, orçamentos, faturação e WhatsApp num só lugar, para não perder clientes.",
+            text: "Contactos, orçamentos e WhatsApp num só lugar, para não perder clientes. Faturação certificada AGT: em certificação.",
             href: "/pt/crm",
         },
     ],
@@ -117,7 +119,19 @@ const copy: CountryCopy = {
         },
         {
             q: "Como se paga?",
-            a: "Os preços são em Kwanzas e as condições de pagamento ficam escritas na proposta, antes de começarmos.",
+            a: "Em Kwanzas. As condições de pagamento ficam escritas na proposta, antes de começarmos. Site, domínio, e-mail e CRM vêm numa só conta, de um só parceiro.",
+        },
+        {
+            q: "Fico preso a um contrato?",
+            a: "Não há fidelização de 12 meses. O site paga-se uma vez; a partir do 2.º ano, o plano de manutenção é mensal e cancela-se com 30 dias de aviso, por e-mail ou na sua conta. Avisamos 30 dias antes de qualquer renovação anual, como a do domínio.",
+        },
+        {
+            q: "O site, o domínio e os dados são meus?",
+            a: "Sim. O domínio fica em nome da sua empresa, e o site e os dados são seus. Pode exportar os contactos e registos para Excel ou CSV quando quiser; se sair, entregamos-lhe tudo em 30 dias.",
+        },
+        {
+            q: "O CRM emite faturas certificadas pela AGT?",
+            a: "Ainda não. A faturação certificada AGT está em certificação e não a vendemos antes de a certificação estar concluída. Até lá, o site, o WhatsApp e o CRM (contactos, orçamentos e seguimento) funcionam já.",
         },
         {
             q: "Atendem fora de Luanda?",

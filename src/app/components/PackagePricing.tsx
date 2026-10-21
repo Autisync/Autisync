@@ -358,6 +358,7 @@ export function CarePlanNote({ currency, locale = "en" }: { currency: Currency; 
         return (
             <p className="max-w-3xl mx-auto mt-10 text-sm leading-6 text-center text-gray-600">
                 {ptUi.carePlan(careText)}
+                <span className="block mt-1 font-medium text-gray-800">{ptUi.carePlanTerms}</span>
             </p>
         );
     }
@@ -370,6 +371,10 @@ export function CarePlanNote({ currency, locale = "en" }: { currency: Currency; 
                 {careText}/month
             </span>
             .
+            <span className="block mt-1 font-medium text-gray-800">
+                Monthly, with no 12-month contract: cancel with 30 days&apos; notice, by email or from your account.
+                We remind you 30 days before your domain renews.
+            </span>
         </p>
     );
 }

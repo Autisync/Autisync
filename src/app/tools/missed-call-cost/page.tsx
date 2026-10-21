@@ -24,6 +24,7 @@ const FAQ = [
     { q: "Why do missed callers not call back?", a: "Most people who need a plumber, a dentist or a table tonight simply ring the next business on Google. The first business to respond usually gets the job." },
     { q: "What is a missed call text-back?", a: "When you can't answer, the caller gets an instant text from your business, for example 'Sorry we missed you, what can we help with?'. Their reply, name and postcode go into your CRM with a reminder to ring back." },
     { q: "Does this work for sole traders on a mobile?", a: "Yes. Missed calls on your mobile can be forwarded to a business number that sends the text and logs the lead, so you keep your own phone." },
+    { q: "Are my calls shared with other trades?", a: "No. Your calls and enquiries are yours, never shared or sold. Each one goes to you and into your own CRM, not to four other businesses." },
 ];
 
 const schema = {
@@ -69,7 +70,7 @@ export default function MissedCallCostPage() {
                 eyebrow="Stop losing missed calls"
                 title="Set up a missed-call text-back for your business."
                 text="Book a short call. We'll look at how your calls come in today and set up the text-back on your number."
-                points={["Keep your own mobile number", "Every missed caller texted back in seconds", "Leads and ring-back reminders in your CRM"]}
+                points={["Keep your own mobile number", "Missed callers on a mobile texted back in seconds", "Your calls and enquiries are yours, never shared or sold"]}
             />
             <Faq items={FAQ} />
         </FunnelShell>

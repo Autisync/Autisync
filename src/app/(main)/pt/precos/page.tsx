@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PtPricing } from "../PtPackages";
-import { ptFaq, ptFaqSchema } from "@/lib/i18n/pt";
+import { ptFaq, ptFaqSchema, ptPromises } from "@/lib/i18n/pt";
+import Promises from "@/app/components/Promises";
 
 const URL = "https://www.autisync.com/pt/precos";
 
@@ -34,13 +35,15 @@ export default function PrecosPage() {
                         Preços claros,<br />sem surpresas
                     </h1>
                     <p className="mt-4 text-lg text-gray-600">
-                        Escolha um pacote ou fale connosco no WhatsApp e adaptamos a proposta à sua empresa.
+                        Cada preço mostra o que inclui. Escolha um pacote ou fale connosco no WhatsApp e adaptamos a proposta à sua empresa.
                     </p>
                 </div>
 
                 <div className="mt-6">
                     <PtPricing />
                 </div>
+
+                <Promises id="pt-sem-surpresas" eyebrow="Sem surpresas" title="Como trabalhamos consigo" items={ptPromises} className="mt-20" />
 
                 <section aria-labelledby="pt-faq" className="max-w-4xl mx-auto mt-20">
                     <h2 id="pt-faq" className="text-3xl font-bold tracking-tight text-center text-[#3B3B3B]">

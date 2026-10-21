@@ -58,7 +58,7 @@ const COPY = {
         title2: "One dashboard.",
         lead: (
             <>
-                The Autisync CRM brings your contacts, leads and sales pipeline into one place, with automated
+                The Autisync CRM brings your WhatsApp and email conversations, contacts and sales pipeline into one place, with automated
                 follow-ups so no client slips through the cracks. We set it up for your business, so you can start
                 using it straight away.
             </>
@@ -114,6 +114,9 @@ const COPY = {
             { q: "Do I have to move my contacts myself?", a: "No. Setup is done for you. Send us your spreadsheet or contact list during onboarding and we'll bring it into the CRM." },
             { q: "Can my whole team use it?", a: "Yes. Everyone on your team works from the same client records and pipeline, so there's one version of the truth." },
             { q: "I already have a website with Autisync. Does the CRM connect to it?", a: "Tell us in the form. We'll look at how your current forms and booking tools can feed new leads straight into your pipeline." },
+            { q: "Am I tied into a contract?", a: "There is no 12-month contract. Plans are monthly. After any minimum written on your proposal, cancel with 30 days' notice, by email or from your account. We remind you 30 days before anything renews for a year." },
+            { q: "Who do we talk to when we need help?", a: "A named person from our team, on WhatsApp. Support hours are weekdays, 9:00 to 18:00 (London and Lisbon time)." },
+            { q: "Can we take our data with us?", a: "Yes. Your enquiries and data are yours, and we never share or sell them. Export contacts and records to Excel or CSV any time. If you leave, we hand everything over within 30 days." },
         ],
         trading: "A trading name of Maheldom Consulting, Lda",
         privacy: "Privacy Policy",
@@ -129,7 +132,7 @@ const COPY = {
         title2: "Um só painel.",
         lead: (
             <>
-                O Autisync CRM junta os seus contactos, potenciais clientes e o funil de vendas num só lugar, com
+                O Autisync CRM junta as conversas de WhatsApp e e-mail, os seus contactos e o funil de vendas num só lugar, com
                 seguimentos automáticos para que nenhum cliente fique esquecido. Nós configuramos tudo para a sua
                 empresa, para que possa começar a usá-lo de imediato.
             </>
@@ -185,6 +188,9 @@ const COPY = {
             { q: "Tenho de passar os contactos sozinho?", a: "Não. A configuração é feita por nós. Envie-nos a sua folha de Excel ou lista de contactos durante a implementação e nós importamo-la para o CRM." },
             { q: "Toda a minha equipa pode usá-lo?", a: "Sim. Toda a equipa trabalha sobre as mesmas fichas de clientes e o mesmo funil, por isso há uma só versão dos factos." },
             { q: "Já tenho um website feito pela Autisync. O CRM liga-se a ele?", a: "Diga-nos no formulário. Vemos como os formulários e as ferramentas de marcação que já tem podem enviar novos contactos diretamente para o seu funil." },
+            { q: "Há fidelização?", a: "Não há fidelização de 12 meses. Os planos são mensais. Depois do mínimo que ficar escrito na proposta, cancela com 30 dias de aviso, por e-mail ou na sua conta. Avisamos 30 dias antes de qualquer renovação anual." },
+            { q: "Com quem falamos quando precisamos de ajuda?", a: "Com uma pessoa da nossa equipa, com nome, pelo WhatsApp. O apoio funciona nos dias úteis, das 9h00 às 18h00 (hora de Lisboa)." },
+            { q: "Podemos levar os nossos dados?", a: "Sim. Os seus contactos e dados são seus e nunca os partilhamos nem vendemos. Exporte tudo para Excel ou CSV quando quiser; se sair, entregamos-lhe tudo em 30 dias." },
         ],
         trading: "Uma marca comercial da Maheldom Consulting, Lda",
         privacy: "Política de Privacidade",

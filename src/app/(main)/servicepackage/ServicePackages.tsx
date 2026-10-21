@@ -11,6 +11,17 @@ import { ApproxUsd, CurrencyToggle, OngoingNote, TierPrice, usePackageCurrency }
 import { formatPrice, websiteTiers, type Currency } from "@/lib/website-packages";
 import { brandingTiers, launchBundle, socialTiers, socialTerms, type ServiceTier } from "@/lib/service-packages";
 import { faqSchema, pricingFaq } from "@/lib/faq";
+import Promises from "@/app/components/Promises";
+
+/* What sets us apart, in plain words. Only promises we keep today. */
+const PROMISES = [
+    { t: "No 12-month contract", d: "Websites and branding are one-off: 50% to start, 50% at launch. Monthly plans have no 12-month contract. After any minimum shown on the plan, cancel with 30 days' notice, by email or from your account." },
+    { t: "No surprise renewals", d: "We remind you 30 days before anything renews for a year, such as your domain. No renewal goes through without warning." },
+    { t: "One partner, one bill", d: "Site, domain, email, CRM, bookings, invoices, social posts and ads. One team looks after all of it, on one bill." },
+    { t: "Set up for you", d: "We set everything up and show your team how it works. You get a named person from our team you can WhatsApp, weekdays 9:00 to 18:00 (London and Lisbon time)." },
+    { t: "Your data stays yours", d: "You own your site, your domain and your data. Export everything to Excel or CSV any time. If you leave, we hand it all over within 30 days." },
+    { t: "Your enquiries, never shared", d: "Your calls and enquiries are yours. We never share them with other businesses and never sell them." },
+];
 
 /* ------------------------------ Shared bits ------------------------------- */
 
@@ -227,8 +238,8 @@ export default function ServicePackagesPage() {
                         Let&apos;s Tailor the<br/>Right Package for You
                     </h1>
                     <p className="mt-4 text-lg text-gray-600">
-                        Clear starting prices, no surprises. Pick a package, or message us
-                        and we&apos;ll shape it around your business.
+                        Clear starting prices in £, € and Kz, with what&apos;s included under each one.
+                        Pick a package, or message us and we&apos;ll shape it around your business.
                     </p>
                     <CurrencyToggle value={currency} onChange={setCurrency} />
                 </div>
@@ -294,6 +305,14 @@ export default function ServicePackagesPage() {
                         );
                     })}
                 </div>
+
+                <Promises
+                    id="how-we-differ"
+                    eyebrow="How we're different"
+                    title="No lock-in, no surprises"
+                    items={PROMISES}
+                    className="mt-16"
+                />
 
                 {/* Pricing FAQ — visible text + FAQPage schema (SEO / AI answers) */}
                 <section aria-labelledby="pricing-faq" className="mt-16 max-w-4xl mx-auto">

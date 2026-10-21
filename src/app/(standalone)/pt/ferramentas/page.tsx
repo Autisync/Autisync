@@ -40,7 +40,7 @@ export default function FerramentasIndex() {
                     </div>
                 </div>
             </header>
-            <PtBookSection eyebrow="Fale connosco" title="Precisa de ajuda com alguma destas coisas?" text="Marque uma chamada curta com a equipa da Autisync." points={["Websites", "CRM e marcações", "SMS automática para chamadas perdidas"]} />
+            <PtBookSection eyebrow="Fale connosco" title="Precisa de ajuda com alguma destas coisas?" text="Marque uma chamada curta com a equipa da Autisync." points={["Websites", "CRM e marcações", "WhatsApp com resposta imediata"]} />
         </PtFunnelShell>
     );
 }

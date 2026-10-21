@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { faqSchema } from "@/app/components/FunnelShell";
 import { PtFunnelShell, PtBookSection, PtFaq } from "../_components/PtFunnelShell";
 import MissedCallCalculator from "@/app/tools/missed-call-cost/MissedCallCalculator";
@@ -21,8 +22,8 @@ export const metadata: Metadata = {
 const FAQ = [
     { q: "Como conto as minhas chamadas perdidas?", a: "Abra as chamadas recentes do telemóvel e filtre pelas não atendidas. Conte uma semana normal, não uma semana de férias. Se tiver uma linha empresarial ou um sistema VoIP, o relatório de chamadas mostra as que ficaram sem resposta." },
     { q: "Porque é que quem não é atendido não volta a ligar?", a: "A maioria das pessoas que precisa de um canalizador, de um dentista ou de uma mesa para hoje à noite liga simplesmente para o negócio seguinte no Google. Normalmente fica com o trabalho quem responde primeiro." },
-    { q: "O que é a SMS automática para chamadas perdidas?", a: "Quando não consegue atender, quem ligou recebe de imediato uma SMS do seu negócio, por exemplo 'Desculpe não termos atendido. Em que podemos ajudar?'. A resposta, o nome e a localização entram no seu CRM com um lembrete para devolver a chamada." },
-    { q: "Funciona para quem trabalha por conta própria só com o telemóvel?", a: "Sim. As chamadas não atendidas no seu telemóvel podem ser reencaminhadas para um número empresarial que envia a SMS e regista o contacto, por isso continua a usar o seu próprio telemóvel." },
+    { q: "A Autisync responde às chamadas que eu não atendo?", a: "Em Portugal e em Angola, ainda não: a resposta automática a chamadas perdidas funciona, por agora, só no Reino Unido. Aqui, damos aos seus clientes formas mais rápidas de chegar até si: quem lhe escreve no WhatsApp ou pelo site recebe resposta imediata, também fora de horas, e pode marcar sozinho online." },
+    { q: "Funciona para quem trabalha por conta própria só com o telemóvel?", a: "Sim. Os pedidos do WhatsApp e do site entram no seu CRM Autisync, que abre no telemóvel, com uma tarefa para responder. Continua a usar o seu próprio número." },
 ];
 
 const schema = {
@@ -57,19 +58,21 @@ export default function CustoChamadasPerdidasPage() {
                         perdidos por mês, multiplicados pelo <strong>valor médio de um trabalho</strong>.
                     </p>
                     <p>
-                        A última linha mostra o que manteria se uma SMS imediata impedisse parte dessas pessoas de ligar para o negócio
-                        seguinte. É isso que faz a SMS automática da Autisync para chamadas perdidas: quem ligou recebe uma mensagem em
-                        segundos, a resposta entra no seu CRM Autisync e recebe um lembrete &ldquo;Devolver chamada&rdquo; com os
-                        detalhes do trabalho.
+                        A última linha mostra o que manteria se uma resposta imediata impedisse parte dessas pessoas de procurar o negócio
+                        seguinte. Em Portugal e em Angola, a Autisync faz isso pelo WhatsApp e pelo site: quem lhe escreve recebe resposta
+                        imediata, também fora de horas, e o pedido entra no seu CRM Autisync com uma tarefa para responder.
+                    </p>
+                    <p>
+                        Tem uma clínica ou um salão? <Link href="/pt/clinicas">Veja o que preparamos para clínicas e salões</Link>.
                     </p>
                 </div>
             </section>
 
             <PtBookSection
-                eyebrow="Deixe de perder chamadas"
-                title="Ative a SMS automática para chamadas perdidas no seu negócio."
-                text="Marque uma chamada curta. Vemos como as chamadas lhe chegam hoje e configuramos a SMS automática no seu número."
-                points={["Mantém o seu número de telemóvel", "Cada chamada perdida recebe uma SMS em segundos", "Contactos e lembretes para devolver chamadas no seu CRM"]}
+                eyebrow="Deixe de perder pedidos"
+                title="Responda a todos, mesmo quando não pode atender."
+                text="Marque uma chamada curta. Vemos como os pedidos lhe chegam hoje e pomos o WhatsApp e as marcações online a responder por si."
+                points={["Resposta imediata a quem escreve no WhatsApp ou pelo site", "Marcações online a qualquer hora", "Cada pedido no seu CRM, com tarefa para responder"]}
             />
             <PtFaq items={FAQ} />
         </PtFunnelShell>

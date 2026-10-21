@@ -122,7 +122,7 @@ export const socialTiers: ServiceTier[] = [
 
 /** Shown under the social tiers. */
 export const socialTerms =
-    "*Ad spend is paid by you directly to the platform and is not included in the monthly fee. All social plans have a 3-month minimum term.";
+    "*Ad spend is paid by you directly to the platform and is not included in the monthly fee. All social plans have a 3-month minimum term. After that, they run month to month: cancel with 30 days' notice.";
 
 /**
  * The headline offer: Branding Identity + Small Business website.

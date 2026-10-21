@@ -163,7 +163,7 @@ export const ptSocial: Record<string, Copy> = {
 };
 
 export const ptSocialTerms =
-    "*O investimento em anúncios é pago por si diretamente à plataforma e não está incluído na mensalidade. Todos os planos de redes sociais têm um período mínimo de 3 meses.";
+    "*O investimento em anúncios é pago por si diretamente à plataforma e não está incluído na mensalidade. Todos os planos de redes sociais têm um período mínimo de 3 meses. Depois, são mensais: cancela com 30 dias de aviso.";
 
 export const ptBundle = {
     name: "Lançamento Marca & Website",
@@ -179,6 +179,16 @@ export const ptBundle = {
     ],
 };
 
+/** "Sem surpresas" block on /pt/precos. Only promises we keep today. */
+export const ptPromises: { t: string; d: string }[] = [
+    { t: "Preços à vista", d: "Todos os pacotes têm preço nesta página, em kwanzas, euros e libras, com o que está incluído por baixo de cada um." },
+    { t: "Sem fidelização de 12 meses", d: "Os planos mensais passam a mês a mês depois do mínimo indicado no plano. Para cancelar, basta avisar com 30 dias, por e-mail ou na sua conta." },
+    { t: "Renovações avisadas", d: "Avisamos 30 dias antes de qualquer renovação anual, como a do domínio. Nada se renova sem aviso." },
+    { t: "Um só parceiro, uma só conta", d: "Site, domínio, e-mail, CRM, marcações, publicações e anúncios: a mesma equipa trata de tudo e paga tudo numa só conta." },
+    { t: "Configurado por nós", d: "Fazemos a configuração por si. Fala com uma pessoa da nossa equipa, com nome, pelo WhatsApp, nos dias úteis das 9h às 18h (hora de Lisboa)." },
+    { t: "Os dados são seus", d: "O site, o domínio e os dados são seus. Exporte tudo para Excel ou CSV quando quiser; se sair, entregamos-lhe tudo em 30 dias." },
+];
+
 export const ptUi = {
     from: "A partir de",
     oneOff: "pagamento único · 50% no início, 50% no lançamento",
@@ -189,6 +199,8 @@ export const ptUi = {
     regions: { AOA: "Angola", NAD: "Namíbia", GBP: "Reino Unido", EUR: "Portugal · UE" } as Record<Currency, string>,
     carePlan: (price: string) =>
         `O domínio e o alojamento são grátis no primeiro ano. Depois, o nosso Plano de Manutenção mantém o seu site alojado, com cópias de segurança, atualizado e seguro, com 2 horas de alterações por mês, por ${price}/mês.`,
+    carePlanTerms:
+        "Mensal, sem fidelização de 12 meses: cancela com 30 dias de aviso, por e-mail ou na sua conta. Avisamos 30 dias antes de o domínio renovar.",
     whatsapp: (pkg: string, price: string) => `Olá Autisync, tenho interesse no pacote ${pkg} (${price}).`,
 };
 
@@ -207,7 +219,19 @@ export const ptFaq: { q: string; a: string }[] = [
     },
     {
         q: "Como funcionam os pagamentos?",
-        a: "Os projetos de website e branding são pagos 50% no início e 50% no lançamento, por isso a segunda metade só é paga quando estiver satisfeito com o resultado online. A gestão de redes sociais é paga mensalmente, com um período mínimo de 3 meses.",
+        a: "Os projetos de website e branding são pagos 50% no início e 50% no lançamento, por isso a segunda metade só é paga quando estiver satisfeito com o resultado online. A gestão de redes sociais é paga mensalmente, com um período mínimo de 3 meses. Tudo o que contratar connosco vem numa só conta.",
+    },
+    {
+        q: "Há fidelização? Como cancelo?",
+        a: "Não há fidelização de 12 meses. Os planos mensais, como o Plano de Manutenção e a gestão de redes sociais, passam a mês a mês depois do mínimo indicado no plano (3 meses nas redes sociais). Para cancelar, avise com 30 dias de antecedência, por e-mail ou na sua conta. Avisamos sempre 30 dias antes de qualquer renovação anual, como a do domínio.",
+    },
+    {
+        q: "O site, o domínio e os dados são meus?",
+        a: "Sim. O domínio fica registado em nome da sua empresa, e o site e os dados são seus. Pode exportar os seus contactos e registos para Excel ou CSV quando quiser. Se decidir sair, entregamos-lhe tudo no prazo de 30 dias.",
+    },
+    {
+        q: "Quem me ajuda depois do lançamento?",
+        a: "Configuramos tudo por si e tem uma pessoa da nossa equipa, com nome, a quem pode escrever no WhatsApp. O apoio funciona nos dias úteis, das 9h00 às 18h00 (hora de Lisboa).",
     },
     {
         q: "O que acontece depois do primeiro ano de alojamento?",
