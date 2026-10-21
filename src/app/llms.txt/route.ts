@@ -25,6 +25,10 @@ Key facts:
 - Track record: ${siteStats.projects}+ projects for ${siteStats.clients}+ clients over ${siteStats.years}+ years, mainly corporate B2B companies in engineering, oil & gas, construction, telecoms, finance and healthcare.
 - Clients include: Florentek Engineering, Grupo Girassol, Blue Horizon, Salustra Group, Mavunzuka & Filhos, Segucyber, Evolution Technologies, Shivali Investments, Ninth Vision, Occucare Medical, Omatapalo, Your Pharmacy.
 - Payment terms: website and branding projects are 50% to start and 50% at launch.
+- Contract terms: no 12-month contract. Monthly plans run month to month after any minimum stated on the plan (3 months for social media management); cancel with 30 days' notice by email or from the client's account. Clients are reminded 30 days before any yearly renewal, such as a domain.
+- Ownership: the client owns their site, domain and data, can export to Excel or CSV at any time, and gets everything handed over within 30 days if they leave. Calls and enquiries are never shared or sold.
+- Support: set up by Autisync, with a named person from the team on WhatsApp, weekdays 9:00 to 18:00 (London and Lisbon time).
+- Angola invoicing: AGT-certified invoicing is in certification and not yet available.
 - Contact: WhatsApp +44 7795 866571 · Angola +244 927 114 400 · info@autisync.com
 
 ## Prices (starting prices; Angola Kz / UK £ / EU €)
@@ -78,6 +82,7 @@ ${agencyPlans.map((pl) => `- ${pl.name}: ${formatPrice(pl.price.GBP, "GBP")} / $
 - [SEO e marketing digital](${BASE}/pt/servicos/seo-marketing)
 - [Consultoria e suporte de TI](${BASE}/pt/servicos/consultoria-ti)
 - [CRM para imobiliárias](${BASE}/crm/imobiliarias): imóveis, visitas, assistente de IA, preços por agência
+- [Clínicas e salões em Portugal](${BASE}/pt/clinicas): site, marcações online com lembretes, WhatsApp com resposta imediata, pedidos de avaliação e convites para voltar
 - [Contacto](${BASE}/pt/contacto)
 `;
     return new Response(body, {

@@ -180,6 +180,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: path === "/crm" ? 0.9 : 0.3,
             alternates: { languages: { en: `${BASE_URL}${path}`, pt: `${BASE_URL}${EN_TO_PT[path]}` } },
         })),
+        // Portuguese niche landing page: clinics, aesthetic clinics and salons.
+        {
+            url: `${BASE_URL}/pt/clinicas`,
+            lastModified: now,
+            changeFrequency: "monthly",
+            priority: 0.9,
+        },
         // Country landing pages (searches like "criação de sites Angola").
         {
             url: `${BASE_URL}/pt/angola`,

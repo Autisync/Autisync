@@ -16,7 +16,7 @@ const FOOTER = {
       ["About Us", "/about"], ["Portfolio", "/portfolio"], ["Solutions", "/solutions/devServices"], ["Service Packages", "/servicepackage"],
       ["Autisync CRM", "/crm"], ["CRM for Estate Agents", "/crm/estate-agents"], ["Step-Inside Websites", "/websites/step-inside"], ["CallCatch for Trades", "https://calls.autisync.com"], ["Free Tools", "/tools"],
     ],
-    res: [["Service Questionnaire", "/ServiceQuestionaire"], ["Contact Us", "/contact"], ["Website Design in Namibia", "/namibia"], ["Websites in Angola (PT)", "/pt/angola"]],
+    res: [["Service Questionnaire", "/ServiceQuestionaire"], ["Contact Us", "/contact"], ["Website Design in Namibia", "/namibia"], ["Websites in Angola (PT)", "/pt/angola"], ["Clinics & Salons in Portugal (PT)", "/pt/clinicas"]],
     privacy: "Privacy Policy", terms: "Terms of Use",
     rights: "All rights reserved.",
     trading: "Autisync is a trading name of Maheldom Consulting, Lda",
@@ -28,7 +28,7 @@ const FOOTER = {
     resources: "Recursos",
     links: [
       ["Sobre Nós", "/pt/sobre"], ["Portfólio", "/pt/portfolio"], ["Serviços", "/pt/servicos/desenvolvimento"], ["Preços e Pacotes", "/pt/precos"],
-      ["CRM para Imobiliárias", "/crm/imobiliarias"],
+      ["CRM para Imobiliárias", "/crm/imobiliarias"], ["Clínicas e Salões", "/pt/clinicas"],
     ],
     res: [["Questionário de Serviços", "/pt/questionario"], ["Contacto", "/pt/contacto"], ["Criação de Sites em Angola", "/pt/angola"], ["Website Design in Namibia (EN)", "/namibia"]],
     privacy: "Política de Privacidade", terms: "Termos de Utilização",

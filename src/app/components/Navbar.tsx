@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 import { isPtPath, toEn, toPt } from "@/lib/i18n/routes";
 
 import {
+  CalendarDaysIcon,
   ChartBarIcon,
   CursorArrowRaysIcon,
   PhoneArrowDownLeftIcon,
@@ -49,7 +50,7 @@ const solutions = [
   },
   {
     name: "CallCatch for Trades",
-    description: "Missed-call text-back: callers get a text from you in seconds",
+    description: "Missed-call text-back for UK trades. Your calls, never shared or sold",
     href: "https://calls.autisync.com",
     icon: PhoneArrowDownLeftIcon,
   },
@@ -79,6 +80,12 @@ const solutionsPt = [
     description: "Aplicações Web · Mobile · Sistemas Empresariais · CMS · Integrações",
     href: "/pt/servicos/desenvolvimento",
     icon: Squares2X2Icon,
+  },
+  {
+    name: "Clínicas e Salões",
+    description: "Marcações online, WhatsApp com resposta imediata e lembretes",
+    href: "/pt/clinicas",
+    icon: CalendarDaysIcon,
   },
 ];
 
