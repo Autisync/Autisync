@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     robots: { index: true, follow: true },
 };
 
-const LAST_UPDATED = "22 September 2026";
+const LAST_UPDATED = "21 October 2026";
 
 const sections: LegalSection[] = [
     {
@@ -86,6 +86,9 @@ const sections: LegalSection[] = [
         content: [
             {
                 body: "Fees, billing period and notice are set out in your plan or order form. Fees are payable in advance unless agreed otherwise. We will give at least 30 days' notice before a price change takes effect.",
+            },
+            {
+                body: "If an invoice is still unpaid 7 days after its due date, we may charge the late payment charges allowed by the law that governs your agreement: in the UK, statutory interest and the fixed sum for recovery costs under the Late Payment of Commercial Debts (Interest) Act 1998; in Portugal, commercial late-payment interest and the €40 compensation for collection costs under Decree-Law 62/2013; in Angola, interest at 12% a year, as agreed under article 806(2) of the Civil Code; in Namibia, interest at the rate prescribed under the Prescribed Rate of Interest Act 55 of 1975 (currently 20% a year); in the United States, interest at 1.5% a month, or the highest rate the law allows if that is lower. If the invoice is paid within those 7 days, no charge is made.",
             },
         ],
     },

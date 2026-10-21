@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     robots: { index: true, follow: true },
 };
 
-const LAST_UPDATED = "22 de setembro de 2026";
+const LAST_UPDATED = "21 de outubro de 2026";
 
 const sections: LegalSection[] = [
     {
@@ -89,6 +89,9 @@ const sections: LegalSection[] = [
         content: [
             {
                 body: "As tarifas, o período de faturação e o pré-aviso constam do seu plano ou nota de encomenda. As tarifas são pagas antecipadamente, salvo acordo em contrário. Avisaremos com pelo menos 30 dias de antecedência antes de uma alteração de preço produzir efeitos.",
+            },
+            {
+                body: "Se uma fatura continuar por pagar 7 dias depois do vencimento, podemos cobrar os encargos de mora previstos na lei aplicável ao seu contrato: em Portugal, os juros de mora comerciais e a indemnização de 40 € pelos custos de cobrança do Decreto-Lei n.º 62/2013; no Reino Unido, os juros e o montante fixo previstos no Late Payment of Commercial Debts (Interest) Act 1998; em Angola, juros à taxa de 12% ao ano, convencionada nos termos do artigo 806.º, n.º 2, do Código Civil; na Namíbia, juros à taxa prescrita pelo Prescribed Rate of Interest Act 55 of 1975 (atualmente 20% ao ano); nos Estados Unidos, juros de 1,5% ao mês, ou à taxa mais alta que a lei permita, se for inferior. Se a fatura for paga dentro desses 7 dias, estes encargos não são cobrados.",
             },
         ],
     },
