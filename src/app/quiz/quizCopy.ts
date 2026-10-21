@@ -210,7 +210,7 @@ const PT: typeof EN = {
     footer: "Autisync · Maheldom Consulting, Lda",
     footPrivacy: "Privacidade",
     terms: "Termos de utilização",
-    termsHref: "/TermsofUse",
+    termsHref: "/pt/termos",
 };
 
 export const QUIZ_COPY: Record<QuizLang, typeof EN> = { en: EN, pt: PT };

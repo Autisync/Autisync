@@ -30,7 +30,7 @@ export default function SobreLanding() {
                   Ajudamos empresas a modernizar a sua marca, os seus sistemas e
                   a experiência dos seus clientes. Do design criativo e
                   desenvolvimento de websites à consultoria de TI, automação e
-                  software à medida — a AutiSync reúne tudo numa só estratégia.
+                  software à medida — a Autisync reúne tudo numa só estratégia.
                 </p>
 
                 <p className="mt-4 text-base leading-7 text-gray-300">

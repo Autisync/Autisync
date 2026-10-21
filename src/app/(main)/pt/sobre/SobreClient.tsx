@@ -437,7 +437,7 @@ export default function SobreClient() {
                                 A Nossa História
                             </h3>
                             <p className="mt-4 mb-4 leading-relaxed text-gray-600">
-                                A AutiSync nasceu de uma visão simples: aproximar a tecnologia
+                                A Autisync nasceu de uma visão simples: aproximar a tecnologia
                                 de ponta das necessidades diárias das empresas. O que começou
                                 como uma pequena equipa de programadores e designers apaixonados
                                 tornou-se um parceiro completo de transformação digital.
@@ -653,7 +653,7 @@ export default function SobreClient() {
             {/*                    Meet Our Team*/}
             {/*                </h2>*/}
             {/*                <p className="mt-4 text-lg text-gray-600">*/}
-            {/*                    The talented individuals behind AutiSync&apos;s success*/}
+            {/*                    The talented individuals behind Autisync&apos;s success*/}
             {/*                </p>*/}
             {/*            </div>*/}
             {/*        </div>*/}
@@ -714,7 +714,7 @@ export default function SobreClient() {
                         Pronto para Transformar a Sua Empresa?
                     </h2>
                     <p className="text-lg text-gray-600 mb-8">
-                        Vamos conversar sobre como a AutiSync pode ajudar a sua empresa a
+                        Vamos conversar sobre como a Autisync pode ajudar a sua empresa a
                         atingir os seus objetivos digitais.
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">

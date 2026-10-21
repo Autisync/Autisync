@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import LegalBackBar from "@/app/components/LegalBackBar";
+import { EFFECTIVE_DATE_PT, LAST_UPDATED_PT, UI_PT, sectionsPt } from "./termsPt";
 
 const LAST_UPDATED = "15 March 2026";
 const EFFECTIVE_DATE = "15 March 2026";
@@ -244,11 +245,14 @@ const sections = [
     },
 ];
 
-export default function TermsOfUsePage() {
+/** The website's Terms of Use: English at /TermsofUse, European Portuguese at /pt/termos (termsPt.ts). */
+export default function TermsOfUsePage({ lang = "en" }: { lang?: "en" | "pt" }) {
+    const pt = lang === "pt";
+    const list = pt ? sectionsPt : sections;
     return (
         <main className="min-h-screen bg-gray-50">
             {/* Back to where they came from, and home: this page has no navbar. */}
-            <LegalBackBar />
+            <LegalBackBar lang={lang} />
 
             {/* ── Hero ─────────────────────────────────────────────────────────── */}
             <section className="relative overflow-hidden bg-gradient-to-b from-black via-black/90 to-black/80">
@@ -274,7 +278,7 @@ export default function TermsOfUsePage() {
                         transition={{ duration: 0.5 }}
                         className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#b98b2f]"
                     >
-                        Legal
+                        {pt ? UI_PT.legalEyebrow : "Legal"}
                     </motion.p>
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
@@ -282,7 +286,7 @@ export default function TermsOfUsePage() {
                         transition={{ duration: 0.55, delay: 0.05 }}
                         className="text-4xl font-bold tracking-tight text-white sm:text-5xl"
                     >
-                        Terms of Use
+                        {pt ? UI_PT.pageTitle : "Terms of Use"}
                     </motion.h1>
                     <motion.div
                         initial={{ opacity: 0, y: 16 }}
@@ -290,9 +294,9 @@ export default function TermsOfUsePage() {
                         transition={{ duration: 0.55, delay: 0.12 }}
                         className="mt-4 flex items-center justify-center gap-6 text-sm text-gray-400"
                     >
-                        <span>Effective: {EFFECTIVE_DATE}</span>
+                        <span>{pt ? `${UI_PT.effective} ${EFFECTIVE_DATE_PT}` : `Effective: ${EFFECTIVE_DATE}`}</span>
                         <span className="h-1 w-1 rounded-full bg-gray-600" />
-                        <span>Last updated: {LAST_UPDATED}</span>
+                        <span>{pt ? `${UI_PT.lastUpdated}: ${LAST_UPDATED_PT}` : `Last updated: ${LAST_UPDATED}`}</span>
                     </motion.div>
                     <motion.p
                         initial={{ opacity: 0, y: 16 }}
@@ -300,8 +304,7 @@ export default function TermsOfUsePage() {
                         transition={{ duration: 0.6, delay: 0.18 }}
                         className="mt-5 mx-auto max-w-2xl text-base text-gray-300 leading-relaxed"
                     >
-                        Please read these Terms carefully before using our Website or engaging our services.
-                        They set out the rules governing your relationship with Autisync.
+                        {pt ? UI_PT.heroIntro : "Please read these Terms carefully before using our Website or engaging our services. They set out the rules governing your relationship with Autisync."}
                     </motion.p>
                 </div>
             </section>
@@ -314,10 +317,10 @@ export default function TermsOfUsePage() {
                     <aside className="hidden lg:block">
                         <div className="sticky top-24">
                             <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-[#b98b2f]">
-                                Contents
+                                {pt ? UI_PT.contents : "Contents"}
                             </p>
                             <nav className="space-y-1">
-                                {sections.map((s) => (
+                                {list.map((s) => (
                                     <a
                                         key={s.id}
                                         href={`#${s.id}`}
@@ -331,13 +334,13 @@ export default function TermsOfUsePage() {
                             {/* Quick links */}
                             <div className="mt-8 rounded-xl border border-[#b98b2f]/20 bg-[#b98b2f]/5 p-4">
                                 <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#b98b2f]">
-                                    Related
+                                    {pt ? UI_PT.related : "Related"}
                                 </p>
                                 <a
-                                    href="/PrivacyPolicy"
+                                    href={pt ? "/pt/privacidade" : "/PrivacyPolicy"}
                                     className="block text-xs text-gray-500 transition-colors hover:text-[#b98b2f]"
                                 >
-                                    Privacy Policy →
+                                    {pt ? UI_PT.privacyPolicyLink : "Privacy Policy →"}
                                 </a>
                             </div>
                         </div>
@@ -354,14 +357,20 @@ export default function TermsOfUsePage() {
                             className="rounded-xl border border-[#b98b2f]/20 bg-[#b98b2f]/5 px-6 py-5"
                         >
                             <p className="text-sm leading-relaxed text-gray-700">
-                                These Terms of Use govern your access to and use of the Autisync website and services.
-                                Autisync operates across the <strong>United Kingdom, Portugal, Namibia, and Angola</strong>.
-                                By continuing to use our Website, you acknowledge that you have read and agree to these Terms.
-                                These Terms were last updated on <strong>{LAST_UPDATED}</strong>.
+                                {pt ? (
+                                    <>{UI_PT.introA}<strong>{UI_PT.introB}</strong>{UI_PT.introC}<strong>{LAST_UPDATED_PT}</strong>{UI_PT.introD}</>
+                                ) : (
+                                    <>
+                                        These Terms of Use govern your access to and use of the Autisync website and services.
+                                        Autisync operates across the <strong>United Kingdom, Portugal, Namibia, and Angola</strong>.
+                                        By continuing to use our Website, you acknowledge that you have read and agree to these Terms.
+                                        These Terms were last updated on <strong>{LAST_UPDATED}</strong>.
+                                    </>
+                                )}
                             </p>
                         </motion.div>
 
-                        {sections.map((section, sIdx) => (
+                        {list.map((section, sIdx) => (
                             <motion.section
                                 key={section.id}
                                 id={section.id}
@@ -410,7 +419,7 @@ export default function TermsOfUsePage() {
                                     ))}
                                 </div>
 
-                                {sIdx < sections.length - 1 && (
+                                {sIdx < list.length - 1 && (
                                     <div className="mt-10 h-px bg-gray-100" />
                                 )}
                             </motion.section>
@@ -419,9 +428,9 @@ export default function TermsOfUsePage() {
                         {/* Footer note */}
                         <div className="rounded-xl border border-gray-200 bg-white px-6 py-5 text-center shadow-sm">
                             <p className="text-xs text-gray-400">
-                                © {new Date().getFullYear()} Autisync. All rights reserved.
+                                © {new Date().getFullYear()} {pt ? UI_PT.footerRights : "Autisync. All rights reserved."}
                                 <br className="sm:hidden" />
-                                {" "}Questions? Email us at{" "}
+                                {" "}{pt ? UI_PT.footerQuestions : "Questions? Email us at"}{" "}
                                 <a href="mailto:info@autisync.com" className="text-[#b98b2f] hover:underline">
                                     info@autisync.com
                                 </a>

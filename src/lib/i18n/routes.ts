@@ -28,6 +28,7 @@ export const EN_TO_PT: Record<string, string> = {
     "/clinics": "/pt/clinicas",
     "/book": "/pt/marcar",
     "/PrivacyPolicy": "/pt/privacidade",
+    "/TermsofUse": "/pt/termos",
     "/legal/privacy": "/pt/legal/privacidade",
     "/legal/terms": "/pt/legal/termos",
     "/legal/data-deletion": "/pt/legal/eliminacao-de-dados",

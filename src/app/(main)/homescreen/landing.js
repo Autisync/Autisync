@@ -384,8 +384,8 @@ export default function Landing({ lang = "en" } = {}) {
               </h3>
               <p className="mt-4 mb-4 leading-relaxed text-gray-600">
                 {t(
-                  "At AutiSync, we transform businesses through intelligent automation, premium digital experiences, and seamless technology systems. We turn complex problems into simple, scalable solutions — helping brands save time, increase efficiency, and grow faster.",
-                  "Na AutiSync, transformamos empresas com automação inteligente, experiências digitais de qualidade e sistemas tecnológicos que funcionam em conjunto. Tornamos problemas complexos em soluções simples e escaláveis — para que as marcas poupem tempo, sejam mais eficientes e cresçam mais depressa."
+                  "At Autisync, we transform businesses through intelligent automation, premium digital experiences, and seamless technology systems. We turn complex problems into simple, scalable solutions — helping brands save time, increase efficiency, and grow faster.",
+                  "Na Autisync, transformamos empresas com automação inteligente, experiências digitais de qualidade e sistemas tecnológicos que funcionam em conjunto. Tornamos problemas complexos em soluções simples e escaláveis — para que as marcas poupem tempo, sejam mais eficientes e cresçam mais depressa."
                 )}
               </p>
 

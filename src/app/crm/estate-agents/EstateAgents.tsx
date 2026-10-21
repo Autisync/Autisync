@@ -323,7 +323,7 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
                     <span>© {new Date().getFullYear()} Autisync · {t.footer}</span>
                     <span>
                         <Link href={pt ? "/pt" : "/"}>autisync.com</Link> · <Link href="/crm">CRM</Link> · <LegalLink href={pt ? "/pt/privacidade" : "/PrivacyPolicy"}>{pt ? "Política de Privacidade" : "Privacy Policy"}</LegalLink> ·{" "}
-                        <LegalLink href="/TermsofUse">{pt ? "Termos de Utilização" : "Terms of Use"}</LegalLink>
+                        <LegalLink href={pt ? "/pt/termos" : "/TermsofUse"}>{pt ? "Termos de Utilização" : "Terms of Use"}</LegalLink>
                     </span>
                 </div>
             </footer>

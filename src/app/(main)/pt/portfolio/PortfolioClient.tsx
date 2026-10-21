@@ -36,7 +36,7 @@ interface PortfolioProject {
         images: string[];       // mockup/snapshot URLs (Unsplash/Pexels placeholders)
         highlights: string[];   // key design decisions shown as bullets
         deliverables: string[]; // what was delivered
-        nda?: boolean;          // flag to suppress client name in UI
+        nda?: boolean;          // under a confidentiality agreement: the entry is anonymised (no name, no logo) and the NDA notice shows
     };
 }
 
@@ -452,7 +452,7 @@ const portfolioProjects: PortfolioProject[] = [
             ],
             highlights: [
                 "Envelope C4: frente branca com o logótipo Dreamboat e o papel timbrado visível, verso em azul-marinho profundo — marcante e memorável no correio",
-                "Cartão de colaborador (frente): nome 'Augusto Ventura', faixa de função 'AMINISTRACAO – BACK OFFICE', recorte circular para fotografia, grafismos circulares da marca e furo para fita porta-crachá no topo",
+                "Cartão de colaborador (frente): nome «Augusto Ventura», faixa de função «ADMINISTRAÇÃO – BACK OFFICE», recorte circular para fotografia, grafismos circulares da marca e furo para fita porta-crachá no topo",
                 "Cartão de colaborador (verso): texto completo da política da empresa em português, código QR grande para verificação e rodapé em azul-marinho com as moradas da Sede e dos Escritórios e +244 923-065-276",
                 "Papel timbrado A4: logótipo da Dreamboat Trading Services, Lda no canto superior esquerdo, marca de água centrada na página e bloco de contactos completo no canto inferior esquerdo (Tel, E-mail, Sede, Escritórios)",
             ],
@@ -493,10 +493,10 @@ const portfolioProjects: PortfolioProject[] = [
     // ── Technical Support ────────────────────────────────────────────────
     {
         id: 20,
-        title: "Occucare Medical",
+        title: "Prestador de cuidados de saúde (cliente confidencial)",
         category: "Technical Support",
         subcategory: "Suporte e Consultoria de TI",
-        image: "/logos/OCCUCARE.png",
+        image: "/logos/confidential.svg",
         description: "Parceria contínua de suporte de TI para uma plataforma de gestão de saúde — suporte técnico diário, manutenção proativa de sistemas, helpdesk e consultoria estratégica na melhoria da segurança de rede, garantindo conformidade e integridade dos dados em todas as operações clínicas.",
         url: "",
         color: "#06B6D4",
@@ -555,11 +555,11 @@ const portfolioProjects: PortfolioProject[] = [
     },
     {
         id: 22,
-        title: "Omatapalo",
+        title: "Grupo de construção (cliente confidencial)",
         category: "Technical Support",
         subcategory: "Sistemas de Videovigilância e Segurança",
-        image: "https://omatapalo.com/wp-content/uploads/Design-sem-nome-6.png",
-        description: "Fornecimento e implementação completa de infraestrutura de videovigilância para a Omatapalo — sistemas de câmaras IP, gravadores de vídeo em rede, cablagem estruturada e configuração de ponta a ponta, garantindo monitorização fiável do local 24/7 e cobertura de segurança física.",
+        image: "/logos/confidential.svg",
+        description: "Fornecimento e implementação completa de infraestrutura de videovigilância para um grupo de construção e infraestruturas — sistemas de câmaras IP, gravadores de vídeo em rede, cablagem estruturada e configuração de ponta a ponta, garantindo monitorização fiável do local 24/7 e cobertura de segurança física.",
         url: "",
         color: "#06B6D4",
         industry: "Construção / Infraestruturas",

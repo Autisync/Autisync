@@ -724,7 +724,7 @@ function QuestionnaireModal({ q, onClose }: { q: Questionnaire; onClose: () => v
                             </div>
                             <h2 className="mb-3 text-2xl font-bold text-gray-900">Está concluído!</h2>
                             <p className="mb-2 text-gray-500">
-                                Obrigado por preencher o questionário <strong>{q.title}</strong>.
+                                Obrigado por preencher {q.title.startsWith("Questionário") ? <>o <strong>{q.title}</strong></> : <>o questionário <strong>{q.title}</strong></>}.
                             </p>
                             <p className="mb-8 text-sm text-gray-400">
                                 Vamos analisar as suas respostas e entraremos em contacto no prazo de 1 dia útil.

@@ -23,7 +23,7 @@ Key facts:
 - Services: website design and development, web apps, brand identity and logo design, social media management, SEO, CRM setup, AI automation, IT support.
 - Countries served: Angola, Namibia, United Kingdom, Portugal.
 - Track record: ${siteStats.projects}+ projects for ${siteStats.clients}+ clients over ${siteStats.years}+ years, mainly corporate B2B companies in engineering, oil & gas, construction, telecoms, finance and healthcare.
-- Clients include: Florentek Engineering, Grupo Girassol, Blue Horizon, Salustra Group, Mavunzuka & Filhos, Segucyber, Evolution Technologies, Shivali Investments, Ninth Vision, Occucare Medical, Omatapalo, Your Pharmacy.
+- Clients include: Florentek Engineering, Grupo Girassol, Blue Horizon, Salustra Group, Mavunzuka & Filhos, Segucyber, Evolution Technologies, Shivali Investments, Ninth Vision, Your Pharmacy.
 - Payment terms: website and branding projects are 50% to start and 50% at launch.
 - Contract terms: no 12-month contract. Monthly plans run month to month after any minimum stated on the plan (3 months for social media management); cancel with 30 days' notice by email or from the client's account. Clients are reminded 30 days before any yearly renewal, such as a domain.
 - Ownership: the client owns their site, domain and data, can export to Excel or CSV at any time, and gets everything handed over within 30 days if they leave. Calls and enquiries are never shared or sold.

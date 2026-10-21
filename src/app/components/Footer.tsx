@@ -240,7 +240,7 @@ export default function Footer() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/TermsofUse" target="_blank" className="block pb-2 text-sm hover:text-[#B28228]">
+                    <Link href={pt ? "/pt/termos" : "/TermsofUse"} target="_blank" className="block pb-2 text-sm hover:text-[#B28228]">
                       {c.terms}
                     </Link>
                   </li>

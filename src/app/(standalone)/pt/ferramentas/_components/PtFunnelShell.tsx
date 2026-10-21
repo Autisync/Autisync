@@ -37,7 +37,7 @@ export function PtFunnelShell({ children, navCta = "Marcar chamada", schema }: {
                     <span>© {new Date().getFullYear()} Autisync · Nome comercial da Maheldom Consulting, Lda</span>
                     <span>
                         <Link href="/pt">autisync.com</Link> · <Link href="/pt/ferramentas">Ferramentas grátis</Link> ·{" "}
-                        <LegalLink href="/pt/privacidade">Política de Privacidade</LegalLink> · <LegalLink href="/TermsofUse">Termos de Utilização</LegalLink>
+                        <LegalLink href="/pt/privacidade">Política de Privacidade</LegalLink> · <LegalLink href="/pt/termos">Termos de Utilização</LegalLink>
                     </span>
                 </div>
             </footer>

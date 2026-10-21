@@ -30,7 +30,7 @@ export default function Landing() {
                   We help businesses modernise their brand, systems, and
                   customer experience. From creative design and website
                   development to IT consulting, automation, and custom software
-                  — AutiSync brings everything together under one strategy.
+                  — Autisync brings everything together under one strategy.
                 </p>
 
                 <p className="mt-4 text-base leading-7 text-gray-300">

@@ -34,7 +34,7 @@ interface PortfolioProject {
         images: string[];       // mockup/snapshot URLs (Unsplash/Pexels placeholders)
         highlights: string[];   // key design decisions shown as bullets
         deliverables: string[]; // what was delivered
-        nda?: boolean;          // flag to suppress client name in UI
+        nda?: boolean;          // under a confidentiality agreement: the entry is anonymised (no name, no logo) and the NDA notice shows
     };
 }
 
@@ -445,7 +445,7 @@ const portfolioProjects: PortfolioProject[] = [
             ],
             highlights: [
                 "C4 envelope: white face with Dreamboat logo & letterhead insert visible, deep navy body on the back — bold and memorable in the mail",
-                "Staff ID card (front): employee name 'Augusto Ventura', role banner 'AMINISTRACAO – BACK OFFICE', circular photo cutout, circular brand graphic motifs, and lanyard hole at top",
+                "Staff ID card (front): employee name 'Augusto Ventura', role banner 'ADMINISTRAÇÃO – BACK OFFICE', circular photo cutout, circular brand graphic motifs, and lanyard hole at top",
                 "Staff ID card (back): full company policy text in Portuguese, large QR code for verification, dark navy footer with Sede + Escritórios addresses and +244 923-065-276",
                 "A4 letterhead: Dreamboat Trading Services, Lda logo top-left, ghost watermark logo centred on page, complete contact block bottom-left (Tel, E-mail, Sede, Escritórios)",
             ],
@@ -486,10 +486,10 @@ const portfolioProjects: PortfolioProject[] = [
     // ── Technical Support ────────────────────────────────────────────────
     {
         id: 20,
-        title: "Occucare Medical",
+        title: "Healthcare provider (confidential client)",
         category: "Technical Support",
         subcategory: "IT Support & Consulting",
-        image: "/logos/OCCUCARE.png",
+        image: "/logos/confidential.svg",
         description: "Ongoing IT support partnership for a healthcare management platform — day-to-day technical support, proactive system maintenance, helpdesk operations, and strategic consultation on network security upgrades to ensure compliance and data integrity across clinical operations.",
         url: "",
         color: "#06B6D4",
@@ -548,11 +548,11 @@ const portfolioProjects: PortfolioProject[] = [
     },
     {
         id: 22,
-        title: "Omatapalo",
+        title: "Construction group (confidential client)",
         category: "Technical Support",
         subcategory: "Surveillance & Security Systems",
-        image: "https://omatapalo.com/wp-content/uploads/Design-sem-nome-6.png",
-        description: "Supply and full deployment of IT surveillance infrastructure for Omatapalo — IP camera systems, network video recorders, structured cabling, and end-to-end configuration delivering reliable 24/7 site monitoring and physical security coverage.",
+        image: "/logos/confidential.svg",
+        description: "Supply and full deployment of IT surveillance infrastructure for a construction and infrastructure group — IP camera systems, network video recorders, structured cabling, and end-to-end configuration delivering reliable 24/7 site monitoring and physical security coverage.",
         url: "",
         color: "#06B6D4",
         industry: "Construction / Infrastructure",

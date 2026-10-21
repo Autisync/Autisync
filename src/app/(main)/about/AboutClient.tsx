@@ -436,7 +436,7 @@ export default function AboutPage() {
                                 Our Story
                             </h3>
                             <p className="mt-4 mb-4 leading-relaxed text-gray-600">
-                                AutiSync emerged from a simple vision: to bridge the gap between
+                                Autisync emerged from a simple vision: to bridge the gap between
                                 cutting-edge technology and everyday business needs. What
                                 started as a small team of passionate developers and designers
                                 has grown into a full-service digital transformation partner.
@@ -652,7 +652,7 @@ export default function AboutPage() {
             {/*                    Meet Our Team*/}
             {/*                </h2>*/}
             {/*                <p className="mt-4 text-lg text-gray-600">*/}
-            {/*                    The talented individuals behind AutiSync&apos;s success*/}
+            {/*                    The talented individuals behind Autisync&apos;s success*/}
             {/*                </p>*/}
             {/*            </div>*/}
             {/*        </div>*/}
@@ -713,7 +713,7 @@ export default function AboutPage() {
                         Ready to Transform Your Business?
                     </h2>
                     <p className="text-lg text-gray-600 mb-8">
-                        Let&apos;s discuss how AutiSync can help you achieve your digital
+                        Let&apos;s discuss how Autisync can help you achieve your digital
                         goals
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
