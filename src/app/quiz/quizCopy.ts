@@ -169,9 +169,9 @@ const PT: typeof EN = {
     email: "Email (opcional)",
     consent: "Ao enviar, aceita que a Autisync o contacte sobre o seu plano.",
     privacyLink: "Como usamos os seus dados",
-    // A política do website só existe em inglês; /pt/legal/* são os documentos do Autisync CRM.
-    privacyHref: "/PrivacyPolicy",
-    newTab: "(em inglês, abre noutro separador)",
+    // A política do website em português; /pt/legal/* são os documentos do Autisync CRM.
+    privacyHref: "/pt/privacidade",
+    newTab: "(abre noutro separador)",
     notice: {
         title: "Os seus dados, em resumo",
         rows: [

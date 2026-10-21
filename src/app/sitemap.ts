@@ -150,12 +150,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.7,
             alternates: { languages: { en: `${BASE_URL}/solutions/itConsultation`, pt: `${BASE_URL}/pt/servicos/consultoria-ti` } },
         },
-        {
-            url: `${BASE_URL}/PrivacyPolicy`,
-            lastModified: now,
-            changeFrequency: "yearly",
+        // The website's privacy policy, in English and Portuguese (same text).
+        ...["/PrivacyPolicy", "/pt/privacidade"].map((path) => ({
+            url: `${BASE_URL}${path}`,
+            lastModified: new Date("2026-10-21"),
+            changeFrequency: "yearly" as const,
             priority: 0.3,
-        },
+            alternates: { languages: { en: `${BASE_URL}/PrivacyPolicy`, pt: `${BASE_URL}/pt/privacidade` } },
+        })),
         {
             url: `${BASE_URL}/TermsofUse`,
             lastModified: now,
@@ -180,13 +182,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: path === "/crm" ? 0.9 : 0.3,
             alternates: { languages: { en: `${BASE_URL}${path}`, pt: `${BASE_URL}${EN_TO_PT[path]}` } },
         })),
-        // Portuguese niche landing page: clinics, aesthetic clinics and salons.
-        {
-            url: `${BASE_URL}/pt/clinicas`,
-            lastModified: now,
-            changeFrequency: "monthly",
+        // Niche landing page: clinics, dental practices, aesthetic clinics and
+        // salons, in the UK (/clinics) and Portugal (/pt/clinicas).
+        ...["/clinics", "/pt/clinicas"].map((path) => ({
+            url: `${BASE_URL}${path}`,
+            lastModified: new Date("2026-10-21"),
+            changeFrequency: "monthly" as const,
             priority: 0.9,
-        },
+            alternates: { languages: { en: `${BASE_URL}/clinics`, pt: `${BASE_URL}/pt/clinicas` } },
+        })),
         // Country landing pages (searches like "criação de sites Angola").
         {
             url: `${BASE_URL}/pt/angola`,

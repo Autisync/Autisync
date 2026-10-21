@@ -93,8 +93,9 @@ export default function LegalBackBar({ lang: langProp }: { lang?: Lang }) {
         }
     }, []);
 
-    // The documents bring their own language; the website's own policy is
-    // English only, so its bar speaks the language of the page they came from.
+    // The documents bring their own language (both versions of the website's
+    // policy pass it too); a page that does not, such as /TermsofUse, gets a
+    // bar in the language of the page they came from.
     const lang: Lang = langProp ?? (isPt(from.path) ? "pt" : "en");
     const t = COPY[lang];
     const home = lang === "pt" ? "/pt" : "/";

@@ -209,7 +209,7 @@ const sections = [
             },
             {
                 heading: "Users in Angola",
-                body: `Users in Angola are subject to applicable Angolan law to the extent required by mandatory local provisions, including Law No. 22/11 on consumer and data protection matters.`,
+                body: `Users in Angola are subject to applicable Angolan law to the extent required by mandatory local provisions, including, for personal data, Law No. 22/11 of 17 June (Lei da Protecção de Dados Pessoais).`,
             },
         ],
     },
@@ -334,7 +334,7 @@ export default function TermsOfUsePage() {
                                     Related
                                 </p>
                                 <a
-                                    href="/privacy-policy"
+                                    href="/PrivacyPolicy"
                                     className="block text-xs text-gray-500 transition-colors hover:text-[#b98b2f]"
                                 >
                                     Privacy Policy →

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
+import SiteAnalytics from "@/app/components/SiteAnalytics";
 import Script from "next/script";
 import React from "react";
 
@@ -173,6 +173,8 @@ const websiteSchema = {
 
 // Autisync's own visitor tracker (CRM → Visitors): which pages people open,
 // which sections they reach, where they stop, and bookings made. No cookies.
+// The privacy policy (/PrivacyPolicy, /pt/privacidade) describes what it
+// sends and offers a switch to turn it off; update it if this changes.
 // The key is autisync.com's, from Visitors → Tracking. It is public (it sits
 // in the page), so it lives here; NEXT_PUBLIC_AUTISYNC_TRACK_KEY overrides it
 // and an empty value turns tracking off.
@@ -191,7 +193,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-        <Analytics />
+        {/* Vercel Web Analytics: off for Do Not Track, GPC and the privacy policy's switch. */}
+        <SiteAnalytics />
         {TRACK_KEY ? <Script src={`${APP_URL}/t.js`} data-site={TRACK_KEY} strategy="afterInteractive" /> : null}
         {children}
 

@@ -5,6 +5,7 @@ import {
     type Availability, type Service, type Slot,
     FULL_BOOKING_PAGE, dayKey, generateSlots, isOpenDay,
 } from "@/lib/booking";
+import LegalLink from "./LegalLink";
 import w from "./BookingWidget.module.css";
 
 /**
@@ -38,6 +39,7 @@ const COPY = {
         another: "Book another time",
         paid: "This one is paid in advance, on a secure payment page.", payBtn: "Continue to payment",
         powered: "Bookings go straight into the Autisync CRM",
+        privacyPre: "We use these details only to book and hold the call. ", privacyLink: "How we use your details", privacyHref: "/PrivacyPolicy",
         durations: (m: number) => (m % 60 === 0 ? `${m / 60} hour${m === 60 ? "" : "s"}` : m > 60 ? `${Math.floor(m / 60)} h ${m % 60} min` : `${m} min`),
     },
     pt: {
@@ -62,6 +64,7 @@ const COPY = {
         another: "Marcar outro horário",
         paid: "Este serviço é pago antecipadamente, numa página de pagamento segura.", payBtn: "Continuar para pagamento",
         powered: "As marcações entram diretamente no Autisync CRM",
+        privacyPre: "Usamos estes dados apenas para marcar e fazer a chamada. ", privacyLink: "Como usamos os seus dados", privacyHref: "/pt/privacidade",
         durations: (m: number) => (m % 60 === 0 ? `${m / 60} hora${m === 60 ? "" : "s"}` : m > 60 ? `${Math.floor(m / 60)} h ${m % 60} min` : `${m} min`),
     },
 } as const;
@@ -444,6 +447,10 @@ export default function BookingWidget({ lang = "en", prefill }: { lang?: Lang; p
                             <div><dt>{t.who}</dt><dd>{form.name}</dd></div>
                             <div><dt>{t.mail}</dt><dd>{form.email}</dd></div>
                         </dl>
+                        <p className={w.note}>
+                            {t.privacyPre}
+                            <LegalLink href={t.privacyHref} track="Privacy policy opened · booking">{t.privacyLink}</LegalLink>.
+                        </p>
                         {sendErr && <p className={w.error} role="alert">{sendErr}</p>}
                         {paid ? (
                             <>

@@ -476,7 +476,7 @@ export default function ContactoClient() {
                                                                 <span className="text-xs text-gray-500 leading-relaxed">
                                                                     Aceito ser contactado pela Autisync sobre o meu pedido. Consulte a nossa{" "}
                                                                     {/* Num separador novo: o formulário mantém o que escreveram. */}
-                                                                    <LegalLink href="/PrivacyPolicy" className="text-[#B98B2F] hover:underline" track="Privacy policy opened · contact form (PT)">
+                                                                    <LegalLink href="/pt/privacidade" className="text-[#B98B2F] hover:underline" track="Privacy policy opened · contact form (PT)">
                                                                         Política de Privacidade
                                                                     </LegalLink>.
                                                                 </span>

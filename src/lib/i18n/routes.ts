@@ -25,6 +25,8 @@ export const EN_TO_PT: Record<string, string> = {
     "/tools": "/pt/ferramentas",
     "/tools/missed-call-cost": "/pt/ferramentas/custo-chamadas-perdidas",
     "/tools/website-cost": "/pt/ferramentas/custo-website",
+    "/clinics": "/pt/clinicas",
+    "/PrivacyPolicy": "/pt/privacidade",
     "/legal/privacy": "/pt/legal/privacidade",
     "/legal/terms": "/pt/legal/termos",
     "/legal/data-deletion": "/pt/legal/eliminacao-de-dados",

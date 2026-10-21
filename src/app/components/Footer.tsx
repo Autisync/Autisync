@@ -14,7 +14,7 @@ const FOOTER = {
     resources: "Resources",
     links: [
       ["About Us", "/about"], ["Portfolio", "/portfolio"], ["Solutions", "/solutions/devServices"], ["Service Packages", "/servicepackage"],
-      ["Autisync CRM", "/crm"], ["CRM for Estate Agents", "/crm/estate-agents"], ["Step-Inside Websites", "/websites/step-inside"], ["CallCatch for Trades", "https://calls.autisync.com"], ["Free Tools", "/tools"],
+      ["Autisync CRM", "/crm"], ["CRM for Estate Agents", "/crm/estate-agents"], ["Step-Inside Websites", "/websites/step-inside"], ["Clinics & Salons", "/clinics"], ["CallCatch for Trades", "https://calls.autisync.com"], ["Free Tools", "/tools"],
     ],
     res: [["Service Questionnaire", "/ServiceQuestionaire"], ["Contact Us", "/contact"], ["Website Design in Namibia", "/namibia"], ["Websites in Angola (PT)", "/pt/angola"], ["Clinics & Salons in Portugal (PT)", "/pt/clinicas"]],
     privacy: "Privacy Policy", terms: "Terms of Use",
@@ -204,7 +204,7 @@ export default function Footer() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/PrivacyPolicy" target="_blank" className="block pb-2 text-sm hover:text-[#B28228]">
+                    <Link href={pt ? "/pt/privacidade" : "/PrivacyPolicy"} target="_blank" className="block pb-2 text-sm hover:text-[#B28228]">
                       {c.privacy}
                     </Link>
                   </li>

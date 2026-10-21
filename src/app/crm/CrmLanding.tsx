@@ -348,7 +348,7 @@ export default function CrmLanding({ lang = "en", schema }: { lang?: CrmLang; sc
                 <div className={`${s.wrap} ${s.footerInner}`}>
                     <span>© {new Date().getFullYear()} Autisync · {c.trading}</span>
                     <span>
-                        <Link href={c.home}>autisync.com</Link> · <LegalLink href="/PrivacyPolicy">{c.privacy}</LegalLink> ·{" "}
+                        <Link href={c.home}>autisync.com</Link> · <LegalLink href={lang === "pt" ? "/pt/privacidade" : "/PrivacyPolicy"}>{c.privacy}</LegalLink> ·{" "}
                         <LegalLink href="/TermsofUse">{c.terms}</LegalLink>
                     </span>
                 </div>

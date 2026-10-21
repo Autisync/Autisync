@@ -322,8 +322,8 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
                 <div className={`${s.wrap} ${s.footerInner}`}>
                     <span>© {new Date().getFullYear()} Autisync · {t.footer}</span>
                     <span>
-                        <Link href={pt ? "/pt" : "/"}>autisync.com</Link> · <Link href="/crm">CRM</Link> · <LegalLink href="/PrivacyPolicy">Privacy Policy</LegalLink> ·{" "}
-                        <LegalLink href="/TermsofUse">Terms of Use</LegalLink>
+                        <Link href={pt ? "/pt" : "/"}>autisync.com</Link> · <Link href="/crm">CRM</Link> · <LegalLink href={pt ? "/pt/privacidade" : "/PrivacyPolicy"}>{pt ? "Política de Privacidade" : "Privacy Policy"}</LegalLink> ·{" "}
+                        <LegalLink href="/TermsofUse">{pt ? "Termos de Utilização" : "Terms of Use"}</LegalLink>
                     </span>
                 </div>
             </footer>

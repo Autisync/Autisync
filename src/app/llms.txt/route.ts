@@ -67,9 +67,11 @@ ${agencyPlans.map((pl) => `- ${pl.name}: ${formatPrice(pl.price.GBP, "GBP")} / $
 - [Autisync CRM](${BASE}/crm): Autisync's customer relationship manager for WhatsApp, Instagram, Facebook and email
 - [CRM for estate & letting agents](${BASE}/crm/estate-agents): properties, viewings, AI assistant, prices per agency
 - [Step-inside websites](${BASE}/websites/step-inside): a website that opens with a scroll-driven walk from the street into the business
+- [Clinics and salons in the UK](${BASE}/clinics): website, missed-call text-back for UK mobile callers, online booking with reminders, instant WhatsApp replies, review requests and recall reminders
 - [Missed call cost calculator](${BASE}/tools/missed-call-cost): free tool for trades and local businesses
 - [Website cost estimator (UK)](${BASE}/tools/website-cost): free tool, Autisync package prices including year two
 - [Contact](${BASE}/contact)
+- [Privacy policy](${BASE}/PrivacyPolicy)
 
 ## Em português
 
@@ -84,6 +86,7 @@ ${agencyPlans.map((pl) => `- ${pl.name}: ${formatPrice(pl.price.GBP, "GBP")} / $
 - [CRM para imobiliárias](${BASE}/crm/imobiliarias): imóveis, visitas, assistente de IA, preços por agência
 - [Clínicas e salões em Portugal](${BASE}/pt/clinicas): site, marcações online com lembretes, WhatsApp com resposta imediata, pedidos de avaliação e convites para voltar
 - [Contacto](${BASE}/pt/contacto)
+- [Política de privacidade](${BASE}/pt/privacidade)
 `;
     return new Response(body, {
         headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=3600" },

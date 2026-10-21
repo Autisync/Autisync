@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TurnstileWidget from "@/app/components/TurnstileWidget";
+import LegalLink from "@/app/components/LegalLink";
 import {
     activeQuestionnaire, clearQuestionnaire, loadQuestionnaire, questionnaireStore,
     saveQuestionnaire, setActiveQuestionnaire, startedQuestionnaires,
@@ -817,6 +818,13 @@ function QuestionnaireModal({ q, onClose }: { q: Questionnaire; onClose: () => v
                                             A verificação não está disponível de momento. Tente novamente mais tarde.
                                         </p>
                                     )}
+                                    <p className="mt-3 text-xs leading-relaxed text-gray-500">
+                                        Usamos as suas respostas para preparar a sua proposta.{" "}
+                                        {/* New tab: the questionnaire keeps what they typed. */}
+                                        <LegalLink href="/pt/privacidade" className="text-[#B98B2F] hover:underline" track="Privacy policy opened · questionnaire (PT)">
+                                            Como usamos os seus dados
+                                        </LegalLink>.
+                                    </p>
                                 </div>
                             )}
                         </div>
