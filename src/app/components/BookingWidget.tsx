@@ -87,6 +87,36 @@ function money(price: string | null, currency: string, lang: Lang) {
     catch { return `${n} ${currency}`; }
 }
 
+/**
+ * The booking in progress, kept for the visit (sessionStorage), so a visitor
+ * who opens another page (a legal page, a reload, Back from somewhere else)
+ * comes back to the same step, call, day, time and details. One booking per
+ * visit, whichever page the calendar is on: they all book the same calendar.
+ * Cleared once the booking is made.
+ */
+const PROGRESS = "autisync.booking.v1";
+type Details = { name: string; email: string; phone: string; company: string; topic: string };
+type SavedBooking = {
+    step: number; serviceId: string | null; day: Ymd | null;
+    slot: { starts: string; ends: string; label: string } | null; form: Partial<Details>;
+};
+
+function loadBooking(): SavedBooking | null {
+    try {
+        const raw = JSON.parse(sessionStorage.getItem(PROGRESS) || "null");
+        return raw && typeof raw === "object" ? (raw as SavedBooking) : null;
+    } catch { return null; }
+}
+function saveBooking(b: SavedBooking) {
+    try { sessionStorage.setItem(PROGRESS, JSON.stringify({ ...b, at: Date.now() })); } catch { /* private mode: carry on */ }
+}
+function clearBooking() {
+    try { sessionStorage.removeItem(PROGRESS); } catch { /* ignore */ }
+}
+const isYmd = (x: unknown): x is Ymd =>
+    !!x && typeof x === "object" && ["y", "m", "d"].every((k) => Number.isInteger((x as Record<string, unknown>)[k]));
+const daysBetween = (a: Ymd, b: Ymd) => Math.round((Date.UTC(b.y, b.m - 1, b.d) - Date.UTC(a.y, a.m - 1, a.d)) / 86_400_000);
+
 export interface BookingPrefill { name?: string; email?: string; phone?: string; company?: string; topic?: string }
 
 /** prefill: details the visitor has already given on this page (the quiz), so they are not asked twice. */
@@ -126,10 +156,46 @@ export default function BookingWidget({ lang = "en", prefill }: { lang?: Lang; p
         load(keyOf(todayIn("Europe/London")))
             .then((a) => {
                 setBase(a);
-                if (a.services.length === 1) setService(a.services[0]);
+                // Pick up a booking started earlier in the visit, as far as it still holds.
+                const saved = loadBooking();
+                const svc = (saved?.serviceId && a.services.find((s) => s.id === saved.serviceId)) || (a.services.length === 1 ? a.services[0] : null);
+                if (svc) setService(svc);
+                if (!saved) return;
+                const kept: Partial<Details> = {};
+                for (const k of ["name", "email", "phone", "company", "topic"] as const) {
+                    const v = saved.form?.[k];
+                    if (typeof v === "string" && v) kept[k] = v;
+                }
+                setForm((f) => ({ ...f, ...kept }));
+                if (!svc) return;
+                const now = todayIn(a.calendar.timezone || "Europe/London");
+                const ahead = isYmd(saved.day) ? daysBetween(now, saved.day) : -1;
+                const dayOk = ahead >= 0 && ahead < 56;
+                const starts = saved.slot ? new Date(saved.slot.starts) : null;
+                const slotOk = dayOk && !!saved.slot && !!starts && starts.getTime() > Date.now();
+                if (dayOk && saved.day) {
+                    setOffset(Math.floor(ahead / 7));
+                    setDay(saved.day);
+                }
+                if (slotOk && saved.slot && starts) setSlot({ starts, ends: new Date(saved.slot.ends), label: saved.slot.label });
+                const st = Number.isInteger(saved.step) ? Math.max(1, Math.min(saved.step, 4)) : 1;
+                setStep(slotOk ? st : Math.min(st, 2));
             })
             .catch(() => setFailed(true));
     }, [load]);
+
+    // Keep the booking in progress for the visit (see PROGRESS).
+    useEffect(() => {
+        if (!base || done) return;
+        const { name, email, phone, company, topic } = form;
+        const typed = [name, email, phone, company, topic].some((v) => v.trim());
+        if (step === 1 && !typed) { clearBooking(); return; }
+        saveBooking({
+            step, serviceId: service?.id ?? null, day,
+            slot: slot ? { starts: slot.starts.toISOString(), ends: slot.ends.toISOString(), label: slot.label } : null,
+            form: { name, email, phone, company, topic },
+        });
+    }, [base, done, step, service, day, slot, form]);
 
     const week = useMemo(() => Array.from({ length: 7 }, (_, i) => addDays(today, offset * 7 + i)), [today, offset]);
 
@@ -199,6 +265,7 @@ export default function BookingWidget({ lang = "en", prefill }: { lang?: Lang; p
             });
             const data = await r.json().catch(() => ({}));
             if (r.ok) {
+                clearBooking();
                 setDone({ email: form.email.trim(), slot });
                 // Counted as a conversion in the CRM's Visitors reports (when the tracker is on the page).
                 try { (window as unknown as { autisyncTrack?: (t: string, l: string) => void }).autisyncTrack?.("convert", `Booked: ${service.name}`); } catch { /* never block a booking */ }

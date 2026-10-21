@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import TurnstileWidget from "@/app/components/TurnstileWidget";
+import LegalLink from "@/app/components/LegalLink";
 import { siteStats } from "@/lib/site-stats";
 
 const offices = [
@@ -465,9 +466,10 @@ export default function Contact() {
                                                                 />
                                                                 <span className="text-xs text-gray-500 leading-relaxed">
                                                                     I agree to be contacted by Autisync regarding my enquiry. View our{" "}
-                                                                    <Link href="/PrivacyPolicy" className="text-[#B98B2F] hover:underline">
+                                                                    {/* New tab: the form keeps what they typed. */}
+                                                                    <LegalLink href="/PrivacyPolicy" className="text-[#B98B2F] hover:underline" track="Privacy policy opened · contact form">
                                                                         Privacy Policy
-                                                                    </Link>.
+                                                                    </LegalLink>.
                                                                 </span>
                                                             </label>
                                                             {errors.consent && <p className="mt-1 text-xs text-red-500">{errors.consent}</p>}

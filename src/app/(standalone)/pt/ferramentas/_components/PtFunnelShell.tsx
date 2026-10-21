@@ -2,6 +2,7 @@ import Link from "next/link";
 import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import BookingEmbed from "@/app/crm/BookingEmbed";
+import LegalLink from "@/app/components/LegalLink";
 import { Check, WHATSAPP_DISPLAY, WHATSAPP_URL } from "@/app/components/FunnelShell";
 import s from "@/app/crm/crm.module.css";
 
@@ -35,7 +36,7 @@ export function PtFunnelShell({ children, navCta = "Marcar chamada", schema }: {
                     <span>© {new Date().getFullYear()} Autisync · Nome comercial da Maheldom Consulting, Lda</span>
                     <span>
                         <Link href="/pt">autisync.com</Link> · <Link href="/pt/ferramentas">Ferramentas grátis</Link> ·{" "}
-                        <Link href="/PrivacyPolicy">Política de Privacidade</Link> · <Link href="/TermsofUse">Termos de Utilização</Link>
+                        <LegalLink href="/PrivacyPolicy">Política de Privacidade</LegalLink> · <LegalLink href="/TermsofUse">Termos de Utilização</LegalLink>
                     </span>
                 </div>
             </footer>

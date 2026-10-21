@@ -3,6 +3,7 @@ import Link from "next/link";
 import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import BookingEmbed from "./BookingEmbed";
+import LegalLink from "@/app/components/LegalLink";
 import s from "./crm.module.css";
 
 /**
@@ -347,8 +348,8 @@ export default function CrmLanding({ lang = "en", schema }: { lang?: CrmLang; sc
                 <div className={`${s.wrap} ${s.footerInner}`}>
                     <span>© {new Date().getFullYear()} Autisync · {c.trading}</span>
                     <span>
-                        <Link href={c.home}>autisync.com</Link> · <Link href="/PrivacyPolicy">{c.privacy}</Link> ·{" "}
-                        <Link href="/TermsofUse">{c.terms}</Link>
+                        <Link href={c.home}>autisync.com</Link> · <LegalLink href="/PrivacyPolicy">{c.privacy}</LegalLink> ·{" "}
+                        <LegalLink href="/TermsofUse">{c.terms}</LegalLink>
                     </span>
                 </div>
             </footer>

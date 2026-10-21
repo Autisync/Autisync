@@ -2,6 +2,7 @@ import Link from "next/link";
 import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import BookingEmbed from "@/app/crm/BookingEmbed";
+import LegalLink from "@/app/components/LegalLink";
 import s from "@/app/crm/crm.module.css";
 
 // Same self-hosted faces and charcoal/gold look as the CRM landing page, so the
@@ -38,7 +39,7 @@ export function FunnelShell({ children, navCta = "Book a call", schema, hideNav 
                     <span>© {new Date().getFullYear()} Autisync · A trading name of Maheldom Consulting, Lda</span>
                     <span>
                         <Link href="/">autisync.com</Link> · <Link href="/tools">Free tools</Link> ·{" "}
-                        <Link href="/PrivacyPolicy">Privacy Policy</Link> · <Link href="/TermsofUse">Terms of Use</Link>
+                        <LegalLink href="/PrivacyPolicy">Privacy Policy</LegalLink> · <LegalLink href="/TermsofUse">Terms of Use</LegalLink>
                     </span>
                 </div>
             </footer>

@@ -3,6 +3,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TurnstileWidget from "@/app/components/TurnstileWidget";
+import {
+    activeQuestionnaire, clearQuestionnaire, loadQuestionnaire, questionnaireStore,
+    saveQuestionnaire, setActiveQuestionnaire, startedQuestionnaires,
+} from "@/lib/questionnaireProgress";
+
+// Kept for the visit, so a closed card, a reload or Back from another page doesn't lose the answers.
+const PROGRESS = questionnaireStore("en");
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -475,8 +482,10 @@ function FormField({ field, value, onChange, error }: {
 // ─── Questionnaire Modal ──────────────────────────────────────────────────────
 
 function QuestionnaireModal({ q, onClose }: { q: Questionnaire; onClose: () => void }) {
-    const [currentSection, setCurrentSection] = useState(0);
-    const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
+    // Where they were in this questionnaire earlier in the visit, if anywhere.
+    const [restored] = useState(() => loadQuestionnaire(PROGRESS, q));
+    const [currentSection, setCurrentSection] = useState(restored?.section ?? 0);
+    const [answers, setAnswers] = useState<Record<string, string | string[]>>(restored?.answers ?? {});
     const [website, setWebsite] = useState("");
     const [formStartedAt, setFormStartedAt] = useState<number>(() => Date.now());
     const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
@@ -502,6 +511,11 @@ function QuestionnaireModal({ q, onClose }: { q: Questionnaire; onClose: () => v
         window.addEventListener("keydown", handleKey);
         return () => window.removeEventListener("keydown", handleKey);
     }, [onClose]);
+
+    // Keep the step and answers for the visit (cleared once sent).
+    useEffect(() => {
+        if (!submitted) saveQuestionnaire(PROGRESS, q.id, currentSection, answers);
+    }, [q.id, currentSection, answers, submitted]);
 
     const handleChange = (id: string, val: string | string[]) => {
         setAnswers((prev) => ({ ...prev, [id]: val }));
@@ -575,6 +589,7 @@ function QuestionnaireModal({ q, onClose }: { q: Questionnaire; onClose: () => v
                 const data = await res.json().catch(() => ({}));
                 throw new Error(data.error || "Failed to send. Please try again.");
             }
+            clearQuestionnaire(PROGRESS, q.id);
             setSubmitted(true);
             setWebsite("");
             setTurnstileToken(null);
@@ -840,7 +855,25 @@ function QuestionnaireModal({ q, onClose }: { q: Questionnaire; onClose: () => v
 
 export default function ServiceQuestionnairePage() {
     const [active, setActive] = useState<string | null>(null);
+    const [started, setStarted] = useState<string[]>([]);
     const activeQ = questionnaires.find((q) => q.id === active);
+
+    // Back on the page (reload, Back from another page): reopen the one they were filling in.
+    useEffect(() => {
+        const was = activeQuestionnaire(PROGRESS);
+        if (was && questionnaires.some((q) => q.id === was)) setActive(was);
+        setStarted(startedQuestionnaires(PROGRESS));
+    }, []);
+
+    const open = (id: string) => {
+        setActive(id);
+        setActiveQuestionnaire(PROGRESS, id);
+    };
+    const close = () => {
+        setActive(null);
+        setActiveQuestionnaire(PROGRESS, null);
+        setStarted(startedQuestionnaires(PROGRESS));
+    };
 
     return (
         <>
@@ -889,10 +922,10 @@ export default function ServiceQuestionnairePage() {
                                     </div>
                                     <div className="mt-3">
                                         <button
-                                            onClick={() => setActive(item.id)}
+                                            onClick={() => open(item.id)}
                                             className="inline-flex items-center text-sm font-semibold text-[var(--autisync-gold,#b98b2f)] hover:text-gray-900 transition-colors"
                                         >
-                                            Start this questionnaire
+                                            {started.includes(item.id) ? "Continue where you left off" : "Start this questionnaire"}
                                             <span className="ml-2 text-xs">↗</span>
                                         </button>
                                     </div>
@@ -912,7 +945,7 @@ export default function ServiceQuestionnairePage() {
                 {activeQ && (
                     <QuestionnaireModal
                         q={activeQ}
-                        onClose={() => setActive(null)}
+                        onClose={close}
                     />
                 )}
             </AnimatePresence>

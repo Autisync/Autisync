@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import LegalBackBar from "@/app/components/LegalBackBar";
 
 const LAST_UPDATED = "15 March 2026";
 const EFFECTIVE_DATE = "15 March 2026";
@@ -246,6 +247,9 @@ const sections = [
 export default function TermsOfUsePage() {
     return (
         <main className="min-h-screen bg-gray-50">
+            {/* Back to where they came from, and home: this page has no navbar. */}
+            <LegalBackBar />
+
             {/* ── Hero ─────────────────────────────────────────────────────────── */}
             <section className="relative overflow-hidden bg-gradient-to-b from-black via-black/90 to-black/80">
                 <div
@@ -263,7 +267,7 @@ export default function TermsOfUsePage() {
                     style={{ background: "linear-gradient(to right, transparent, #b98b2f, transparent)" }}
                 />
 
-                <div className="relative px-4 pt-28 pb-16 mx-auto max-w-4xl text-center sm:px-6 lg:px-8">
+                <div className="relative px-4 pt-14 pb-16 mx-auto sm:pt-20 max-w-4xl text-center sm:px-6 lg:px-8">
                     <motion.p
                         initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
