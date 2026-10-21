@@ -166,7 +166,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
         // Step-inside websites and the free tools (SEO problem pages), each
         // with its Portuguese twin.
-        ...["/websites/step-inside", "/tools", "/tools/missed-call-cost", "/tools/website-cost"].flatMap((path) => {
+        ...["/websites/step-inside", "/tools", "/tools/missed-call-cost", "/tools/website-cost", "/book"].flatMap((path) => {
             const languages = { en: `${BASE_URL}${path}`, pt: `${BASE_URL}${EN_TO_PT[path]}` };
             const priority = path === "/tools" ? 0.6 : 0.8;
             return [

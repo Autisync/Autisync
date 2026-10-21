@@ -123,7 +123,8 @@ const daysBetween = (a: Ymd, b: Ymd) => Math.round((Date.UTC(b.y, b.m - 1, b.d) 
 export interface BookingPrefill { name?: string; email?: string; phone?: string; company?: string; topic?: string }
 
 /** prefill: details the visitor has already given on this page (the quiz), so they are not asked twice. */
-export default function BookingWidget({ lang = "en", prefill }: { lang?: Lang; prefill?: BookingPrefill }) {
+/** preferMinutes: start on the free service of that length ("Book a free 15-minute call"), when there is one. */
+export default function BookingWidget({ lang = "en", prefill, preferMinutes }: { lang?: Lang; prefill?: BookingPrefill; preferMinutes?: number }) {
     const t = COPY[lang];
     const locale = lang === "pt" ? "pt-PT" : "en-GB";
 
@@ -161,7 +162,8 @@ export default function BookingWidget({ lang = "en", prefill }: { lang?: Lang; p
                 setBase(a);
                 // Pick up a booking started earlier in the visit, as far as it still holds.
                 const saved = loadBooking();
-                const svc = (saved?.serviceId && a.services.find((s) => s.id === saved.serviceId)) || (a.services.length === 1 ? a.services[0] : null);
+                const svc = (saved?.serviceId && a.services.find((s) => s.id === saved.serviceId)) || (a.services.length === 1 ? a.services[0] : null)
+                    || (preferMinutes ? a.services.find((s) => s.duration_minutes === preferMinutes && !s.is_paid) || null : null);
                 if (svc) setService(svc);
                 if (!saved) return;
                 const kept: Partial<Details> = {};
@@ -294,10 +296,10 @@ export default function BookingWidget({ lang = "en", prefill }: { lang?: Lang; p
         <p className={w.muted}>{t.down} <a href={FULL_BOOKING_PAGE} target="_blank" rel="noopener noreferrer">{t.openFull} →</a></p>
     );
 
-    if (failed) return <div className={w.widget}><div className={w.body}>{fallback}</div></div>;
+    if (failed) return <div data-wa-avoid className={w.widget}><div className={w.body}>{fallback}</div></div>;
     if (!base) {
         return (
-            <div className={w.widget} aria-busy="true">
+            <div data-wa-avoid className={w.widget} aria-busy="true">
                 <div className={w.body}><div className={w.skeleton} /><div className={w.skeleton} /><p className={w.muted}>{t.loading}</p></div>
             </div>
         );
@@ -305,7 +307,7 @@ export default function BookingWidget({ lang = "en", prefill }: { lang?: Lang; p
 
     if (done) {
         return (
-            <div className={w.widget} ref={topRef}>
+            <div data-wa-avoid className={w.widget} ref={topRef}>
                 <div className={`${w.body} ${w.done}`} role="status">
                     <span className={w.tick} aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
@@ -324,7 +326,7 @@ export default function BookingWidget({ lang = "en", prefill }: { lang?: Lang; p
     const paid = !!(service?.is_paid && price);
 
     return (
-        <div className={w.widget} ref={topRef}>
+        <div data-wa-avoid className={w.widget} ref={topRef}>
             <div className={w.progress}>
                 <div className={w.progressTop}><span>{t.stepOf(step)}</span><span>{t.complete(pct)}</span></div>
                 <div className={w.bar}><i style={{ width: `${pct}%` }} /></div>

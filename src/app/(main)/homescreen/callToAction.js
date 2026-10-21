@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect } from "react";
+import { waLink } from "@/lib/whatsapp";
 
 export default function CallToAction() {
   useEffect(() => {
@@ -70,7 +71,7 @@ export default function CallToAction() {
                   <p className="mt-1 mb-4 text-gray-600">
                     Complete this form and we’ll be in touch within 24 hours. Or{" "}
                     <a
-                      href="https://wa.me/+447795866571"
+                      href={waLink("Hi Autisync! I'd like to talk about a project.", "WEB-home")}
                       className="text-[var(--autisync-gold,#b98b2f)] font-semibold hover:text-yellow-700"
                     >
                       message us on WhatsApp

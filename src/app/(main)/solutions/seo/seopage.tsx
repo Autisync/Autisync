@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Clients from "../clients";
+import { waLink } from "@/lib/whatsapp";
 
 type Feature = {
     name: string;
@@ -139,7 +140,7 @@ export default function SEO() {
                                 Explore Service Packages
                             </Link>
                             <Link
-                                href="https://wa.me/+447795866571"
+                                href={waLink("Hi Autisync! I'd like to talk about a project.", "WEB-seo")}
                                 target="_blank"
                                 className="text-sm font-medium text-gray-700 hover:text-[var(--autisync-gold,#B98B2F)] underline underline-offset-4"
                             >
@@ -293,7 +294,7 @@ export default function SEO() {
                             </ul>
                             <div className="mt-6 flex flex-wrap gap-3">
                                 <Link
-                                    href="https://wa.me/+447795866571"
+                                    href={waLink("Hi Autisync! I'd like to talk about a project.", "WEB-seo")}
                                     target="_blank"
                                     className="inline-flex items-center rounded-md bg-white px-4 py-2 text-xs font-semibold text-gray-900 shadow-sm hover:bg-gray-200"
                                 >
@@ -369,7 +370,7 @@ export default function SEO() {
 
                         <div className="flex items-center justify-center mt-10 gap-x-6">
                             <Link
-                                href="https://wa.me/+447795866571"
+                                href={waLink("Hi Autisync! I'd like to talk about a project.", "WEB-seo")}
                                 target="_blank"
                                 className="rounded-md group bg-white px-3.5 py-2.5 text-sm text-gray-900 shadow-sm hover:bg-gray-200 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                             >

@@ -10,9 +10,9 @@ import { ApproxUsd, CarePlanNote, CurrencyToggle, OngoingNote, TierPrice, usePac
 import { formatPrice, websiteTiers, type Currency } from "@/lib/website-packages";
 import { brandingTiers, launchBundle, socialTiers } from "@/lib/service-packages";
 import { ptBranding, ptBundle, ptSocial, ptSocialTerms, ptUi, ptWebsite } from "@/lib/i18n/pt";
+import { waLink } from "@/lib/whatsapp";
 
-const WHATSAPP = "https://wa.me/447795866571";
-const wa = (msg: string) => `${WHATSAPP}?text=${encodeURIComponent(msg)}`;
+const wa = (msg: string) => waLink(msg, "WEB-precos");
 
 type Tier = { id: string; price: Record<Currency, number>; mostPopular?: boolean };
 type Copy = { name: string; description: string; features: string[]; detail?: string };

@@ -4,6 +4,7 @@ import { CheckIcon } from "@heroicons/react/24/solid";
 import Promises from "@/app/components/Promises";
 import BookingEmbed from "@/app/crm/BookingEmbed";
 import { carePlanMonthly, formatPrice, websiteTiers } from "@/lib/website-packages";
+import { waLink } from "@/lib/whatsapp";
 
 /**
  * /clinics — clinics, dental practices, aesthetic clinics and salons in the UK.
@@ -20,8 +21,7 @@ import { carePlanMonthly, formatPrice, websiteTiers } from "@/lib/website-packag
 
 const URL = "https://www.autisync.com/clinics";
 const PT_URL = "https://www.autisync.com/pt/clinicas";
-const WHATSAPP = "https://wa.me/447795866571";
-const wa = (text: string) => `${WHATSAPP}?text=${encodeURIComponent(text)}`;
+const wa = (text: string) => waLink(text, "WEB-clinics");
 const WA_TEXT = "Hi Autisync, I saw your page for clinics and salons and would like to know more.";
 
 const gbp = (n: number) => formatPrice(n, "GBP");

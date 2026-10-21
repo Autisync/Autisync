@@ -3,8 +3,9 @@ import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import BookingEmbed from "@/app/crm/BookingEmbed";
 import LegalLink from "@/app/components/LegalLink";
-import { Check, WHATSAPP_DISPLAY, WHATSAPP_URL } from "@/app/components/FunnelShell";
+import { Check, WHATSAPP_DISPLAY } from "@/app/components/FunnelShell";
 import s from "@/app/crm/crm.module.css";
+import WhatsAppLink from "@/app/components/WhatsAppLink";
 
 /**
  * Portuguese twin of components/FunnelShell: the same charcoal/gold page,
@@ -65,7 +66,7 @@ export function PtBookSection({ eyebrow, title, text, points }: { eyebrow: strin
                 <p className={s.bookFallback}>
                     O calendário não carrega?{" "}
                     <a href={BOOKING_PAGE} target="_blank" rel="noopener noreferrer">Abra a página de marcações num novo separador</a>
-                    {" "}ou fale connosco pelo <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">WhatsApp, através do {WHATSAPP_DISPLAY}</a>.
+                    {" "}ou fale connosco pelo <WhatsAppLink>WhatsApp, através do {WHATSAPP_DISPLAY}</WhatsAppLink>.
                 </p>
             </div>
         </section>

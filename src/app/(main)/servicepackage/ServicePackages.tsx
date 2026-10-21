@@ -12,6 +12,7 @@ import { formatPrice, websiteTiers, type Currency } from "@/lib/website-packages
 import { brandingTiers, launchBundle, socialTiers, socialTerms, type ServiceTier } from "@/lib/service-packages";
 import { faqSchema, pricingFaq } from "@/lib/faq";
 import Promises from "@/app/components/Promises";
+import { waLink } from "@/lib/whatsapp";
 
 /* What sets us apart, in plain words. Only promises we keep today. */
 const PROMISES = [
@@ -25,10 +26,9 @@ const PROMISES = [
 
 /* ------------------------------ Shared bits ------------------------------- */
 
-const WHATSAPP = "https://wa.me/447795866571";
 
 function whatsappLink(message: string) {
-    return `${WHATSAPP}?text=${encodeURIComponent(message)}`;
+    return waLink(message, "WEB-pricing");
 }
 
 function TierCard({ tier, currency, kind }: { tier: ServiceTier; currency: Currency; kind: string }) {

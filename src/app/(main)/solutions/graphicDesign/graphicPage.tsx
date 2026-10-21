@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { waLink } from "@/lib/whatsapp";
 
 
 const features = [
@@ -201,7 +202,7 @@ export default function CreativeDesign() {
                             </h2>
                             <div className="flex items-center justify-center mt-10 gap-x-6 lg:justify-start">
                                 <Link
-                                    href="https://wa.me/+447795866571"
+                                    href={waLink("Hi Autisync! I'd like to talk about a project.", "WEB-design")}
                                     target="_blank"
                                     className="group rounded-md bg-white px-3.5 py-2.5 text-sm text-gray-900 shadow-sm hover:bg-[#1C1C1C] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                                 >

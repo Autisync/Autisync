@@ -4,14 +4,16 @@ import type { ReactNode } from "react";
 import BookingEmbed from "@/app/crm/BookingEmbed";
 import LegalLink from "@/app/components/LegalLink";
 import s from "@/app/crm/crm.module.css";
+import WhatsAppLink from "@/app/components/WhatsAppLink";
+import { WHATSAPP_DISPLAY } from "@/lib/whatsapp";
 
 // Same self-hosted faces and charcoal/gold look as the CRM landing page, so the
 // funnel pages (step-inside websites, free tools) read as one family.
 const display = localFont({ src: "../fonts/Outfit-Variable.woff2", weight: "100 900", variable: "--font-crm-display", display: "swap" });
 const body = localFont({ src: "../fonts/DMSans-Variable.woff2", weight: "100 1000", variable: "--font-crm-body", display: "swap" });
 
-export const WHATSAPP_DISPLAY = "+44 7795 866571";
-export const WHATSAPP_URL = "https://wa.me/447795866571";
+// One number and one way of making the link: lib/whatsapp.ts (the links carry the page's "(ref WEB-…)" marker).
+export { WHATSAPP_DISPLAY, WHATSAPP_BASE as WHATSAPP_URL } from "@/lib/whatsapp";
 const BOOKING_PAGE = "https://book.autisync.com/apps/appointments/p/autisync-agency";
 
 export const Check = () => (
@@ -68,7 +70,7 @@ export function BookSection({ eyebrow, title, text, points }: { eyebrow: string;
                 <p className={s.bookFallback}>
                     Calendar not loading?{" "}
                     <a href={BOOKING_PAGE} target="_blank" rel="noopener noreferrer">Open the booking page in a new tab</a>
-                    , or message us on <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">WhatsApp at {WHATSAPP_DISPLAY}</a>.
+                    , or message us on <WhatsAppLink>WhatsApp at {WHATSAPP_DISPLAY}</WhatsAppLink>.
                 </p>
             </div>
         </section>

@@ -3,8 +3,9 @@ import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import BookingEmbed from "@/app/crm/BookingEmbed";
 import LegalLink from "@/app/components/LegalLink";
-import { Check, WHATSAPP_DISPLAY, WHATSAPP_URL } from "@/app/components/FunnelShell";
+import { Check, WHATSAPP_DISPLAY } from "@/app/components/FunnelShell";
 import s from "@/app/crm/crm.module.css";
+import WhatsAppLink from "@/app/components/WhatsAppLink";
 
 /**
  * Portuguese chrome for the step-inside page (/pt/websites/demonstracao):
@@ -64,7 +65,7 @@ export function PtBookSection({ eyebrow, title, text, points }: { eyebrow: strin
                 <p className={s.bookFallback}>
                     O calendário não carrega?{" "}
                     <a href={BOOKING_PAGE} target="_blank" rel="noopener noreferrer">Abra a página de marcação num novo separador</a>
-                    , ou envie-nos uma mensagem por <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">WhatsApp para {WHATSAPP_DISPLAY}</a>.
+                    , ou envie-nos uma mensagem por <WhatsAppLink>WhatsApp para {WHATSAPP_DISPLAY}</WhatsAppLink>.
                 </p>
             </div>
         </section>

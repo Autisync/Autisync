@@ -13,8 +13,7 @@ import { CheckIcon } from "@heroicons/react/24/solid";
 import Clients from "@/app/(main)/solutions/clients";
 import { carePlanMonthly, formatPrice, websiteTiers, type Currency } from "@/lib/website-packages";
 import { ptWebsite } from "@/lib/i18n/pt";
-
-const WHATSAPP = "https://wa.me/447795866571";
+import { waLink } from "@/lib/whatsapp";
 
 export type CountryCopy = {
     lang: "en" | "pt";
@@ -51,10 +50,11 @@ export type CountryCopy = {
     clientsTitle: string;
 };
 
-const wa = (text: string) => `${WHATSAPP}?text=${encodeURIComponent(text)}`;
 
 export default function CountryLanding({ c }: { c: CountryCopy }) {
     const pt = c.lang === "pt";
+    // The marker says which landing page the chat came from: WEB-angola, WEB-namibia.
+    const wa = (text: string) => waLink(text, c.market === "ao" ? "WEB-angola" : "WEB-namibia");
     const care = formatPrice(carePlanMonthly[c.currency], c.currency);
 
     const jsonLd = [

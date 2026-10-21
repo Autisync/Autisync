@@ -7,6 +7,7 @@ import { FULL_BOOKING_PAGE } from "@/lib/booking";
 import { PLANS, PROBLEM_LINE, QUIZ_COPY, type BusinessKind, type ProblemKind, type QuizLang } from "./quizCopy";
 import { quizEvent } from "./quizTrack";
 import s from "./quiz.module.css";
+import { waLink } from "@/lib/whatsapp";
 
 /**
  * The quiz funnel: three taps, contact details, then a plan for this kind of
@@ -32,7 +33,10 @@ const STORE = "autisync.quiz.utm";
 // The same in both languages: answers are kept by option id, so switching
 // EN/PT keeps them.
 const PROGRESS = "autisync.quiz.progress.v1";
-const WHATSAPP_URL = "https://wa.me/447795866571";
+// The quiz's WhatsApp links carry its marker, so the CRM counts chats that start here.
+const quizWa = (lang: QuizLang) => (lang === "pt"
+    ? waLink("Olá Autisync! Estava a fazer o diagnóstico no vosso site e tenho uma pergunta.", "WEB-diagnostico")
+    : waLink("Hi Autisync! I was doing the quiz on your website and have a question.", "WEB-quiz"));
 
 /** The visit's tags: from this address, else from earlier in the visit. */
 function readUtm(): Record<string, string> {
@@ -456,7 +460,7 @@ export default function QuizFunnel({ lang }: { lang: QuizLang }) {
                                         </div>
                                         <p className={`${s.small} ${s.talkWa}`}>
                                             {c.whatsappPre}
-                                            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" data-track={`WhatsApp from quiz · ${label(step)}`}>{c.whatsappLabel}</a>.
+                                            <a href={quizWa(lang)} target="_blank" rel="noopener noreferrer" data-track={`WhatsApp from quiz · ${label(step)}`}>{c.whatsappLabel}</a>.
                                         </p>
                                     </div>
                                 ) : (
@@ -598,6 +602,10 @@ export default function QuizFunnel({ lang }: { lang: QuizLang }) {
                         <a href={c.privacyHref} target="_blank" rel="noopener" onClick={(e) => openSheet(e, "footer")}
                             data-track={`Privacy notice opened (footer) · ${where}`}>{c.footPrivacy}</a>
                         <a href={c.termsHref} target="_blank" rel="noopener" data-track={`Terms of use opened · ${where}`}>{c.terms}</a>
+                        {/* The quiz stays focused (no floating button); WhatsApp is here, and where a question is asked. */}
+                        <a href={quizWa(lang)} target="_blank" rel="noopener noreferrer" data-track={`WhatsApp from quiz footer · ${where}`}>
+                            {lang === "pt" ? "Falar no WhatsApp" : "Chat on WhatsApp"}
+                        </a>
                     </span>
                 </div>
             </footer>

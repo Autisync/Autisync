@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { HeroMarketLine } from "@/app/components/MarketCopy";
 import { localHref } from "@/lib/i18n/routes";
+import { waLink } from "@/lib/whatsapp";
 
 /* ========= 3D Icon Wrapper (with hover) ========= */
 
@@ -395,7 +396,7 @@ export default function Landing({ lang = "en" } = {}) {
                 )}
               </p>
               <Link
-                href="https://wa.me/+447795866571"
+                href={pt ? waLink("Olá Autisync! Gostaria de falar sobre um projeto.", "WEB-pt") : waLink("Hi Autisync! I'd like to talk about a project.", "WEB-home")}
                 target="_blank"
                 className="mt-8 font-bold text-gray-800 hover:text-[var(--autisync-gold,#b98b2f)]/90"
               >

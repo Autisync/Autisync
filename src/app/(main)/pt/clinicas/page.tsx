@@ -4,6 +4,7 @@ import { CheckIcon } from "@heroicons/react/24/solid";
 import Promises from "@/app/components/Promises";
 import { carePlanMonthly, formatPrice, websiteTiers } from "@/lib/website-packages";
 import { ptWebsite } from "@/lib/i18n/pt";
+import { waLink } from "@/lib/whatsapp";
 
 /**
  * /pt/clinicas — clinics, aesthetic clinics and salons in Portugal.
@@ -19,8 +20,7 @@ import { ptWebsite } from "@/lib/i18n/pt";
 const URL = "https://www.autisync.com/pt/clinicas";
 // The UK twin, /clinics, offers the missed-call text-back as well.
 const EN_URL = "https://www.autisync.com/clinics";
-const WHATSAPP = "https://wa.me/447795866571";
-const wa = (text: string) => `${WHATSAPP}?text=${encodeURIComponent(text)}`;
+const wa = (text: string) => waLink(text, "WEB-clinicas");
 const WA_TEXT = "Olá Autisync, vi a página para clínicas e salões e gostava de saber mais.";
 
 const eur = (n: number) => formatPrice(n, "EUR");

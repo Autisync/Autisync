@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PtPricing } from "../PtPackages";
 import { ptFaq, ptFaqSchema, ptPromises } from "@/lib/i18n/pt";
 import Promises from "@/app/components/Promises";
+import { waLink } from "@/lib/whatsapp";
 
 const URL = "https://www.autisync.com/pt/precos";
 
@@ -62,7 +63,7 @@ export default function PrecosPage() {
 
                 <div className="mt-12 text-center">
                     <a
-                        href={`https://wa.me/447795866571?text=${encodeURIComponent("Olá Autisync, gostaria de ajuda para escolher o pacote certo.")}`}
+                        href={waLink("Olá Autisync, gostaria de ajuda para escolher o pacote certo.", "WEB-precos")}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center px-6 py-3 font-semibold text-white bg-[#B28228] rounded-md shadow-lg hover:bg-gray-900 transition"

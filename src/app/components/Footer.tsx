@@ -5,6 +5,7 @@ import Link from "next/link";
 import CallToAction from "@/app/components/CallToAction";
 import { usePathname } from "next/navigation";
 import { isPtPath } from "@/lib/i18n/routes";
+import { pageRef, pageWaLink } from "@/lib/whatsapp";
 
 const FOOTER = {
   en: {
@@ -20,6 +21,10 @@ const FOOTER = {
     privacy: "Privacy Policy", terms: "Terms of Use",
     rights: "All rights reserved.",
     trading: "Autisync is a trading name of Maheldom Consulting, Lda",
+    bookTitle: "Book a free 15-minute call",
+    bookText: "Tell us what you need and we will show you how we would do it. No obligation.",
+    bookCta: "Pick a time",
+    waCta: "Chat on WhatsApp",
   },
   pt: {
     h: ["Faça crescer ", "a sua presença", "digital e as suas ", "operações."],
@@ -34,6 +39,10 @@ const FOOTER = {
     privacy: "Política de Privacidade", terms: "Termos de Utilização",
     rights: "Todos os direitos reservados.",
     trading: "Autisync é uma marca comercial da Maheldom Consulting, Lda",
+    bookTitle: "Marque uma chamada gratuita de 15 minutos",
+    bookText: "Diga-nos o que precisa e mostramos como o faríamos. Sem compromisso.",
+    bookCta: "Escolher horário",
+    waCta: "Falar no WhatsApp",
   },
 };
 
@@ -137,11 +146,33 @@ const navigation = {
 };
 
 export default function Footer() {
-  const pt = isPtPath(usePathname() || "/");
+  const pathname = usePathname() || "/";
+  const pt = isPtPath(pathname);
   const c = pt ? FOOTER.pt : FOOTER.en;
+  const onBookingPage = pathname === "/book" || pathname === "/pt/marcar";
   return (
-    <footer className="relative pt-8 pb-6 bg-[#1C1C1C] text-gray-200">
+    // Room at the bottom on a phone, so the WhatsApp button never sits on the last lines.
+    <footer className="relative pt-8 pb-24 md:pb-6 bg-[#1C1C1C] text-gray-200">
       <CallToAction pt={pt} />
+
+      {/* On every page: the free 15-minute call (bookings land in the Autisync CRM), or WhatsApp. */}
+      {!onBookingPage ? (
+        <div className="container px-4 mx-auto">
+          <div className="flex flex-col items-center justify-between gap-4 p-6 mb-10 text-center border rounded-2xl border-white/10 bg-white/[0.04] md:flex-row md:text-left">
+            <div>
+              <p className="text-xl font-semibold text-white">{c.bookTitle}</p>
+              <p className="mt-1 text-sm text-gray-400">{c.bookText}</p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-3 shrink-0">
+              <Link href={pt ? "/pt/marcar" : "/book"} className="rounded-full bg-[#B28228] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#9c7222]"
+                data-track={`Book a call (footer) · ${pageRef(pathname)}`}>{c.bookCta}</Link>
+              <a href={pageWaLink(pathname)} target="_blank" rel="noopener noreferrer"
+                className="rounded-full border border-white/25 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-[#25D366] hover:text-[#25D366]"
+                data-track={`WhatsApp (footer) · ${pageRef(pathname)}`}>{c.waCta}</a>
+            </div>
+          </div>
+        </div>
+      ) : null}
 
       {/* top wedge */}
       <div

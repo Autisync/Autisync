@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import SiteAnalytics from "@/app/components/SiteAnalytics";
+import WhatsAppButton from "@/app/components/WhatsAppButton";
 import Script from "next/script";
 import React from "react";
 
@@ -197,6 +198,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteAnalytics />
         {TRACK_KEY ? <Script src={`${APP_URL}/t.js`} data-site={TRACK_KEY} strategy="afterInteractive" /> : null}
         {children}
+        {/* "Chat on WhatsApp" on every page, with the page's marker (lib/whatsapp.ts). */}
+        <WhatsAppButton />
 
         </body>
         </html>

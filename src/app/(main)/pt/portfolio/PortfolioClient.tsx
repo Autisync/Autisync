@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import React, { useState, useRef, useEffect } from "react";
 import { siteStats } from "@/lib/site-stats";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
+import { waLink } from "@/lib/whatsapp";
 
 // ============================================
 // TYPES & DATA
@@ -1278,6 +1279,7 @@ export default function PortfolioClient() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 16 }}
                             transition={{ duration: 0.3 }}
+                            data-wa-lift
                             className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden"
                         >
                             <div
@@ -1401,7 +1403,7 @@ export default function PortfolioClient() {
                             Vamos colaborar e transformar a sua próxima ideia numa experiência digital de referência
                         </motion.p>
                         <motion.a
-                            href="https://wa.me/447795866571?text=Ol%C3%A1%20Autisync%2C%20vi%20o%20vosso%20portf%C3%B3lio%20e%20gostaria%20de%20falar%20sobre%20um%20projeto."
+                            href={waLink("Olá Autisync, vi o vosso portfólio e gostaria de falar sobre um projeto.", "WEB-portfolio")}
                             target="_blank"
                             rel="noopener noreferrer"
                             initial={{ opacity: 0, y: 20 }}
