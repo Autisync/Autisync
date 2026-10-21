@@ -41,6 +41,12 @@ export async function POST(req: NextRequest) {
     data.consentimento = input.consentimento === "sim" ? "sim" : "";
     data.pagina = str(input.pagina, 300);
     if (!data.nome || !data.telefone || !data.consentimento) return NextResponse.json({ error: m.bad }, { status: 400 });
+    // The answers again as one readable line, in "mensagem": the CRM keeps that
+    // key on every steps form (lead request, deal and the new-lead email), so the
+    // answers reach the team even if the CRM funnel's questions are later edited
+    // and stop matching the keys above. (The CRM turns line breaks into spaces.)
+    const said = copy.questions.filter((q) => data[q.key]).map((q) => `${q.title} ${data[q.key]}`);
+    if (said.length) data.mensagem = `${lang === "pt" ? "Respostas do diagnóstico" : "Quiz answers"}: ${said.join(" · ")}`.slice(0, 2000);
 
     const body: Record<string, unknown> = { data };
     for (const k of UTM) { const v = str(input[k], 120); if (v) body[k] = v; }

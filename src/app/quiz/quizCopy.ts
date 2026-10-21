@@ -15,7 +15,8 @@ export type ProblemKind = "calls" | "enquiries" | "admin" | "website";
 export interface QuizQuestion {
     key: "business_type" | "main_problem" | "team_size";
     title: string;
-    options: Array<{ value: string; hint?: string }>;
+    /** id: the same in both languages (kept in the browser, used in tracking); value: the CRM wording. */
+    options: Array<{ id: string; value: string; hint?: string }>;
 }
 
 export interface Plan {
@@ -36,33 +37,33 @@ const EN = {
     lead: "Three quick questions. Then you'll see what we would set up for a business like yours, and you can book a free 15-minute call straight away.",
     promises: ["Takes under a minute", "No sign-up, no card", "Real people, in the UK and Portugal"],
     stepOf: (n: number, total: number) => `Question ${n} of ${total}`,
-    contactStepOf: (total: number) => `Last step of ${total}`,
+    contactStepOf: "Last step",
     back: "Back",
     questions: [
         {
             key: "business_type",
             title: "What kind of business do you run?",
             options: [
-                { value: "Trades and home services", hint: "Builders, plumbers, electricians, cleaners" },
-                { value: "Estate or letting agency", hint: "Sales, lettings, property management" },
-                { value: "Beauty, health or wellness", hint: "Salons, clinics, studios" },
-                { value: "Something else", hint: "Any other local business" },
+                { id: "trades", value: "Trades and home services", hint: "Builders, plumbers, electricians, cleaners" },
+                { id: "property", value: "Estate or letting agency", hint: "Sales, lettings, property management" },
+                { id: "beauty", value: "Beauty, health or wellness", hint: "Salons, clinics, studios" },
+                { id: "other", value: "Something else", hint: "Any other local business" },
             ],
         },
         {
             key: "main_problem",
             title: "What gets in the way most?",
             options: [
-                { value: "Missed calls and messages" },
-                { value: "Not enough new enquiries" },
-                { value: "Too much admin" },
-                { value: "No proper website" },
+                { id: "calls", value: "Missed calls and messages" },
+                { id: "enquiries", value: "Not enough new enquiries" },
+                { id: "admin", value: "Too much admin" },
+                { id: "website", value: "No proper website" },
             ],
         },
         {
             key: "team_size",
             title: "How many people work in the business?",
-            options: [{ value: "Just me" }, { value: "2 to 5" }, { value: "6 to 20" }, { value: "More than 20" }],
+            options: [{ id: "solo", value: "Just me" }, { id: "2-5", value: "2 to 5" }, { id: "6-20", value: "6 to 20" }, { id: "20+", value: "More than 20" }],
         },
     ] as QuizQuestion[],
     contactTitle: "Your plan is ready. Where should we send it?",
@@ -71,10 +72,35 @@ const EN = {
     name: "Your name",
     phone: "Phone or WhatsApp",
     email: "Email (optional)",
-    consent: "By continuing, you agree that Autisync may contact you about your results.",
-    privacyPre: "How we use your details: ",
-    privacyLabel: "privacy policy",
-    privacyHref: "/legal/privacy",
+    consent: "By sending, you agree that Autisync may contact you about your plan.",
+    privacyLink: "How we use your details",
+    // The website's privacy policy (what this form collects). /legal/privacy
+    // and /legal/terms are the Autisync CRM product's documents, for Meta's
+    // app review: the wrong ones for someone filling in this form.
+    privacyHref: "/PrivacyPolicy",
+    newTab: "(opens in a new tab)",
+    notice: {
+        title: "Your details, in short",
+        rows: [
+            ["What we collect here", "Your three answers, your name and phone number, and your email if you give it."],
+            ["Why", "To show you your plan and to contact you about it. We never sell your details."],
+            ["Where it goes", "Into our own customer system (Autisync CRM), used by the Autisync team."],
+            ["Visits to this page", "We count page views and clicks without cookies. Nothing you type is sent until you press the button."],
+            ["Changing your mind", "Email info@autisync.com and we'll delete your details."],
+            ["Who we are", "Autisync, a trading name of Maheldom Consulting, Lda."],
+        ] as Array<[string, string]>,
+        full: "Read the full privacy policy",
+        close: "Back to the questions",
+        closeDone: "Close",
+        closeAria: "Close",
+    },
+    talkPrompt: "Prefer to talk?",
+    talkLink: "Book a 15-minute call",
+    talkTitle: "Book a free 15-minute call",
+    talkLead: "No questions first. Pick a time that suits you and tell us about your business on the call.",
+    whatsappPre: "Or message us on ",
+    whatsappLabel: "WhatsApp",
+    backToQuiz: "Back to the questions",
     submit: "See my plan",
     sending: "Sending…",
     errName: "Your name, please.",
@@ -88,10 +114,10 @@ const EN = {
     bookLead: "Pick a time that suits you. We'll go through your plan and show it working, with no obligation.",
     bookPre: "Rather we called you? We have your number and will be in touch soon.",
     restart: "Start again",
-    footer: "Autisync",
+    footer: "Autisync · Maheldom Consulting, Lda",
     footPrivacy: "Privacy",
-    terms: "Terms",
-    termsHref: "/legal/terms",
+    terms: "Terms of use",
+    termsHref: "/TermsofUse",
 };
 
 const PT: typeof EN = {
@@ -106,33 +132,33 @@ const PT: typeof EN = {
     lead: "Três perguntas rápidas. Depois vê o que faríamos para um negócio como o seu e pode marcar logo uma chamada gratuita de 15 minutos.",
     promises: ["Demora menos de um minuto", "Sem registo, sem cartão", "Pessoas reais, em Portugal e no Reino Unido"],
     stepOf: (n: number, total: number) => `Pergunta ${n} de ${total}`,
-    contactStepOf: (total: number) => `Último passo de ${total}`,
+    contactStepOf: "Último passo",
     back: "Voltar",
     questions: [
         {
             key: "business_type",
             title: "Que tipo de negócio tem?",
             options: [
-                { value: "Obras e serviços ao domicílio", hint: "Construção, canalização, eletricidade, limpezas" },
-                { value: "Imobiliária ou arrendamento", hint: "Venda, arrendamento, gestão de imóveis" },
-                { value: "Beleza, saúde ou bem-estar", hint: "Cabeleireiros, clínicas, estúdios" },
-                { value: "Outro", hint: "Qualquer outro negócio local" },
+                { id: "trades", value: "Obras e serviços ao domicílio", hint: "Construção, canalização, eletricidade, limpezas" },
+                { id: "property", value: "Imobiliária ou arrendamento", hint: "Venda, arrendamento, gestão de imóveis" },
+                { id: "beauty", value: "Beleza, saúde ou bem-estar", hint: "Cabeleireiros, clínicas, estúdios" },
+                { id: "other", value: "Outro", hint: "Qualquer outro negócio local" },
             ],
         },
         {
             key: "main_problem",
             title: "O que mais atrapalha?",
             options: [
-                { value: "Chamadas e mensagens perdidas" },
-                { value: "Poucos pedidos novos" },
-                { value: "Demasiada papelada" },
-                { value: "Sem um site a sério" },
+                { id: "calls", value: "Chamadas e mensagens perdidas" },
+                { id: "enquiries", value: "Poucos pedidos novos" },
+                { id: "admin", value: "Demasiada papelada" },
+                { id: "website", value: "Sem um site a sério" },
             ],
         },
         {
             key: "team_size",
             title: "Quantas pessoas trabalham no negócio?",
-            options: [{ value: "Só eu" }, { value: "2 a 5" }, { value: "6 a 20" }, { value: "Mais de 20" }],
+            options: [{ id: "solo", value: "Só eu" }, { id: "2-5", value: "2 a 5" }, { id: "6-20", value: "6 a 20" }, { id: "20+", value: "Mais de 20" }],
         },
     ],
     contactTitle: "O seu plano está pronto. Para onde o enviamos?",
@@ -141,10 +167,33 @@ const PT: typeof EN = {
     name: "O seu nome",
     phone: "Telemóvel ou WhatsApp",
     email: "Email (opcional)",
-    consent: "Ao continuar, aceita que a Autisync o contacte sobre os seus resultados.",
-    privacyPre: "Como usamos os seus dados: ",
-    privacyLabel: "política de privacidade",
-    privacyHref: "/pt/legal/privacidade",
+    consent: "Ao enviar, aceita que a Autisync o contacte sobre o seu plano.",
+    privacyLink: "Como usamos os seus dados",
+    // A política do website só existe em inglês; /pt/legal/* são os documentos do Autisync CRM.
+    privacyHref: "/PrivacyPolicy",
+    newTab: "(em inglês, abre noutro separador)",
+    notice: {
+        title: "Os seus dados, em resumo",
+        rows: [
+            ["O que recolhemos aqui", "As suas três respostas, o seu nome e telemóvel, e o email se o indicar."],
+            ["Para quê", "Para lhe mostrar o seu plano e o contactarmos sobre ele. Nunca vendemos os seus dados."],
+            ["Para onde vão", "Para o nosso próprio sistema de clientes (Autisync CRM), usado pela equipa da Autisync."],
+            ["Visitas a esta página", "Contamos visitas e cliques sem cookies. Nada do que escreve é enviado antes de carregar no botão."],
+            ["Se mudar de ideias", "Escreva para info@autisync.com e apagamos os seus dados."],
+            ["Quem somos", "Autisync, nome comercial da Maheldom Consulting, Lda."],
+        ],
+        full: "Ler a política de privacidade completa",
+        close: "Voltar às perguntas",
+        closeDone: "Fechar",
+        closeAria: "Fechar",
+    },
+    talkPrompt: "Prefere falar?",
+    talkLink: "Marque uma chamada de 15 minutos",
+    talkTitle: "Marque uma chamada gratuita de 15 minutos",
+    talkLead: "Sem perguntas antes. Escolha a hora que lhe dá jeito e fale-nos do seu negócio na chamada.",
+    whatsappPre: "Ou envie-nos uma mensagem por ",
+    whatsappLabel: "WhatsApp",
+    backToQuiz: "Voltar às perguntas",
     submit: "Ver o meu plano",
     sending: "A enviar…",
     errName: "O seu nome, por favor.",
@@ -158,10 +207,10 @@ const PT: typeof EN = {
     bookLead: "Escolha a hora que lhe dá jeito. Vemos o seu plano e mostramos tudo a funcionar, sem compromisso.",
     bookPre: "Prefere que liguemos nós? Já temos o seu número e entramos em contacto em breve.",
     restart: "Recomeçar",
-    footer: "Autisync",
+    footer: "Autisync · Maheldom Consulting, Lda",
     footPrivacy: "Privacidade",
-    terms: "Termos",
-    termsHref: "/pt/legal/termos",
+    terms: "Termos de utilização",
+    termsHref: "/TermsofUse",
 };
 
 export const QUIZ_COPY: Record<QuizLang, typeof EN> = { en: EN, pt: PT };
