@@ -115,7 +115,7 @@ export default function PtHome() {
                     </div>
                     <p className="mt-8 text-center">
                         <a href="/pt/clinicas" className="font-semibold text-[#B28228] hover:underline">
-                            Tem uma clínica ou um salão em Portugal? Veja o que preparamos para si →
+                            Tem uma clínica ou um salão em Portugal? Veja o que preparámos para si →
                         </a>
                     </p>
                 </div>

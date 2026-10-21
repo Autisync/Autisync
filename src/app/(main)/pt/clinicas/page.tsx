@@ -83,7 +83,7 @@ const promises = [
     { t: "Sem fidelização de 12 meses", d: "Mensal. Depois do mínimo que ficar escrito na proposta, cancela com 30 dias de aviso, por e-mail ou na sua conta." },
     { t: "Renovações avisadas", d: "Avisamos 30 dias antes de qualquer renovação anual, como a do domínio." },
     { t: "Um só parceiro, uma só conta", d: "Site, domínio, e-mail, CRM, marcações, faturas, publicações e anúncios, com a mesma equipa." },
-    { t: "Configurado por nós", d: "Fazemos a configuração e importamos a sua lista de clientes. Fala com uma pessoa da nossa equipa, com nome, pelo WhatsApp, nos dias úteis das 9h às 18h (hora de Lisboa)." },
+    { t: "Configurado por nós", d: "Fazemos a configuração e importamos a sua lista de clientes. Fala com uma pessoa da nossa equipa, com nome, pelo WhatsApp, nos dias úteis, das 9h00 às 18h00 (hora de Lisboa)." },
     { t: "As fichas são suas", d: "O site, o domínio e os dados dos seus clientes são seus. Exporte tudo para Excel ou CSV quando quiser; se sair, entregamos-lhe tudo em 30 dias." },
     { t: "Preços à vista", d: "Os preços do site e da manutenção estão nesta página. O preço mensal do CRM fica escrito na proposta, antes de decidir." },
 ];
@@ -222,7 +222,7 @@ export default function ClinicasPage() {
             {/* An evening, step by step */}
             <section aria-labelledby="clinicas-exemplo" className="px-6 py-20 mx-auto max-w-5xl lg:px-8">
                 <h2 id="clinicas-exemplo" className="text-3xl font-semibold text-gray-800 [text-wrap:balance]">
-                    Uma terça-feira às 21h, com a clínica fechada
+                    Uma terça-feira às 21h00, com a clínica fechada
                 </h2>
                 <ol className="mt-8 space-y-4 border-l-2 border-[#B28228] pl-6">
                     {example.map((e, i) => (

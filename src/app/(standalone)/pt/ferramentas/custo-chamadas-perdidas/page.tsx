@@ -63,7 +63,7 @@ export default function CustoChamadasPerdidasPage() {
                         imediata, também fora de horas, e o pedido entra no seu CRM Autisync com uma tarefa para responder.
                     </p>
                     <p>
-                        Tem uma clínica ou um salão? <Link href="/pt/clinicas">Veja o que preparamos para clínicas e salões</Link>.
+                        Tem uma clínica ou um salão? <Link href="/pt/clinicas">Veja o que preparámos para clínicas e salões</Link>.
                     </p>
                 </div>
             </section>

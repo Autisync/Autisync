@@ -203,7 +203,7 @@ export default function ConsultoriaTiClient() {
                                             href="tel:+244927114400"
                                             className="text-gray-500 hover:text-[var(--autisync-gold,#B98B2F)]"
                                         >
-                      [+244 927-114-400]{" "}
+                      +244 927 114 400{" "}
                     </Link>
                     para começar.
                   </span>

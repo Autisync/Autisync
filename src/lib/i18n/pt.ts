@@ -33,7 +33,7 @@ export const ptWebsite: Record<string, Copy> = {
     },
     "tier-small-business": {
         name: "Pequena Empresa",
-        description: "Tudo o que uma empresa estabelecida precisa para ter boa imagem e ganhar clientes online.",
+        description: "Tudo aquilo de que uma empresa estabelecida precisa para ter boa imagem e ganhar clientes online.",
         features: [
             "10 páginas",
             "Domínio – 1.º ano grátis",
@@ -184,8 +184,8 @@ export const ptPromises: { t: string; d: string }[] = [
     { t: "Preços à vista", d: "Todos os pacotes têm preço nesta página, em kwanzas, euros e libras, com o que está incluído por baixo de cada um." },
     { t: "Sem fidelização de 12 meses", d: "Os planos mensais passam a mês a mês depois do mínimo indicado no plano. Para cancelar, basta avisar com 30 dias, por e-mail ou na sua conta." },
     { t: "Renovações avisadas", d: "Avisamos 30 dias antes de qualquer renovação anual, como a do domínio. Nada se renova sem aviso." },
-    { t: "Um só parceiro, uma só conta", d: "Site, domínio, e-mail, CRM, marcações, publicações e anúncios: a mesma equipa trata de tudo e paga tudo numa só conta." },
-    { t: "Configurado por nós", d: "Fazemos a configuração por si. Fala com uma pessoa da nossa equipa, com nome, pelo WhatsApp, nos dias úteis das 9h às 18h (hora de Lisboa)." },
+    { t: "Um só parceiro, uma só conta", d: "Site, domínio, e-mail, CRM, marcações, publicações e anúncios: a mesma equipa trata de tudo e o cliente paga tudo numa só conta." },
+    { t: "Configurado por nós", d: "Fazemos a configuração por si. Fala com uma pessoa da nossa equipa, com nome, pelo WhatsApp, nos dias úteis, das 9h00 às 18h00 (hora de Lisboa)." },
     { t: "Os dados são seus", d: "O site, o domínio e os dados são seus. Exporte tudo para Excel ou CSV quando quiser; se sair, entregamos-lhe tudo em 30 dias." },
 ];
 

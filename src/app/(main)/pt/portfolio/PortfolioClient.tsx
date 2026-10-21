@@ -327,7 +327,7 @@ const portfolioProjects: PortfolioProject[] = [
                 "/logos/Florentek/3.png",
             ],
             highlights: [
-                "Símbolo 'F' distintivo formado por três barras sobrepostas — representa a precisão da engenharia e o avanço contínuo",
+                "Símbolo «F» distintivo formado por três barras sobrepostas — representa a precisão da engenharia e o avanço contínuo",
                 "Paleta principal: verde-azulado Observatory (#008A6D), Charcoal Gray (#303034) e branco puro — inspirada na eco-inovação",
                 "Três tipos de letra: Retroica Bold (títulos), Codec Cold (texto corrido) e Comfortaa (interface) — modernos mas acessíveis",
                 "6 variantes de logótipo: fundo claro, fundo escuro, preto e branco, ícone de aplicação, banner e vertical — total flexibilidade de produção",
@@ -389,7 +389,7 @@ const portfolioProjects: PortfolioProject[] = [
                 "/logos/Mavunzuka/3.png",
             ],
             highlights: [
-                "Ícone hexagonal com um 'M' estilizado em forma de pico — autoridade, infraestrutura rodoviária e solidez estrutural",
+                "Ícone hexagonal com um «M» estilizado em forma de pico — autoridade, infraestrutura rodoviária e solidez estrutural",
                 "Azul-marinho Ebony Clay (#1e263e) como cor principal e Deep Gray (#222526) como secundária — uma identidade corporativa intemporal e de alto contraste",
                 "Montserrat em todos os pesos — negrito para impacto, regular para texto corrido",
                 "Decoração de viaturas para toda a frota, com a lista de serviços no painel lateral traseiro",
@@ -484,7 +484,7 @@ const portfolioProjects: PortfolioProject[] = [
                 "Chaminés vermelhas nas casas exteriores acrescentam calor e criam um elemento memorável que se repete em todo o material",
                 "Um arco de base envolvente ancora o ícone — estabilidade e alicerces sólidos no investimento imobiliário",
                 "Variante escura (ícone quase preto, texto branco) e variante clara (ícone carvão, texto cinzento) — prontas para qualquer superfície ou suporte",
-                "CAVE em maiúsculas espaçadas + 'Properties Group' em itálico — hierarquia tipográfica clara",
+                "CAVE em maiúsculas espaçadas + «Properties Group» em itálico — hierarquia tipográfica clara",
             ],
             deliverables: ["Logótipo principal — variante escura", "Logótipo secundário — variante clara", "SVG + PNG + PDF em todos os tamanhos"],
             nda: false,

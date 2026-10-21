@@ -528,7 +528,7 @@ export default function SobreClient() {
                   </span>{" "}
                                     e{" "}
                                     <span className="font-medium text-[var(--autisync-gold,#b98b2f)]">
-                    Construir
+                    construir
                   </span>{" "}
                                     hardware e software feitos em África, que se integram com
                                     outros sistemas, e tornar-nos uma empresa de tecnologia em
@@ -715,7 +715,7 @@ export default function SobreClient() {
                     </h2>
                     <p className="text-lg text-gray-600 mb-8">
                         Vamos conversar sobre como a AutiSync pode ajudar a sua empresa a
-                        atingir os seus objetivos digitais
+                        atingir os seus objetivos digitais.
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
                         <Link href="/pt/contacto" className="px-6 py-2 text-white bg-[var(--autisync-gold,#b98b2f)] rounded-md shadow-lg hover:bg-[#1C1C1C] transition-all hover:shadow-[0_16px_30px_rgba(0,0,0,0.25)]/10">

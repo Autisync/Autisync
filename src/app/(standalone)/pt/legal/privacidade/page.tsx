@@ -20,7 +20,7 @@ const LAST_UPDATED = "21 de outubro de 2026";
 const sections: LegalSection[] = [
     {
         id: "responsibility",
-        title: "Quem é responsável por quê",
+        title: "Quem é responsável pelo quê",
         content: [
             {
                 body: "Em qualquer conversa mantida na Autisync estão envolvidas duas empresas diferentes, e a lei trata-as de forma diferente.",
@@ -57,7 +57,7 @@ const sections: LegalSection[] = [
                     "Ficheiros que um contacto envia — fotografias, documentos, mensagens de voz, autocolantes — descarregados e guardados para que a conversa continue completa quando alguém a abrir mais tarde.",
                     "O identificador que o canal utiliza para essa pessoa. No Messenger e no Instagram trata-se de um identificador de âmbito restrito, que só tem significado entre essa conta e esta aplicação; no WhatsApp é o número de telefone a partir do qual a pessoa escreveu.",
                     "Nome e fotografia de perfil públicos, obtidos do canal para que uma conversa mostre uma pessoa e não um número.",
-                    "Os comentários que as pessoas deixam nas publicações da própria Página do Facebook e da conta de Instagram da empresa, com a publicação em que cada um foi deixado, para que a empresa os possa ler e responder num só lugar.",
+                    "Os comentários que as pessoas deixam nas publicações da própria Página do Facebook e da conta de Instagram da empresa, com a publicação em que cada um foi deixado, para que a empresa os possa ler e responder-lhes num só lugar.",
                 ],
             },
             {
@@ -86,7 +86,7 @@ const sections: LegalSection[] = [
             },
             {
                 heading: "O que não fazemos com esses dados",
-                body: "Não os vendemos. Não os transferimos para ninguém, exceto nos termos descritos em “Quem mais tem acesso”. Não os utilizamos para publicidade, para definição de perfis nem para treinar modelos de aprendizagem automática. Não os lemos para nenhum outro fim que não seja o funcionamento das funcionalidades de marcações e avaliações que a empresa pediu. Ninguém na Autisync lê os dados Google de um cliente, a menos que a empresa nos peça ajuda com um problema concreto e o autorize, ou que a lei o exija.",
+                body: "Não os vendemos. Não os transferimos para ninguém, exceto nos termos descritos em «Quem mais tem acesso». Não os utilizamos para publicidade, para definição de perfis nem para treinar modelos de aprendizagem automática. Não os lemos para nenhum outro fim que não seja o funcionamento das funcionalidades de marcações e avaliações que a empresa pediu. Ninguém na Autisync lê os dados Google de um cliente, a menos que a empresa nos peça ajuda com um problema concreto e o autorize, ou que a lei o exija.",
             },
             {
                 heading: "Utilização Limitada",
@@ -229,7 +229,7 @@ export default function AutisyncCrmPrivacidadePage() {
                 title="Política de Privacidade"
                 lastUpdated={LAST_UPDATED}
                 standfirst="O Autisync CRM é um sistema de gestão de relacionamento com clientes. As empresas utilizam-no para falar com os seus próprios clientes através do WhatsApp, do Facebook Messenger, do Instagram, do e-mail e de formulários de websites, numa única caixa de entrada. Esta página explica o que acontece aos dados que por ele passam."
-                intro="A Autisync é um produto da Maheldom Consulting, Lda, sociedade registada em Angola com o NIF 5003472418 e a matrícula 41063-26/260824, cuja sede social consta do fundo desta página. Sempre que esta política diz “nós”, refere-se a essa sociedade."
+                intro="A Autisync é um produto da Maheldom Consulting, Lda, sociedade registada em Angola com o NIF 5003472418 e a matrícula 41063-26/260824, cuja sede social consta do fundo desta página. Sempre que esta política diz «nós», refere-se a essa sociedade."
                 sections={sections}
             />
         </div>

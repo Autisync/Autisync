@@ -48,7 +48,7 @@ export default function CustoWebsitePage() {
                     <span className={s.pill}><i />Ferramenta grátis</span>
                     <h1 className={s.heroTitle} style={{ marginTop: 14, maxWidth: 880 }}>Quanto custa um website <span>para a sua empresa?</span></h1>
                     <p className={s.lead} style={{ maxWidth: 680, marginTop: 14 }}>
-                        Escolha o que a sua empresa precisa e veja o preço de imediato, incluindo o que vai pagar depois do primeiro ano.
+                        Escolha aquilo de que a sua empresa precisa e veja o preço de imediato, incluindo o que vai pagar depois do primeiro ano.
                     </p>
                     <WebsiteCostEstimator lang="pt" />
                 </div>
@@ -60,7 +60,7 @@ export default function CustoWebsitePage() {
                     <p><strong>A construção.</strong> Design, páginas, textos, fotografias e um website que funcione bem no telemóvel. Mais páginas e funcionalidades à medida levam mais tempo.</p>
                     <p><strong>Funcionalidades que trazem trabalho.</strong> Marcações online, formulários de contacto que entram num CRM, botões de WhatsApp e de chamada, avaliações e um mapa.</p>
                     <p><strong>Custos de funcionamento.</strong> Domínio, alojamento, SSL, e-mail profissional, cópias de segurança e atualizações. Renovam-se todos os anos com qualquer fornecedor, por isso pergunte sempre quanto custa o segundo ano.</p>
-                    <p><strong>Ser encontrado.</strong> SEO local básico, para aparecer quando procuram &ldquo;[o que faz] em [a sua cidade]&rdquo;.</p>
+                    <p><strong>Ser encontrado.</strong> SEO local básico, para aparecer quando procuram «[o que faz] em [a sua cidade]».</p>
                 </div>
             </section>
 

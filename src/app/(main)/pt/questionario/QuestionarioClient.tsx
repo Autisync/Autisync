@@ -121,9 +121,9 @@ const questionnaires: Questionnaire[] = [
                 title: "Público e Objetivos",
                 fields: [
                     { id: "target_users", label: "Quem são os seus principais utilizadores?", type: "textarea", placeholder: "Idade, profissão, à-vontade com tecnologia, localização, objetivos..." },
-                    { id: "primary_goal", label: "Qual é o principal objetivo deste projeto?", type: "select", options: ["Gerar contactos/leads", "Vender produtos / serviços", "Dar a conhecer a marca", "Servir clientes atuais", "Automatizar um processo", "Lançar um MVP", "Outro"] },
+                    { id: "primary_goal", label: "Qual é o principal objetivo deste projeto?", type: "select", options: ["Gerar contactos", "Vender produtos / serviços", "Dar a conhecer a marca", "Servir clientes atuais", "Automatizar um processo", "Lançar um MVP", "Outro"] },
                     { id: "success_metrics", label: "Como vai medir o sucesso?", type: "multiselect", options: ["Tráfego / visitantes", "Taxa de conversão", "Registos / contactos", "Receita", "Envolvimento / tempo no site", "Downloads da aplicação", "Satisfação dos clientes (NPS)", "Outro"] },
-                    { id: "competitors_url", label: "Websites de concorrentes ou de referência de que gosta", type: "textarea", placeholder: "Indique os URLs e o que gosta em cada um" },
+                    { id: "competitors_url", label: "Websites de concorrentes ou de referência de que gosta", type: "textarea", placeholder: "Indique os URLs e aquilo de que gosta em cada um" },
                 ],
             },
             {
@@ -175,7 +175,7 @@ const questionnaires: Questionnaire[] = [
             {
                 title: "Canais e Público",
                 fields: [
-                    { id: "channels", label: "Que plataformas quer que geremos?", type: "multiselect", options: ["Instagram", "Facebook", "LinkedIn", "TikTok", "X (Twitter)", "YouTube", "Pinterest", "Threads", "Outra"] },
+                    { id: "channels", label: "Que plataformas devemos gerir?", type: "multiselect", options: ["Instagram", "Facebook", "LinkedIn", "TikTok", "X (Twitter)", "YouTube", "Pinterest", "Threads", "Outra"] },
                     { id: "current_following", label: "Número atual de seguidores (aproximado)", type: "textarea", placeholder: "ex.: Instagram: 1.200 | LinkedIn: 400 | TikTok: 0" },
                     { id: "target_audience", label: "Quem é o seu seguidor ideal nas redes sociais?", type: "textarea", placeholder: "Idade, interesses, profissão, localização, dificuldades..." },
                     { id: "audience_goal", label: "Principal objetivo junto do público", type: "radio", options: ["Ganhar seguidores / notoriedade", "Levar tráfego para o website", "Gerar contactos/vendas diretas", "Criar comunidade e envolvimento", "Afirmar-se como referência no setor"] },
@@ -234,7 +234,7 @@ const questionnaires: Questionnaire[] = [
                 fields: [
                     { id: "services_needed", label: "De que serviços de suporte precisa?", type: "multiselect", options: ["Atualizações e alterações ao website", "Correção de erros", "Otimização de desempenho", "Monitorização de segurança", "Cópias de segurança diárias/semanais", "Gestão de domínio e alojamento", "Certificados SSL", "Instalação e configuração de equipamentos", "Helpdesk / apoio aos utilizadores", "Instalação de software", "Configuração de email (Google Workspace / M365)", "Gestão de bases de dados", "Integrações via API", "Outro"] },
                     { id: "response_time", label: "Tempo de resposta esperado para problemas", type: "radio", options: ["Até 1 hora (crítico)", "No mesmo dia útil", "Até 48 horas", "Semanalmente, em lote — sem urgência"] },
-                    { id: "support_hours", label: "Horário de suporte necessário", type: "radio", options: ["Horário de expediente (seg–sex, 9h–18h)", "Alargado (seg–sex, 8h–20h)", "Inclui fins de semana", "24/7"] },
+                    { id: "support_hours", label: "Horário de suporte necessário", type: "radio", options: ["Horário de expediente (seg–sex, 9h00–18h00)", "Alargado (seg–sex, 8h00–20h00)", "Inclui fins de semana", "24/7"] },
                     { id: "monitoring", label: "Quer monitorização proativa da disponibilidade?", type: "radio", options: ["Sim — avisem-me se algo for abaixo", "Não — só quando houver problemas", "Não tenho a certeza"] },
                 ],
             },

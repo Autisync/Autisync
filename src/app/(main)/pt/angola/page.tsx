@@ -55,7 +55,7 @@ const copy: CountryCopy = {
         },
         {
             title: "Uma pessoa da nossa equipa",
-            text: "Tratamos da configuração. Depois, fala com uma pessoa da nossa equipa, com nome, por WhatsApp, telefone ou e-mail, nos dias úteis das 9h às 18h (hora de Lisboa).",
+            text: "Tratamos da configuração. Depois, fala com uma pessoa da nossa equipa, com nome, por WhatsApp, telefone ou e-mail, nos dias úteis, das 9h00 às 18h00 (hora de Lisboa).",
         },
     ],
     clientsTitle: "Empresas que já trabalham connosco",
