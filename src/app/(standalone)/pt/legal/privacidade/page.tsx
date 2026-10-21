@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     robots: { index: true, follow: true },
 };
 
-const LAST_UPDATED = "1 de outubro de 2026";
+const LAST_UPDATED = "21 de outubro de 2026";
 
 const sections: LegalSection[] = [
     {
@@ -57,6 +57,7 @@ const sections: LegalSection[] = [
                     "Ficheiros que um contacto envia — fotografias, documentos, mensagens de voz, autocolantes — descarregados e guardados para que a conversa continue completa quando alguém a abrir mais tarde.",
                     "O identificador que o canal utiliza para essa pessoa. No Messenger e no Instagram trata-se de um identificador de âmbito restrito, que só tem significado entre essa conta e esta aplicação; no WhatsApp é o número de telefone a partir do qual a pessoa escreveu.",
                     "Nome e fotografia de perfil públicos, obtidos do canal para que uma conversa mostre uma pessoa e não um número.",
+                    "Os comentários que as pessoas deixam nas publicações da própria Página do Facebook e da conta de Instagram da empresa, com a publicação em que cada um foi deixado, para que a empresa os possa ler e responder num só lugar.",
                 ],
             },
             {
@@ -108,6 +109,14 @@ const sections: LegalSection[] = [
             {
                 body: "Para fazer funcionar a caixa de entrada, e para nada mais: mostrar uma conversa por ordem, atribuí-la ao contacto certo, entregar uma resposta, indicar se chegou e se foi lida, e guardar o ficheiro que um cliente enviou para que possa voltar a ser aberto. O estado de entrega e os motivos de falha são também guardados, para que uma empresa consiga distinguir uma mensagem que foi ignorada de uma que nunca chegou.",
             },
+            {
+                heading: "Funções opcionais que uma empresa pode ligar",
+                list: [
+                    "Respostas sugeridas: o texto de uma mensagem ou comentário é enviado ao nosso fornecedor de IA para redigir uma resposta. Um membro da equipa da empresa lê-a, pode alterá-la e decide se a envia.",
+                    "Respostas por palavra-chave: quando alguém comenta uma palavra escolhida pela empresa (por exemplo \"DEMO\") numa das suas publicações, a empresa envia a essa pessoa uma mensagem privada com a informação pedida, e o comentário fica registado na ficha do contacto.",
+                    "Ambas estão desligadas até a empresa as ligar, e a empresa pode desligá-las a qualquer momento.",
+                ],
+            },
         ],
     },
     {
@@ -133,7 +142,9 @@ const sections: LegalSection[] = [
                 list: [
                     "Meta Platforms — as mensagens de e para o WhatsApp, o Messenger e o Instagram passam pelas APIs da Meta, ao abrigo dos termos da própria Meta.",
                     "Google — quando uma empresa liga a sua conta Google, os eventos de calendário e, se ativadas, as avaliações do Perfil da Empresa passam pelas APIs da Google, ao abrigo dos termos da própria Google.",
-                    "O nosso fornecedor de alojamento, que gere os servidores onde os dados estão guardados.",
+                    "Hetzner Online GmbH, o nosso fornecedor de alojamento, que gere os servidores onde os dados estão guardados, em Nuremberga, na Alemanha.",
+                    "Cloudflare, Inc., que fica à frente dos nossos servidores para os proteger de ataques e encaminhar o tráfego até eles de forma segura.",
+                    "OpenAI (OpenAI Ireland Ltd), apenas quando uma empresa utiliza as respostas sugeridas: o texto dessa mensagem ou comentário é enviado para o serviço europeu da OpenAI para redigir a resposta. Nos termos da API da OpenAI, não é utilizado para treinar os seus modelos.",
                     "Um fornecedor de envio de e-mail, para as mensagens enviadas por e-mail.",
                 ],
             },

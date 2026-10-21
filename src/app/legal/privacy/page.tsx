@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     robots: { index: true, follow: true },
 };
 
-const LAST_UPDATED = "1 October 2026";
+const LAST_UPDATED = "21 October 2026";
 
 const sections: LegalSection[] = [
     {
@@ -54,6 +54,7 @@ const sections: LegalSection[] = [
                     "Files a contact sends — photographs, documents, voice notes, stickers — downloaded and stored so the conversation is still complete when somebody opens it later.",
                     "The identifier the channel uses for that person. On Messenger and Instagram this is a scoped identifier that is meaningful only between that account and this app; on WhatsApp it is the phone number they wrote from.",
                     "Public profile name and picture, retrieved from the channel so a conversation shows a person rather than a number.",
+                    "Comments people leave on the business's own Facebook Page and Instagram posts, with the post each one was left on, so the business can read and answer them in one place.",
                 ],
             },
             {
@@ -105,6 +106,14 @@ const sections: LegalSection[] = [
             {
                 body: "To run the inbox, and for nothing else: to show a conversation in order, attribute it to the right contact, deliver a reply, report whether it arrived and was read, and keep the file a client sent so it can be opened again. Delivery state and failure reasons are also kept so a business can tell the difference between a message that was ignored and one that never arrived.",
             },
+            {
+                heading: "Optional helpers a business can switch on",
+                list: [
+                    "Suggested replies: the text of a message or comment is sent to our AI provider to draft an answer. A member of the business's staff reads it, can change it, and decides whether to send it.",
+                    "Keyword replies: when someone comments a word the business has chosen (for example \"DEMO\") on one of its posts, the business sends that person one private message with the information they asked for, and the comment is noted on their contact record.",
+                    "Both are off until the business turns them on, and the business can turn them off at any time.",
+                ],
+            },
         ],
     },
     {
@@ -130,7 +139,9 @@ const sections: LegalSection[] = [
                 list: [
                     "Meta Platforms — messages to and from WhatsApp, Messenger and Instagram travel through Meta's APIs, under Meta's own terms.",
                     "Google — where a business has connected its Google account, calendar events and, if enabled, Business Profile reviews travel through Google's APIs, under Google's own terms.",
-                    "Our hosting provider, which runs the servers the data sits on.",
+                    "Hetzner Online GmbH, our hosting provider, which runs the servers the data sits on, in Nuremberg, Germany.",
+                    "Cloudflare, Inc., which sits in front of our servers to protect them from attacks and carry traffic to them securely.",
+                    "OpenAI (OpenAI Ireland Ltd), only when a business uses suggested replies: the text of that message or comment is sent to OpenAI's European endpoint to draft the reply. Under OpenAI's API terms it is not used to train their models.",
                     "An email delivery provider, for messages sent by email.",
                 ],
             },
