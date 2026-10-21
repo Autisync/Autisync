@@ -49,6 +49,12 @@ const solutions = [
     icon: Squares2X2Icon,
   },
   {
+    name: "Clinics & Salons",
+    description: "Missed-call text-back, online booking, WhatsApp replies and reminders",
+    href: "/clinics",
+    icon: CalendarDaysIcon,
+  },
+  {
     name: "CallCatch for Trades",
     description: "Missed-call text-back for UK trades. Your calls, never shared or sold",
     href: "https://calls.autisync.com",

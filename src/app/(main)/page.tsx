@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Landing from "@/app/(main)/homescreen/landing";
 import WhyUs from "@/app/(main)/homescreen/whyUs";
 import Packages from "@/app/(main)/homescreen/packages";
@@ -34,6 +35,12 @@ export default function Home() {
             <Landing />
             {/* Social proof high on the page: real client logos */}
             <Clients />
+            {/* The UK clinics page, linked the way /pt links /pt/clinicas. */}
+            <p className="px-6 py-8 text-center">
+                <Link href="/clinics" className="font-semibold text-[#B28228] hover:underline">
+                    Run a clinic, dental practice or salon in the UK? See what we set up for you →
+                </Link>
+            </p>
             <WhyUs />
             <Team />
             <Packages/>

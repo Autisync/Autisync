@@ -63,6 +63,9 @@ export default function MissedCallCostPage() {
                         business. That&apos;s what Autisync&apos;s missed-call text-back does: the caller gets a text in seconds, their answer
                         goes into your Autisync CRM, and you get a &ldquo;Ring back&rdquo; reminder with the job details.
                     </p>
+                    <p>
+                        Run a clinic or a salon? <a href="/clinics">See what we set up for clinics and salons</a>.
+                    </p>
                 </div>
             </section>
 

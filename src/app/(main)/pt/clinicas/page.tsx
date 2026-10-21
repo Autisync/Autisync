@@ -17,6 +17,8 @@ import { ptWebsite } from "@/lib/i18n/pt";
  */
 
 const URL = "https://www.autisync.com/pt/clinicas";
+// The UK twin, /clinics, offers the missed-call text-back as well.
+const EN_URL = "https://www.autisync.com/clinics";
 const WHATSAPP = "https://wa.me/447795866571";
 const wa = (text: string) => `${WHATSAPP}?text=${encodeURIComponent(text)}`;
 const WA_TEXT = "Olá Autisync, vi a página para clínicas e salões e gostava de saber mais.";
@@ -32,7 +34,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
-    alternates: { canonical: URL },
+    alternates: { canonical: URL, languages: { en: EN_URL, pt: URL, "x-default": EN_URL } },
     openGraph: {
         title: "Cada chamada perdida é uma marcação perdida — Autisync",
         description: DESCRIPTION,
