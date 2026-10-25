@@ -12,7 +12,7 @@ import { waLink } from "@/lib/whatsapp";
 type CategoryType =
     | "Website/App Development"
     | "Graphic Design"
-    | "Technical Support"
+    | "IT Systems"
     | "Marketing";
 
 interface PortfolioProject {
@@ -76,17 +76,17 @@ const categoryThemes: Record<CategoryType, CategoryTheme> = {
         heading: "Brands that turn heads",
         subheading: "Logos, identities, and print collateral crafted to make a lasting first impression.",
     },
-    "Technical Support": {
-        name: "Technical Support",
+    "IT Systems": {
+        name: "IT Systems",
         gradient: "from-cyan-500 via-teal-500 to-emerald-600",
         accent: "#06B6D4",
         glow: "rgba(6, 182, 212, 0.5)",
         textColor: "text-cyan-400",
         bgColor: "bg-zinc-950",
         particleColor: "#06B6D4",
-        eyebrow: "IT Infrastructure & Support",
+        eyebrow: "IT Systems & Infrastructure",
         heading: "Technology that just works",
-        subheading: "End-to-end IT setup, helpdesk operations, and secure systems so teams can focus on what matters.",
+        subheading: "End-to-end IT setup, maintenance and secure systems so teams can focus on what matters.",
     },
     "Marketing": {
         name: "Marketing",
@@ -483,21 +483,21 @@ const portfolioProjects: PortfolioProject[] = [
             nda: false,
         },
     },
-    // ── Technical Support ────────────────────────────────────────────────
+    // ── IT Systems ──────────────────────────────────────────────────────
     {
         id: 20,
         title: "Healthcare provider (confidential client)",
-        category: "Technical Support",
-        subcategory: "IT Support & Consulting",
+        category: "IT Systems",
+        subcategory: "IT Systems & Consulting",
         image: "/logos/confidential.svg",
-        description: "Ongoing IT support partnership for a healthcare management platform — day-to-day technical support, proactive system maintenance, helpdesk operations, and strategic consultation on network security upgrades to ensure compliance and data integrity across clinical operations.",
+        description: "Ongoing IT partnership for a healthcare management platform — day-to-day system administration, proactive maintenance, staff guidance and strategic consultation on network security upgrades to ensure compliance and data integrity across clinical operations.",
         url: "",
         color: "#06B6D4",
         industry: "Healthcare / Medical",
-        tech: ["Network Security", "Windows Server", "Helpdesk Systems", "Firewall Configuration"],
+        tech: ["Network Security", "Windows Server", "Access Management", "Firewall Configuration"],
         location: "Angola",
         year: "2024",
-        services: ["IT Technical Support", "System Maintenance", "Network Security Consulting", "Helpdesk Operations"],
+        services: ["IT Systems Management", "System Maintenance", "Network Security Consulting", "Staff Training"],
         designGallery: {
             images: [
                 "https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=800&q=80",
@@ -505,30 +505,30 @@ const portfolioProjects: PortfolioProject[] = [
                 "https://images.unsplash.com/photo-1584982751601-97dea52b6b50?w=800&q=80",
             ],
             highlights: [
-                "End-to-end IT support contract covering hardware, software, and network infrastructure across the clinic",
+                "End-to-end IT services contract covering hardware, software, and network infrastructure across the clinic",
                 "Scheduled and reactive maintenance programme — minimising downtime in a critical healthcare environment",
                 "Security audit and consultation on network architecture: firewall rules, access control, and clinical data segmentation",
-                "Helpdesk operations ensuring staff could resolve day-to-day tech issues without disrupting patient services",
+                "A clear process for staff to report and resolve day-to-day system issues without disrupting patient services",
                 "VLAN segmentation advice to isolate clinical systems from general office traffic — reducing the attack surface",
             ],
-            deliverables: ["IT support retainer", "System maintenance schedule", "Network security audit", "Firewall configuration plan", "Staff helpdesk setup"],
+            deliverables: ["IT services retainer", "System maintenance schedule", "Network security audit", "Firewall configuration plan", "Staff onboarding & guides"],
             nda: true,
         },
     },
     {
         id: 21,
         title: "Passa Studio",
-        category: "Technical Support",
+        category: "IT Systems",
         subcategory: "Device Setup & Maintenance",
         image: "/logos/passa.png",
-        description: "Full IT setup and ongoing maintenance for a creative studio — printer installation and calibration, workstation builds and OS configuration, and a structured maintenance schedule to keep all devices running at peak performance for client-facing creative work.",
+        description: "Full IT setup and ongoing maintenance for a creative studio — workstation builds, OS configuration and colour calibration for design output, and a structured maintenance schedule to keep all devices running at peak performance for client-facing creative work.",
         url: "",
         color: "#06B6D4",
         industry: "Creative Studio / Media",
-        tech: ["Windows 10/11", "macOS", "Printer Configuration", "PC Hardware"],
+        tech: ["Windows 10/11", "macOS", "Colour Calibration", "PC Hardware"],
         location: "Angola",
         year: "2024",
-        services: ["Printer Setup & Maintenance", "PC Build & Configuration", "Device Maintenance", "On-site IT Support"],
+        services: ["Colour Calibration", "PC Build & Configuration", "Device Maintenance", "On-site Maintenance Visits"],
         designGallery: {
             images: [
                 "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&q=80",
@@ -536,20 +536,20 @@ const portfolioProjects: PortfolioProject[] = [
                 "https://images.unsplash.com/photo-1531492746076-161ca9bcad58?w=800&q=80",
             ],
             highlights: [
-                "Printer installation, driver setup, network printing configuration, and colour calibration for professional-grade creative output",
+                "Colour calibration and output setup for professional-grade creative work",
                 "Workstation builds tailored to creative workflows — optimised storage, RAM, and display config for design-heavy applications",
                 "OS installation, software licensing, and initial security hardening across all studio PCs",
                 "Routine maintenance visits: physical cleaning, performance checks, OS/driver updates, and fault diagnosis",
-                "Quick-response on-site support to minimise disruption to studio operations and client project deadlines",
+                "Quick-response on-site visits to minimise disruption to studio operations and client project deadlines",
             ],
-            deliverables: ["Printer setup & calibration", "PC builds & OS configuration", "Software installation & licensing", "Maintenance schedule", "On-site support agreement"],
+            deliverables: ["Colour calibration", "PC builds & OS configuration", "Software installation & licensing", "Maintenance schedule", "On-site maintenance agreement"],
             nda: false,
         },
     },
     {
         id: 22,
         title: "Construction group (confidential client)",
-        category: "Technical Support",
+        category: "IT Systems",
         subcategory: "Surveillance & Security Systems",
         image: "/logos/confidential.svg",
         description: "Supply and full deployment of IT surveillance infrastructure for a construction and infrastructure group — IP camera systems, network video recorders, structured cabling, and end-to-end configuration delivering reliable 24/7 site monitoring and physical security coverage.",
@@ -702,7 +702,7 @@ function ProjectModal({
     project: PortfolioProject;
     onClose: () => void;
 }) {
-    const isIT      = project.category === "Technical Support" && !!project.designGallery;
+    const isIT      = project.category === "IT Systems" && !!project.designGallery;
     const isDesign  = !!project.designGallery && !isIT;
     const hasGallery = !!project.designGallery;
 
@@ -764,7 +764,7 @@ function ProjectModal({
                         {isIT && (
                             <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] bg-cyan-50 text-cyan-600 border border-cyan-200">
                                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
-                                IT Support
+                                IT Systems
                             </span>
                         )}
                     </div>
@@ -791,7 +791,7 @@ function ProjectModal({
                 {/* ── Body: scrollable ── */}
                 <div className="flex-1 overflow-y-auto min-h-0">
                     {hasGallery && gallery ? (
-                        /* ── GALLERY / IT SUPPORT MODE ── */
+                        /* ── GALLERY / IT SYSTEMS MODE ── */
                         <div className="flex flex-col lg:flex-row h-full">
 
                             {/* Left panel */}
@@ -1186,7 +1186,7 @@ export default function Portfolio() {
     const categories: { theme: CategoryTheme; icon: React.ComponentType<{ className?: string }>; projects: PortfolioProject[] }[] = [
         { theme: categoryThemes["Website/App Development"], icon: CodeIcon, projects: portfolioProjects.filter((p) => p.category === "Website/App Development") },
         { theme: categoryThemes["Graphic Design"], icon: DesignIcon, projects: portfolioProjects.filter((p) => p.category === "Graphic Design") },
-        { theme: categoryThemes["Technical Support"], icon: SupportIcon, projects: portfolioProjects.filter((p) => p.category === "Technical Support") },
+        { theme: categoryThemes["IT Systems"], icon: SupportIcon, projects: portfolioProjects.filter((p) => p.category === "IT Systems") },
         { theme: categoryThemes["Marketing"], icon: MarketingIcon, projects: portfolioProjects.filter((p) => p.category === "Marketing") },
     ];
 

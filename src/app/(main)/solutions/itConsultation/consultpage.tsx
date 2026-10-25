@@ -182,11 +182,10 @@ export default function Example() {
                                         {/* <ServerIcon className="flex-none w-5 h-5 mt-1 text-indigo-600" aria-hidden="true" /> */}
                                         <span>
                       <strong className="font-semibold text-[var(--autisync-gold,#B98B2F)]">
-                        Comprehensive Support:
+                        Long-term partnership:
                       </strong>{" "}
-                                            Our support extends beyond consultation. We offer ongoing
-                      support, project management, training, and maintenance
-                      services.
+                                            Our support extends beyond consultation. We stay on for project
+                      management, training and maintenance.
                     </span>
                                     </li>
                                 </ul>
@@ -198,7 +197,7 @@ export default function Example() {
                                     show you how our IT consultation services can transform your
                                     organization.{" "}
                                     <span className="font-bold">
-                    Call us at{" "}
+                    Or speak to us on{" "}
                                         <Link
                                             href="tel:+244927114400"
                                             className="text-gray-500 hover:text-[var(--autisync-gold,#B98B2F)]"

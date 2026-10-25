@@ -14,7 +14,7 @@ import { waLink } from "@/lib/whatsapp";
 type CategoryType =
     | "Website/App Development"
     | "Graphic Design"
-    | "Technical Support"
+    | "IT Systems"
     | "Marketing";
 
 interface PortfolioProject {
@@ -81,18 +81,18 @@ const categoryThemes: Record<CategoryType, CategoryTheme> = {
         heading: "Marcas que não passam despercebidas",
         subheading: "Logótipos, identidades visuais e materiais impressos criados para causar uma primeira impressão duradoura.",
     },
-    "Technical Support": {
-        name: "Technical Support",
-        label: "Suporte Técnico",
+    "IT Systems": {
+        name: "IT Systems",
+        label: "Sistemas de TI",
         gradient: "from-cyan-500 via-teal-500 to-emerald-600",
         accent: "#06B6D4",
         glow: "rgba(6, 182, 212, 0.5)",
         textColor: "text-cyan-400",
         bgColor: "bg-zinc-950",
         particleColor: "#06B6D4",
-        eyebrow: "Infraestrutura e Suporte de TI",
+        eyebrow: "Sistemas e Infraestrutura de TI",
         heading: "Tecnologia que simplesmente funciona",
-        subheading: "Implementação completa de TI, helpdesk e sistemas seguros para que a sua equipa se concentre no que realmente importa.",
+        subheading: "Implementação completa de TI, manutenção e sistemas seguros para que a sua equipa se concentre no que realmente importa.",
     },
     "Marketing": {
         name: "Marketing",
@@ -490,21 +490,21 @@ const portfolioProjects: PortfolioProject[] = [
             nda: false,
         },
     },
-    // ── Technical Support ────────────────────────────────────────────────
+    // ── IT Systems ──────────────────────────────────────────────────────
     {
         id: 20,
         title: "Prestador de cuidados de saúde (cliente confidencial)",
-        category: "Technical Support",
-        subcategory: "Suporte e Consultoria de TI",
+        category: "IT Systems",
+        subcategory: "Sistemas e Consultoria de TI",
         image: "/logos/confidential.svg",
-        description: "Parceria contínua de suporte de TI para uma plataforma de gestão de saúde — suporte técnico diário, manutenção proativa de sistemas, helpdesk e consultoria estratégica na melhoria da segurança de rede, garantindo conformidade e integridade dos dados em todas as operações clínicas.",
+        description: "Parceria contínua de TI para uma plataforma de gestão de saúde — administração diária de sistemas, manutenção proativa, orientação aos colaboradores e consultoria estratégica na melhoria da segurança de rede, garantindo conformidade e integridade dos dados em todas as operações clínicas.",
         url: "",
         color: "#06B6D4",
         industry: "Saúde / Medicina",
-        tech: ["Segurança de Rede", "Windows Server", "Sistemas de Helpdesk", "Configuração de Firewall"],
+        tech: ["Segurança de Rede", "Windows Server", "Gestão de Acessos", "Configuração de Firewall"],
         location: "Angola",
         year: "2024",
-        services: ["Suporte Técnico de TI", "Manutenção de Sistemas", "Consultoria em Segurança de Rede", "Operações de Helpdesk"],
+        services: ["Gestão de Sistemas de TI", "Manutenção de Sistemas", "Consultoria em Segurança de Rede", "Formação de Colaboradores"],
         designGallery: {
             images: [
                 "https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=800&q=80",
@@ -512,30 +512,30 @@ const portfolioProjects: PortfolioProject[] = [
                 "https://images.unsplash.com/photo-1584982751601-97dea52b6b50?w=800&q=80",
             ],
             highlights: [
-                "Contrato de suporte de TI completo, abrangendo hardware, software e infraestrutura de rede em toda a clínica",
+                "Contrato de serviços de TI completo, abrangendo hardware, software e infraestrutura de rede em toda a clínica",
                 "Programa de manutenção planeada e reativa — minimizando o tempo de inatividade num ambiente de saúde crítico",
                 "Auditoria de segurança e consultoria sobre a arquitetura de rede: regras de firewall, controlo de acessos e segmentação dos dados clínicos",
-                "Helpdesk que permitiu aos colaboradores resolver problemas técnicos do dia a dia sem perturbar o atendimento aos pacientes",
+                "Um processo claro para os colaboradores comunicarem e resolverem problemas de sistema do dia a dia sem perturbar o atendimento aos pacientes",
                 "Recomendações de segmentação por VLAN para isolar os sistemas clínicos do tráfego geral do escritório — reduzindo a superfície de ataque",
             ],
-            deliverables: ["Contrato de suporte de TI", "Plano de manutenção de sistemas", "Auditoria de segurança de rede", "Plano de configuração de firewall", "Implementação de helpdesk para colaboradores"],
+            deliverables: ["Contrato de serviços de TI", "Plano de manutenção de sistemas", "Auditoria de segurança de rede", "Plano de configuração de firewall", "Integração e guias para colaboradores"],
             nda: true,
         },
     },
     {
         id: 21,
         title: "Passa Studio",
-        category: "Technical Support",
+        category: "IT Systems",
         subcategory: "Configuração e Manutenção de Equipamentos",
         image: "/logos/passa.png",
-        description: "Implementação completa de TI e manutenção contínua para um estúdio criativo — instalação e calibração de impressoras, montagem de estações de trabalho e configuração de sistemas operativos, com um plano de manutenção estruturado para manter todos os equipamentos no máximo desempenho no trabalho criativo para clientes.",
+        description: "Implementação completa de TI e manutenção contínua para um estúdio criativo — montagem de estações de trabalho, configuração de sistemas operativos e calibração de cor para o trabalho de design, com um plano de manutenção estruturado para manter todos os equipamentos no máximo desempenho no trabalho criativo para clientes.",
         url: "",
         color: "#06B6D4",
         industry: "Estúdio Criativo / Media",
-        tech: ["Windows 10/11", "macOS", "Configuração de Impressoras", "Hardware de PC"],
+        tech: ["Windows 10/11", "macOS", "Calibração de Cor", "Hardware de PC"],
         location: "Angola",
         year: "2024",
-        services: ["Instalação e Manutenção de Impressoras", "Montagem e Configuração de Computadores", "Manutenção de Equipamentos", "Suporte de TI Presencial"],
+        services: ["Calibração de Cor", "Montagem e Configuração de Computadores", "Manutenção de Equipamentos", "Visitas de Manutenção Presenciais"],
         designGallery: {
             images: [
                 "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&q=80",
@@ -543,20 +543,20 @@ const portfolioProjects: PortfolioProject[] = [
                 "https://images.unsplash.com/photo-1531492746076-161ca9bcad58?w=800&q=80",
             ],
             highlights: [
-                "Instalação de impressoras, configuração de drivers e de impressão em rede, e calibração de cor para resultados criativos de nível profissional",
+                "Calibração de cor e configuração de saída para trabalho criativo de nível profissional",
                 "Estações de trabalho montadas à medida de fluxos de trabalho criativos — armazenamento, RAM e configuração de ecrãs otimizados para aplicações de design exigentes",
                 "Instalação de sistemas operativos, licenciamento de software e reforço inicial da segurança em todos os computadores do estúdio",
                 "Visitas de manutenção periódicas: limpeza física, verificações de desempenho, atualizações de sistema e drivers, e diagnóstico de avarias",
-                "Suporte presencial de resposta rápida para minimizar perturbações nas operações do estúdio e nos prazos dos projetos dos clientes",
+                "Visitas presenciais de resposta rápida para minimizar perturbações nas operações do estúdio e nos prazos dos projetos dos clientes",
             ],
-            deliverables: ["Instalação e calibração de impressoras", "Montagem de computadores e configuração do sistema operativo", "Instalação e licenciamento de software", "Plano de manutenção", "Contrato de suporte presencial"],
+            deliverables: ["Calibração de cor", "Montagem de computadores e configuração do sistema operativo", "Instalação e licenciamento de software", "Plano de manutenção", "Contrato de manutenção presencial"],
             nda: false,
         },
     },
     {
         id: 22,
         title: "Grupo de construção (cliente confidencial)",
-        category: "Technical Support",
+        category: "IT Systems",
         subcategory: "Sistemas de Videovigilância e Segurança",
         image: "/logos/confidential.svg",
         description: "Fornecimento e implementação completa de infraestrutura de videovigilância para um grupo de construção e infraestruturas — sistemas de câmaras IP, gravadores de vídeo em rede, cablagem estruturada e configuração de ponta a ponta, garantindo monitorização fiável do local 24/7 e cobertura de segurança física.",
@@ -709,7 +709,7 @@ function ProjectModal({
     project: PortfolioProject;
     onClose: () => void;
 }) {
-    const isIT      = project.category === "Technical Support" && !!project.designGallery;
+    const isIT      = project.category === "IT Systems" && !!project.designGallery;
     const isDesign  = !!project.designGallery && !isIT;
     const hasGallery = !!project.designGallery;
 
@@ -771,7 +771,7 @@ function ProjectModal({
                         {isIT && (
                             <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] bg-cyan-50 text-cyan-600 border border-cyan-200">
                                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
-                                Suporte de TI
+                                Sistemas de TI
                             </span>
                         )}
                     </div>
@@ -798,7 +798,7 @@ function ProjectModal({
                 {/* ── Body: scrollable ── */}
                 <div className="flex-1 overflow-y-auto min-h-0">
                     {hasGallery && gallery ? (
-                        /* ── GALLERY / IT SUPPORT MODE ── */
+                        /* ── GALLERY / IT SYSTEMS MODE ── */
                         <div className="flex flex-col lg:flex-row h-full">
 
                             {/* Left panel */}
@@ -1193,7 +1193,7 @@ export default function PortfolioClient() {
     const categories: { theme: CategoryTheme; icon: React.ComponentType<{ className?: string }>; projects: PortfolioProject[] }[] = [
         { theme: categoryThemes["Website/App Development"], icon: CodeIcon, projects: portfolioProjects.filter((p) => p.category === "Website/App Development") },
         { theme: categoryThemes["Graphic Design"], icon: DesignIcon, projects: portfolioProjects.filter((p) => p.category === "Graphic Design") },
-        { theme: categoryThemes["Technical Support"], icon: SupportIcon, projects: portfolioProjects.filter((p) => p.category === "Technical Support") },
+        { theme: categoryThemes["IT Systems"], icon: SupportIcon, projects: portfolioProjects.filter((p) => p.category === "IT Systems") },
         { theme: categoryThemes["Marketing"], icon: MarketingIcon, projects: portfolioProjects.filter((p) => p.category === "Marketing") },
     ];
 

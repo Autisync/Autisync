@@ -58,8 +58,8 @@ const services = [
         href: "/pt/crm",
     },
     {
-        title: "Consultoria e Suporte de TI",
-        text: "Configuração de equipamentos, redes, videovigilância e suporte técnico para o seu escritório.",
+        title: "Consultoria Tecnológica",
+        text: "Configuração de equipamentos, redes, videovigilância e manutenção de sistemas para o seu escritório.",
         href: "/pt/servicos/consultoria-ti",
     },
 ];

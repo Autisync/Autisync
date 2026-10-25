@@ -20,7 +20,7 @@ export function GET() {
 > Autisync is a digital agency that builds websites, brand identities, social media and AI automation for service businesses in Angola, Namibia, the United Kingdom and Portugal. It works in English and Portuguese. Autisync is a trading name of Maheldom Consulting, Lda (NIF 5003472418), registered in Talatona, Luanda, Angola.
 
 Key facts:
-- Services: website design and development, web apps, brand identity and logo design, social media management, SEO, CRM setup, AI automation, IT support.
+- Services: website design and development, web apps, brand identity and logo design, social media management, SEO, CRM setup, AI automation, IT consulting.
 - Countries served: Angola, Namibia, United Kingdom, Portugal.
 - Track record: ${siteStats.projects}+ projects for ${siteStats.clients}+ clients over ${siteStats.years}+ years, mainly corporate B2B companies in engineering, oil & gas, construction, telecoms, finance and healthcare.
 - Clients include: Florentek Engineering, Grupo Girassol, Blue Horizon, Salustra Group, Mavunzuka & Filhos, Segucyber, Evolution Technologies, Shivali Investments, Ninth Vision, Your Pharmacy.
@@ -63,7 +63,7 @@ ${agencyPlans.map((pl) => `- ${pl.name}: ${formatPrice(pl.price.GBP, "GBP")} / $
 - [Web & app development](${BASE}/solutions/devServices)
 - [Graphic design & branding](${BASE}/solutions/graphicDesign)
 - [SEO & digital marketing](${BASE}/solutions/seo)
-- [IT consultation & support](${BASE}/solutions/itConsultation)
+- [IT consulting](${BASE}/solutions/itConsultation)
 - [Autisync CRM](${BASE}/crm): Autisync's customer relationship manager for WhatsApp, Instagram, Facebook and email
 - [CRM for estate & letting agents](${BASE}/crm/estate-agents): properties, viewings, AI assistant, prices per agency
 - [Step-inside websites](${BASE}/websites/step-inside): a website that opens with a scroll-driven walk from the street into the business
@@ -82,7 +82,7 @@ ${agencyPlans.map((pl) => `- ${pl.name}: ${formatPrice(pl.price.GBP, "GBP")} / $
 - [Criação de websites e aplicações](${BASE}/pt/servicos/desenvolvimento)
 - [Design gráfico e branding](${BASE}/pt/servicos/design-grafico)
 - [SEO e marketing digital](${BASE}/pt/servicos/seo-marketing)
-- [Consultoria e suporte de TI](${BASE}/pt/servicos/consultoria-ti)
+- [Consultoria de TI](${BASE}/pt/servicos/consultoria-ti)
 - [CRM para imobiliárias](${BASE}/crm/imobiliarias): imóveis, visitas, assistente de IA, preços por agência
 - [Clínicas e salões em Portugal](${BASE}/pt/clinicas): site, marcações online com lembretes, WhatsApp com resposta imediata, pedidos de avaliação e convites para voltar
 - [Contacto](${BASE}/pt/contacto)

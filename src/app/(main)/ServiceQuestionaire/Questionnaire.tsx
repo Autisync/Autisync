@@ -210,9 +210,9 @@ const questionnaires: Questionnaire[] = [
     },
     {
         id: "tech-support",
-        title: "Technical Support & Maintenance",
+        title: "Maintenance & Care Plan",
         tagline: "What kind of ongoing support do you expect?",
-        subtitle: "IT Infrastructure & Support",
+        subtitle: "Website & Systems Care",
         description: "From updates to monitoring, let us know what level of technical coverage you'd like us to provide.",
         sections: [
             {
@@ -229,7 +229,7 @@ const questionnaires: Questionnaire[] = [
             {
                 title: "Support Scope",
                 fields: [
-                    { id: "services_needed", label: "What support services do you need?", type: "multiselect", options: ["Website updates & edits", "Bug fixes", "Performance optimisation", "Security monitoring", "Daily/weekly backups", "Domain & hosting management", "SSL certificates", "Device setup & configuration", "Helpdesk / user support", "Software installations", "Email setup (GSuite / M365)", "Database management", "API integrations", "Other"] },
+                    { id: "services_needed", label: "What support services do you need?", type: "multiselect", options: ["Website updates & edits", "Bug fixes", "Performance optimisation", "Security monitoring", "Daily/weekly backups", "Domain & hosting management", "SSL certificates", "Device setup & configuration", "Staff training & user guides", "Software installations", "Email setup (GSuite / M365)", "Database management", "API integrations", "Other"] },
                     { id: "response_time", label: "Expected response time for issues", type: "radio", options: ["Within 1 hour (critical)", "Same business day", "Within 48 hours", "Weekly batch — no urgency"] },
                     { id: "support_hours", label: "Support hours required", type: "radio", options: ["Business hours (Mon–Fri, 9–18)", "Extended (Mon–Fri, 8–20)", "Weekends included", "24/7"] },
                     { id: "monitoring", label: "Do you want proactive uptime monitoring?", type: "radio", options: ["Yes — alert me if anything goes down", "No — reactive only", "Not sure"] },

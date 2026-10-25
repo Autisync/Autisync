@@ -154,7 +154,7 @@ const locations = [
         price: "Contact Us",
       },
       {
-        name: "Tech Support",
+        name: "Care Plan",
         desc: "Monthly maintenance and updates",
         duration: "Monthly",
         price: "Contact Us",

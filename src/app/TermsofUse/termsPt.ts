@@ -26,7 +26,7 @@ export const sectionsPt = [
         content: [
             {
                 heading: null,
-                body: `A Autisync é uma agência digital criativa que presta serviços que incluem o desenvolvimento de sites e aplicações, design gráfico, gestão de redes sociais, suporte técnico e manutenção, criação de lojas de comércio eletrónico e email marketing. Operamos no Reino Unido, em Portugal, na Namíbia e em Angola.`,
+                body: `A Autisync é uma agência digital criativa que presta serviços que incluem o desenvolvimento de sites e aplicações, design gráfico, gestão de redes sociais, manutenção de websites e sistemas, criação de lojas de comércio eletrónico e email marketing. Operamos no Reino Unido, em Portugal, na Namíbia e em Angola.`,
             },
             {
                 heading: null,

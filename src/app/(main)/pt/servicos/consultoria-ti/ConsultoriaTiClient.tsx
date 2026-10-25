@@ -182,11 +182,10 @@ export default function ConsultoriaTiClient() {
                                         {/* <ServerIcon className="flex-none w-5 h-5 mt-1 text-indigo-600" aria-hidden="true" /> */}
                                         <span>
                       <strong className="font-semibold text-[var(--autisync-gold,#B98B2F)]">
-                        Suporte completo:
+                        Parceria a longo prazo:
                       </strong>{" "}
-                                            O nosso apoio vai além da consultoria. Oferecemos suporte
-                      técnico contínuo, gestão de projetos, formação e serviços de
-                      manutenção.
+                                            O nosso apoio vai além da consultoria. Continuamos
+                      consigo na gestão de projetos, formação e manutenção.
                     </span>
                                     </li>
                                 </ul>
@@ -198,7 +197,7 @@ export default function ConsultoriaTiClient() {
                                     nossos serviços de consultoria de TI podem transformar a sua
                                     organização.{" "}
                                     <span className="font-bold">
-                    Ligue para o{" "}
+                    Ou fale connosco pelo{" "}
                                         <Link
                                             href="tel:+244927114400"
                                             className="text-gray-500 hover:text-[var(--autisync-gold,#B98B2F)]"

@@ -289,7 +289,7 @@ export default function Landing({ lang = "en" } = {}) {
               </div>
             </div>
 
-            {/* IT Consultation/Technical Support (TOP – black circle, gold icon) */}
+            {/* IT Consulting & Systems (TOP – black circle, gold icon) */}
             <div className="w-full px-4 pt-6 text-center lg:pt-12 md:w-4/12">
               <div className="group relative flex flex-col w-full min-w-0 mb-8 break-words bg-white rounded-lg shadow-lg transition-transform duration-300 ease-out hover:-translate-y-1 hover:shadow-xl">
                 <div className="flex-auto px-4 py-5">
@@ -297,7 +297,7 @@ export default function Landing({ lang = "en" } = {}) {
                     <ITSupportIcon className="w-5 h-5 text-[var(--autisync-gold,#b98b2f)]" />
                   </ServiceIcon3D>
                   <h6 className="text-xl font-semibold text-gray-800">
-                    {t("IT Consultation / Technical Support", "Consultoria de TI / Suporte Técnico")}
+                    {t("IT Consulting & Systems", "Consultoria e Sistemas de TI")}
                   </h6>
                   <p className="mt-2 mb-4 text-gray-500">
                     {t(
@@ -391,8 +391,8 @@ export default function Landing({ lang = "en" } = {}) {
 
               <p className="mt-0 mb-4 leading-relaxed text-gray-600">
                 {t(
-                  "Whether you need AI-powered workflows, custom software, a branded website, CRM setup, or ongoing tech support — we build systems that work together, operate smoothly, and elevate your entire business. We’re not just a service provider. We’re your long-term technology partner.",
-                  "Quer precise de processos automatizados com IA, software à medida, um website com a sua marca, um CRM configurado ou suporte técnico contínuo — criamos sistemas que trabalham em conjunto, funcionam sem falhas e elevam toda a sua empresa. Não somos apenas um fornecedor. Somos o seu parceiro tecnológico de longo prazo."
+                  "Whether you need AI-powered workflows, custom software, a branded website, CRM setup, or ongoing maintenance — we build systems that work together, operate smoothly, and elevate your entire business. We’re not just a service provider. We’re your long-term technology partner.",
+                  "Quer precise de processos automatizados com IA, software à medida, um website com a sua marca, um CRM configurado ou manutenção contínua — criamos sistemas que trabalham em conjunto, funcionam sem falhas e elevam toda a sua empresa. Não somos apenas um fornecedor. Somos o seu parceiro tecnológico de longo prazo."
                 )}
               </p>
               <Link
@@ -431,8 +431,8 @@ export default function Landing({ lang = "en" } = {}) {
                   </h4>
                   <p className="mt-2 font-light text-gray-600 text-md">
                     {t(
-                      "Giving the necessary technical support to continue your work daily and long term activities uninterrupted and efficiently.",
-                      "Damos o suporte técnico necessário para que o trabalho do dia a dia e os projetos de longo prazo da sua empresa avancem sem interrupções e com eficiência."
+                      "Ongoing maintenance and care so your daily work and long-term projects keep running smoothly.",
+                      "Manutenção e acompanhamento contínuos para que o trabalho do dia a dia e os projetos de longo prazo da sua empresa avancem sem interrupções."
                     )}
                   </p>
                 </blockquote>

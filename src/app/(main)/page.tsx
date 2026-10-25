@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Autisync — We Systemize Your Success",
         description:
-            "AI automation, web development, graphic design, and IT support for growing businesses worldwide.",
+            "AI automation, web development, graphic design, and IT consulting for growing businesses worldwide.",
         url: "https://www.autisync.com",
         images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Autisync Homepage" }],
     },

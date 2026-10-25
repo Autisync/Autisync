@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     description:
         "Autisync is a digital agency building websites, brand identities, social media and AI automation for businesses in Angola, Namibia, the UK and Portugal. Websites from Kz 495.000 / £1,490.",
     keywords: [
-        "digital agency", "web development", "graphic design", "IT support",
+        "digital agency", "web development", "graphic design", "IT consulting",
         "social media management", "e-commerce", "email marketing", "AI automation",
         "Autisync", "UK digital agency", "Portugal digital agency", "Angola tech",
         "Namibia digital agency", "CRM setup", "brand identity",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
         siteName: "Autisync",
         title: "Autisync — Creative Digital Agency",
         description:
-            "Web development, graphic design, IT support, and digital marketing across the UK, Portugal, Namibia & Angola.",
+            "Web development, graphic design, IT consulting, and digital marketing across the UK, Portugal, Namibia & Angola.",
         images: [
             {
                 url: "/og-image.png",        // create a 1200×630 branded image and place in /public
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Autisync — Creative Digital Agency",
         description:
-            "Web development, graphic design, IT support & digital marketing. UK · Portugal · Namibia · Angola.",
+            "Web development, graphic design, IT consulting & digital marketing. UK · Portugal · Namibia · Angola.",
         images: ["/og-image.png"],
         creator: "@autisync",           // update if handle differs
     },
@@ -123,7 +123,7 @@ const orgSchema = {
     knowsAbout: [
         "Web design", "Web development", "Brand identity", "Logo design",
         "Social media management", "Search engine optimisation", "CRM setup",
-        "AI automation", "IT support",
+        "AI automation", "IT consulting",
     ],
     contactPoint: [
         {

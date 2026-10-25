@@ -3,12 +3,12 @@ import { alternatesFor } from "@/lib/i18n/routes";
 import Consult from "./consultpage";
 
 export const metadata: Metadata = {
-    title: "IT Consultation & Technical Support",
+    title: "IT Consulting & Systems",
     description:
-        "Expert IT consultation and technical support from Autisync. Device setup, system configuration, security monitoring, helpdesk, and ongoing maintenance.",
+        "IT consulting from Autisync: system configuration, network security, infrastructure planning and ongoing maintenance for growing businesses.",
     alternates: alternatesFor("/solutions/itConsultation", "en"),
     openGraph: {
-        title: "IT Consultation & Tech Support — Autisync",
+        title: "IT Consulting & Systems — Autisync",
         description:
             "Keep your business running smoothly with Autisync's end-to-end IT services and infrastructure management.",
         url: "https://www.autisync.com/solutions/itConsultation",

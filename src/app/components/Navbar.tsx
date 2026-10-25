@@ -38,7 +38,7 @@ const solutions = [
   },
   {
     name: "IT Consultation",
-    description: "Technical Support · IT Consultation · Social Media · System Security",
+    description: "IT Consulting · Systems · Social Media · Security",
     href: "/solutions/itConsultation",
     icon: ShieldCheckIcon,
   },
@@ -77,7 +77,7 @@ const solutionsPt = [
   },
   {
     name: "Consultoria de TI",
-    description: "Suporte Técnico · Consultoria de TI · Redes Sociais · Segurança",
+    description: "Consultoria de TI · Sistemas · Redes Sociais · Segurança",
     href: "/pt/servicos/consultoria-ti",
     icon: ShieldCheckIcon,
   },

@@ -213,9 +213,9 @@ const questionnaires: Questionnaire[] = [
     },
     {
         id: "tech-support",
-        title: "Suporte Técnico e Manutenção",
+        title: "Plano de Manutenção e Acompanhamento",
         tagline: "Que tipo de suporte contínuo espera?",
-        subtitle: "Infraestrutura e Suporte de TI",
+        subtitle: "Manutenção de Website e Sistemas",
         description: "De atualizações a monitorização, diga-nos que nível de cobertura técnica pretende que lhe ofereçamos.",
         sections: [
             {
@@ -232,7 +232,7 @@ const questionnaires: Questionnaire[] = [
             {
                 title: "Âmbito do Suporte",
                 fields: [
-                    { id: "services_needed", label: "De que serviços de suporte precisa?", type: "multiselect", options: ["Atualizações e alterações ao website", "Correção de erros", "Otimização de desempenho", "Monitorização de segurança", "Cópias de segurança diárias/semanais", "Gestão de domínio e alojamento", "Certificados SSL", "Instalação e configuração de equipamentos", "Helpdesk / apoio aos utilizadores", "Instalação de software", "Configuração de email (Google Workspace / M365)", "Gestão de bases de dados", "Integrações via API", "Outro"] },
+                    { id: "services_needed", label: "De que serviços de suporte precisa?", type: "multiselect", options: ["Atualizações e alterações ao website", "Correção de erros", "Otimização de desempenho", "Monitorização de segurança", "Cópias de segurança diárias/semanais", "Gestão de domínio e alojamento", "Certificados SSL", "Instalação e configuração de equipamentos", "Formação e guias para utilizadores", "Instalação de software", "Configuração de email (Google Workspace / M365)", "Gestão de bases de dados", "Integrações via API", "Outro"] },
                     { id: "response_time", label: "Tempo de resposta esperado para problemas", type: "radio", options: ["Até 1 hora (crítico)", "No mesmo dia útil", "Até 48 horas", "Semanalmente, em lote — sem urgência"] },
                     { id: "support_hours", label: "Horário de suporte necessário", type: "radio", options: ["Horário de expediente (seg–sex, 9h00–18h00)", "Alargado (seg–sex, 8h00–20h00)", "Inclui fins de semana", "24/7"] },
                     { id: "monitoring", label: "Quer monitorização proativa da disponibilidade?", type: "radio", options: ["Sim — avisem-me se algo for abaixo", "Não — só quando houver problemas", "Não tenho a certeza"] },
