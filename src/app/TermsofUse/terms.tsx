@@ -28,7 +28,7 @@ const sections = [
         content: [
             {
                 heading: null,
-                body: `Autisync is a creative digital agency offering services including website and application development, graphic design, social media management, technical support and maintenance, e-commerce store setup, and email marketing. We operate across the United Kingdom, Portugal, Namibia, and Angola.`,
+                body: `Autisync is a creative digital agency offering services including website and application development, graphic design, social media management, website and system maintenance, e-commerce store setup, and email marketing. We operate across the United Kingdom, Portugal, Namibia, and Angola.`,
             },
             {
                 heading: null,
