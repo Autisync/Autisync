@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckIcon } from "@heroicons/react/24/solid";
 import Promises from "@/app/components/Promises";
 import { carePlanMonthly, formatPrice, websiteTiers } from "@/lib/website-packages";
 import { ptWebsite } from "@/lib/i18n/pt";
 import { waLink } from "@/lib/whatsapp";
+import UseCases from "@/app/components/useCases/UseCases";
+import DayTimeline from "@/app/components/useCases/DayTimeline";
+import { ptCases, ptCopy } from "@/app/components/useCases/cases";
 
 /**
  * /pt/clinicas — clinics, aesthetic clinics and salons in Portugal.
@@ -44,32 +46,9 @@ export const metadata: Metadata = {
     },
 };
 
-const bundle = [
-    {
-        t: "Site profissional",
-        d: "Rápido no telemóvel, com os seus serviços, a equipa e o botão de marcar sempre à vista. Domínio, alojamento e e-mail incluídos no primeiro ano.",
-    },
-    {
-        t: "Marcações online com lembretes",
-        d: "O cliente escolhe o serviço e a hora, de dia ou de noite. Recebe a confirmação e um lembrete antes de vir, por WhatsApp ou e-mail.",
-    },
-    {
-        t: "WhatsApp com resposta imediata",
-        d: "Quem lhe escreve pelo WhatsApp ou pelo site recebe resposta imediata, mesmo fora de horas. A conversa fica na caixa de entrada do CRM, com uma tarefa para a sua equipa responder.",
-    },
-    {
-        t: "Pedidos de avaliação",
-        d: "Algumas horas depois da consulta ou do serviço, o cliente recebe um convite para deixar uma avaliação no Google, enquanto ainda tem a visita bem presente.",
-    },
-    {
-        t: "Convites para voltar",
-        d: "Quando chega a altura da manutenção ou da próxima consulta, o cliente recebe um convite para marcar. Quem falta a uma marcação recebe uma proposta de nova data.",
-    },
-    {
-        t: "Faturas e pagamentos",
-        d: "Emita faturas e pedidos de pagamento a partir da ficha do cliente. A certificação da faturação está em curso.",
-    },
-];
+// The use cases for clinics and salons (and those for any business), from
+// the shared list: the same cases play on the home page.
+const cases = ptCases.filter((c) => c.for === "all" || c.for.includes("clinics") || c.for.includes("salons"));
 
 const example = [
     { when: "21h00", what: "Uma cliente escreve no WhatsApp a perguntar se há vaga na sexta." },
@@ -196,26 +175,20 @@ export default function ClinicasPage() {
                 <p className="mt-4 text-sm text-gray-500">Sem fidelização de 12 meses. Tudo configurado por nós.</p>
             </section>
 
-            {/* What's in the bundle */}
-            <section aria-labelledby="clinicas-inclui" className="py-20 bg-gray-50">
-                <div className="px-6 mx-auto max-w-5xl lg:px-8">
-                    <h2 id="clinicas-inclui" className="text-3xl font-semibold text-gray-800 [text-wrap:balance]">
-                        Tudo aquilo de que precisa para encher a agenda, num só sítio
+            {/* Use cases, played one by one */}
+            <section aria-labelledby="clinicas-casos" className="py-20 bg-gray-50">
+                <div className="px-6 mx-auto max-w-6xl lg:px-8">
+                    <p className="text-sm font-semibold text-[#B28228]">Casos de uso</p>
+                    <h2 id="clinicas-casos" className="mt-2 text-3xl font-semibold text-gray-800 [text-wrap:balance]">
+                        Veja o CRM a trabalhar na sua clínica ou no seu salão
                     </h2>
                     <p className="mt-4 max-w-2xl text-gray-600">
-                        O que já funciona hoje no CRM da Autisync para clínicas e salões, ligado ao seu site e ao seu WhatsApp.
+                        Escolha um caso, ou deixe-os passar: cada um mostra o que o cliente vê e o que a sua equipa recebe. Os casos
+                        marcados como Extra são módulos à parte, com preço próprio na proposta.
                     </p>
-                    <ul className="grid gap-6 mt-10 sm:grid-cols-2 lg:grid-cols-3">
-                        {bundle.map((b) => (
-                            <li key={b.t} className="rounded-xl bg-white p-6 ring-1 ring-gray-200">
-                                <h3 className="flex items-start gap-2 font-semibold text-gray-800">
-                                    <CheckIcon className="flex-none w-5 h-5 mt-0.5 text-[#B28228]" aria-hidden="true" />
-                                    {b.t}
-                                </h3>
-                                <p className="mt-2 text-sm leading-6 text-gray-600">{b.d}</p>
-                            </li>
-                        ))}
-                    </ul>
+                    <div className="mt-10">
+                        <UseCases cases={cases} copy={ptCopy} groups={["clinics", "salons"]} idPrefix="clinicas-uc" />
+                    </div>
                 </div>
             </section>
 
@@ -224,15 +197,7 @@ export default function ClinicasPage() {
                 <h2 id="clinicas-exemplo" className="text-3xl font-semibold text-gray-800 [text-wrap:balance]">
                     Uma terça-feira às 21h00, com a clínica fechada
                 </h2>
-                <ol className="mt-8 space-y-4 border-l-2 border-[#B28228] pl-6">
-                    {example.map((e, i) => (
-                        <li key={i} className="relative">
-                            <span className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-[#B28228]" aria-hidden="true" />
-                            <p className="text-sm font-semibold text-[#B28228]">{e.when}</p>
-                            <p className="text-gray-700">{e.what}</p>
-                        </li>
-                    ))}
-                </ol>
+                <DayTimeline items={example} replay="Ver outra vez" />
                 <p className="mt-6 text-xs text-gray-500">Exemplo ilustrativo de como as mensagens automáticas funcionam.</p>
             </section>
 

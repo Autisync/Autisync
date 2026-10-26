@@ -6,6 +6,7 @@ import Packages from "@/app/(main)/homescreen/packages";
 import Team from "@/app/(main)/homescreen/team";
 import Tools from "@/app/(main)/homescreen/tools";
 import Clients from "@/app/(main)/solutions/clients";
+import UseCasesSection from "@/app/components/useCases/UseCasesSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -41,6 +42,7 @@ export default function Home() {
                     Run a clinic, dental practice or salon in the UK? See what we set up for you →
                 </Link>
             </p>
+            <UseCasesSection lang="en" />
             <WhyUs />
             <Team />
             <Packages/>

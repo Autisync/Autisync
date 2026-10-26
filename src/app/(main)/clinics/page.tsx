@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckIcon } from "@heroicons/react/24/solid";
 import Promises from "@/app/components/Promises";
 import BookingEmbed from "@/app/crm/BookingEmbed";
 import { carePlanMonthly, formatPrice, websiteTiers } from "@/lib/website-packages";
 import { waLink } from "@/lib/whatsapp";
+import UseCases from "@/app/components/useCases/UseCases";
+import DayTimeline from "@/app/components/useCases/DayTimeline";
+import { enCases, enCopy } from "@/app/components/useCases/cases";
 
 /**
  * /clinics — clinics, dental practices, aesthetic clinics and salons in the UK.
@@ -45,38 +47,9 @@ export const metadata: Metadata = {
     },
 };
 
-// The first card (the UK's extra: missed-call text-back) runs the full width,
-// so the other six sit in even rows.
-const bundle = [
-    {
-        t: "Missed-call text-back",
-        d: "When you can't pick up, a caller on a UK mobile gets a text from your business within seconds asking what they need. Their reply goes into your CRM inbox with a reminder to ring back. You keep your own number.",
-    },
-    {
-        t: "A professional website",
-        d: "Quick on a phone, with your treatments, your team and the booking button always in view. Domain, hosting and email included for the first year.",
-    },
-    {
-        t: "Online booking with reminders",
-        d: "Clients choose the treatment and the time, day or night. They get a confirmation and a reminder before they come, by WhatsApp or email.",
-    },
-    {
-        t: "Instant WhatsApp replies",
-        d: "Anyone who messages you on WhatsApp or through your website gets an instant reply, out of hours too. The conversation lands in your inbox with a task for the team to answer.",
-    },
-    {
-        t: "Review requests",
-        d: "A few hours after the appointment, the client is invited to leave a Google review while the visit is still fresh.",
-    },
-    {
-        t: "Rebooking and recall reminders",
-        d: "When the next check-up, top-up or trim is due, the client is invited to book. Anyone who misses an appointment is offered a new date.",
-    },
-    {
-        t: "Invoices and payments",
-        d: "Invoices and payment requests straight from the client's record.",
-    },
-];
+// The use cases for clinics and salons (and those for any business), from
+// the shared list: the same cases play on the home page.
+const cases = enCases.filter((c) => c.for === "all" || c.for.includes("clinics") || c.for.includes("salons"));
 
 const example = [
     { when: "11:20", what: "You're with a patient. A new client rings from their mobile and you can't answer." },
@@ -209,27 +182,20 @@ export default function ClinicsPage() {
                 <p className="mt-4 text-sm text-gray-500">No 12-month contract. Set up for you.</p>
             </section>
 
-            {/* What's in the bundle */}
-            <section aria-labelledby="clinics-included" className="py-20 bg-gray-50">
-                <div className="px-6 mx-auto max-w-5xl lg:px-8">
-                    <h2 id="clinics-included" className="text-3xl font-semibold text-gray-800 [text-wrap:balance]">
-                        Everything you need to fill the diary, in one place
+            {/* Use cases, played one by one */}
+            <section aria-labelledby="clinics-cases" className="py-20 bg-gray-50">
+                <div className="px-6 mx-auto max-w-6xl lg:px-8">
+                    <p className="text-sm font-semibold text-[#B28228]">Use cases</p>
+                    <h2 id="clinics-cases" className="mt-2 text-3xl font-semibold text-gray-800 [text-wrap:balance]">
+                        See the CRM at work in your clinic or salon
                     </h2>
                     <p className="mt-4 max-w-2xl text-gray-600">
-                        What the Autisync CRM already does today for clinics and salons, connected to your website, your phone and your
-                        WhatsApp.
+                        Pick a case, or let them play: each one shows what your client sees and what your team gets. Cases marked
+                        Add-on are separate modules, priced on their own in your proposal.
                     </p>
-                    <ul className="grid gap-6 mt-10 sm:grid-cols-2 lg:grid-cols-3">
-                        {bundle.map((b, i) => (
-                            <li key={b.t} className={"rounded-xl bg-white p-6 " + (i === 0 ? "ring-2 ring-[#B28228] sm:col-span-2 lg:col-span-3" : "ring-1 ring-gray-200")}>
-                                <h3 className="flex items-start gap-2 font-semibold text-gray-800">
-                                    <CheckIcon className="flex-none w-5 h-5 mt-0.5 text-[#B28228]" aria-hidden="true" />
-                                    {b.t}
-                                </h3>
-                                <p className="mt-2 text-sm leading-6 text-gray-600">{b.d}</p>
-                            </li>
-                        ))}
-                    </ul>
+                    <div className="mt-10">
+                        <UseCases cases={cases} copy={enCopy} groups={["clinics", "salons"]} idPrefix="clinics-uc" />
+                    </div>
                 </div>
             </section>
 
@@ -238,15 +204,7 @@ export default function ClinicsPage() {
                 <h2 id="clinics-example" className="text-3xl font-semibold text-gray-800 [text-wrap:balance]">
                     A Tuesday with your hands full
                 </h2>
-                <ol className="mt-8 space-y-4 border-l-2 border-[#B28228] pl-6">
-                    {example.map((e, i) => (
-                        <li key={i} className="relative">
-                            <span className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-[#B28228]" aria-hidden="true" />
-                            <p className="text-sm font-semibold text-[#B28228]">{e.when}</p>
-                            <p className="text-gray-700">{e.what}</p>
-                        </li>
-                    ))}
-                </ol>
+                <DayTimeline items={example} replay="Play it again" />
                 <p className="mt-6 text-xs text-gray-500">
                     An illustrative example of how the automatic messages work. The text-back reaches callers on mobiles.
                 </p>

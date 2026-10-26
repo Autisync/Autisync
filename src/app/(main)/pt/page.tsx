@@ -7,6 +7,7 @@ import Tools from "@/app/(main)/homescreen/tools";
 import Clients from "@/app/(main)/solutions/clients";
 import { PtHomeOffer } from "./PtPackages";
 import { siteStats } from "@/lib/site-stats";
+import UseCasesSection from "@/app/components/useCases/UseCasesSection";
 
 const URL = "https://www.autisync.com/pt";
 
@@ -120,6 +121,8 @@ export default function PtHome() {
                     </p>
                 </div>
             </section>
+
+            <UseCasesSection lang="pt" />
 
             <WhyUs lang="pt" />
             <Team lang="pt" />
