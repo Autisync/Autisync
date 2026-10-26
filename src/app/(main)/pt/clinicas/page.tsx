@@ -21,7 +21,7 @@ const URL = "https://www.autisync.com/pt/clinicas";
 // The UK twin, /clinics, offers the missed-call text-back as well.
 const EN_URL = "https://www.autisync.com/clinics";
 const wa = (text: string) => waLink(text, "WEB-clinicas");
-const WA_TEXT = "Olá Autisync, vi a página para clínicas e salões e gostava de saber mais.";
+const WA_TEXT = "Olá, Autisync. Vi a página para clínicas e salões e gostava de saber mais.";
 
 const eur = (n: number) => formatPrice(n, "EUR");
 const [startup, smallBiz] = websiteTiers;
@@ -29,7 +29,7 @@ const care = eur(carePlanMonthly.EUR);
 
 const TITLE = "Marcações online e WhatsApp para clínicas e salões";
 const DESCRIPTION =
-    "Para clínicas, clínicas de estética e salões em Portugal: site, marcações online com lembretes, WhatsApp com resposta imediata, pedidos de avaliação e convites para voltar. Configurado por nós, sem fidelização de 12 meses.";
+    "Para clínicas, clínicas de estética e salões em Portugal: site, marcações online com lembretes, WhatsApp com resposta imediata, pedidos de avaliação e convites para voltar. Tudo configurado por nós, sem fidelização de 12 meses.";
 
 export const metadata: Metadata = {
     title: TITLE,
@@ -55,74 +55,74 @@ const bundle = [
     },
     {
         t: "WhatsApp com resposta imediata",
-        d: "Quem lhe escreve no WhatsApp ou pelo site recebe resposta imediata, também fora de horas. A conversa fica na caixa de entrada, com uma tarefa para a equipa responder.",
+        d: "Quem lhe escreve pelo WhatsApp ou pelo site recebe resposta imediata, mesmo fora de horas. A conversa fica na caixa de entrada do CRM, com uma tarefa para a sua equipa responder.",
     },
     {
         t: "Pedidos de avaliação",
-        d: "Umas horas depois da consulta, o cliente recebe um convite para avaliar no Google, enquanto a visita está fresca.",
+        d: "Algumas horas depois da consulta ou do serviço, o cliente recebe um convite para deixar uma avaliação no Google, enquanto ainda tem a visita bem presente.",
     },
     {
         t: "Convites para voltar",
-        d: "Quando chega a altura da manutenção ou da próxima consulta, o cliente é convidado a marcar. Quem falta recebe uma proposta de nova data.",
+        d: "Quando chega a altura da manutenção ou da próxima consulta, o cliente recebe um convite para marcar. Quem falta a uma marcação recebe uma proposta de nova data.",
     },
     {
         t: "Faturas e pagamentos",
-        d: "Faturas e pedidos de pagamento a partir da ficha do cliente. Faturação certificada: em certificação.",
+        d: "Emita faturas e pedidos de pagamento a partir da ficha do cliente. A certificação da faturação está em curso.",
     },
 ];
 
 const example = [
     { when: "21h00", what: "Uma cliente escreve no WhatsApp a perguntar se há vaga na sexta." },
-    { when: "21h00", what: "Recebe logo a sua resposta, que escreve uma vez: por exemplo, com o link para marcar online." },
-    { when: "21h05", what: "Marca sozinha. A marcação entra na agenda e ela recebe a confirmação." },
-    { when: "Antes de vir", what: "Recebe o lembrete da marcação." },
-    { when: "Depois", what: "Recebe o pedido de avaliação e, na altura certa, o convite para voltar." },
+    { when: "21h00", what: "A cliente recebe logo a resposta automática que a clínica escreveu uma única vez, por exemplo com o link para marcar online." },
+    { when: "21h05", what: "Marca sozinha online. A marcação entra na agenda da clínica e ela recebe de imediato a confirmação." },
+    { when: "Antes da consulta", what: "Recebe um lembrete da marcação." },
+    { when: "Depois da consulta", what: "Recebe o pedido de avaliação e, na altura certa, o convite para voltar." },
 ];
 
 const promises = [
-    { t: "Sem fidelização de 12 meses", d: "Mensal. Depois do mínimo que ficar escrito na proposta, cancela com 30 dias de aviso, por e-mail ou na sua conta." },
-    { t: "Renovações avisadas", d: "Avisamos 30 dias antes de qualquer renovação anual, como a do domínio." },
+    { t: "Sem fidelização de 12 meses", d: "Pagamento mensal. Depois do período mínimo indicado na proposta, pode cancelar com 30 dias de antecedência, por e-mail ou na sua conta." },
+    { t: "Renovações com aviso prévio", d: "Avisamos 30 dias antes de qualquer renovação anual, como a do domínio." },
     { t: "Um só parceiro, uma só conta", d: "Site, domínio, e-mail, CRM, marcações, faturas, publicações e anúncios, com a mesma equipa." },
-    { t: "Configurado por nós", d: "Fazemos a configuração e importamos a sua lista de clientes. Fala com uma pessoa da nossa equipa, com nome, pelo WhatsApp, nos dias úteis, das 9h00 às 18h00 (hora de Lisboa)." },
-    { t: "As fichas são suas", d: "O site, o domínio e os dados dos seus clientes são seus. Exporte tudo para Excel ou CSV quando quiser; se sair, entregamos-lhe tudo em 30 dias." },
-    { t: "Preços à vista", d: "Os preços do site e da manutenção estão nesta página. O preço mensal do CRM fica escrito na proposta, antes de decidir." },
+    { t: "Configurado por nós", d: "Fazemos a configuração e importamos a sua lista de clientes. Fala sempre com uma pessoa da nossa equipa, a quem trata pelo nome. Está disponível no WhatsApp nos dias úteis, das 9h00 às 18h00 (hora de Lisboa)." },
+    { t: "As fichas são suas", d: "O site, o domínio e os dados dos clientes são seus. Pode exportar os dados para Excel ou CSV quando quiser e, se deixar de trabalhar connosco, entregamos-lhe tudo no prazo de 30 dias." },
+    { t: "Preços claros", d: "Os preços do site e da manutenção estão nesta página. O preço mensal do CRM fica indicado na proposta, antes de decidir." },
 ];
 
 const steps = [
-    { t: "Diagnóstico de 1 minuto", d: "Três perguntas sobre o seu negócio e recebe um plano para uma clínica ou um salão como o seu." },
+    { t: "Diagnóstico de 1 minuto", d: "Responde a três perguntas sobre o seu negócio e recebe um plano pensado para uma clínica ou um salão como o seu." },
     { t: "Chamada de 15 minutos", d: "Vemos como lhe chegam hoje as marcações e enviamos uma proposta com o preço." },
     { t: "Configuramos tudo", d: "Site, agenda, WhatsApp, mensagens automáticas e a sua lista de clientes, prontos a usar." },
-    { t: "Arranque", d: "Mostramos à equipa como funciona e fica com uma pessoa nossa no WhatsApp." },
+    { t: "Arranque", d: "Mostramos à sua equipa como funciona e fica com uma pessoa da nossa equipa disponível no WhatsApp." },
 ];
 
 const faq = [
     {
         q: "Atendem as chamadas que eu não consigo atender?",
-        a: "Em Portugal, ainda não: a resposta automática a chamadas perdidas funciona, por agora, só no Reino Unido. Em Portugal, damos aos seus clientes formas mais rápidas de marcar: quem lhe escreve no WhatsApp ou pelo site recebe resposta imediata, também fora de horas, e pode marcar sozinho online.",
+        a: "Em Portugal, ainda não: a resposta automática a chamadas perdidas funciona, por agora, só no Reino Unido. Por cá, damos aos seus clientes formas mais rápidas de marcar: quem lhe escreve pelo WhatsApp ou pelo site recebe resposta imediata, mesmo fora de horas, e pode marcar sozinho online.",
     },
     {
         q: "Serve para o meu tipo de negócio?",
-        a: "Configuramos o CRM para clínicas de estética, clínicas dentárias, fisioterapia e outras clínicas, cabeleireiros, barbearias, salões de beleza e spas. Os convites para voltar seguem o ritmo de cada um, como a manutenção de um tratamento ou a consulta de rotina.",
+        a: "Sim. Configuramos o CRM para clínicas (de estética, dentárias, de fisioterapia e outras), cabeleireiros, barbearias, salões de beleza e spas. Os convites para voltar seguem o ritmo de cada serviço, como a manutenção de um tratamento ou a consulta de rotina.",
     },
     {
         q: "Quanto custa?",
-        a: `O site começa em ${eur(startup.price.EUR)} (Startup, até 6 páginas) ou ${eur(smallBiz.price.EUR)} (Pequena Empresa, 10 páginas), pago 50% no início e 50% no lançamento, com domínio, alojamento e e-mail no primeiro ano. A partir do 2.º ano, a manutenção custa ${care} por mês. O CRM tem um preço mensal fixo, que fica escrito na proposta antes de decidir.`,
+        a: `O site começa em ${eur(startup.price.EUR)} (Startup, até 6 páginas) ou ${eur(smallBiz.price.EUR)} (Pequena Empresa, 10 páginas). Paga-se em duas partes: 50% no início e 50% no lançamento. Inclui domínio, alojamento e e-mail no primeiro ano. A partir do 2.º ano, a manutenção custa ${care} por mês. O CRM tem um preço mensal fixo, indicado na proposta antes de decidir.`,
     },
     {
         q: "Há fidelização?",
-        a: "Não há fidelização de 12 meses. Os planos são mensais: depois do mínimo que ficar escrito na proposta, cancela com 30 dias de aviso, por e-mail ou na sua conta. Avisamos 30 dias antes de qualquer renovação anual, como a do domínio.",
+        a: "Não há fidelização de 12 meses. Os planos são mensais: depois do período mínimo indicado na proposta, pode cancelar com 30 dias de antecedência, por e-mail ou na sua conta. Avisamos 30 dias antes de qualquer renovação anual, como a do domínio.",
     },
     {
         q: "Os dados dos meus clientes são meus?",
-        a: "Sim. As fichas, as marcações e o histórico são seus. Pode exportar tudo para Excel ou CSV quando quiser e, se sair, entregamos-lhe tudo no prazo de 30 dias.",
+        a: "Sim. As fichas, as marcações e o histórico são seus. Pode exportar os dados para Excel ou CSV quando quiser e, se deixar de trabalhar connosco, entregamos-lhe tudo no prazo de 30 dias.",
     },
     {
         q: "A faturação é certificada?",
-        a: "Ainda não: a faturação certificada está em certificação. Até lá, se já usa um programa de faturação certificado, continue a usá-lo para as faturas. O resto (site, marcações, WhatsApp, avaliações e convites para voltar) funciona já.",
+        a: "Ainda não: o processo de certificação está em curso. Até lá, se já usa um programa de faturação certificado, continue a usá-lo para as faturas. Tudo o resto (site, marcações, WhatsApp, avaliações e convites para voltar) já funciona.",
     },
     {
         q: "Quem me ajuda?",
-        a: "Uma pessoa da nossa equipa, com nome, a quem pode escrever no WhatsApp, nos dias úteis das 9h00 às 18h00 (hora de Lisboa). Nós configuramos tudo, por isso não tem de aprender um sistema novo sozinho.",
+        a: "Uma pessoa da nossa equipa, a quem trata pelo nome e pode escrever pelo WhatsApp nos dias úteis, das 9h00 às 18h00 (hora de Lisboa). Nós configuramos tudo, por isso não tem de aprender um sistema novo sozinho.",
     },
 ];
 
@@ -173,8 +173,8 @@ export default function ClinicasPage() {
                     Cada chamada perdida é uma marcação perdida.
                 </h1>
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-600">
-                    Com uma cliente na cadeira ou um paciente no gabinete, não pode atender o telefone. Por isso damos aos seus
-                    clientes outras formas de marcar, a qualquer hora: quem lhe escreve no WhatsApp ou pelo site recebe resposta
+                    Com uma cliente na cadeira ou um paciente no gabinete, não pode atender o telefone. Por isso, damos aos seus
+                    clientes outras formas de marcar, a qualquer hora. Quem lhe escreve pelo WhatsApp ou pelo site recebe resposta
                     imediata, marca sozinho online e recebe um lembrete antes de vir.
                 </p>
                 <div className="flex flex-wrap items-center gap-4 mt-10">
@@ -193,14 +193,14 @@ export default function ClinicasPage() {
                         Falar no WhatsApp
                     </a>
                 </div>
-                <p className="mt-4 text-sm text-gray-500">Sem fidelização de 12 meses. Configurado por nós.</p>
+                <p className="mt-4 text-sm text-gray-500">Sem fidelização de 12 meses. Tudo configurado por nós.</p>
             </section>
 
             {/* What's in the bundle */}
             <section aria-labelledby="clinicas-inclui" className="py-20 bg-gray-50">
                 <div className="px-6 mx-auto max-w-5xl lg:px-8">
                     <h2 id="clinicas-inclui" className="text-3xl font-semibold text-gray-800 [text-wrap:balance]">
-                        Tudo o que precisa para encher a agenda, num só sítio
+                        Tudo aquilo de que precisa para encher a agenda, num só sítio
                     </h2>
                     <p className="mt-4 max-w-2xl text-gray-600">
                         O que já funciona hoje no CRM da Autisync para clínicas e salões, ligado ao seu site e ao seu WhatsApp.
@@ -251,7 +251,7 @@ export default function ClinicasPage() {
                             <p className="mt-1 text-sm text-gray-500">A partir de</p>
                             <p className="text-3xl font-bold tracking-tight text-gray-900 tabular-nums">{eur(t.price.EUR)}</p>
                             <p className="mt-2 text-sm text-gray-600">
-                                {ptWebsite[t.id]?.features[0]}. Pagamento único: 50% no início, 50% no lançamento.
+                                {ptWebsite[t.id]?.features[0]}. Pago uma só vez, em duas partes: 50% no início e 50% no lançamento.
                             </p>
                         </div>
                     ))}
@@ -266,8 +266,8 @@ export default function ClinicasPage() {
                     </div>
                 </div>
                 <p className="mt-6 max-w-3xl text-sm text-gray-600">
-                    O CRM (marcações, WhatsApp, avaliações, convites para voltar e faturas) tem um preço mensal fixo, que fica escrito na
-                    proposta antes de decidir. Mensal, sem fidelização de 12 meses: cancela com 30 dias de aviso.
+                    O CRM (marcações, WhatsApp, avaliações, convites para voltar e faturas) tem um preço mensal fixo, indicado na
+                    proposta antes de decidir. Pagamento mensal, sem fidelização de 12 meses: pode cancelar com 30 dias de antecedência.
                 </p>
                 <Link href="/pt/precos?market=pt" className="inline-block mt-3 text-sm font-semibold text-[#B28228] hover:underline">
                     Ver todos os pacotes e preços
@@ -310,7 +310,7 @@ export default function ClinicasPage() {
 
             {/* CTA */}
             <section className="px-6 py-20 mx-auto max-w-5xl text-center lg:px-8 bg-white">
-                <h2 className="text-3xl font-semibold text-gray-800 [text-wrap:balance]">Veja o que faria pela sua agenda</h2>
+                <h2 className="text-3xl font-semibold text-gray-800 [text-wrap:balance]">Veja o que podemos fazer pela sua agenda</h2>
                 <p className="mx-auto mt-4 max-w-xl text-gray-600">
                     Faça o diagnóstico grátis de 1 minuto e receba um plano para o seu negócio, ou fale connosco no WhatsApp.
                 </p>
