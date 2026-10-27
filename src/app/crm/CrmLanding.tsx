@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import BookingEmbed from "./BookingEmbed";
 import LegalLink from "@/app/components/LegalLink";
 import s from "./crm.module.css";
+import { INDUSTRY_CHIPS } from "./industries";
 
 /**
  * The CRM landing page, in English (/crm) and Portuguese (/pt/crm). Both
@@ -293,9 +294,9 @@ export default function CrmLanding({ lang = "en", schema }: { lang?: CrmLang; sc
                         </div>
                         <div className={s.who}>
                             <b>{c.builtFor}</b>
-                            {c.chips.map((x) => (
-                                <span className={s.chip} key={x}>{x}</span>
-                            ))}
+                            {INDUSTRY_CHIPS[lang].map((x) => (x.href
+                                ? <Link className={s.chip} key={x.label} href={x.href} style={{ textDecoration: "none" }}>{x.label}</Link>
+                                : <span className={s.chip} key={x.label}>{x.label}</span>))}
                             <Link className={s.chip} href={c.estateHref} style={{ borderColor: "var(--gold-2)", color: "var(--fg)", textDecoration: "none" }}>{c.estateChip}</Link>
                         </div>
                     </div>

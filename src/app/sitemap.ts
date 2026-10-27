@@ -1,12 +1,13 @@
 import type { MetadataRoute } from "next";
 import { EN_TO_PT } from "@/lib/i18n/routes";
+import { INDUSTRY_PAGES } from "./crm/industries";
 
 const BASE_URL = "https://www.autisync.com";
 
 // When the pages last really changed. A lastmod of "now" on every request
 // tells Google nothing, so it learns to ignore it; a real date gets pages
 // recrawled when they change. Bump it when the site's content changes.
-const UPDATED = new Date("2026-10-20");
+const UPDATED = new Date("2026-10-27");
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const now = UPDATED;
@@ -71,6 +72,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
             alternates: { languages: { en: `${BASE_URL}/crm/estate-agents`, pt: `${BASE_URL}/crm/imobiliarias` } },
         },
+        // The CRM for each kind of business, English and Portuguese.
+        ...INDUSTRY_PAGES.flatMap((p) => [p.en, p.pt].map((c) => ({
+            url: `${BASE_URL}/crm/${c.slug}`,
+            lastModified: now,
+            changeFrequency: "monthly" as const,
+            priority: 0.8,
+            alternates: { languages: { en: `${BASE_URL}/crm/${p.en.slug}`, pt: `${BASE_URL}/crm/${p.pt.slug}` } },
+        }))),
         {
             url: `${BASE_URL}/servicepackage`,
             lastModified: now,

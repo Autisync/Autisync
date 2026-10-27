@@ -1,0 +1,298 @@
+/* Industry pages: the walkthrough, plus small additions to crm.module.css
+   and estate.module.css (which the page also uses). */
+
+/* ── Walkthrough ─────────────────────────────────────────────────────────── */
+.tour {
+  display: grid;
+  grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+.frame {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(185, 139, 47, 0.08);
+}
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  background: #ecebe8;
+  border-bottom: 1px solid #dddbd6;
+}
+.bar i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cfccc5;
+}
+.bar span {
+  margin-left: 10px;
+  flex: 1;
+  max-width: 300px;
+  font: 500 11.5px/22px var(--body);
+  color: #77736b;
+  background: #f7f6f3;
+  border-radius: 6px;
+  padding: 0 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.viewport {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #f6f5f2;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  transform: scale(1);
+  transition: transform 6.5s ease-out;
+}
+.slideOn {
+  opacity: 1;
+}
+/* The slow zoom towards the part of the screen the step is about. */
+.slideOn.zoom img {
+  transform: scale(var(--z, 1.18));
+}
+.note {
+  margin: 10px 2px 0;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.steps {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.stepBtn {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 12px;
+  text-align: left;
+  padding: 14px 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  color: var(--fg);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font: inherit;
+}
+.stepBtn:hover {
+  border-color: #3d3b36;
+}
+.stepBtn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.stepOn {
+  border-color: var(--gold-2);
+  background: #22201c;
+}
+.num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font: 700 13px/1 var(--display);
+  background: #2a2925;
+  color: var(--muted);
+}
+.stepOn .num {
+  background: var(--gold-2);
+  color: #141414;
+}
+.stepT {
+  display: block;
+  font: 600 16px/1.3 var(--display);
+  margin-top: 4px;
+}
+.stepD {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.stepBtn:not(.stepOn) .stepD {
+  display: none;
+}
+.progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background: var(--gold-2);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.run .progress {
+  animation: fill var(--ms, 6500ms) linear forwards;
+}
+.paused .progress {
+  animation-play-state: paused;
+}
+@keyframes fill {
+  to {
+    transform: scaleX(1);
+  }
+}
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.playBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--fg);
+  font: 600 13px/1 var(--body);
+  cursor: pointer;
+}
+.playBtn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.playBtn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* Your website: laptop and phone side by side */
+.site {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 24px;
+  align-items: end;
+}
+.siteLaptop {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+.sitePhone {
+  margin: 0;
+  border: 8px solid #2a2925;
+  border-radius: 34px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+.siteLaptop img,
+.sitePhone img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.siteCta {
+  margin-top: 22px;
+}
+@media (max-width: 760px) {
+  .site {
+    grid-template-columns: minmax(0, 1fr) 120px;
+    gap: 12px;
+  }
+  .sitePhone {
+    border-width: 5px;
+    border-radius: 20px;
+  }
+}
+
+/* Other industries, at the foot of the page */
+.others {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 8px;
+}
+.others b {
+  margin-right: 6px;
+}
+
+@media (max-width: 960px) {
+  .tour {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  /* On a phone the steps become a strip of numbers under the screen, and the
+     active step's words show below it. */
+  .steps {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+  }
+  .stepBtn {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 10px 6px 12px;
+  }
+  .stepT,
+  .stepBtn .stepD {
+    display: none;
+  }
+}
+.mobileText {
+  display: none;
+  margin-top: 14px;
+}
+.mobileText h3 {
+  font-size: 18px;
+}
+.mobileText p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .slide img {
+    transition: none;
+  }
+  .slideOn.zoom img {
+    transform: none;
+  }
+  .run .progress {
+    animation: none;
+  }
+}
+
+/* After the base .mobileText rule, so it wins on narrow screens. */
+@media (max-width: 960px) {
+  .mobileText {
+    display: block;
+  }
+}

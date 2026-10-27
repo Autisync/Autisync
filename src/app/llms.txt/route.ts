@@ -7,6 +7,8 @@ import { carePlanMonthly, formatPrice, websiteTiers } from "@/lib/website-packag
 import { brandingTiers, launchBundle, socialTiers } from "@/lib/service-packages";
 import { siteStats } from "@/lib/site-stats";
 import { agencyPlans, extraUser } from "@/lib/estate-agency-plans";
+import { industryPlans } from "@/lib/industry-plans";
+import { INDUSTRY_PAGES } from "../crm/industries";
 
 export const dynamic = "force-static";
 
@@ -54,6 +56,11 @@ Plans (per month, ex-VAT; UK £ / EU € / Angola Kz):
 ${agencyPlans.map((pl) => `- ${pl.name}: ${formatPrice(pl.price.GBP, "GBP")} / ${formatPrice(pl.price.EUR, "EUR")} / ${formatPrice(pl.price.AOA, "AOA")}${pl.perBranch ? " per branch" : ""} — ${pl.users} users${pl.perBranch ? " per branch" : ""}, ${pl.listings === null ? "unlimited listings" : `${pl.listings} listings`}${pl.aiReplies ? `, AI assistant ${pl.aiReplies} replies a month` : ""}`).join("\n")}
 - Extra user: ${formatPrice(extraUser.GBP, "GBP")} / ${formatPrice(extraUser.EUR, "EUR")} a month.
 - Pages: ${BASE}/crm/estate-agents (English), ${BASE}/crm/imobiliarias (Português)
+
+## Autisync CRM for other businesses
+
+The same CRM set up for other kinds of business: online booking with reminders, one inbox for email, website chat, WhatsApp, Instagram and Facebook, quotes and proposals accepted online, invoices with card payment, pipelines, tasks and Google review requests. Priced per business, not per user; monthly, no setup fee, migration included. Prices per month, ex-VAT (GBP / EUR):
+${INDUSTRY_PAGES.map((p) => `- ${p.en.crumb}: ${industryPlans[p.en.id].map((pl) => `${pl.name} ${formatPrice(pl.price.GBP, "GBP")} / ${formatPrice(pl.price.EUR, "EUR")} (${pl.users} users${pl.perSite ? " per site" : ""})`).join("; ")}. Pages: ${BASE}/crm/${p.en.slug} (English), ${BASE}/crm/${p.pt.slug} (Português)`).join("\n")}
 
 ## Pages
 
