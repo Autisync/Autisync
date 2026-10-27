@@ -37,17 +37,18 @@ export const INDUSTRY_CHIPS: Record<IndustryLocale, Array<{ label: string; href:
 };
 
 /**
- * Each demo account's website, hosted by the CRM at app.autisync.com/p/<slug>.
- * Built by the CRM backend: npm run demo:business -- <kind> (trades, clinic,
- * dental, salon, consulting, legal, agency). Screenshots of them are in
- * public/crm/industries/<id>/site.webp and site-phone.webp.
+ * Each demo account's website. Where a stand-alone site exists on Vercel
+ * (its own GitHub repo, booking into the demo account in the CRM) the page
+ * links there; otherwise it links to the site the CRM hosts at
+ * app.autisync.com/p/<slug>, built by: npm run demo:business -- <kind>.
+ * Screenshots are in public/crm/industries/<id>/site.webp and site-phone.webp.
  */
 export const DEMO_SITES: Record<IndustryId, string> = {
-    trades: "kestrel-demo",
-    consultants: "harbourline-demo",
-    agencies: "northlight-demo",
-    clinics: "alvura-demo",
-    salons: "mare-demo",
-    legal: "ashcombe-demo",
+    trades: "https://kestrel-demo-site-brown.vercel.app",
+    clinics: "https://alvura-demo-site.vercel.app",
+    consultants: "https://app.autisync.com/p/harbourline-demo",
+    agencies: "https://app.autisync.com/p/northlight-demo",
+    salons: "https://app.autisync.com/p/mare-demo",
+    legal: "https://app.autisync.com/p/ashcombe-demo",
 };
-export const demoSiteUrl = (id: IndustryId) => `https://app.autisync.com/p/${DEMO_SITES[id]}`;
+export const demoSiteUrl = (id: IndustryId) => DEMO_SITES[id];
