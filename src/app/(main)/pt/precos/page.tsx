@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PtPricing } from "../PtPackages";
 import { ptFaq, ptFaqSchema, ptPromises } from "@/lib/i18n/pt";
 import Promises from "@/app/components/Promises";
+import { CrmPrices } from "@/app/components/CrmPrices";
 import { waLink } from "@/lib/whatsapp";
 
 const URL = "https://www.autisync.com/pt/precos";
@@ -9,7 +10,7 @@ const URL = "https://www.autisync.com/pt/precos";
 export const metadata: Metadata = {
     title: "Preços: Websites, Branding e Redes Sociais em Angola",
     description:
-        "Preços claros da Autisync: websites a partir de Kz 495.000, branding a partir de Kz 180.000 e gestão de redes sociais a partir de Kz 150.000/mês. Pagamento 50% no início, 50% no lançamento.",
+        "Preços claros da Autisync: websites a partir de Kz 495.000, branding a partir de Kz 180.000 e gestão de redes sociais a partir de Kz 150.000/mês e o CRM Autisync a partir de €28/mês, com preço por tipo de negócio.",
     alternates: {
         canonical: URL,
         languages: {
@@ -43,6 +44,8 @@ export default function PrecosPage() {
                 <div className="mt-6">
                     <PtPricing />
                 </div>
+
+                <CrmPrices lang="pt" />
 
                 <Promises id="pt-sem-surpresas" eyebrow="Sem surpresas" title="Como trabalhamos consigo" items={ptPromises} className="mt-20" />
 

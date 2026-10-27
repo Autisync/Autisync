@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FunnelShell, BookSection } from "@/app/components/FunnelShell";
-import s from "@/app/crm/crm.module.css";
+import s from "@/app/(main)/crm/crm.module.css";
 import f from "@/app/components/funnel.module.css";
 
 export const metadata: Metadata = {

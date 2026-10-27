@@ -7,6 +7,7 @@ import Team from "@/app/(main)/homescreen/team";
 import Tools from "@/app/(main)/homescreen/tools";
 import Clients from "@/app/(main)/solutions/clients";
 import UseCasesSection from "@/app/components/useCases/UseCasesSection";
+import { CrmPriceCard } from "@/app/components/CrmPrices";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -46,6 +47,7 @@ export default function Home() {
             <WhyUs />
             <Team />
             <Packages/>
+            <div className="bg-gray-100"><CrmPriceCard /></div>
             <Tools />
         </>
     );

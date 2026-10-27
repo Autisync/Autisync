@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PtFunnelShell, PtBookSection } from "./_components/PtFunnelShell";
-import s from "@/app/crm/crm.module.css";
+import s from "@/app/(main)/crm/crm.module.css";
 import f from "@/app/components/funnel.module.css";
 
 const EN_URL = "https://www.autisync.com/tools";

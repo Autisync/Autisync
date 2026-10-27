@@ -6,6 +6,7 @@ import Team from "@/app/(main)/homescreen/team";
 import Tools from "@/app/(main)/homescreen/tools";
 import Clients from "@/app/(main)/solutions/clients";
 import { PtHomeOffer } from "./PtPackages";
+import { CrmPriceCard } from "@/app/components/CrmPrices";
 import { siteStats } from "@/lib/site-stats";
 import UseCasesSection from "@/app/components/useCases/UseCasesSection";
 
@@ -127,6 +128,7 @@ export default function PtHome() {
             <WhyUs lang="pt" />
             <Team lang="pt" />
             <Packages />
+            <div className="bg-gray-100"><CrmPriceCard lang="pt" /></div>
 
             {/* Offer: the brand + website bundle, which the website cards above do not show */}
             <section aria-labelledby="pt-oferta" className="py-20 bg-[#F9F9F9]">

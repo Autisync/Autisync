@@ -611,3 +611,85 @@ textarea.input {
     transition: none !important;
   }
 }
+
+/* ── Light: the CRM pages inside the main site (menu and footer from the
+   (main) layout), in the main site's colours and type: white and #F9F9F9
+   sections, charcoal text, gold #B28228, Arial. The funnels and tools that
+   share this file keep the charcoal look. ─────────────────────────────── */
+.light {
+  --bg: #ffffff;
+  --bg-2: #f9f9f9;
+  --line: #e5e7eb;
+  --fg: #1f2937;
+  --muted: #4b5563;
+  --gold: #b28228;
+  --gold-2: #b28228;
+  --gold-soft: rgba(178, 130, 40, 0.1);
+  --err: #c2410c;
+  --field: #ffffff;
+  --display: Arial, Helvetica, sans-serif;
+  --body: Arial, Helvetica, sans-serif;
+
+  min-height: 0;
+  padding-top: 56px; /* the fixed menu */
+  color-scheme: light;
+}
+.light h1,
+.light h2,
+.light h3 {
+  color: #1f2937;
+  letter-spacing: -0.01em;
+}
+.light .btn {
+  border-radius: 8px;
+}
+.light .btnGold {
+  color: #fff !important;
+}
+.light .btnGold:hover {
+  background: #1c1c1c;
+}
+.light .btnGhost {
+  border-color: #d1d5db;
+  background: #fff;
+}
+.light .btnGhost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.light .eyebrow,
+.light .step::before {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 15px;
+}
+.light .pill {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+  border-color: rgba(178, 130, 40, 0.35);
+}
+.light .hero::before {
+  background: radial-gradient(closest-side, rgba(178, 130, 40, 0.1), transparent);
+}
+.light .shot {
+  box-shadow: 0 30px 80px -30px rgba(17, 24, 39, 0.3);
+}
+.light .feat {
+  background: #fff;
+}
+.light .card {
+  box-shadow: 0 1px 3px rgba(17, 24, 39, 0.06);
+}
+.light .input::placeholder {
+  color: #9ca3af;
+}
+.light .chip:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+/* A section on the light grey of the main site. */
+.grey {
+  background: var(--bg-2);
+  border-block: 1px solid var(--line);
+}

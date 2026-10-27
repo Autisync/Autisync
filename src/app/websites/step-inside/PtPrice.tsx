@@ -2,7 +2,7 @@
 
 import { usePackageCurrency } from "@/app/components/PackagePricing";
 import { carePlanMonthly, formatPrice, type WebsiteTier } from "@/lib/website-packages";
-import s from "@/app/crm/crm.module.css";
+import s from "@/app/(main)/crm/crm.module.css";
 import f from "@/app/components/funnel.module.css";
 
 /**

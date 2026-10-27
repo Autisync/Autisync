@@ -9,7 +9,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import BookingEmbed from "../BookingEmbed";
-import LegalLink from "@/app/components/LegalLink";
 import s from "../crm.module.css";
 import e from "./estate.module.css";
 import { useMarket, Flag } from "@/app/components/PackagePricing";
@@ -63,20 +62,7 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
     const comparable = agencyPlans.filter((p) => p.id !== "multi");
 
     return (
-        <div className={s.page}>
-            <nav className={s.nav}>
-                <div className={`${s.wrap} ${s.navInner}`}>
-                    <Link className={s.logo} href={pt ? "/pt" : "/"} aria-label="Autisync">
-                        <img src="/crm/autisync-mark-white.svg" alt="" width={45} height={30} />
-                        <span className={s.logoWord}>Autisync</span>
-                    </Link>
-                    <div className={e.navRight}>
-                        <Link className={e.langLink} href={t.otherHref} hrefLang={pt ? "en" : "pt"}>{t.other}</Link>
-                        <a className={`${s.btn} ${s.btnGold} ${s.navBtn}`} href="#book">{t.book}</a>
-                    </div>
-                </div>
-            </nav>
-
+        <div className={`${s.page} ${s.light}`}>
             <main>
                 <header className={s.hero}>
                     <div className={s.wrap}>
@@ -318,15 +304,6 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
                 </section>
             </main>
 
-            <footer className={s.footer}>
-                <div className={`${s.wrap} ${s.footerInner}`}>
-                    <span>© {new Date().getFullYear()} Autisync · {t.footer}</span>
-                    <span>
-                        <Link href={pt ? "/pt" : "/"}>autisync.com</Link> · <Link href="/crm">CRM</Link> · <LegalLink href={pt ? "/pt/privacidade" : "/PrivacyPolicy"}>{pt ? "Política de Privacidade" : "Privacy Policy"}</LegalLink> ·{" "}
-                        <LegalLink href={pt ? "/pt/termos" : "/TermsofUse"}>{pt ? "Termos de Utilização" : "Terms of Use"}</LegalLink>
-                    </span>
-                </div>
-            </footer>
         </div>
     );
 }

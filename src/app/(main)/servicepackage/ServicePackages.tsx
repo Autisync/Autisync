@@ -12,6 +12,7 @@ import { formatPrice, websiteTiers, type Currency } from "@/lib/website-packages
 import { brandingTiers, launchBundle, socialTiers, socialTerms, type ServiceTier } from "@/lib/service-packages";
 import { faqSchema, pricingFaq } from "@/lib/faq";
 import Promises from "@/app/components/Promises";
+import { CrmPrices } from "@/app/components/CrmPrices";
 import { waLink } from "@/lib/whatsapp";
 
 /* What sets us apart, in plain words. Only promises we keep today. */
@@ -305,6 +306,8 @@ export default function ServicePackagesPage() {
                         );
                     })}
                 </div>
+
+                <CrmPrices />
 
                 <Promises
                     id="how-we-differ"

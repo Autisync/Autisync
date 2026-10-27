@@ -1,9 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
-import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import BookingEmbed from "./BookingEmbed";
-import LegalLink from "@/app/components/LegalLink";
+import DemoPicker from "./industries/DemoPicker";
+import { CrmPrices } from "@/app/components/CrmPrices";
 import s from "./crm.module.css";
 import { INDUSTRY_CHIPS } from "./industries";
 
@@ -13,9 +12,6 @@ import { INDUSTRY_CHIPS } from "./industries";
  * only the words and links change.
  */
 
-// Self-hosted variable fonts (see src/app/layout.tsx for why).
-const display = localFont({ src: "../fonts/Outfit-Variable.woff2", weight: "100 900", variable: "--font-crm-display", display: "swap" });
-const body = localFont({ src: "../fonts/DMSans-Variable.woff2", weight: "100 1000", variable: "--font-crm-body", display: "swap" });
 
 export type CrmLang = "en" | "pt";
 
@@ -206,18 +202,8 @@ export const CRM_FAQ = { en: COPY.en.faq, pt: COPY.pt.faq };
 export default function CrmLanding({ lang = "en", schema }: { lang?: CrmLang; schema?: object }) {
     const c = COPY[lang];
     return (
-        <div className={`${display.variable} ${body.variable} ${s.page}`} lang={lang === "pt" ? "pt" : undefined}>
+        <div className={`${s.page} ${s.light}`} lang={lang === "pt" ? "pt" : undefined}>
             {schema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />}
-
-            <nav className={s.nav}>
-                <div className={`${s.wrap} ${s.navInner}`}>
-                    <Link className={s.logo} href={c.home} aria-label={c.homeLabel}>
-                        <img src="/crm/autisync-mark-white.svg" alt="" width={45} height={30} />
-                        <span className={s.logoWord}>Autisync</span>
-                    </Link>
-                    <a className={`${s.btn} ${s.btnGold} ${s.navBtn}`} href="#book">{c.navCta}</a>
-                </div>
-            </nav>
 
             <main>
                 <header className={s.hero}>
@@ -232,17 +218,9 @@ export default function CrmLanding({ lang = "en", schema }: { lang?: CrmLang; sc
                             </div>
                             <p className={s.trust}>{c.trust} <Link href={c.estateHref} style={{ color: "var(--gold)" }}>{c.trustLink}</Link></p>
                         </div>
-                        <figure className={s.shot}>
-                            <Image
-                                src="/crm/crm-dashboard.webp"
-                                alt={c.shotAlt}
-                                width={2120}
-                                height={1200}
-                                priority
-                                sizes="(max-width: 1120px) 100vw, 1060px"
-                            />
-                            <figcaption>{c.shotCaption}</figcaption>
-                        </figure>
+                        <div id="demo" style={{ marginTop: "clamp(40px, 6vw, 64px)", paddingBottom: "clamp(48px, 6vw, 80px)", scrollMarginTop: 80 }}>
+                            <DemoPicker locale={lang} />
+                        </div>
                     </div>
                 </header>
 
@@ -302,6 +280,12 @@ export default function CrmLanding({ lang = "en", schema }: { lang?: CrmLang; sc
                     </div>
                 </section>
 
+                <section className={`${s.section} ${s.grey}`} id="prices" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
+                    <div className={s.wrap} style={{ marginTop: -64 }}>
+                        <CrmPrices lang={lang} />
+                    </div>
+                </section>
+
                 <section className={`${s.section} ${s.formSec}`} id="book">
                     <div className={s.wrap}>
                         <div className={s.bookHead}>
@@ -345,15 +329,6 @@ export default function CrmLanding({ lang = "en", schema }: { lang?: CrmLang; sc
                 </section>
             </main>
 
-            <footer className={s.footer}>
-                <div className={`${s.wrap} ${s.footerInner}`}>
-                    <span>© {new Date().getFullYear()} Autisync · {c.trading}</span>
-                    <span>
-                        <Link href={c.home}>autisync.com</Link> · <LegalLink href={lang === "pt" ? "/pt/privacidade" : "/PrivacyPolicy"}>{c.privacy}</LegalLink> ·{" "}
-                        <LegalLink href={lang === "pt" ? "/pt/termos" : "/TermsofUse"}>{c.terms}</LegalLink>
-                    </span>
-                </div>
-            </footer>
         </div>
     );
 }

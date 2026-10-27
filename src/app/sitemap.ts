@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { EN_TO_PT } from "@/lib/i18n/routes";
-import { INDUSTRY_PAGES } from "./crm/industries";
+import { INDUSTRY_PAGES } from "./(main)/crm/industries";
 
 const BASE_URL = "https://www.autisync.com";
 
@@ -80,6 +80,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.8,
             alternates: { languages: { en: `${BASE_URL}/crm/${p.en.slug}`, pt: `${BASE_URL}/crm/${p.pt.slug}` } },
         }))),
+        // Deliveries: office board, driver app and customer tracking.
+        ...["deliveries", "entregas"].map((slug) => ({
+            url: `${BASE_URL}/crm/${slug}`,
+            lastModified: now,
+            changeFrequency: "monthly" as const,
+            priority: 0.8,
+            alternates: { languages: { en: `${BASE_URL}/crm/deliveries`, pt: `${BASE_URL}/crm/entregas` } },
+        })),
         {
             url: `${BASE_URL}/servicepackage`,
             lastModified: now,

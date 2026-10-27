@@ -6,7 +6,7 @@ import { useMarket } from "@/app/components/PackagePricing";
 import { ptWebsite } from "@/lib/i18n/pt";
 import { useLang, type Lang } from "@/lib/i18n/lang";
 import f from "@/app/components/funnel.module.css";
-import s from "@/app/crm/crm.module.css";
+import s from "@/app/(main)/crm/crm.module.css";
 
 type Pages = "small" | "medium" | "large";
 const PAGES: { id: Pages; label: string; pt: string }[] = [

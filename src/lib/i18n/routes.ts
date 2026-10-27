@@ -20,6 +20,10 @@ export const EN_TO_PT: Record<string, string> = {
     "/solutions/itConsultation": "/pt/servicos/consultoria-ti",
     "/crm": "/pt/crm",
     "/crm/estate-agents": "/crm/imobiliarias",
+    "/crm/trades": "/crm/servicos-tecnicos",
+    "/crm/consultants": "/crm/consultores",
+    "/crm/agencies": "/crm/agencias",
+    "/crm/deliveries": "/crm/entregas",
     "/websites/step-inside": "/pt/websites/demonstracao",
     "/quiz": "/pt/diagnostico",
     "/tools": "/pt/ferramentas",
@@ -42,7 +46,8 @@ const clean = (path: string) => (path.length > 1 ? path.replace(/\/+$/, "") : pa
 
 export const isPtPath = (path: string) => {
     const p = clean(path);
-    return p === "/pt" || p.startsWith("/pt/");
+    // Portuguese pages outside /pt, such as /crm/imobiliarias, count too.
+    return p === "/pt" || p.startsWith("/pt/") || p in PT_TO_EN;
 };
 
 /** Portuguese twin of an English path (falls back to the PT home). */

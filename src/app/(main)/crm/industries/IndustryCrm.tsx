@@ -9,11 +9,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import BookingEmbed from "../BookingEmbed";
-import LegalLink from "@/app/components/LegalLink";
 import s from "../crm.module.css";
 import e from "../estate-agents/estate.module.css";
 import x from "./industry.module.css";
 import Showcase from "./Showcase";
+import LiveDemo from "./LiveDemo";
+import { DEMO_SCRIPTS } from "./demoScripts";
 import { useMarket, Flag } from "@/app/components/PackagePricing";
 import { markets } from "@/lib/market";
 import { formatPrice } from "@/lib/website-packages";
@@ -23,7 +24,7 @@ import {
 } from "@/lib/industry-plans";
 import { LABELS } from "./labels";
 import { INDUSTRY_CHIPS, demoSiteUrl } from "./index";
-import { shotSrc, type IndustryCopy, type IndustryLocale } from "./types";
+import type { IndustryCopy, IndustryLocale } from "./types";
 
 const Check = () => (
     <svg viewBox="0 0 24 24" fill="none" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -58,24 +59,11 @@ export default function IndustryCrm({ copy, locale }: { copy: IndustryCopy; loca
     const competitors = industryCompetitors[copy.id] || [];
     const comparable = plans.filter((p) => p.id !== "multi");
     const money = (n: number, c: "GBP" | "USD") => (c === "GBP" ? `£${n.toLocaleString("en-GB", { maximumFractionDigits: 2 })}` : `$${n.toLocaleString("en-US", { maximumFractionDigits: 2 })}`);
-    const otherHref = `/crm/${copy.otherSlug}`;
+    const script = DEMO_SCRIPTS[copy.id]?.[locale];
     const others = INDUSTRY_CHIPS[locale].filter((c) => c.href && !c.href.endsWith(`/${copy.slug}`));
 
     return (
-        <div className={s.page}>
-            <nav className={s.nav}>
-                <div className={`${s.wrap} ${s.navInner}`}>
-                    <Link className={s.logo} href={pt ? "/pt" : "/"} aria-label="Autisync">
-                        <img src="/crm/autisync-mark-white.svg" alt="" width={45} height={30} />
-                        <span className={s.logoWord}>Autisync</span>
-                    </Link>
-                    <div className={e.navRight}>
-                        <Link className={e.langLink} href={otherHref} hrefLang={pt ? "en" : "pt"}>{L.langOther}</Link>
-                        <a className={`${s.btn} ${s.btnGold} ${s.navBtn}`} href="#book">{L.book}</a>
-                    </div>
-                </div>
-            </nav>
-
+        <div className={`${s.page} ${s.light}`}>
             <main>
                 <header className={s.hero}>
                     <div className={s.wrap}>
@@ -89,16 +77,17 @@ export default function IndustryCrm({ copy, locale }: { copy: IndustryCopy; loca
                             </div>
                             <p className={s.trust}>{copy.trust}</p>
                         </div>
-                        <figure className={s.shot}>
-                            <Image
-                                src={shotSrc(copy.id, copy.hero.n, copy.hero.shot)}
-                                alt={copy.hero.alt}
-                                width={1800}
-                                height={1125}
-                                priority
-                                sizes="(max-width: 1120px) 100vw, 1060px"
-                            />
-                        </figure>
+                        <div className={x.heroDemo} id="how">
+                            {script ? (
+                                <LiveDemo script={script} locale={locale} />
+                            ) : (
+                                <Showcase
+                                    id={copy.id}
+                                    steps={copy.tour}
+                                    labels={{ play: L.play, pause: L.pause, step: L.step, note: L.demoNote(copy.demoName), address: "app.autisync.com" }}
+                                />
+                            )}
+                        </div>
                     </div>
                 </header>
 
@@ -113,21 +102,6 @@ export default function IndustryCrm({ copy, locale }: { copy: IndustryCopy; loca
                                 <div className={s.pain} key={p.t}><Cross /><div><h3>{p.t}</h3><p>{p.d}</p></div></div>
                             ))}
                         </div>
-                    </div>
-                </section>
-
-                <section className={s.section} id="how">
-                    <div className={s.wrap}>
-                        <div className={s.head}>
-                            <span className={s.eyebrow}>{L.tourEyebrow}</span>
-                            <h2>{copy.tourTitle}</h2>
-                            <p className={s.muted}>{copy.tourSub}</p>
-                        </div>
-                        <Showcase
-                            id={copy.id}
-                            steps={copy.tour}
-                            labels={{ play: L.play, pause: L.pause, step: L.step, note: L.demoNote(copy.demoName), address: "app.autisync.com" }}
-                        />
                     </div>
                 </section>
 
@@ -310,15 +284,6 @@ export default function IndustryCrm({ copy, locale }: { copy: IndustryCopy; loca
                 </section>
             </main>
 
-            <footer className={s.footer}>
-                <div className={`${s.wrap} ${s.footerInner}`}>
-                    <span>© {new Date().getFullYear()} Autisync · {L.footer}</span>
-                    <span>
-                        <Link href={pt ? "/pt" : "/"}>autisync.com</Link> · <Link href={pt ? "/pt/crm" : "/crm"}>CRM</Link> · <LegalLink href={pt ? "/pt/privacidade" : "/PrivacyPolicy"}>{pt ? "Política de Privacidade" : "Privacy Policy"}</LegalLink> ·{" "}
-                        <LegalLink href={pt ? "/pt/termos" : "/TermsofUse"}>{pt ? "Termos de Utilização" : "Terms of Use"}</LegalLink>
-                    </span>
-                </div>
-            </footer>
         </div>
     );
 }

@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import EstateAgents from "./EstateAgents";
 import { ESTATE_COPY } from "./estateCopy";
 import { agencyPlans } from "@/lib/estate-agency-plans";
 
-const display = localFont({ src: "../../fonts/Outfit-Variable.woff2", weight: "100 900", variable: "--font-crm-display", display: "swap" });
-const body = localFont({ src: "../../fonts/DMSans-Variable.woff2", weight: "100 1000", variable: "--font-crm-body", display: "swap" });
 
 const URL = "https://www.autisync.com/crm/estate-agents";
 const TITLE = "Estate Agency CRM with AI Viewings | Autisync";
@@ -76,7 +73,7 @@ function structuredData() {
 
 export default function Page() {
     return (
-        <div className={`${display.variable} ${body.variable}`} lang="en">
+        <div lang="en">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData()) }} />
             <EstateAgents locale="en" />
         </div>

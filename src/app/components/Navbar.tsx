@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type ComponentType } from "react";
 import { useMarket } from "@/app/components/PackagePricing";
 import { AnimatePresence, motion, type Variants, type Transition } from "framer-motion";
 import { Menu, X, ChevronDown, Phone, ArrowRight } from "lucide-react";
@@ -11,6 +11,11 @@ import { usePathname } from "next/navigation";
 import { isPtPath, toEn, toPt } from "@/lib/i18n/routes";
 
 import {
+  BriefcaseIcon,
+  HomeModernIcon,
+  PresentationChartLineIcon,
+  TruckIcon,
+  WrenchScrewdriverIcon,
   CalendarDaysIcon,
   ChartBarIcon,
   CursorArrowRaysIcon,
@@ -95,6 +100,32 @@ const solutionsPt = [
   },
 ];
 
+// The CRM, by kind of business. Prices for all of them: /servicepackage#crm.
+const crmItems = [
+  { name: "Estate & letting agents", description: "Listings, viewings, portals, tenancies and rent", href: "/crm/estate-agents", icon: HomeModernIcon },
+  { name: "Clinics & salons", description: "Online booking, reminders, deposits, WhatsApp replies", href: "/clinics", icon: CalendarDaysIcon },
+  { name: "Trades & field services", description: "Quotes accepted online, jobs board, paid by card", href: "/crm/trades", icon: WrenchScrewdriverIcon },
+  { name: "Consultants", description: "Pipeline, proposals, retainers invoiced every month", href: "/crm/consultants", icon: PresentationChartLineIcon },
+  { name: "Agencies", description: "Proposals, deposits, stage invoices, client inbox", href: "/crm/agencies", icon: BriefcaseIcon },
+  { name: "Deliveries & logistics", description: "Office board, driver app, live tracking for customers", href: "/crm/deliveries", icon: TruckIcon },
+];
+const crmItemsPt = [
+  { name: "Imobiliárias", description: "Imóveis, visitas, portais, arrendamentos e rendas", href: "/crm/imobiliarias", icon: HomeModernIcon },
+  { name: "Clínicas e salões", description: "Marcações online, lembretes, sinal, WhatsApp", href: "/pt/clinicas", icon: CalendarDaysIcon },
+  { name: "Obras e serviços técnicos", description: "Orçamentos aceites online, quadro de trabalhos, pagamento por cartão", href: "/crm/servicos-tecnicos", icon: WrenchScrewdriverIcon },
+  { name: "Consultores", description: "Negócios em curso, propostas, avenças faturadas todos os meses", href: "/crm/consultores", icon: PresentationChartLineIcon },
+  { name: "Agências", description: "Propostas, sinal, faturas por fase, caixa de entrada", href: "/crm/agencias", icon: BriefcaseIcon },
+  { name: "Entregas e logística", description: "Quadro do escritório, app do motorista, seguimento em direto", href: "/crm/entregas", icon: TruckIcon },
+];
+const crmCtas = [
+  { name: "CRM overview", href: "/crm" },
+  { name: "CRM prices", href: "/servicepackage#crm" },
+];
+const crmCtasPt = [
+  { name: "Visão geral do CRM", href: "/pt/crm" },
+  { name: "Preços do CRM", href: "/pt/precos#crm" },
+];
+
 const callsToActionPt = [
   { name: "Questionário", href: "/pt/questionario" },
   { name: "Preços e Pacotes", href: "/pt/precos" },
@@ -125,6 +156,8 @@ function useNav() {
         pt,
         solutions: solutionsPt,
         callsToAction: callsToActionPt,
+        crm: crmItemsPt,
+        crmCtas: crmCtasPt,
         navLinks: navLinksPt,
         t: { services: "Serviços", callUs: "Ligar", callUsNow: "Ligue Já", regions: "Angola · Namíbia · Portugal · Reino Unido", openMenu: "Abrir menu", closeMenu: "Fechar menu", home: "/pt" },
       }
@@ -132,6 +165,8 @@ function useNav() {
         pt,
         solutions,
         callsToAction,
+        crm: crmItems,
+        crmCtas,
         navLinks,
         t: { services: "Services", callUs: "Call Us", callUsNow: "Call Us Now", regions: "UK · Portugal · Angola · Namibia", openMenu: "Open menu", closeMenu: "Close menu", home: "/" },
       };
@@ -183,8 +218,9 @@ const FOOTER_TRANSITION: Transition = { delay: 0.25, duration: 0.3, ease: EASE }
 // DESKTOP FLYOUT
 // ─────────────────────────────────────────────
 
-function DesktopFlyout() {
-  const { solutions, callsToAction, t } = useNav();
+type MenuItem = { name: string; description: string; href: string; icon: ComponentType<{ className?: string }> };
+
+function DesktopFlyout({ label, solutions, callsToAction }: { label: string; solutions: MenuItem[]; callsToAction: { name: string; href: string }[] }) {
   const [open, setOpen] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -202,7 +238,7 @@ function DesktopFlyout() {
             className={`flex items-center gap-1 text-sm font-medium transition-colors duration-150
           ${open ? "text-[var(--autisync-gold,#B98B2F)]" : "text-gray-700 hover:text-[var(--autisync-gold,#B98B2F)]"}`}
         >
-          {t.services}
+          {label}
           <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
             <ChevronDown className="w-3.5 h-3.5" />
           </motion.span>
@@ -263,63 +299,27 @@ function DesktopFlyout() {
   );
 }
 
-// ─────────────────────────────────────────────
-// MOBILE MENU
-// ─────────────────────────────────────────────
-
-function MobileMenu({ onClose }: { onClose: () => void }) {
-  // The number for where the visitor is: a Namibian caller gets the +264
-  // line, not Luanda.
-  const { market } = useMarket();
-  const { solutions, callsToAction, navLinks, t } = useNav();
-  const [servicesOpen, setServicesOpen] = useState(true);
-
-  // Lock body scroll while open
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
-  }, []);
-
-  // Escape to close
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [onClose]);
-
+// One accordion in the mobile menu (Services, CRM).
+function MobileGroup({ label, solutions, callsToAction, defaultOpen, onClose }: { label: string; solutions: MenuItem[]; callsToAction: { name: string; href: string }[]; defaultOpen: boolean; onClose: () => void }) {
+  const [open, setOpen] = useState(defaultOpen);
   return (
-      <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.18 }}
-          className="fixed inset-0 z-40 flex flex-col bg-white"
-          style={{ top: "56px" }}
-      >
-        {/* Gold top accent */}
-        <div className="h-0.5 flex-shrink-0" style={{ background: "linear-gradient(to right,#7a5a1d,#d1a94c,#7a5a1d)" }} />
-
-        {/* Scrollable content */}
-        <div className="flex-1 overflow-y-auto overscroll-contain px-5 py-6 space-y-1">
-
-          {/* ── Services accordion ── */}
           <div>
             <motion.button
                 custom={0}
                 variants={menuItemVariants}
                 initial="hidden"
                 animate="visible"
-                onClick={() => setServicesOpen(v => !v)}
+                onClick={() => setOpen(v => !v)}
                 className="flex w-full items-center justify-between py-3 text-base font-semibold text-gray-900"
             >
-              <span>{t.services}</span>
-              <motion.span animate={{ rotate: servicesOpen ? 180 : 0 }} transition={{ duration: 0.22 }}>
+              <span>{label}</span>
+              <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.22 }}>
                 <ChevronDown className="w-4 h-4 text-gray-500" />
               </motion.span>
             </motion.button>
 
             <AnimatePresence initial={false}>
-              {servicesOpen && (
+              {open && (
                   <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
@@ -382,6 +382,49 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
               )}
             </AnimatePresence>
           </div>
+  );
+}
+
+// ─────────────────────────────────────────────
+// MOBILE MENU
+// ─────────────────────────────────────────────
+
+function MobileMenu({ onClose }: { onClose: () => void }) {
+  // The number for where the visitor is: a Namibian caller gets the +264
+  // line, not Luanda.
+  const { market } = useMarket();
+  const { solutions, callsToAction, crm, crmCtas, navLinks, t } = useNav();
+
+  // Lock body scroll while open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, []);
+
+  // Escape to close
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [onClose]);
+
+  return (
+      <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.18 }}
+          className="fixed inset-0 z-40 flex flex-col bg-white"
+          style={{ top: "56px" }}
+      >
+        {/* Gold top accent */}
+        <div className="h-0.5 flex-shrink-0" style={{ background: "linear-gradient(to right,#7a5a1d,#d1a94c,#7a5a1d)" }} />
+
+        {/* Scrollable content */}
+        <div className="flex-1 overflow-y-auto overscroll-contain px-5 py-6 space-y-1">
+
+          <MobileGroup label={t.services} solutions={solutions} callsToAction={callsToAction} defaultOpen onClose={onClose} />
+          <MobileGroup label="CRM" solutions={crm} callsToAction={crmCtas} defaultOpen={false} onClose={onClose} />
 
           {/* Divider */}
           <div className="h-px bg-gray-100 mx-1" />
@@ -461,7 +504,8 @@ function LangSwitch({ onNavigate }: { onNavigate?: () => void }) {
 // ─────────────────────────────────────────────
 
 export default function Navbar() {
-  const { navLinks, t } = useNav();
+  const nav = useNav();
+  const { navLinks, t } = nav;
   const [mobileOpen, setMobileOpen] = useState(false);
   const { market } = useMarket();
 
@@ -486,7 +530,8 @@ export default function Navbar() {
 
               {/* ── Desktop nav ── */}
               <nav className="hidden md:flex items-center gap-7">
-                <DesktopFlyout />
+                <DesktopFlyout label={t.services} solutions={nav.solutions} callsToAction={nav.callsToAction} />
+                <DesktopFlyout label="CRM" solutions={nav.crm} callsToAction={nav.crmCtas} />
                 {navLinks.map(({ label, href }) => (
                     <a
                         key={label}

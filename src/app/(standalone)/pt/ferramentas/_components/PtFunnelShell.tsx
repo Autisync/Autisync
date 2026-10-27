@@ -1,10 +1,10 @@
 import Link from "next/link";
 import localFont from "next/font/local";
 import type { ReactNode } from "react";
-import BookingEmbed from "@/app/crm/BookingEmbed";
+import BookingEmbed from "@/app/(main)/crm/BookingEmbed";
 import LegalLink from "@/app/components/LegalLink";
 import { Check, WHATSAPP_DISPLAY } from "@/app/components/FunnelShell";
-import s from "@/app/crm/crm.module.css";
+import s from "@/app/(main)/crm/crm.module.css";
 import WhatsAppLink from "@/app/components/WhatsAppLink";
 
 /**

@@ -6,7 +6,7 @@ import { PtFunnelShell, PtBookSection, PtFaq } from "./PtFunnel";
 import PtPrice from "./PtPrice";
 import { carePlanMonthly, formatPrice, websiteTiers } from "@/lib/website-packages";
 import { ptWebsite } from "@/lib/i18n/pt";
-import s from "@/app/crm/crm.module.css";
+import s from "@/app/(main)/crm/crm.module.css";
 import f from "@/app/components/funnel.module.css";
 
 /**

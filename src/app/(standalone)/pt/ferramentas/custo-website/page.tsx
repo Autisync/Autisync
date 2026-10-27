@@ -3,7 +3,7 @@ import { faqSchema } from "@/app/components/FunnelShell";
 import { PtFunnelShell, PtBookSection, PtFaq } from "../_components/PtFunnelShell";
 import WebsiteCostEstimator from "@/app/tools/website-cost/WebsiteCostEstimator";
 import { carePlanMonthly, formatPrice, websiteTiers } from "@/lib/website-packages";
-import s from "@/app/crm/crm.module.css";
+import s from "@/app/(main)/crm/crm.module.css";
 import f from "@/app/components/funnel.module.css";
 
 const EN_URL = "https://www.autisync.com/tools/website-cost";

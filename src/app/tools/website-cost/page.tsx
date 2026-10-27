@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { FunnelShell, BookSection, Faq, faqSchema } from "@/app/components/FunnelShell";
 import WebsiteCostEstimator from "./WebsiteCostEstimator";
 import { carePlanMonthly, formatPrice, websiteTiers } from "@/lib/website-packages";
-import s from "@/app/crm/crm.module.css";
+import s from "@/app/(main)/crm/crm.module.css";
 import f from "@/app/components/funnel.module.css";
 
 const URL = "https://www.autisync.com/tools/website-cost";

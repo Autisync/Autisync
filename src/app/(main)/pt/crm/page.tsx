@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import CrmLanding from "@/app/crm/CrmLanding";
+import CrmLanding from "@/app/(main)/crm/CrmLanding";
 
 // Portuguese twin of /crm. Same component, same look; only the words and
 // links change. Lives in the (standalone) group so it gets no site navbar or

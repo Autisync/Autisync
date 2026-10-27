@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Promises from "@/app/components/Promises";
-import BookingEmbed from "@/app/crm/BookingEmbed";
+import BookingEmbed from "@/app/(main)/crm/BookingEmbed";
 import { carePlanMonthly, formatPrice, websiteTiers } from "@/lib/website-packages";
 import { waLink } from "@/lib/whatsapp";
 import UseCases from "@/app/components/useCases/UseCases";

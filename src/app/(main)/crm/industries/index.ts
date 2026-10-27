@@ -25,6 +25,7 @@ export const INDUSTRY_CHIPS: Record<IndustryLocale, Array<{ label: string; href:
         { label: "Legal & finance", href: null },
         { label: "Agencies", href: "/crm/agencies" },
         { label: "Trades & field services", href: "/crm/trades" },
+        { label: "Deliveries & logistics", href: "/crm/deliveries" },
     ],
     pt: [
         { label: "Clínicas", href: "/pt/clinicas" },
@@ -33,6 +34,7 @@ export const INDUSTRY_CHIPS: Record<IndustryLocale, Array<{ label: string; href:
         { label: "Jurídico e finanças", href: null },
         { label: "Agências", href: "/crm/agencias" },
         { label: "Obras e serviços técnicos", href: "/crm/servicos-tecnicos" },
+        { label: "Entregas e logística", href: "/crm/entregas" },
     ],
 };
 

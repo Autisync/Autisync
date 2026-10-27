@@ -3,7 +3,7 @@ import Link from "next/link";
 import { faqSchema } from "@/app/components/FunnelShell";
 import { PtFunnelShell, PtBookSection, PtFaq } from "../_components/PtFunnelShell";
 import MissedCallCalculator from "@/app/tools/missed-call-cost/MissedCallCalculator";
-import s from "@/app/crm/crm.module.css";
+import s from "@/app/(main)/crm/crm.module.css";
 import f from "@/app/components/funnel.module.css";
 
 const EN_URL = "https://www.autisync.com/tools/missed-call-cost";

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import f from "@/app/components/funnel.module.css";
-import s from "@/app/crm/crm.module.css";
+import s from "@/app/(main)/crm/crm.module.css";
 import { useMarket } from "@/app/components/PackagePricing";
 import { currencies, formatPrice, type Currency } from "@/lib/website-packages";
 import { useLang, type Lang } from "@/lib/i18n/lang";

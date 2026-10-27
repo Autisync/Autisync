@@ -8,7 +8,8 @@ import { brandingTiers, launchBundle, socialTiers } from "@/lib/service-packages
 import { siteStats } from "@/lib/site-stats";
 import { agencyPlans, extraUser } from "@/lib/estate-agency-plans";
 import { industryPlans } from "@/lib/industry-plans";
-import { INDUSTRY_PAGES } from "../crm/industries";
+import { crmLite, deliveryExtraDriver, deliveryPlans, whiteLabelBuild } from "@/lib/crm-pricing";
+import { INDUSTRY_PAGES } from "../(main)/crm/industries";
 
 export const dynamic = "force-static";
 
@@ -61,6 +62,15 @@ ${agencyPlans.map((pl) => `- ${pl.name}: ${formatPrice(pl.price.GBP, "GBP")} / $
 
 The same CRM set up for other kinds of business: online booking with reminders, one inbox for email, website chat, WhatsApp, Instagram and Facebook, quotes and proposals accepted online, invoices with card payment, pipelines, tasks and Google review requests. Priced per business, not per user; monthly, no setup fee, migration included. Prices per month, ex-VAT (GBP / EUR):
 ${INDUSTRY_PAGES.map((p) => `- ${p.en.crumb}: ${industryPlans[p.en.id].map((pl) => `${pl.name} ${formatPrice(pl.price.GBP, "GBP")} / ${formatPrice(pl.price.EUR, "EUR")} (${pl.users} users${pl.perSite ? " per site" : ""})`).join("; ")}. Pages: ${BASE}/crm/${p.en.slug} (English), ${BASE}/crm/${p.pt.slug} (Português)`).join("\n")}
+- CRM Lite (the CRM only, no website, 1 user): ${formatPrice(crmLite.price.GBP, "GBP")} / ${formatPrice(crmLite.price.EUR, "EUR")} a month. Prices for every business: ${BASE}/servicepackage#crm
+
+## Autisync Deliveries
+
+Delivery management for builders' merchants, wholesalers and couriers: office board with a live map, a driver app with proof of delivery (photo, signature, QR scan), live tracking links for customers, late warnings, orders read from email and WhatsApp, and the invoice sent at the drop. Per business with drivers included, monthly, ex-VAT (GBP / EUR):
+${deliveryPlans.map((pl) => `- ${pl.name}: ${formatPrice(pl.price.GBP, "GBP")} / ${formatPrice(pl.price.EUR, "EUR")}${pl.perDepot ? " per depot" : ""} (up to ${pl.drivers} drivers, ${pl.officeUsers} office users)`).join("\n")}
+- Extra driver: ${formatPrice(deliveryExtraDriver.GBP, "GBP")} / ${formatPrice(deliveryExtraDriver.EUR, "EUR")} a month
+- White-label build handed over (office app, driver app and customer screens in the client's brand, on their own hosting): from ${formatPrice(whiteLabelBuild.price.GBP, "GBP")} / ${formatPrice(whiteLabelBuild.price.EUR, "EUR")} one-off; consulting ${formatPrice(whiteLabelBuild.dayRate.GBP, "GBP")} a day
+- Pages and live demo: ${BASE}/crm/deliveries (English), ${BASE}/crm/entregas (Português)
 
 ## Pages
 

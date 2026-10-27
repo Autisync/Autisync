@@ -296,3 +296,98 @@
     display: block;
   }
 }
+
+/* The live demo under the hero text */
+.heroDemo {
+  position: relative;
+  margin-top: clamp(40px, 6vw, 64px);
+  padding-bottom: clamp(48px, 6vw, 80px);
+  scroll-margin-top: 80px;
+}
+
+/* White-label build card (Deliveries page) */
+.wl {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  padding: clamp(28px, 4vw, 48px);
+  border-radius: 24px;
+  background: #1c1c1c;
+  color: #f4f2ed;
+  box-shadow: 0 30px 80px -30px rgba(17, 24, 39, 0.45);
+}
+.wl h2 {
+  color: #fff !important;
+  margin-top: 10px !important;
+}
+.wlEyebrow {
+  font-weight: 600;
+  color: #d1a94c;
+}
+.wlTag {
+  margin-top: 10px !important;
+  color: #d1a94c;
+  font-size: 18px;
+}
+.wlText {
+  margin-top: 14px !important;
+  color: #c9c6be;
+}
+.wlList {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  gap: 10px;
+}
+.wlList li {
+  display: flex;
+  gap: 10px;
+  color: #e7e5df;
+}
+.wlList svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  margin-top: 3px;
+  stroke: #d1a94c;
+}
+.wlPrice {
+  align-self: start;
+  display: grid;
+  gap: 8px;
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.wlPrice > small {
+  color: #a8a49b;
+}
+.wlPrice > b {
+  font-size: clamp(34px, 4vw, 44px);
+  line-height: 1;
+  color: #fff;
+}
+.wlPrice p {
+  color: #c9c6be;
+  font-size: 15px;
+}
+.wlPrice a {
+  margin-top: 8px;
+}
+.wlCompare {
+  margin-top: 6px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #a8a49b;
+}
+.wlCompare a {
+  color: #d1a94c;
+  margin-left: 2px;
+}
+@media (max-width: 860px) {
+  .wl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

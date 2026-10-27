@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import localFont from "next/font/local";
 import IndustryCrm from "../industries/IndustryCrm";
 import { INDUSTRY_PAGES } from "../industries";
 import { shotSrc, type IndustryCopy, type IndustryLocale } from "../industries/types";
@@ -13,8 +12,6 @@ import { industryPlans } from "@/lib/industry-plans";
  * (/crm/estate-agents and /crm/imobiliarias are their own folders and win.)
  */
 
-const display = localFont({ src: "../../fonts/Outfit-Variable.woff2", weight: "100 900", variable: "--font-crm-display", display: "swap" });
-const body = localFont({ src: "../../fonts/DMSans-Variable.woff2", weight: "100 1000", variable: "--font-crm-body", display: "swap" });
 
 const BASE = "https://www.autisync.com";
 export const dynamicParams = false;
@@ -110,7 +107,7 @@ export default async function Page({ params }: { params: Promise<{ industry: str
     if (!hit) notFound();
     const { copy, locale } = hit;
     return (
-        <div className={`${display.variable} ${body.variable}`} lang={locale}>
+        <div lang={locale}>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData(copy, locale)) }} />
             <IndustryCrm copy={copy} locale={locale} />
         </div>
