@@ -1,4 +1,27 @@
 import type { NextConfig } from "next";
+import { PT_PATHS_OUTSIDE_PT } from "./src/lib/i18n/routes";
+
+// Sent on every page. No script-source rules yet (inline JSON-LD, Vercel
+// Analytics and the visitor tracker would need allow-listing first); these
+// directives only stop other sites framing the pages, <base> hijacking,
+// plugins, and forms posting to plain http.
+const SECURITY_HEADERS = [
+    { key: "X-Content-Type-Options", value: "nosniff" },
+    { key: "X-Frame-Options", value: "SAMEORIGIN" },
+    { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+    { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" },
+    { key: "Content-Security-Policy", value: "frame-ancestors 'self'; base-uri 'self'; object-src 'none'; form-action 'self' https:; upgrade-insecure-requests" },
+];
+
+// The page language for crawlers (Bing reads it), matching <html lang>
+// (lib/i18n/routes.ts htmlLangFor). Later rules win, so pt-AO comes last.
+const LANGUAGE_HEADERS = [
+    { source: "/:path*", headers: [{ key: "Content-Language", value: "en-GB" }] },
+    { source: "/pt", headers: [{ key: "Content-Language", value: "pt-PT" }] },
+    { source: "/pt/:path*", headers: [{ key: "Content-Language", value: "pt-PT" }] },
+    ...PT_PATHS_OUTSIDE_PT.map((source) => ({ source, headers: [{ key: "Content-Language", value: "pt-PT" }] })),
+    { source: "/pt/angola", headers: [{ key: "Content-Language", value: "pt-AO" }] },
+];
 
 const nextConfig: NextConfig = {
     images: {
@@ -19,6 +42,8 @@ const nextConfig: NextConfig = {
     // LinkedIn composer when we attach them to posts.
     async headers() {
         return [
+            { source: "/:path*", headers: SECURITY_HEADERS },
+            ...LANGUAGE_HEADERS,
             {
                 source: "/marketing/:path*",
                 headers: [{ key: "Access-Control-Allow-Origin", value: "*" }],

@@ -5,7 +5,7 @@ const EN_URL = "https://www.autisync.com/legal/data-deletion";
 const URL = "https://www.autisync.com/pt/legal/eliminacao-de-dados";
 const TITLE = "Eliminar os seus dados";
 const DESCRIPTION =
-    "Como pedir a eliminação de dados que chegaram ao Autisync CRM através do Facebook, do Instagram ou do WhatsApp, e o que acontece quando uma empresa encerra a sua conta.";
+    "Como pedir a eliminação de dados que chegaram ao Autisync CRM pelo Facebook, Instagram ou WhatsApp, e o que acontece quando uma conta encerra.";
 
 export const metadata: Metadata = {
     title: TITLE,

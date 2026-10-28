@@ -31,7 +31,7 @@ const COPY = {
 export default function BookCall({ lang }: { lang: "en" | "pt" }) {
     const c = COPY[lang];
     return (
-        <main className="bg-white">
+        <div className="bg-white">
             <section className="px-6 pt-32 pb-20 mx-auto max-w-5xl lg:px-8">
                 <p className="text-sm font-semibold tracking-wide uppercase text-[#B28228]">{c.eyebrow}</p>
                 <h1 className="mt-2 text-4xl font-semibold text-gray-900 [text-wrap:balance] sm:text-5xl">{c.h1}</h1>
@@ -52,6 +52,6 @@ export default function BookCall({ lang }: { lang: "en" | "pt" }) {
                     <Link href={c.quizHref} className="font-semibold text-[#B28228] hover:underline">{c.quiz}</Link>
                 </p>
             </section>
-        </main>
+        </div>
     );
 }

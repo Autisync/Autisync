@@ -207,7 +207,7 @@ export default function ServicePackagesPage() {
                 __html: JSON.stringify({
                     "@context": "https://schema.org",
                     "@type": "Service",
-                    provider: { "@type": "Organization", name: "Autisync", url: "https://www.autisync.com" },
+                    provider: { "@id": "https://www.autisync.com/#organization" },
                     serviceType: "Digital Agency Services",
                     areaServed: ["GB", "PT", "NA", "AO"],
                     hasOfferCatalog: {
@@ -218,12 +218,16 @@ export default function ServicePackagesPage() {
                             ...brandingTiers.map((t) => ({ name: `Branding ${t.name}`, price: t.price })),
                             ...socialTiers.map((t) => ({ name: `Social Media ${t.name}`, price: t.price })),
                             { name: launchBundle.name, price: launchBundle.price },
-                        ].map((o) => ({
-                            "@type": "Offer",
-                            itemOffered: { "@type": "Service", name: o.name },
-                            price: o.price.AOA,
-                            priceCurrency: "AOA",
-                        })),
+                        ].flatMap((o) => (
+                            // One offer per market currency, each tied to its country.
+                            ([["AOA", "AO"], ["NAD", "NA"], ["GBP", "GB"], ["EUR", "PT"]] as const).map(([cur, country]) => ({
+                                "@type": "Offer",
+                                itemOffered: { "@type": "Service", name: o.name },
+                                price: o.price[cur],
+                                priceCurrency: cur,
+                                eligibleRegion: { "@type": "Country", name: country },
+                            }))
+                        )),
                     },
                 }),
             }}

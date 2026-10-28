@@ -1,3 +1,4 @@
+import BreadcrumbSchema from "@/app/components/BreadcrumbSchema";
 import type { Metadata } from "next";
 import CrmLanding from "@/app/(main)/crm/CrmLanding";
 
@@ -9,7 +10,7 @@ const URL = "https://www.autisync.com/pt/crm";
 const EN_URL = "https://www.autisync.com/crm";
 const TITLE = "Autisync CRM: todos os seus clientes num só painel";
 const DESCRIPTION =
-    "O Autisync CRM junta contactos, potenciais clientes e funil de vendas num só lugar, com seguimentos automáticos. Configurado para a sua empresa pela Autisync. Marque uma chamada de diagnóstico.";
+    "Desde 35 € por mês: o CRM Autisync junta contactos, potenciais clientes e funil de vendas num só lugar, com seguimentos automáticos.";
 
 export const metadata: Metadata = {
     title: { absolute: TITLE },
@@ -37,7 +38,7 @@ const productSchema = {
     "@type": "Service",
     name: "Autisync CRM",
     serviceType: "Implementação de CRM (gestão de relacionamento com clientes)",
-    provider: { "@type": "Organization", name: "Autisync", url: "https://www.autisync.com" },
+    provider: { "@id": "https://www.autisync.com/#organization" },
     areaServed: ["AO", "PT", "NA", "GB"],
     url: URL,
     description: DESCRIPTION,
@@ -45,5 +46,10 @@ const productSchema = {
 };
 
 export default function CrmPtPage() {
-    return <CrmLanding lang="pt" schema={productSchema} />;
+    return (
+        <>
+            <BreadcrumbSchema items={[{ name: "Início", path: "/pt" }, { name: "CRM", path: "/pt/crm" }]} />
+            <CrmLanding lang="pt" schema={productSchema} />
+        </>
+    );
 }

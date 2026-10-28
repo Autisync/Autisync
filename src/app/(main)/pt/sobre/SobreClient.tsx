@@ -333,9 +333,9 @@ const stats = [
         icon: <ProjectsIcon className="w-5 h-5 text-gray-900" />,
     },
     {
-        value: siteStats.satisfaction,
-        suffix: "%",
-        label: "Satisfação dos Clientes",
+        value: siteStats.clients,
+        suffix: "+",
+        label: "Clientes",
         icon: <SatisfactionIcon className="w-5 h-5 text-gray-900" />,
     },
     {
@@ -433,9 +433,9 @@ export default function SobreClient() {
                                 <BookIcon className="w-6 h-6 text-[var(--autisync-gold,#B98B2F)]" />
                             </ServiceIcon3D>
 
-                            <h3 className="mb-2 text-3xl font-semibold leading-normal text-gray-800 transition-colors duration-200 group-hover:text-gray-900">
+                            <h2 className="mb-2 text-3xl font-semibold leading-normal text-gray-800 transition-colors duration-200 group-hover:text-gray-900">
                                 A Nossa História
-                            </h3>
+                            </h2>
                             <p className="mt-4 mb-4 leading-relaxed text-gray-600">
                                 A Autisync nasceu de uma visão simples: aproximar a tecnologia
                                 de ponta das necessidades diárias das empresas. O que começou
@@ -459,9 +459,9 @@ export default function SobreClient() {
                                     className="w-full align-middle rounded-t-lg"
                                 />
                                 <blockquote className="relative p-8 mb-4">
-                                    <h4 className="text-xl font-bold text-gray-600">
+                                    <h3 className="text-xl font-bold text-gray-600">
                                         Inovação com Execução
-                                    </h4>
+                                    </h3>
                                     <p className="mt-2 font-light text-gray-600 text-md">
                                         Não criamos apenas soluções — criamos experiências que geram
                                         resultados mensuráveis e impacto duradouro.
@@ -480,9 +480,9 @@ export default function SobreClient() {
                         <p className="text-xs tracking-widest text-[var(--autisync-gold,#b98b2f)] font-semibold uppercase">
                             Os Nossos Números
                         </p>
-                        <h3 className="mt-1 text-3xl font-semibold text-gray-800">
+                        <h2 className="mt-1 text-3xl font-semibold text-gray-800">
                             Impacto em Números
-                        </h3>
+                        </h2>
                         <p className="mt-3 text-base text-gray-600">
                             Números que refletem a confiança dos nossos parceiros e o
                             trabalho que entregamos em cada projeto.
@@ -521,7 +521,7 @@ export default function SobreClient() {
                     <div className="max-w-2xl mx-auto lg:mx-0 lg:max-w-none">
                         <div className="grid max-w-xl grid-cols-1 gap-8 text-base leading-7 text-gray-600 lg:max-w-none lg:grid-cols-2">
                             <div className="transition-all duration-300 ease-out transform hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(0,0,0,0.12)]/10 bg-white rounded-xl p-6">
-                                <h4 className="font-bold text-gray-700 text-xl mb-2">Visão</h4>
+                                <h3 className="font-bold text-gray-700 text-xl mb-2">Visão</h3>
                                 <p>
                   <span className="font-medium text-[var(--autisync-gold,#b98b2f)]">
                     Conceber
@@ -537,9 +537,9 @@ export default function SobreClient() {
                                 </p>
                             </div>
                             <div className="transition-all duration-300 ease-out transform hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(0,0,0,0.12)]/10 bg-white rounded-xl p-6">
-                                <h4 className="font-bold text-gray-700 text-xl mb-2">
+                                <h3 className="font-bold text-gray-700 text-xl mb-2">
                                     Missão
-                                </h4>
+                                </h3>
                                 <p>
                   <span className="font-medium text-[var(--autisync-gold,#b98b2f)]">
                     Entregar excelência
@@ -586,7 +586,7 @@ export default function SobreClient() {
                                         {item.icon}
                                     </ServiceIcon3D>
 
-                                    <h6 className="text-xl text-gray-700 mb-3">{item.title}</h6>
+                                    <h3 className="text-xl text-gray-700 mb-3">{item.title}</h3>
                                     <p className="text-gray-600 px-4">{item.text}</p>
                                 </div>
                             </div>
@@ -693,9 +693,9 @@ export default function SobreClient() {
             {/*                            style={{ maxWidth: "200px" }}*/}
             {/*                        />*/}
             {/*                        <div className="pt-6 text-center">*/}
-            {/*                            <h5 className="text-xl font-semibold text-gray-900">*/}
+            {/*                            <h3 className="text-xl font-semibold text-gray-900">*/}
             {/*                                {member.name}*/}
-            {/*                            </h5>*/}
+            {/*                            </h3>*/}
             {/*                            <p className="mt-1 text-sm text-gray-500 uppercase">*/}
             {/*                                {member.role}*/}
             {/*                            </p>*/}

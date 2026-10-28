@@ -32,6 +32,7 @@ export const EN_TO_PT: Record<string, string> = {
     "/tools/missed-call-cost": "/pt/ferramentas/custo-chamadas-perdidas",
     "/tools/website-cost": "/pt/ferramentas/custo-website",
     "/clinics": "/pt/clinicas",
+    "/angola": "/pt/angola",
     "/book": "/pt/marcar",
     "/PrivacyPolicy": "/pt/privacidade",
     "/TermsofUse": "/pt/termos",
@@ -70,4 +71,18 @@ export function alternatesFor(enPath: string, current: "en" | "pt"): Metadata["a
         canonical: current === "pt" ? pt : en,
         languages: { en, pt, "x-default": en },
     };
+}
+
+/** Portuguese pages that live outside /pt, such as /crm/imobiliarias. */
+export const PT_PATHS_OUTSIDE_PT = Object.keys(PT_TO_EN).filter((p) => p !== "/pt" && !p.startsWith("/pt/"));
+
+/**
+ * The page's language for <html lang> and the Content-Language header:
+ * pt-AO for the Angola page, pt-PT for the other Portuguese pages,
+ * en-GB for the rest (the English copy is British English).
+ */
+export function htmlLangFor(path: string): "en-GB" | "pt-PT" | "pt-AO" {
+    const p = clean(path);
+    if (p === "/pt/angola" || p.startsWith("/pt/angola/")) return "pt-AO";
+    return isPtPath(p) ? "pt-PT" : "en-GB";
 }

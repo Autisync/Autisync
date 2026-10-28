@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import CountryLanding, { type CountryCopy } from "@/app/components/CountryLanding";
 import { formatPrice, websiteTiers } from "@/lib/website-packages";
+import { alternatesFor } from "@/lib/i18n/routes";
 
 const URL = "https://www.autisync.com/pt/angola";
 const from = formatPrice(websiteTiers[0].price.AOA, "AOA");
 
 export const metadata: Metadata = {
     title: "Criação de Sites em Angola (Luanda)",
-    description: `Criação de sites profissionais em Luanda e em todo o país, com domínio .ao ou .com, alojamento e e-mails incluídos no 1.º ano. Preços em Kwanzas, desde ${from}.`,
-    alternates: { canonical: URL },
+    description: `Criação de sites em Luanda e em todo o país desde ${from}, com domínio .ao ou .com, alojamento e e-mails incluídos no 1.º ano.`,
+    // Twin of the English /angola page (hreflang en ⇄ pt).
+    alternates: alternatesFor("/angola", "pt"),
     openGraph: {
         title: "Criação de Sites em Angola — Autisync",
         description: `Sites rápidos, adaptados a telemóvel e ligados a um CRM, com preços em Kwanzas desde ${from}.`,

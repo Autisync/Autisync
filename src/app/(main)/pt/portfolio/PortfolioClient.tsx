@@ -1161,7 +1161,7 @@ function ProjectsGrid({
                     className="text-center mb-14"
                 >
                     <span className={`text-sm uppercase tracking-[0.3em] ${theme.textColor} mb-3 block`}>{theme.eyebrow}</span>
-                    <h3 className="text-4xl md:text-5xl font-bold text-gray-700 mb-3">{theme.heading}</h3>
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-700 mb-3">{theme.heading}</h2>
                     <p className="text-gray-500 max-w-xl mx-auto text-sm">{theme.subheading}</p>
                 </motion.div>
 
@@ -1384,7 +1384,7 @@ export default function PortfolioClient() {
                             <AchievementStat icon={<ProjectsIcon className="w-5 h-5" />} label="Projetos Lançados" value={siteStats.projects} suffix="+" delay={0} />
                             <AchievementStat icon={<ClientsIcon className="w-5 h-5" />} label="Clientes Satisfeitos" value={siteStats.clients} suffix="+" delay={0.1} />
                             <AchievementStat icon={<YearsIcon className="w-5 h-5" />} label="Anos a Criar no Digital" value={siteStats.years} suffix="+" delay={0.2} />
-                            <AchievementStat icon={<SatisfactionIcon className="w-5 h-5" />} label="Satisfação dos Clientes" value={siteStats.satisfaction} suffix="%" delay={0.3} />
+                            <AchievementStat icon={<SatisfactionIcon className="w-5 h-5" />} label="Países Onde Trabalhamos" value={siteStats.countries} suffix="" delay={0.3} />
                         </div>
                     </div>
                 </div>

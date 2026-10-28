@@ -40,6 +40,10 @@ export const ESTATE_COPY = {
             { t: "Inspections with reports", d: "Book check-ins, check-outs and routine visits. Room by room on a phone, with photos, and a PDF report for the landlord." },
             { t: "Compliance dates", d: "Gas safety, EICR, EPC, licences and deposit protection: every expiry becomes a task before it is late." },
         ],
+        siteEyebrow: "Your agency website", siteTitle: "A website that updates itself from the CRM.",
+        siteSub: "Miralume Homes is our demo agency. Every listing on its website is read live from the CRM: change a price or mark a home Under offer and the site changes within seconds. Enquiries and viewing bookings arrive in the CRM inbox and diary.",
+        sitePoints: ["Price reduced and Under offer flags, automatically", "Book a viewing from the listing, into the agent's diary", "Virtual and video tours on each home"],
+        siteOpen: "Open the Miralume Homes website", heroSite: "See a demo agency website", siteBadge: "Live demo website",
         connEyebrow: "Connections", connTitle: "The UK portals, built in.",
         conns: [
             { t: "Rightmove", d: "Your listings sent automatically from the CRM, with Material Information, and the enquiries brought back in as contacts.", s: "Built in. Switched on for your branch once Rightmove approves Autisync." },
@@ -116,6 +120,10 @@ export const ESTATE_COPY = {
             { t: "Vistorias com relatório", d: "Marque vistorias de entrada, saída e periódicas. Divisão a divisão no telemóvel, com fotos, e relatório em PDF para o proprietário." },
             { t: "Prazos e documentos", d: "Certificado energético, licença de utilização e seguros: cada prazo vira uma tarefa antes de expirar." },
         ],
+        siteEyebrow: "O site da sua agência", siteTitle: "Um site que se atualiza sozinho a partir do CRM.",
+        siteSub: "A Miralume Homes é a nossa agência de demonstração. Cada imóvel no site é lido em direto do CRM: mude o preço ou marque um imóvel como reservado e o site muda em segundos. Os pedidos e as marcações de visitas chegam à caixa de entrada e à agenda do CRM.",
+        sitePoints: ["Avisos de preço reduzido e reservado, automáticos", "Marcação de visita a partir do anúncio, na agenda do consultor", "Visitas virtuais e em vídeo em cada imóvel"],
+        siteOpen: "Abrir o site da Miralume Homes", heroSite: "Ver um site de agência de demonstração", siteBadge: "Site de demonstração ao vivo",
         connEyebrow: "Ligações", connTitle: "O mercado português, ligado ao CRM.",
         conns: [
             { t: "CASAFARI", d: "Avaliação de cada imóvel com comparáveis e preço por m², pesquisa de todo o mercado com o histórico de cada anúncio, e o Radar: alertas de particulares e descidas de preço na sua zona.", s: "Disponível com a ligação CASAFARI." },

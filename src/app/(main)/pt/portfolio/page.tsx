@@ -5,7 +5,7 @@ import { alternatesFor } from "@/lib/i18n/routes";
 export const metadata: Metadata = {
     title: "Portfólio",
     description:
-        "Conheça o portfólio da Autisync: websites, aplicações web, identidade visual, consultoria de TI e marketing digital para empresas em Angola, na Namíbia e no resto do mundo.",
+        "O portfólio da Autisync: websites, aplicações web, identidade visual, consultoria de TI e marketing digital para empresas em Angola e não só.",
     alternates: alternatesFor("/portfolio", "pt"),
     openGraph: {
         title: "Portfólio Autisync — Trabalho de Que Nos Orgulhamos",

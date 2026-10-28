@@ -13,9 +13,9 @@ import UseCasesSection from "@/app/components/useCases/UseCasesSection";
 const URL = "https://www.autisync.com/pt";
 
 export const metadata: Metadata = {
-    title: { absolute: "Autisync — Agência de Websites, Branding e Marketing Digital em Angola" },
+    title: { absolute: "Autisync — Websites, Branding e Marketing Digital em Angola" },
     description:
-        "Criamos websites, identidade de marca, gestão de redes sociais e automação com IA para empresas em Angola, Namíbia e Portugal. Websites a partir de Kz 495.000. Clientes: Florentek, Grupo Girassol, Blue Horizon.",
+        "Websites desde Kz 495.000, identidade de marca, redes sociais e automação com IA para empresas em Angola, Namíbia e Portugal.",
     alternates: {
         canonical: URL,
         languages: {
@@ -115,9 +115,15 @@ export default function PtHome() {
                             </a>
                         ))}
                     </div>
-                    <p className="mt-8 text-center">
+                    <p className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-center">
+                        <a href="/pt/angola" className="font-semibold text-[#B28228] hover:underline">
+                            Criação de sites em Angola
+                        </a>
+                        <a href="/pt/portugal" className="font-semibold text-[#B28228] hover:underline">
+                            Criação de sites em Portugal
+                        </a>
                         <a href="/pt/clinicas" className="font-semibold text-[#B28228] hover:underline">
-                            Tem uma clínica ou um salão em Portugal? Veja o que preparámos para si →
+                            Clínicas e salões em Portugal
                         </a>
                     </p>
                 </div>

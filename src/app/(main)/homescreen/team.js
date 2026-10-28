@@ -12,7 +12,7 @@ export default function Landing({ lang = "en" } = {}) {
         <div className="container px-4 mx-auto">
           <div className="flex flex-wrap justify-center mb-24 text-center">
             <div className="w-full px-4 lg:w-8/12">
-              <h2 className="text-4xl font-semibold text-gray-200">{t("Dedicated Colaborators", "Uma equipa dedicada")}</h2>
+              <h2 className="text-4xl font-semibold text-gray-200">{t("Dedicated Collaborators", "Uma equipa dedicada")}</h2>
               <p className="m-4 text-base leading-relaxed text-gray-300">
                 {t(
                   "At Autisync, customer care takes precedence, and our ultimate goal is customer satisfaction. We have a dedicated team of collaborators committed to ensuring your success.",

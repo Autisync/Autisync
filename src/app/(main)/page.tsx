@@ -11,9 +11,9 @@ import { CrmPriceCard } from "@/app/components/CrmPrices";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: { absolute: "Autisync — Web Design, Branding & Digital Agency | Angola · UK · Portugal" },
+    title: { absolute: "Autisync — Web Design & Digital Agency | Angola · UK · Portugal" },
     description:
-        "Websites, brand identities, social media and AI automation for growing businesses in Angola, the UK and Portugal. Clear prices: websites from Kz 495.000 / £1,490. Trusted by Florentek, Grupo Girassol, Blue Horizon and more.",
+        "Websites from £1,490 / Kz 495.000, plus branding, social media and AI automation for growing businesses in Angola, the UK and Portugal.",
     alternates: {
         canonical: "https://www.autisync.com",
         languages: {
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Autisync — We Systemize Your Success",
+        title: "Autisync — Web Design & Digital Agency | Angola · UK · Portugal",
         description:
-            "AI automation, web development, graphic design, and IT consulting for growing businesses worldwide.",
+            "Websites from £1,490 / Kz 495.000, plus branding, social media and AI automation for growing businesses in Angola, the UK and Portugal.",
         url: "https://www.autisync.com",
         images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Autisync Homepage" }],
     },
@@ -38,9 +38,18 @@ export default function Home() {
             {/* Social proof high on the page: real client logos */}
             <Clients />
             {/* The UK clinics page, linked the way /pt links /pt/clinicas. */}
-            <p className="px-6 py-8 text-center">
+            <p className="flex flex-wrap justify-center gap-x-6 gap-y-2 px-6 py-8 text-center">
+                <Link href="/web-design-uk" className="font-semibold text-[#B28228] hover:underline">
+                    Small business websites in the UK, fixed price
+                </Link>
+                <Link href="/angola" className="font-semibold text-[#B28228] hover:underline">
+                    Website design in Angola
+                </Link>
+                <Link href="/namibia" className="font-semibold text-[#B28228] hover:underline">
+                    Website design in Namibia
+                </Link>
                 <Link href="/clinics" className="font-semibold text-[#B28228] hover:underline">
-                    Run a clinic, dental practice or salon in the UK? See what we set up for you →
+                    Clinics, dental practices and salons
                 </Link>
             </p>
             <UseCasesSection lang="en" />

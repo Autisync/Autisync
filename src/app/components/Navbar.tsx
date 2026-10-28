@@ -56,12 +56,6 @@ const solutions = [
     icon: Squares2X2Icon,
   },
   {
-    name: "Clinics & Salons",
-    description: "Missed-call text-back, online booking, WhatsApp replies and reminders",
-    href: "/clinics",
-    icon: CalendarDaysIcon,
-  },
-  {
     name: "CallCatch for Trades",
     description: "Missed-call text-back for UK trades. Your calls, never shared or sold",
     href: "https://calls.autisync.com",
@@ -93,12 +87,6 @@ const solutionsPt = [
     description: "Aplicações Web · Mobile · Sistemas Empresariais · CMS · Integrações",
     href: "/pt/servicos/desenvolvimento",
     icon: Squares2X2Icon,
-  },
-  {
-    name: "Clínicas e Salões",
-    description: "Marcações online, WhatsApp com resposta imediata e lembretes",
-    href: "/pt/clinicas",
-    icon: CalendarDaysIcon,
   },
 ];
 

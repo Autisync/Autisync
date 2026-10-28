@@ -51,7 +51,7 @@ Bundle:
 
 ## Autisync CRM for estate and letting agencies
 
-A CRM for property agencies in the UK, Portugal and Angola: properties with photos, video, map and documents; viewings booked from the agent's free times with reminders and no-show follow-up; an AI assistant that answers enquiries out of hours with the right homes and a viewing link; buyer and tenant matching emails; the agency's website updated automatically or reading a listings API; rent billing and compliance reminders; import from Alto, Reapit, Jupix, Street, eGO, Casafari and idealista. Portugal: AMI licence and energy class enforced on every ad. Priced per agency, not per user; monthly, no setup fee, migration included.
+A CRM for property agencies in the UK, Portugal and Angola: properties with photos, video, map and documents; viewings booked from the agent's free times with reminders and no-show follow-up; an AI assistant that answers enquiries out of hours with the right homes and a viewing link; buyer and tenant matching emails; the agency's website updated automatically or reading a listings API; rent billing and compliance reminders; import from Alto, Reapit, Jupix, Street, eGO, Casafari and idealista. Portugal: AMI licence and energy class enforced on every ad. Priced per agency, not per user; monthly, plus a one-off setup fee that includes migration and training.
 
 Plans (per month, ex-VAT; UK £ / EU € / Angola Kz):
 ${agencyPlans.map((pl) => `- ${pl.name}: ${formatPrice(pl.price.GBP, "GBP")} / ${formatPrice(pl.price.EUR, "EUR")} / ${formatPrice(pl.price.AOA, "AOA")}${pl.perBranch ? " per branch" : ""} — ${pl.users} users${pl.perBranch ? " per branch" : ""}, ${pl.listings === null ? "unlimited listings" : `${pl.listings} listings`}${pl.aiReplies ? `, AI assistant ${pl.aiReplies} replies a month` : ""}`).join("\n")}
@@ -88,6 +88,9 @@ ${deliveryPlans.map((pl) => `- ${pl.name}: ${formatPrice(pl.price.GBP, "GBP")} /
 - [Clinics and salons in the UK](${BASE}/clinics): website, missed-call text-back for UK mobile callers, online booking with reminders, instant WhatsApp replies, review requests and recall reminders
 - [Missed call cost calculator](${BASE}/tools/missed-call-cost): free tool for trades and local businesses
 - [Website cost estimator (UK)](${BASE}/tools/website-cost): free tool, Autisync package prices including year two
+- [Small business websites in the UK](${BASE}/web-design-uk): fixed prices in pounds, domain, hosting and email in year one
+- [Website design in Angola](${BASE}/angola): prices in kwanzas, English page (Portuguese: ${BASE}/pt/angola)
+- [Website design in Namibia](${BASE}/namibia): prices in Namibian dollars
 - [Contact](${BASE}/contact)
 - [Privacy policy](${BASE}/PrivacyPolicy)
 
@@ -103,6 +106,8 @@ ${deliveryPlans.map((pl) => `- ${pl.name}: ${formatPrice(pl.price.GBP, "GBP")} /
 - [Consultoria de TI](${BASE}/pt/servicos/consultoria-ti)
 - [CRM para imobiliárias](${BASE}/crm/imobiliarias): imóveis, visitas, assistente de IA, preços por agência
 - [Clínicas e salões em Portugal](${BASE}/pt/clinicas): site, marcações online com lembretes, WhatsApp com resposta imediata, pedidos de avaliação e convites para voltar
+- [Criação de sites em Angola](${BASE}/pt/angola): preços em Kwanzas
+- [Criação de sites em Portugal](${BASE}/pt/portugal): preço fechado em euros
 - [Contacto](${BASE}/pt/contacto)
 - [Política de privacidade](${BASE}/pt/privacidade)
 `;

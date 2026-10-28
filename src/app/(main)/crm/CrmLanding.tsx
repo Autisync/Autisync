@@ -205,7 +205,7 @@ export default function CrmLanding({ lang = "en", schema }: { lang?: CrmLang; sc
         <div className={`${s.page} ${s.light}`} lang={lang === "pt" ? "pt" : undefined}>
             {schema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />}
 
-            <main>
+            <div>
                 <header className={s.hero}>
                     <div className={s.wrap}>
                         <div className={s.heroCopy}>
@@ -327,7 +327,7 @@ export default function CrmLanding({ lang = "en", schema }: { lang?: CrmLang; sc
                         </div>
                     </div>
                 </section>
-            </main>
+            </div>
 
         </div>
     );

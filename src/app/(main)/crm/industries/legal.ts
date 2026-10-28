@@ -11,7 +11,7 @@ export const LEGAL: IndustryPair = {
     en: {
         id: "legal", slug: "legal-finance", otherSlug: "juridico-financas", crumb: "Legal & finance",
         metaTitle: "CRM for Accountants and Small Law Firms | Autisync",
-        metaDesc: "CRM for accountants, bookkeepers and small law firms: every enquiry answered, consultations booked online, engagement letters signed online, deadlines as tasks, document reminders and invoices with card payment. From £69 a month per practice, not per user.",
+        metaDesc: "From £69 a month per practice: every enquiry answered, consultations booked online, engagement letters signed online, deadlines and invoices.",
         keywords: ["CRM for accountants UK", "accountancy practice management", "law firm CRM small", "client intake software", "bookkeeper CRM", "Clio alternative", "engagement letter software", "client onboarding accountants"],
         pill: "For accountants, bookkeepers and small law firms",
         h1a: "Every enquiry answered.", h1b: "Every deadline in sight.",
@@ -55,7 +55,7 @@ export const LEGAL: IndustryPair = {
     pt: {
         id: "legal", slug: "juridico-financas", otherSlug: "legal-finance", crumb: "Jurídico e finanças",
         metaTitle: "CRM para Contabilistas e Sociedades de Advogados | Autisync",
-        metaDesc: "CRM para contabilistas, gabinetes de contabilidade e pequenas sociedades de advogados: todos os pedidos respondidos, consultas marcadas online, propostas de honorários aceites online, prazos como tarefas, pedidos de documentos e faturas com pagamento por cartão. Desde 79 € por mês por gabinete.",
+        metaDesc: "Desde 79 € por mês por gabinete: pedidos respondidos, consultas marcadas online, propostas de honorários aceites online, prazos e faturas.",
         keywords: ["CRM para contabilistas", "software para gabinete de contabilidade", "CRM para advogados", "gestão de clientes contabilidade", "proposta de honorários online", "alternativa ao Clio"],
         pill: "Para contabilistas, gabinetes de contabilidade e pequenas sociedades de advogados",
         h1a: "Todos os pedidos respondidos.", h1b: "Todos os prazos à vista.",

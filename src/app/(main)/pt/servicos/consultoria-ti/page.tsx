@@ -1,3 +1,4 @@
+import BreadcrumbSchema from "@/app/components/BreadcrumbSchema";
 import type { Metadata } from "next";
 import { alternatesFor } from "@/lib/i18n/routes";
 import ConsultoriaTiClient from "./ConsultoriaTiClient";
@@ -18,8 +19,12 @@ export const metadata: Metadata = {
 
 export default function ConsultoriaTiPage() {
     return (
+        <>
+            <BreadcrumbSchema items={[{ name: "Início", path: "/pt" }, { name: "Serviços", path: "/pt/precos" }, { name: "Consultoria de TI", path: "/pt/servicos/consultoria-ti" }]} />
+
         <div lang="pt">
             <ConsultoriaTiClient />
         </div>
+        </>
     );
 }

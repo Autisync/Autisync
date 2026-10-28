@@ -178,7 +178,7 @@ export default function ContactoClient() {
     const labelClass = "block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1";
 
     return (
-        <main>
+        <div>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
@@ -277,16 +277,16 @@ export default function ContactoClient() {
                                 <div className="w-full px-4 lg:w-4/12 lg:order-1">
                                     <div className="flex justify-center py-0 pt-8 lg:pt-4">
                                         <div className="p-3 mr-4 text-center">
-                                            <span className="block text-xl font-bold tracking-wide text-gray-600 uppercase">239</span>
-                                            <span className="text-sm text-gray-400">Pedidos</span>
+                                            <span className="block text-xl font-bold tracking-wide text-gray-600 uppercase">{siteStats.projects}+</span>
+                                            <span className="text-sm text-gray-400">Projetos</span>
                                         </div>
                                         <div className="p-3 mr-4 text-center">
                                             <span className="block text-xl font-bold tracking-wide text-gray-600 uppercase">2</span>
                                             <span className="text-sm text-gray-400">Linhas de Suporte</span>
                                         </div>
                                         <div className="p-3 text-center lg:mr-4">
-                                            <span className="block text-xl font-bold tracking-wide text-gray-600 uppercase">{siteStats.satisfaction}%</span>
-                                            <span className="text-sm text-gray-400">Satisfação dos Clientes</span>
+                                            <span className="block text-xl font-bold tracking-wide text-gray-600 uppercase">{siteStats.countries}</span>
+                                            <span className="text-sm text-gray-400">Países</span>
                                         </div>
                                     </div>
                                 </div>
@@ -387,7 +387,7 @@ export default function ContactoClient() {
                                                             <input
                                                                 id="phone" name="phone" type="tel"
                                                                 value={form.phone} onChange={handleChange}
-                                                                placeholder="+244 900 000 000" autoComplete="tel"
+                                                                placeholder="O seu número de telefone" autoComplete="tel"
                                                                 className={inputClass("phone")}
                                                             />
                                                         </div>
@@ -557,6 +557,6 @@ export default function ContactoClient() {
                     </div>
                 </div>
             </section>
-        </main>
+        </div>
     );
 }

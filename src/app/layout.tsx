@@ -5,6 +5,8 @@ import SiteAnalytics from "@/app/components/SiteAnalytics";
 import WhatsAppButton from "@/app/components/WhatsAppButton";
 import Script from "next/script";
 import React from "react";
+import HtmlLang from "@/app/components/HtmlLang";
+import { PT_PATHS_OUTSIDE_PT } from "@/lib/i18n/routes";
 
 // Fonts are self-hosted (src/app/fonts, SIL Open Font License) rather than
 // fetched from Google at build time: Google's newer font URLs break the
@@ -27,12 +29,12 @@ const BASE_URL = "https://www.autisync.com";
 export const metadata: Metadata = {
     metadataBase: new URL(BASE_URL),
     title: {
-        default: "Autisync — Web Design, Branding & Digital Agency | Angola · UK · Portugal",
+        default: "Autisync — Web Design & Digital Agency | Angola · UK · Portugal",
         template: "%s | Autisync",
     },
     manifest: "/site.webmanifest",
     description:
-        "Autisync is a digital agency building websites, brand identities, social media and AI automation for businesses in Angola, Namibia, the UK and Portugal. Websites from Kz 495.000 / £1,490.",
+        "Websites, branding, social media and AI automation for businesses in Angola, Namibia, the UK and Portugal. Websites from Kz 495.000 / £1,490.",
     keywords: [
         "digital agency", "web development", "graphic design", "IT consulting",
         "social media management", "e-commerce", "email marketing", "AI automation",
@@ -42,10 +44,10 @@ export const metadata: Metadata = {
     authors: [{ name: "Autisync", url: BASE_URL }],
     creator: "Autisync",
     publisher: "Autisync",
+    // Index and follow are the defaults, so they are not set here: a page
+    // that says noindex (the 404 page, the questionnaire) then says only that.
     robots: {
-        index: true,
-        follow: true,
-        googleBot: { index: true, follow: true, "max-image-preview": "large" },
+        googleBot: { "max-image-preview": "large" },
     },
     openGraph: {
         type: "website",
@@ -64,17 +66,15 @@ export const metadata: Metadata = {
             },
         ],
     },
+    // No title or description here: each page's own Open Graph title and
+    // description are used, so Portuguese pages don't inherit English ones.
     twitter: {
         card: "summary_large_image",
-        title: "Autisync — Creative Digital Agency",
-        description:
-            "Web development, graphic design, IT consulting & digital marketing. UK · Portugal · Namibia · Angola.",
         images: ["/og-image.png"],
         creator: "@autisync",           // update if handle differs
     },
-    alternates: {
-        canonical: BASE_URL,
-    },
+    // No canonical here: every page sets its own, and an inherited one would
+    // point any page that forgot (and the 404 page) at the home page.
     icons: {
         icon: [
             { url: "/favicon.ico" },
@@ -147,11 +147,13 @@ const orgSchema = {
         addressLocality: "Talatona, Luanda",
         addressCountry: "AO",
     },
+    // Only profiles that are live: a 404 here makes search engines and AI
+    // assistants less sure these pages are one business. Add the LinkedIn
+    // company page, Google Business Profile and Clutch listing here (and in
+    // the footer) once they exist.
     sameAs: [
         "https://www.facebook.com/autisync",
         "https://www.instagram.com/autisync__/",
-        "https://www.linkedin.com/company/autisync",
-        "https://www.behance.net/autisync",
     ],
     areaServed: [
         { "@type": "Country", name: "United Kingdom" },
@@ -168,7 +170,7 @@ const websiteSchema = {
     "@id": `${BASE_URL}/#website`,
     url: BASE_URL,
     name: "Autisync",
-    inLanguage: "en",
+    inLanguage: ["en-GB", "pt-PT", "pt-AO"],
     publisher: { "@id": `${BASE_URL}/#organization` },
 };
 
@@ -182,9 +184,19 @@ const websiteSchema = {
 const TRACK_KEY = process.env.NEXT_PUBLIC_AUTISYNC_TRACK_KEY ?? "as_8977a056d170c44dc266d420";
 const APP_URL = (process.env.NEXT_PUBLIC_AUTISYNC_APP_URL || "https://app.autisync.com").replace(/\/+$/, "");
 
+// One root layout serves both languages, and reading the path on the server
+// would make every page dynamic (no edge cache). So the HTML ships as en-GB
+// and this runs before the page paints to set pt-PT / pt-AO on Portuguese
+// pages; the same rule (htmlLangFor) sends a Content-Language header from
+// next.config.ts, and <HtmlLang /> keeps it right on client navigation.
+const langScript = `(function(){try{var p=location.pathname.replace(/\\/+$/,"")||"/";var o=${JSON.stringify(PT_PATHS_OUTSIDE_PT)};var l=(p==="/pt/angola"||p.indexOf("/pt/angola/")===0)?"pt-AO":(p==="/pt"||p.indexOf("/pt/")===0||o.indexOf(p)>-1)?"pt-PT":"";if(l)document.documentElement.lang=l}catch(e){}})();`;
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <html lang="en">
+        <html lang="en-GB" suppressHydrationWarning>
+        <head>
+            <script dangerouslySetInnerHTML={{ __html: langScript }} />
+        </head>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <script
             type="application/ld+json"
@@ -196,7 +208,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
         {/* Vercel Web Analytics: off for Do Not Track, GPC and the privacy policy's switch. */}
         <SiteAnalytics />
-        {TRACK_KEY ? <Script src={`${APP_URL}/t.js`} data-site={TRACK_KEY} strategy="afterInteractive" /> : null}
+        {TRACK_KEY ? <Script src={`${APP_URL}/t.js`} data-site={TRACK_KEY} strategy="lazyOnload" /> : null}
+        <HtmlLang />
         {children}
         {/* "Chat on WhatsApp" on every page, with the page's marker (lib/whatsapp.ts). */}
         <WhatsAppButton />

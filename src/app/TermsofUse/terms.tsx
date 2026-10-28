@@ -260,7 +260,7 @@ export default function TermsOfUsePage({ lang = "en" }: { lang?: "en" | "pt" }) 
                     className="absolute inset-0 bg-center bg-cover opacity-30"
                     style={{
                         backgroundImage:
-                            "url('https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')",
+                            "url('https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop')",
                     }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/80 to-black/95" />

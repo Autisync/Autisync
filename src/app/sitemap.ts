@@ -1,18 +1,24 @@
 import type { MetadataRoute } from "next";
 import { EN_TO_PT } from "@/lib/i18n/routes";
 import { INDUSTRY_PAGES } from "./(main)/crm/industries";
+import LASTMOD from "@/lib/lastmod.json";
 
 const BASE_URL = "https://www.autisync.com";
 
-// When the pages last really changed. A lastmod of "now" on every request
-// tells Google nothing, so it learns to ignore it; a real date gets pages
-// recrawled when they change. Bump it when the site's content changes.
-const UPDATED = new Date("2026-10-27");
+// When each page last really changed, from git (scripts/lastmod.mjs writes
+// lib/lastmod.json). A lastmod of "now", or one date on every page, tells
+// Google nothing, so it learns to ignore it. UPDATED is the fallback for a
+// page the script hasn't seen yet.
+const UPDATED = new Date("2026-10-28");
+const lastmodFor = (url: string) => {
+    const d = (LASTMOD as Record<string, string>)[url.replace(BASE_URL, "") || "/"];
+    return d ? new Date(d) : UPDATED;
+};
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const now = UPDATED;
 
-    return [
+    const entries: MetadataRoute.Sitemap = [
         {
             url: BASE_URL,
             lastModified: now,
@@ -208,13 +214,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.9,
             alternates: { languages: { en: `${BASE_URL}/clinics`, pt: `${BASE_URL}/pt/clinicas` } },
         })),
-        // Country landing pages (searches like "criação de sites Angola").
-        {
-            url: `${BASE_URL}/pt/angola`,
+        // Country landing pages. /angola and /pt/angola are language twins.
+        ...["/angola", "/pt/angola"].map((path) => ({
+            url: `${BASE_URL}${path}`,
             lastModified: now,
-            changeFrequency: "monthly",
-            priority: 0.9,
-        },
+            alternates: { languages: { en: `${BASE_URL}/angola`, pt: `${BASE_URL}/pt/angola` } },
+        })),
+        { url: `${BASE_URL}/web-design-uk`, lastModified: now },
+        { url: `${BASE_URL}/pt/portugal`, lastModified: now },
         {
             url: `${BASE_URL}/namibia`,
             lastModified: now,
@@ -245,4 +252,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             alternates: { languages: { en: `${BASE_URL}/legal/data-deletion`, pt: `${BASE_URL}${EN_TO_PT["/legal/data-deletion"]}` } },
         },
     ];
+    // Google ignores changefreq and priority, so they are left out; lastmod
+    // is each page's own date.
+    return entries.map(({ changeFrequency: _c, priority: _p, ...e }) => ({ ...e, lastModified: lastmodFor(e.url) }));
 }

@@ -7,7 +7,7 @@ const from = formatPrice(websiteTiers[0].price.NAD, "NAD");
 
 export const metadata: Metadata = {
     title: "Website Design in Namibia (Windhoek)",
-    description: `Professional website design for Namibian businesses, with your .na or .com domain, hosting and business email included for the first year. Prices in Namibian dollars from ${from}.`,
+    description: `Website design in Namibia from ${from}, with your .na or .com domain, hosting and business email included for the first year.`,
     alternates: { canonical: URL },
     openGraph: {
         title: "Website Design in Namibia — Autisync",

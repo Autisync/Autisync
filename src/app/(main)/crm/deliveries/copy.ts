@@ -9,8 +9,8 @@ export type DeliveriesLocale = "en" | "pt";
 export const DELIVERIES = {
     en: {
         slug: "deliveries", otherSlug: "entregas",
-        metaTitle: "Delivery Management Software for Merchants and Couriers | Autisync",
-        metaDesc: "Office board with a live map, a driver app with proof of delivery, live tracking links for customers and invoices sent at the drop. From £99 a month for 3 drivers, not per driver. Try the live demo.",
+        metaTitle: "Delivery Management Software for Merchants & Couriers | Autisync",
+        metaDesc: "From £99 a month for 3 drivers: a live map for the office, a driver app with proof of delivery, tracking links for customers and invoices at the drop.",
         keywords: ["delivery management software UK", "proof of delivery app", "driver app for deliveries", "delivery tracking for customers", "builders merchant delivery software", "courier software small business", "Track-POD alternative", "Onfleet alternative"],
         crumb: "Deliveries & logistics",
         pill: "For builders' merchants, wholesalers and couriers",
@@ -74,8 +74,8 @@ export const DELIVERIES = {
     },
     pt: {
         slug: "entregas", otherSlug: "deliveries",
-        metaTitle: "Software de Gestão de Entregas para Armazéns e Estafetas | Autisync",
-        metaDesc: "Quadro do escritório com mapa em direto, app do motorista com prova de entrega, link de seguimento para o cliente e fatura enviada na entrega. Desde 115 € por mês com 3 motoristas, não por motorista. Experimente a demonstração.",
+        metaTitle: "Software de Gestão de Entregas para Armazéns | Autisync",
+        metaDesc: "Desde 115 € por mês com 3 motoristas: mapa em direto, app do motorista com prova de entrega, seguimento para o cliente e fatura na entrega.",
         keywords: ["software de gestão de entregas", "prova de entrega", "app para motoristas", "seguimento de entregas", "software para armazém de materiais de construção", "software para estafetas", "alternativa ao Track-POD"],
         crumb: "Entregas e logística",
         pill: "Para armazéns de materiais, distribuidores e estafetas",

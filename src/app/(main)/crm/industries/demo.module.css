@@ -118,14 +118,14 @@
   font-weight: 600;
   color: var(--gold);
 }
-.caption h3 {
+.caption .capTitle {
   margin: 6px 0 0;
   font-size: 22px;
   line-height: 1.25;
   font-weight: 700;
   color: #1f2937;
 }
-.caption p {
+.caption .capText {
   margin: 8px 0 0;
   font-size: 16px;
   line-height: 1.6;

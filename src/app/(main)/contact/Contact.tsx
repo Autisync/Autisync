@@ -170,7 +170,7 @@ export default function Contact() {
     const labelClass = "block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-1";
 
     return (
-        <main>
+        <div>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
@@ -210,7 +210,7 @@ export default function Contact() {
                                     Get in touch with us.
                                 </h1>
                                 <p className="mt-4 text-lg text-gray-200">
-                                    Need finding the right fit for your business? - We are here to
+                                    Looking for the right fit for your business? We are here to
                                     help. If you need a solution to a specific challenge, or just
                                     want to know more about what we offer, get in touch with the
                                     right people at Autisync.
@@ -247,7 +247,7 @@ export default function Contact() {
                                 <div className="flex justify-center w-full px-4 lg:w-3/12 lg:order-2">
                                     <div className="relative">
                                         <img
-                                            alt="Autisync team"
+                                            alt=""
                                             src="/img/team-2-800x800.jpg"
                                             className="absolute h-auto -m-16 -ml-20 align-middle border-none rounded-full shadow-xl lg:-ml-16 max-w-150-px"
                                         />
@@ -268,16 +268,16 @@ export default function Contact() {
                                 <div className="w-full px-4 lg:w-4/12 lg:order-1">
                                     <div className="flex justify-center py-0 pt-8 lg:pt-4">
                                         <div className="p-3 mr-4 text-center">
-                                            <span className="block text-xl font-bold tracking-wide text-gray-600 uppercase">239</span>
-                                            <span className="text-sm text-gray-400">Queries</span>
+                                            <span className="block text-xl font-bold tracking-wide text-gray-600 uppercase">{siteStats.projects}+</span>
+                                            <span className="text-sm text-gray-400">Projects</span>
                                         </div>
                                         <div className="p-3 mr-4 text-center">
                                             <span className="block text-xl font-bold tracking-wide text-gray-600 uppercase">2</span>
                                             <span className="text-sm text-gray-400">Support Line</span>
                                         </div>
                                         <div className="p-3 text-center lg:mr-4">
-                                            <span className="block text-xl font-bold tracking-wide text-gray-600 uppercase">{siteStats.satisfaction}%</span>
-                                            <span className="text-sm text-gray-400">Customer Satisfaction</span>
+                                            <span className="block text-xl font-bold tracking-wide text-gray-600 uppercase">{siteStats.countries}</span>
+                                            <span className="text-sm text-gray-400">Countries</span>
                                         </div>
                                     </div>
                                 </div>
@@ -378,7 +378,7 @@ export default function Contact() {
                                                             <input
                                                                 id="phone" name="phone" type="tel"
                                                                 value={form.phone} onChange={handleChange}
-                                                                placeholder="+44 7700 000000" autoComplete="tel"
+                                                                placeholder="Your phone number" autoComplete="tel"
                                                                 className={inputClass("phone")}
                                                             />
                                                         </div>
@@ -548,6 +548,6 @@ export default function Contact() {
                     </div>
                 </div>
             </section>
-        </main>
+        </div>
     );
 }

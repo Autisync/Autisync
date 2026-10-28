@@ -19,6 +19,9 @@ import { ESTATE_COPY, type EstateLocale } from "./estateCopy";
 
 type Locale = EstateLocale;
 
+/** The demo agency's website on Vercel: every listing read live from the CRM. */
+const DEMO_AGENCY_SITE = "https://miralume-demo-site.vercel.app";
+
 const T = ESTATE_COPY;
 
 const Check = () => (
@@ -63,7 +66,7 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
 
     return (
         <div className={`${s.page} ${s.light}`}>
-            <main>
+            <div>
                 <header className={s.hero}>
                     <div className={s.wrap}>
                         <div className={s.heroCopy}>
@@ -73,6 +76,9 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
                             <div className={s.ctaRow}>
                                 <a className={`${s.btn} ${s.btnGold}`} href="#prices">{t.seePrices}</a>
                                 <a className={`${s.btn} ${s.btnGhost}`} href="#book">{t.book}</a>
+                                <a className={`${s.btn} ${s.btnGhost}`} href={DEMO_AGENCY_SITE} target="_blank" rel="noopener noreferrer">
+                                    {t.heroSite} <span aria-hidden="true">↗</span>
+                                </a>
                             </div>
                             <p className={s.trust}>{t.trust}</p>
                         </div>
@@ -167,6 +173,28 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
                                     <p className={e.small}><b>{c.s}</b></p>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section className={s.section} id="website" style={{ paddingTop: 0 }}>
+                    <div className={s.wrap}>
+                        <div className={e.siteDemo}>
+                            <div>
+                                <span className={s.eyebrow}>{t.siteEyebrow}</span>
+                                <h2>{t.siteTitle}</h2>
+                                <p className={s.muted}>{t.siteSub}</p>
+                                <ul className={e.sitePoints}>
+                                    {t.sitePoints.map((pt2) => <li key={pt2}><Check />{pt2}</li>)}
+                                </ul>
+                                <a className={`${s.btn} ${s.btnGold}`} href={DEMO_AGENCY_SITE} target="_blank" rel="noopener noreferrer">
+                                    {t.siteOpen} <span aria-hidden="true">↗</span>
+                                </a>
+                            </div>
+                            <a className={e.siteShot} href={DEMO_AGENCY_SITE} target="_blank" rel="noopener noreferrer" aria-label={t.siteOpen}>
+                                <span className={e.siteBadge}><i aria-hidden="true" />{t.siteBadge}</span>
+                                <Image src="/crm/estate/properties.png" alt={pt ? "Os imóveis no CRM que alimentam o site" : "The listings in the CRM that feed the website"} width={2400} height={1400} sizes="(max-width: 900px) 100vw, 560px" />
+                            </a>
                         </div>
                     </div>
                 </section>
@@ -303,7 +331,7 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
                         </div>
                     </div>
                 </section>
-            </main>
+            </div>
 
         </div>
     );

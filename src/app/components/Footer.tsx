@@ -17,7 +17,7 @@ const FOOTER = {
       ["About Us", "/about"], ["Portfolio", "/portfolio"], ["Solutions", "/solutions/devServices"], ["Service Packages", "/servicepackage"],
       ["Autisync CRM", "/crm"], ["CRM for Estate Agents", "/crm/estate-agents"], ["Step-Inside Websites", "/websites/step-inside"], ["Clinics & Salons", "/clinics"], ["CallCatch for Trades", "https://calls.autisync.com"], ["Free Tools", "/tools"],
     ],
-    res: [["Service Questionnaire", "/ServiceQuestionaire"], ["Contact Us", "/contact"], ["Website Design in Namibia", "/namibia"], ["Websites in Angola (PT)", "/pt/angola"], ["Clinics & Salons in Portugal (PT)", "/pt/clinicas"]],
+    res: [["Service Questionnaire", "/ServiceQuestionaire"], ["Contact Us", "/contact"], ["Websites in the UK", "/web-design-uk"], ["Website Design in Angola", "/angola"], ["Website Design in Namibia", "/namibia"], ["Websites in Portugal (PT)", "/pt/portugal"]],
     privacy: "Privacy Policy", terms: "Terms of Use",
     rights: "All rights reserved.",
     trading: "Autisync is a trading name of Maheldom Consulting, Lda",
@@ -35,7 +35,7 @@ const FOOTER = {
       ["Sobre Nós", "/pt/sobre"], ["Portfólio", "/pt/portfolio"], ["Serviços", "/pt/servicos/desenvolvimento"], ["Preços e Pacotes", "/pt/precos"],
       ["CRM para Imobiliárias", "/crm/imobiliarias"], ["Clínicas e Salões", "/pt/clinicas"],
     ],
-    res: [["Questionário de Serviços", "/pt/questionario"], ["Contacto", "/pt/contacto"], ["Criação de Sites em Angola", "/pt/angola"], ["Website Design in Namibia (EN)", "/namibia"]],
+    res: [["Questionário de Serviços", "/pt/questionario"], ["Contacto", "/pt/contacto"], ["Criação de Sites em Angola", "/pt/angola"], ["Criação de Sites em Portugal", "/pt/portugal"], ["Website Design in Namibia (EN)", "/namibia"], ["Websites in the UK (EN)", "/web-design-uk"]],
     privacy: "Política de Privacidade", terms: "Termos de Utilização",
     rights: "Todos os direitos reservados.",
     trading: "Autisync é uma marca comercial da Maheldom Consulting, Lda",
@@ -96,28 +96,8 @@ const navigation = {
         </svg>
       ),
     },
-    {
-      name: "LinkedIn",
-      href: "https://www.linkedin.com/company/autisync",
-      icon: (props: React.SVGProps<SVGSVGElement>) => (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={1.6}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          {...props}
-        >
-          {/* outer circle */}
-          <circle cx="12" cy="12" r="9" />
-          {/* “in” block */}
-          <rect x="8.2" y="9.7" width="1.7" height="6" />
-          <circle cx="9" cy="7.6" r="0.9" />
-          <path d="M12 15.7v-3.5c0-.9.6-1.6 1.5-1.6 1 0 1.5.7 1.5 1.6v3.5" />
-        </svg>
-      ),
-    },
+    // LinkedIn goes back here once the company page is live (the old
+    // /company/autisync address returns 404).
     {
       name: "Behance",
       href: "https://www.behance.net/ENOV-Technologies",
@@ -152,7 +132,7 @@ export default function Footer() {
   const onBookingPage = pathname === "/book" || pathname === "/pt/marcar";
   return (
     // Room at the bottom on a phone, so the WhatsApp button never sits on the last lines.
-    <footer className="relative pt-8 pb-24 md:pb-6 bg-[#1C1C1C] text-gray-200">
+    <footer className="relative pt-8 pb-24 md:pb-20 bg-[#1C1C1C] text-gray-200">
       <CallToAction pt={pt} />
 
       {/* On every page: the free 15-minute call (bookings land in the Autisync CRM), or WhatsApp. */}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import DemoSites from "@/app/components/DemoSites";
 import Link from "next/link";
 import Promises from "@/app/components/Promises";
 import { carePlanMonthly, formatPrice, websiteTiers } from "@/lib/website-packages";
@@ -31,7 +32,7 @@ const care = eur(carePlanMonthly.EUR);
 
 const TITLE = "Marcações online e WhatsApp para clínicas e salões";
 const DESCRIPTION =
-    "Para clínicas, clínicas de estética e salões em Portugal: site, marcações online com lembretes, WhatsApp com resposta imediata, pedidos de avaliação e convites para voltar. Tudo configurado por nós, sem fidelização de 12 meses.";
+    "Para clínicas e salões em Portugal: marcações online com lembretes, WhatsApp com resposta imediata, avaliações e convites para voltar. Sem fidelização.";
 
 export const metadata: Metadata = {
     title: TITLE,
@@ -111,7 +112,7 @@ const jsonLd = [
         "@type": "Service",
         name: "Autisync para clínicas e salões",
         serviceType: "Site, marcações online e CRM com WhatsApp para clínicas e salões",
-        provider: { "@type": "Organization", name: "Autisync", url: "https://www.autisync.com" },
+        provider: { "@id": "https://www.autisync.com/#organization" },
         areaServed: { "@type": "Country", name: "Portugal" },
         audience: { "@type": "BusinessAudience", name: "Clínicas, clínicas de estética e salões" },
         url: URL,
@@ -176,6 +177,8 @@ export default function ClinicasPage() {
             </section>
 
             {/* Use cases, played one by one */}
+            <DemoSites lang="pt" />
+
             <section aria-labelledby="clinicas-casos" className="py-20 bg-gray-50">
                 <div className="px-6 mx-auto max-w-6xl lg:px-8">
                     <p className="text-sm font-semibold text-[#B28228]">Casos de uso</p>

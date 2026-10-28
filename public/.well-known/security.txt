@@ -1,0 +1,5 @@
+# Report a security problem with autisync.com or the Autisync CRM.
+Contact: mailto:info@autisync.com
+Expires: 2027-10-28T00:00:00.000Z
+Preferred-Languages: en, pt
+Canonical: https://www.autisync.com/.well-known/security.txt

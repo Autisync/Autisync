@@ -29,7 +29,7 @@ export default function CallToAction() {
               <div className="inline-flex items-center justify-center w-12 h-12 p-3 text-gray-800 bg-white rounded-full shadow-lg animate-pulse">
                 <i className="text-xl fas fa-cogs"></i>
               </div>
-              <h6 className="mt-5 text-xl font-semibold text-white">Automation Ready</h6>
+              <h3 className="mt-5 text-xl font-semibold text-white">Automation Ready</h3>
               <p className="mt-2 mb-4 text-gray-400">
                 We integrate backend systems and AI tools to streamline your operations.
               </p>
@@ -40,7 +40,7 @@ export default function CallToAction() {
               <div className="inline-flex items-center justify-center w-12 h-12 p-3 text-gray-800 bg-yellow-300 rounded-full shadow-lg animate-pulse">
                 <i className="text-xl fas fa-bolt"></i>
               </div>
-              <h5 className="mt-5 text-xl font-semibold text-white">Scalable Growth</h5>
+              <h3 className="mt-5 text-xl font-semibold text-white">Scalable Growth</h3>
               <p className="mt-2 mb-4 text-gray-400">
                 From startup to enterprise, we tailor solutions that grow with you.
               </p>
@@ -51,7 +51,7 @@ export default function CallToAction() {
               <div className="inline-flex items-center justify-center w-12 h-12 p-3 text-white bg-[var(--autisync-gold,#b98b2f)] rounded-full shadow-lg animate-pulse">
                 <i className="text-xl fas fa-chart-line"></i>
               </div>
-              <h5 className="mt-5 text-xl font-semibold text-white">Results Driven</h5>
+              <h3 className="mt-5 text-xl font-semibold text-white">Results Driven</h3>
               <p className="mt-2 mb-4 text-gray-400">
                 We focus on ROI, lead generation, and performance tracking.
               </p>
@@ -67,7 +67,7 @@ export default function CallToAction() {
             <div className="w-full px-4 lg:w-6/12">
               <div className="relative flex flex-col w-full min-w-0 mb-6 break-words bg-white rounded-lg shadow-lg">
                 <div className="flex-auto p-5 lg:p-10">
-                  <h4 className="text-2xl font-semibold text-gray-800">Want to work with us?</h4>
+                  <h3 className="text-2xl font-semibold text-gray-800">Want to work with us?</h3>
                   <p className="mt-1 mb-4 text-gray-600">
                     Complete this form and we’ll be in touch within 24 hours. Or{" "}
                     <a

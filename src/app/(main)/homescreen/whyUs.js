@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { localHref } from "@/lib/i18n/routes";
 
 /* ===========================================================
@@ -115,20 +116,29 @@ export default function WhyUs({ lang = "en" } = {}) {
           {/* ====================== IMAGE COLLAGE ====================== */}
           <div className="w-full px-4 mt-20 ml-auto mr-auto md:w-6/12">
             <div className="relative flex flex-wrap justify-center gap-4">
-              <img
-                alt={t("Automate Business", "Automatizar o negócio")}
-                className="w-full md:w-5/12 rounded-lg shadow-xl transition-transform duration-300 hover:scale-[1.02]"
-                src="https://images.pexels.com/photos/2422278/pexels-photo-2422278.jpeg"
+              <Image
+                alt={t("A laptop showing code on a desk", "Um portátil com código numa secretária")}
+                className="w-full md:w-5/12 h-auto rounded-lg shadow-xl transition-transform duration-300 hover:scale-[1.02]"
+                src="https://images.pexels.com/photos/2422278/pexels-photo-2422278.jpeg?auto=compress&cs=tinysrgb&w=800"
+                width={800}
+                height={533}
+                sizes="(min-width: 768px) 22vw, 100vw"
               />
-              <img
-                alt={t("Team Planning", "Planeamento em equipa")}
-                className="w-full md:w-5/12 rounded-lg shadow-xl transition-transform duration-300 hover:scale-[1.02]"
-                src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg"
+              <Image
+                alt={t("A team planning a project around a table", "Uma equipa a planear um projeto à volta de uma mesa")}
+                className="w-full md:w-5/12 h-auto rounded-lg shadow-xl transition-transform duration-300 hover:scale-[1.02]"
+                src="https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=800"
+                width={800}
+                height={533}
+                sizes="(min-width: 768px) 22vw, 100vw"
               />
-              <img
-                alt={t("Office Launch", "Lançamento de um projeto")}
-                className="w-full md:w-10/12 rounded-lg shadow-xl transition-transform duration-300 hover:scale-[1.02]"
-                src="https://images.pexels.com/photos/34521/space-shuttle-lift-off-liftoff-nasa.jpg"
+              <Image
+                alt={t("A rocket lifting off, for a project launch", "Um foguetão a descolar, para o lançamento de um projeto")}
+                className="w-full md:w-10/12 h-auto rounded-lg shadow-xl transition-transform duration-300 hover:scale-[1.02]"
+                src="https://images.pexels.com/photos/34521/space-shuttle-lift-off-liftoff-nasa.jpg?auto=compress&cs=tinysrgb&w=1200"
+                width={1200}
+                height={800}
+                sizes="(min-width: 768px) 45vw, 100vw"
               />
             </div>
           </div>
@@ -139,12 +149,12 @@ export default function WhyUs({ lang = "en" } = {}) {
               {/* TOP BADGE */}
               <RocketBadge className="mb-6" />
 
-              <h3 className="text-3xl font-semibold text-gray-800">
+              <h2 className="text-3xl font-semibold text-gray-800">
                 {t("Why Businesses Choose", "Porque é que as empresas escolhem a")}{" "}
                 <span className="font-bold text-[var(--autisync-gold,#b98b2f)]">
                   AUTISYNC
                 </span>
-              </h3>
+              </h2>
 
               {/* Bullet List */}
               <ul className="mt-6 space-y-4">

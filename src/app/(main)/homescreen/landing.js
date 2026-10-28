@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { HeroMarketLine } from "@/app/components/MarketCopy";
 import { localHref } from "@/lib/i18n/routes";
 import { waLink } from "@/lib/whatsapp";
@@ -206,13 +207,20 @@ export default function Landing({ lang = "en" } = {}) {
     <>
       {/* Service info */}
       <div className="relative flex items-center content-center justify-center py-48 pb-32 min-h-screen-75">
-        <div
-          className="absolute top-0 w-full h-full bg-center bg-cover"
-          style={{
-            backgroundImage:
-              "url('https://images.pexels.com/photos/3782235/pexels-photo-3782235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')",
-          }}
-        >
+        {/* The hero photo is the page's largest paint: a real image (not a CSS
+            background) so the browser finds it at once, with priority, served
+            by next/image as AVIF/WebP at the visitor's screen width. It sits
+            under a 75% black overlay, so a lower quality costs nothing. */}
+        <div className="absolute top-0 w-full h-full overflow-hidden">
+          <Image
+            src="https://images.pexels.com/photos/3782235/pexels-photo-3782235.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            quality={55}
+            className="object-cover object-center"
+          />
           <span
             id="blackOverlay"
             className="absolute w-full h-full bg-black opacity-75"
@@ -224,13 +232,13 @@ export default function Landing({ lang = "en" } = {}) {
           <div className="flex flex-wrap items-center">
             <div className="w-full px-4 ml-auto mr-auto text-center lg:w-8/12">
               <div className="p-2">
-                <h1 className="pb-4 text-5xl font-semibold text-white">
-                  {t("We Systemize Your Success.", "Sistematizamos o seu sucesso.")}
+                <h1 className="pb-4 text-4xl font-semibold text-white sm:text-5xl text-balance">
+                  {t("Websites, branding and automation that bring you clients", "Websites, marca e automação que lhe trazem clientes")}
                 </h1>
                 <p className="font-thin text-gray-200">
                   {t(
-                    "From branding to backend - we automate your journey.",
-                    "Da marca aos sistemas — automatizamos todo o seu percurso."
+                    "We systemise your success: from branding to backend, fixed prices, built and run for you.",
+                    "Sistematizamos o seu sucesso: da marca aos sistemas, com preços fixos, feito e gerido por nós."
                   )}
                 </p>
                 <HeroMarketLine />
@@ -245,8 +253,9 @@ export default function Landing({ lang = "en" } = {}) {
       </div>
 
       {/* Services  and 2nd section*/}
-      <section className="pb-20 -mt-24 bg-gray-100">
+      <section className="pb-20 -mt-24 bg-gray-100" aria-labelledby="what-we-do">
         <div className="container px-4 mx-auto">
+          <h2 id="what-we-do" className="sr-only">{t("What we do", "O que fazemos")}</h2>
           {/* Services */}
           <div className="flex flex-wrap">
             {/* Marketing (TOP – black circle, gold icon) */}
@@ -256,12 +265,12 @@ export default function Landing({ lang = "en" } = {}) {
                   <ServiceIcon3D gradient="from-[#1C1C1C] via-[#2a2a2a] to-[#000000]">
                     <MarketingSeoIcon className="w-5 h-5 text-[var(--autisync-gold,#b98b2f)]" />
                   </ServiceIcon3D>
-                  <h6 className="text-xl font-semibold text-gray-800">
+                  <h3 className="text-xl font-semibold text-gray-800">
                     {t("Marketing & SEO", "Marketing e SEO")}
-                  </h6>
+                  </h3>
                   <p className="mt-2 mb-4 text-gray-500">
                     {t(
-                      "Your virtual visual, including social media management needs to achieve the goal of increasing customer satisfaction and brand awareness to target audience.",
+                      "Social media management, search optimisation and campaigns that put your brand in front of the right people and bring in enquiries.",
                       "A sua imagem digital, incluindo a gestão das redes sociais, pensada para aumentar a satisfação dos clientes e dar a conhecer a sua marca ao público certo."
                     )}
                   </p>
@@ -276,12 +285,12 @@ export default function Landing({ lang = "en" } = {}) {
                   <ServiceIcon3D gradient="from-[#1C1C1C] via-[#2a2a2a] to-[#000000]">
                     <WebDevIcon className="w-5 h-5 text-[var(--autisync-gold,#b98b2f)]" />
                   </ServiceIcon3D>
-                  <h6 className="text-xl font-semibold text-gray-800">
+                  <h3 className="text-xl font-semibold text-gray-800">
                     {t("Web Development", "Desenvolvimento Web")}
-                  </h6>
+                  </h3>
                   <p className="mt-2 mb-4 text-gray-500">
                     {t(
-                      "It is clear that websites play a major role in the success of business marketing and operations. Start customizing, developing your website and take advantage of your success in being more visible to your potential clients.",
+                      "Your website is often the first place a client meets your business. We design and build fast, mobile-ready sites that make you easy to find and easy to contact.",
                       "Um bom website é peça-chave no marketing e no dia a dia de qualquer empresa. Crie um site à medida e torne a sua empresa mais visível para os seus potenciais clientes."
                     )}
                   </p>
@@ -296,9 +305,9 @@ export default function Landing({ lang = "en" } = {}) {
                   <ServiceIcon3D gradient="from-[#1C1C1C] via-[#2a2a2a] to-[#000000]">
                     <ITSupportIcon className="w-5 h-5 text-[var(--autisync-gold,#b98b2f)]" />
                   </ServiceIcon3D>
-                  <h6 className="text-xl font-semibold text-gray-800">
+                  <h3 className="text-xl font-semibold text-gray-800">
                     {t("IT Consulting & Systems", "Consultoria e Sistemas de TI")}
-                  </h6>
+                  </h3>
                   <p className="mt-2 mb-4 text-gray-500">
                     {t(
                       "We help you assess technology options and line them up with how your business actually works, so every system you pay for supports your goals.",
@@ -316,12 +325,12 @@ export default function Landing({ lang = "en" } = {}) {
                   <ServiceIcon3D gradient="from-[#b98b2f] via-[#d1a94c] to-[#7a5a1d]">
                     <UiUxIcon className="w-5 h-5 text-gray-900" />
                   </ServiceIcon3D>
-                  <h6 className="text-xl font-semibold text-gray-800">
+                  <h3 className="text-xl font-semibold text-gray-800">
                     {t("UI/UX Design", "Design UI/UX")}
-                  </h6>
+                  </h3>
                   <p className="mt-2 mb-4 text-gray-500">
                     {t(
-                      "User Interface and User Experience (UI/UX) design – our designers build interfaces in software or computerized devices, focusing on looks or style.",
+                      "Interface and user experience design: our designers lay out apps and software so they look right and are easy to use.",
                       "Design de interface e de experiência do utilizador (UI/UX) – os nossos designers criam interfaces para software e dispositivos, com atenção ao aspeto e ao estilo."
                     )}
                   </p>
@@ -336,12 +345,12 @@ export default function Landing({ lang = "en" } = {}) {
                   <ServiceIcon3D gradient="from-[#b98b2f] via-[#d1a94c] to-[#7a5a1d]">
                     <GraphicIcon className="w-5 h-5 text-gray-900" />
                   </ServiceIcon3D>
-                  <h6 className="text-xl font-semibold text-gray-800">
+                  <h3 className="text-xl font-semibold text-gray-800">
                     {t("Graphic Design", "Design Gráfico")}
-                  </h6>
+                  </h3>
                   <p className="mt-2 mb-4 text-gray-500">
                     {t(
-                      "Great Graphic Design allows you to make a positive first impression on those looking on.",
+                      "Logos, brand identities, print and social graphics that make a strong first impression.",
                       "Um bom design gráfico garante que a sua marca causa uma primeira impressão positiva em quem a vê."
                     )}
                   </p>
@@ -358,12 +367,12 @@ export default function Landing({ lang = "en" } = {}) {
                   </ServiceIcon3D>
                 </div>
                 <div className="flex-auto px-4 pb-5">
-                  <h6 className="text-xl font-semibold text-gray-800">
+                  <h3 className="text-xl font-semibold text-gray-800">
                     {t("Software / App Development", "Desenvolvimento de Software / Apps")}
-                  </h6>
+                  </h3>
                   <p className="mt-2 mb-4 text-gray-500">
                     {t(
-                      "Write a few lines about each one. A paragraph describing a feature will be enough. Keep your user engaged!",
+                      "Mobile apps and custom software, connected to the systems you already use, to make work simpler for your team and your clients.",
                       "Aplicações móveis e software à medida, ligados aos sistemas que já usa, para simplificar o trabalho da sua equipa e dos seus clientes."
                     )}
                   </p>
@@ -379,9 +388,9 @@ export default function Landing({ lang = "en" } = {}) {
               <ServiceIcon3D gradient="from-[#1C1C1C] via-[#2a2a2a] to-[#000000]">
                 <WhoWeAreIcon className="w-6 h-6 text-[var(--autisync-gold,#b98b2f)]" />
               </ServiceIcon3D>
-              <h3 className="mb-2 text-3xl font-semibold leading-normal text-gray-800 transition-colors duration-200 group-hover:text-gray-900">
+              <h2 className="mb-2 text-3xl font-semibold leading-normal text-gray-800 transition-colors duration-200 group-hover:text-gray-900">
                 {t("Who Are We?", "Quem Somos?")}
-              </h3>
+              </h2>
               <p className="mt-4 mb-4 leading-relaxed text-gray-600">
                 {t(
                   "At Autisync, we transform businesses through intelligent automation, premium digital experiences, and seamless technology systems. We turn complex problems into simple, scalable solutions — helping brands save time, increase efficiency, and grow faster.",
@@ -412,10 +421,13 @@ export default function Landing({ lang = "en" } = {}) {
                   group-hover:-translate-y-2 group-hover:shadow-[0_20px_45px_rgba(0,0,0,0.25)]/10
                 "
               >
-                <img
-                  alt={t("Seamless services", "Serviços sem interrupções")}
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
-                  className="w-full align-middle rounded-t-lg"
+                <Image
+                  alt={t("A team working together at a laptop", "Uma equipa a trabalhar em conjunto num portátil")}
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1051&q=80"
+                  width={1051}
+                  height={700}
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="w-full h-auto align-middle rounded-t-lg"
                 />
                 <blockquote className="relative p-8 mb-4">
                   <svg
@@ -426,9 +438,9 @@ export default function Landing({ lang = "en" } = {}) {
                   >
                     <polygon className="text-gray-800 fill-current"></polygon>
                   </svg>
-                  <h4 className="text-xl font-bold text-gray-600">
+                  <h3 className="text-xl font-bold text-gray-600">
                     {t("Seamless Services", "Serviços Sem Interrupções")}
-                  </h4>
+                  </h3>
                   <p className="mt-2 font-light text-gray-600 text-md">
                     {t(
                       "Ongoing maintenance and care so your daily work and long-term projects keep running smoothly.",

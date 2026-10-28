@@ -6,7 +6,7 @@ import s from "@/app/(main)/crm/crm.module.css";
 import f from "@/app/components/funnel.module.css";
 
 const URL = "https://www.autisync.com/tools/website-cost";
-const TITLE = "How much does a website cost in the UK? Free small business estimator";
+const TITLE = "Website cost in the UK: free small business estimator";
 const DESCRIPTION =
     "Pick your pages and features and see what a small business website costs with Autisync, including domain, hosting and what you pay from year two.";
 
@@ -33,7 +33,7 @@ const FAQ = [
 const schema = {
     "@context": "https://schema.org",
     "@graph": [
-        { "@type": "WebApplication", name: "Website cost estimator (UK)", url: URL, applicationCategory: "BusinessApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: 0, priceCurrency: "GBP" }, provider: { "@type": "Organization", name: "Autisync", url: "https://www.autisync.com" } },
+        { "@type": "WebApplication", name: "Website cost estimator (UK)", url: URL, applicationCategory: "BusinessApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: 0, priceCurrency: "GBP" }, provider: { "@id": "https://www.autisync.com/#organization" } },
         faqSchema(FAQ),
     ],
 };

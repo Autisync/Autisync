@@ -64,7 +64,7 @@ export default function IndustryCrm({ copy, locale }: { copy: IndustryCopy; loca
 
     return (
         <div className={`${s.page} ${s.light}`}>
-            <main>
+            <div>
                 <header className={s.hero}>
                     <div className={s.wrap}>
                         <div className={s.heroCopy}>
@@ -74,6 +74,9 @@ export default function IndustryCrm({ copy, locale }: { copy: IndustryCopy; loca
                             <div className={s.ctaRow}>
                                 <a className={`${s.btn} ${s.btnGold}`} href="#how">{L.watch}</a>
                                 <a className={`${s.btn} ${s.btnGhost}`} href="#prices">{L.seePrices}</a>
+                                <a className={`${s.btn} ${s.btnGhost} ${x.siteHeroBtn}`} href={demoSiteUrl(copy.id)} target="_blank" rel="noopener noreferrer">
+                                    {L.heroSite} <span aria-hidden="true">↗</span>
+                                </a>
                             </div>
                             <p className={s.trust}>{copy.trust}</p>
                         </div>
@@ -112,16 +115,19 @@ export default function IndustryCrm({ copy, locale }: { copy: IndustryCopy; loca
                             <h2>{L.siteTitle}</h2>
                             <p className={s.muted}>{L.siteSub}</p>
                         </div>
-                        <div className={x.site}>
+                        <a className={x.site} href={demoSiteUrl(copy.id)} target="_blank" rel="noopener noreferrer" aria-label={L.siteOpenNamed(copy.demoName)}>
+                            <span className={x.siteBadge}><i aria-hidden="true" />{L.siteBadge}</span>
                             <figure className={x.siteLaptop}>
                                 <Image src={`/crm/industries/${copy.id}/site.webp`} alt={L.siteAlt(copy.demoName)} width={1800} height={1125} sizes="(max-width: 960px) 75vw, 800px" />
                             </figure>
                             <figure className={x.sitePhone}>
                                 <Image src={`/crm/industries/${copy.id}/site-phone.webp`} alt={L.sitePhoneAlt(copy.demoName)} width={585} height={1266} sizes="220px" />
                             </figure>
-                        </div>
+                        </a>
                         <div className={x.siteCta}>
-                            <a className={`${s.btn} ${s.btnGhost}`} href={demoSiteUrl(copy.id)} target="_blank" rel="noopener noreferrer">{L.siteOpen}</a>
+                            <a className={`${s.btn} ${s.btnGold} ${x.siteCtaBig}`} href={demoSiteUrl(copy.id)} target="_blank" rel="noopener noreferrer">
+                                {L.siteOpenNamed(copy.demoName)} <span aria-hidden="true">↗</span>
+                            </a>
                         </div>
                     </div>
                 </section>
@@ -283,7 +289,7 @@ export default function IndustryCrm({ copy, locale }: { copy: IndustryCopy; loca
                         </div>
                     </div>
                 </section>
-            </main>
+            </div>
 
         </div>
     );

@@ -1,3 +1,4 @@
+import BreadcrumbSchema from "@/app/components/BreadcrumbSchema";
 import type { Metadata } from "next";
 import { alternatesFor } from "@/lib/i18n/routes";
 import GraphicPage from "./graphicPage";
@@ -16,5 +17,10 @@ export const metadata: Metadata = {
 };
 
 export default function Graphic() {
-    return <GraphicPage />;
+    return (
+        <>
+            <BreadcrumbSchema items={[{ name: "Home", path: "/" }, { name: "Services", path: "/servicepackage" }, { name: "Graphic Design", path: "/solutions/graphicDesign" }]} />
+            <GraphicPage />
+        </>
+    );
 }

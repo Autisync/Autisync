@@ -4,7 +4,7 @@ import ServicePackages from "./ServicePackages"; // or whatever your current com
 export const metadata: Metadata = {
   title: "Prices: Websites, Branding, Social Media and CRM",
   description:
-      "Autisync packages with clear prices: websites from Kz 495.000 / £1,490, branding from Kz 180.000 / £490, social media management from Kz 150.000 / £450 a month, the Brand & Website Launch bundle, and the Autisync CRM from £29 a month plus setup, priced by type of business.",
+      "Websites from £1,490 / Kz 495.000, branding from £490, social media from £450 a month and the Autisync CRM from £29 a month. Clear, fixed prices.",
   alternates: {
     canonical: "https://www.autisync.com/servicepackage",
     languages: {

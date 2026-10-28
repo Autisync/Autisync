@@ -10,7 +10,7 @@ const EN_URL = "https://www.autisync.com/tools/website-cost";
 const URL = "https://www.autisync.com/pt/ferramentas/custo-website";
 const TITLE = "Quanto custa um website? Simulador grátis para pequenas empresas";
 const DESCRIPTION =
-    "Escolha as páginas e funcionalidades e veja quanto custa o website da sua empresa com a Autisync, incluindo domínio, alojamento e o que paga a partir do segundo ano.";
+    "Escolha páginas e funcionalidades e veja quanto custa o website da sua empresa, com domínio, alojamento e o custo a partir do 2.º ano.";
 
 export const metadata: Metadata = {
     title: { absolute: TITLE },
@@ -35,7 +35,7 @@ const FAQ = [
 const schema = {
     "@context": "https://schema.org",
     "@graph": [
-        { "@type": "WebApplication", name: "Simulador do custo de um website", url: URL, inLanguage: "pt", applicationCategory: "BusinessApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: 0, priceCurrency: "AOA" }, provider: { "@type": "Organization", name: "Autisync", url: "https://www.autisync.com" } },
+        { "@type": "WebApplication", name: "Simulador do custo de um website", url: URL, inLanguage: "pt", applicationCategory: "BusinessApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: 0, priceCurrency: "AOA" }, provider: { "@id": "https://www.autisync.com/#organization" } },
         { ...faqSchema(FAQ), inLanguage: "pt" },
     ],
 };

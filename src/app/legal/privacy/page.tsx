@@ -4,7 +4,7 @@ import LegalDocument, { type LegalSection } from "../LegalDocument";
 export const metadata: Metadata = {
     title: "Autisync CRM Privacy Policy",
     description:
-        "How Autisync CRM handles the messages, contacts and files that pass through it from WhatsApp, Facebook Messenger, Instagram, email and website forms, and the calendar data of a connected Google account.",
+        "How Autisync CRM handles messages, contacts and files from WhatsApp, Messenger, Instagram, email and web forms, and connected Google calendars.",
     alternates: {
         canonical: "https://www.autisync.com/legal/privacy",
         languages: { en: "https://www.autisync.com/legal/privacy", pt: "https://www.autisync.com/pt/legal/privacidade", "x-default": "https://www.autisync.com/legal/privacy" },

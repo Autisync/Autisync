@@ -333,9 +333,9 @@ const stats = [
         icon: <ProjectsIcon className="w-5 h-5 text-gray-900" />,
     },
     {
-        value: siteStats.satisfaction,
-        suffix: "%",
-        label: "Client Satisfaction",
+        value: siteStats.clients,
+        suffix: "+",
+        label: "Clients",
         icon: <SatisfactionIcon className="w-5 h-5 text-gray-900" />,
     },
     {
@@ -432,9 +432,9 @@ export default function AboutPage() {
                                 <BookIcon className="w-6 h-6 text-[var(--autisync-gold,#B98B2F)]" />
                             </ServiceIcon3D>
 
-                            <h3 className="mb-2 text-3xl font-semibold leading-normal text-gray-800 transition-colors duration-200 group-hover:text-gray-900">
+                            <h2 className="mb-2 text-3xl font-semibold leading-normal text-gray-800 transition-colors duration-200 group-hover:text-gray-900">
                                 Our Story
-                            </h3>
+                            </h2>
                             <p className="mt-4 mb-4 leading-relaxed text-gray-600">
                                 Autisync emerged from a simple vision: to bridge the gap between
                                 cutting-edge technology and everyday business needs. What
@@ -458,9 +458,9 @@ export default function AboutPage() {
                                     className="w-full align-middle rounded-t-lg"
                                 />
                                 <blockquote className="relative p-8 mb-4">
-                                    <h4 className="text-xl font-bold text-gray-600">
+                                    <h3 className="text-xl font-bold text-gray-600">
                                         Innovation Meets Execution
-                                    </h4>
+                                    </h3>
                                     <p className="mt-2 font-light text-gray-600 text-md">
                                         We don&apos;t just build solutions—we craft experiences that
                                         drive measurable results and lasting impact.
@@ -479,9 +479,9 @@ export default function AboutPage() {
                         <p className="text-xs tracking-widest text-[var(--autisync-gold,#b98b2f)] font-semibold uppercase">
                             Our Numbers
                         </p>
-                        <h3 className="mt-1 text-3xl font-semibold text-gray-800">
+                        <h2 className="mt-1 text-3xl font-semibold text-gray-800">
                             Impact in Numbers
-                        </h3>
+                        </h2>
                         <p className="mt-3 text-base text-gray-600">
                             Numbers that reflect the trust our partners place in us and the
                             work we deliver across every project.
@@ -520,7 +520,7 @@ export default function AboutPage() {
                     <div className="max-w-2xl mx-auto lg:mx-0 lg:max-w-none">
                         <div className="grid max-w-xl grid-cols-1 gap-8 text-base leading-7 text-gray-600 lg:max-w-none lg:grid-cols-2">
                             <div className="transition-all duration-300 ease-out transform hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(0,0,0,0.12)]/10 bg-white rounded-xl p-6">
-                                <h4 className="font-bold text-gray-700 text-xl mb-2">Vision</h4>
+                                <h3 className="font-bold text-gray-700 text-xl mb-2">Vision</h3>
                                 <p>
                   <span className="font-medium text-[var(--autisync-gold,#b98b2f)]">
                     Design
@@ -536,9 +536,9 @@ export default function AboutPage() {
                                 </p>
                             </div>
                             <div className="transition-all duration-300 ease-out transform hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(0,0,0,0.12)]/10 bg-white rounded-xl p-6">
-                                <h4 className="font-bold text-gray-700 text-xl mb-2">
+                                <h3 className="font-bold text-gray-700 text-xl mb-2">
                                     Mission
-                                </h4>
+                                </h3>
                                 <p>
                   <span className="font-medium text-[var(--autisync-gold,#b98b2f)]">
                     Deliver greatness
@@ -585,7 +585,7 @@ export default function AboutPage() {
                                         {item.icon}
                                     </ServiceIcon3D>
 
-                                    <h6 className="text-xl text-gray-700 mb-3">{item.title}</h6>
+                                    <h3 className="text-xl text-gray-700 mb-3">{item.title}</h3>
                                     <p className="text-gray-600 px-4">{item.text}</p>
                                 </div>
                             </div>
@@ -692,9 +692,9 @@ export default function AboutPage() {
             {/*                            style={{ maxWidth: "200px" }}*/}
             {/*                        />*/}
             {/*                        <div className="pt-6 text-center">*/}
-            {/*                            <h5 className="text-xl font-semibold text-gray-900">*/}
+            {/*                            <h3 className="text-xl font-semibold text-gray-900">*/}
             {/*                                {member.name}*/}
-            {/*                            </h5>*/}
+            {/*                            </h3>*/}
             {/*                            <p className="mt-1 text-sm text-gray-500 uppercase">*/}
             {/*                                {member.role}*/}
             {/*                            </p>*/}

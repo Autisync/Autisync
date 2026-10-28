@@ -5,7 +5,7 @@ export const CONSULTANTS: IndustryPair = {
     en: {
         id: "consultants", slug: "consultants", otherSlug: "consultores", crumb: "Consultants",
         metaTitle: "CRM for Consultants: Pipeline, Proposals, Invoices | Autisync",
-        metaDesc: "CRM for consultants and advisers: discovery calls booked online, a sales pipeline, proposals accepted online, retainers invoiced monthly and every client message in one inbox. From £49 a month per business, not per user.",
+        metaDesc: "From £49 a month per business, not per user: discovery calls booked online, proposals accepted online, monthly retainers and one inbox.",
         keywords: ["CRM for consultants", "consulting CRM UK", "proposal software for consultants", "retainer invoicing", "client management for consultants", "HubSpot alternative small business", "discovery call booking"],
         pill: "For consultants, advisers and coaches",
         h1a: "More proposals signed.", h1b: "Less admin between them.",
@@ -49,7 +49,7 @@ export const CONSULTANTS: IndustryPair = {
     pt: {
         id: "consultants", slug: "consultores", otherSlug: "consultants", crumb: "Consultores",
         metaTitle: "CRM para Consultores: Funil, Propostas e Faturas | Autisync",
-        metaDesc: "CRM para consultores e assessores: chamadas de diagnóstico marcadas online, funil de vendas, propostas aceites online, avenças faturadas todos os meses e todas as mensagens dos clientes numa só caixa. Desde 55 € por mês por empresa.",
+        metaDesc: "Desde 55 € por mês por empresa: chamadas de diagnóstico marcadas online, propostas aceites online, avenças faturadas e uma só caixa de entrada.",
         keywords: ["CRM para consultores", "software de propostas", "faturação de avenças", "gestão de clientes consultoria", "CRM pequenas empresas Portugal"],
         pill: "Para consultores, assessores e coaches",
         h1a: "Mais propostas aceites.", h1b: "Menos papelada pelo meio.",

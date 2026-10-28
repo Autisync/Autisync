@@ -527,8 +527,8 @@ export default function LiveDemo({ script: S, locale }: { script: DemoScript; lo
             <div className={d.bottom}>
                 <div className={d.caption} aria-live="polite">
                     <span className={d.capStep}>{U.scene(scene + 1, SCENES.length)}</span>
-                    <h3>{cap.t}</h3>
-                    <p>{cap.d}</p>
+                    <p className={d.capTitle}>{cap.t}</p>
+                    <p className={d.capText}>{cap.d}</p>
                 </div>
                 <div className={d.controls}>
                     <button type="button" className={d.ctl} onClick={() => setPlaying((p) => !p)} aria-pressed={!playing}>

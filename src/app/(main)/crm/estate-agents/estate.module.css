@@ -271,3 +271,68 @@
 .setup b {
   color: var(--fg);
 }
+
+/* The demo agency website: text and a link to it, beside the CRM listings. */
+.siteDemo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 40px;
+  align-items: center;
+}
+.sitePoints {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 24px;
+  display: grid;
+  gap: 10px;
+}
+.sitePoints li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.sitePoints svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  stroke: #b28228;
+}
+.siteShot {
+  position: relative;
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.18);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.siteShot:hover { transform: translateY(-6px); }
+.siteShot:focus-visible { outline: 3px solid #b28228; outline-offset: 4px; }
+.siteShot img { display: block; width: 100%; height: auto; }
+.siteBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: #1c1c1c;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+.siteBadge i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+@media (max-width: 900px) {
+  .siteDemo { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .siteShot { transition: none; }
+  .siteShot:hover { transform: none; }
+}

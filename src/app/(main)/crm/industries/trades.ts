@@ -5,7 +5,7 @@ export const TRADES: IndustryPair = {
     en: {
         id: "trades", slug: "trades", otherSlug: "servicos-tecnicos", crumb: "Trades & field services",
         metaTitle: "CRM for Trades: Quotes, Jobs and Invoices | Autisync",
-        metaDesc: "CRM for plumbers, heating engineers, electricians and builders: online booking, WhatsApp in one inbox, quotes customers accept online, a jobs board and invoices with card payment. From £49 a month per business, not per user.",
+        metaDesc: "From £49 a month per business: online booking, WhatsApp in one inbox, quotes accepted online, a jobs board and invoices with card payment.",
         keywords: ["CRM for tradesmen", "plumber software UK", "job management software", "quote and invoice app for trades", "heating engineer software", "electrician CRM", "Tradify alternative", "Jobber alternative", "field service CRM UK"],
         pill: "For plumbers, heating engineers, electricians and builders",
         h1a: "Win the job.", h1b: "Get paid for it.",
@@ -49,7 +49,7 @@ export const TRADES: IndustryPair = {
     pt: {
         id: "trades", slug: "servicos-tecnicos", otherSlug: "trades", crumb: "Obras e serviços técnicos",
         metaTitle: "CRM para Serviços Técnicos: Orçamentos e Faturas | Autisync",
-        metaDesc: "CRM para canalizadores, eletricistas, técnicos de climatização e empreiteiros: marcações online, WhatsApp numa caixa de entrada, orçamentos aceites online, quadro de trabalhos e faturas com pagamento por cartão. Desde 55 € por mês por empresa.",
+        metaDesc: "Desde 55 € por mês por empresa: marcações online, WhatsApp numa caixa, orçamentos aceites online, quadro de trabalhos e faturas com cartão.",
         keywords: ["CRM para serviços técnicos", "software para canalizadores", "orçamentos e faturas para obras", "gestão de trabalhos", "software para eletricistas", "CRM para empreiteiros", "software climatização"],
         pill: "Para canalizadores, eletricistas, climatização e obras",
         h1a: "Ganhe o trabalho.", h1b: "Receba por ele.",

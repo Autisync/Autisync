@@ -5,7 +5,7 @@ import s from "@/app/(main)/crm/crm.module.css";
 import f from "@/app/components/funnel.module.css";
 
 const URL = "https://www.autisync.com/tools/missed-call-cost";
-const TITLE = "Missed call cost calculator: how much are missed calls costing your business?";
+const TITLE = "Missed call cost calculator: what are missed calls costing you?";
 const DESCRIPTION =
     "Free calculator for trades, clinics and local businesses. Enter your missed calls a week and average job value to see what they cost you a month and a year.";
 
@@ -30,7 +30,7 @@ const FAQ = [
 const schema = {
     "@context": "https://schema.org",
     "@graph": [
-        { "@type": "WebApplication", name: "Missed call cost calculator", url: URL, applicationCategory: "BusinessApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: 0, priceCurrency: "GBP" }, provider: { "@type": "Organization", name: "Autisync", url: "https://www.autisync.com" } },
+        { "@type": "WebApplication", name: "Missed call cost calculator", url: URL, applicationCategory: "BusinessApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: 0, priceCurrency: "GBP" }, provider: { "@id": "https://www.autisync.com/#organization" } },
         faqSchema(FAQ),
     ],
 };

@@ -12,7 +12,7 @@ const URL = "https://www.autisync.com/pt/privacidade";
 const EN_URL = "https://www.autisync.com/PrivacyPolicy";
 const TITLE = "Política de Privacidade";
 const DESCRIPTION =
-    "Como a Autisync (MAHELDOM CONSULTING, LDA.) recolhe, utiliza e protege dados pessoais através do seu website, formulários e medição de visitas, de acordo com o RGPD, a Lei n.º 58/2019 e a Lei n.º 41/2004.";
+    "Como a Autisync (Maheldom Consulting, Lda.) recolhe, usa e protege dados pessoais no site, nos formulários e na medição de visitas, segundo o RGPD.";
 
 export const metadata: Metadata = {
     title: TITLE,

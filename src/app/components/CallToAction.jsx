@@ -78,9 +78,9 @@ export default function CallToAction({ pt = false }) {
                 </div>
               </div>
 
-              <h6 className="mt-5 text-xl font-semibold text-white">
+              <h3 className="mt-5 text-xl font-semibold text-white">
                 {c.cost[0]}
-              </h6>
+              </h3>
               <p className="mt-2 mb-4 text-gray-400">
                 {c.cost[1]}
               </p>
@@ -109,9 +109,9 @@ export default function CallToAction({ pt = false }) {
                 </div>
               </div>
 
-              <h5 className="mt-5 text-xl font-semibold text-white">
+              <h3 className="mt-5 text-xl font-semibold text-white">
                 {c.customer[0]}
-              </h5>
+              </h3>
               <p className="mt-2 mb-4 text-gray-400">
                 {c.customer[1]}
               </p>
@@ -142,9 +142,9 @@ export default function CallToAction({ pt = false }) {
                 </div>
               </div>
 
-              <h5 className="mt-5 text-xl font-semibold text-white">
+              <h3 className="mt-5 text-xl font-semibold text-white">
                 {c.growth[0]}
-              </h5>
+              </h3>
               <p className="mt-2 mb-4 text-gray-400">
                 {c.growth[1]}
               </p>

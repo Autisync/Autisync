@@ -13,7 +13,9 @@ const AI_CRAWLERS = [
 ];
 
 export default function robots(): MetadataRoute.Robots {
-    const disallow = ["/api/", "/ServiceQuestionaire"];
+    // The questionnaire is kept out of the index with its own noindex tag;
+    // blocking it here as well would stop Google from ever seeing that tag.
+    const disallow = ["/api/"];
     return {
         rules: [
             { userAgent: "*", allow: "/", disallow },

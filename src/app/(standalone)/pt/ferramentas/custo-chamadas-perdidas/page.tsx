@@ -8,9 +8,9 @@ import f from "@/app/components/funnel.module.css";
 
 const EN_URL = "https://www.autisync.com/tools/missed-call-cost";
 const URL = "https://www.autisync.com/pt/ferramentas/custo-chamadas-perdidas";
-const TITLE = "Calculadora de chamadas perdidas: quanto custam ao seu negócio as chamadas que não atende?";
+const TITLE = "Calculadora de chamadas perdidas: quanto lhe custam por mês?";
 const DESCRIPTION =
-    "Calculadora grátis para técnicos, clínicas e negócios locais. Indique as chamadas perdidas por semana e o valor médio de um trabalho e veja quanto lhe custam por mês e por ano.";
+    "Calculadora grátis para técnicos, clínicas e negócios locais: indique as chamadas perdidas por semana e o valor de um trabalho e veja quanto perde.";
 
 export const metadata: Metadata = {
     title: { absolute: TITLE },
@@ -29,7 +29,7 @@ const FAQ = [
 const schema = {
     "@context": "https://schema.org",
     "@graph": [
-        { "@type": "WebApplication", name: "Calculadora do custo das chamadas perdidas", url: URL, inLanguage: "pt", applicationCategory: "BusinessApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: 0, priceCurrency: "AOA" }, provider: { "@type": "Organization", name: "Autisync", url: "https://www.autisync.com" } },
+        { "@type": "WebApplication", name: "Calculadora do custo das chamadas perdidas", url: URL, inLanguage: "pt", applicationCategory: "BusinessApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: 0, priceCurrency: "AOA" }, provider: { "@id": "https://www.autisync.com/#organization" } },
         { ...faqSchema(FAQ), inLanguage: "pt" },
     ],
 };

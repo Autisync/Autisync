@@ -4,7 +4,7 @@ import Privacy from "./privacy";
 const URL = "https://www.autisync.com/PrivacyPolicy";
 const PT_URL = "https://www.autisync.com/pt/privacidade";
 const DESCRIPTION =
-    "How Autisync (MAHELDOM CONSULTING, LDA.) collects, uses and protects personal data through its website, forms and visitor measurement, for people in the UK, Portugal, Angola, Namibia and elsewhere.";
+    "How Autisync (Maheldom Consulting, Lda.) collects, uses and protects personal data from its website, forms and visitor measurement.";
 
 export const metadata: Metadata = {
     title: "Privacy Policy",

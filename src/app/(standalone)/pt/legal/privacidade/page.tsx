@@ -5,7 +5,7 @@ const EN_URL = "https://www.autisync.com/legal/privacy";
 const URL = "https://www.autisync.com/pt/legal/privacidade";
 const TITLE = "Política de Privacidade do Autisync CRM";
 const DESCRIPTION =
-    "Como o Autisync CRM trata as mensagens, os contactos e os ficheiros que lhe chegam do WhatsApp, do Facebook Messenger, do Instagram, do e-mail e de formulários de websites, bem como os dados de calendário de uma conta Google ligada.";
+    "Como o Autisync CRM trata mensagens, contactos e ficheiros do WhatsApp, Messenger, Instagram, e-mail e formulários, e calendários Google ligados.";
 
 export const metadata: Metadata = {
     title: TITLE,

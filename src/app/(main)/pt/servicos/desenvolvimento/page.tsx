@@ -1,3 +1,4 @@
+import BreadcrumbSchema from "@/app/components/BreadcrumbSchema";
 import type { Metadata } from "next";
 import { alternatesFor } from "@/lib/i18n/routes";
 import DesenvolvimentoClient from "./DesenvolvimentoClient";
@@ -18,8 +19,12 @@ export const metadata: Metadata = {
 
 export default function DesenvolvimentoPage() {
     return (
+        <>
+            <BreadcrumbSchema items={[{ name: "Início", path: "/pt" }, { name: "Serviços", path: "/pt/precos" }, { name: "Desenvolvimento Web e Apps", path: "/pt/servicos/desenvolvimento" }]} />
+
         <div lang="pt">
             <DesenvolvimentoClient />
         </div>
+        </>
     );
 }

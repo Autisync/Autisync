@@ -33,7 +33,7 @@ export default function FerramentasIndex() {
                     <div className={f.cards} style={{ marginTop: 32 }}>
                         {TOOLS.map((x) => (
                             <Link key={x.href} href={x.href} className={f.cardItem} style={{ textDecoration: "none" }}>
-                                <h3>{x.t} →</h3>
+                                <h2>{x.t} →</h2>
                                 <p>{x.d}</p>
                             </Link>
                         ))}

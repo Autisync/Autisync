@@ -1,3 +1,4 @@
+import BreadcrumbSchema from "@/app/components/BreadcrumbSchema";
 import type { Metadata } from "next";
 import { alternatesFor } from "@/lib/i18n/routes";
 import DesignGraficoClient from "./DesignGraficoClient";
@@ -18,8 +19,12 @@ export const metadata: Metadata = {
 
 export default function DesignGraficoPage() {
     return (
+        <>
+            <BreadcrumbSchema items={[{ name: "Início", path: "/pt" }, { name: "Serviços", path: "/pt/precos" }, { name: "Design Gráfico", path: "/pt/servicos/design-grafico" }]} />
+
         <div lang="pt">
             <DesignGraficoClient />
         </div>
+        </>
     );
 }

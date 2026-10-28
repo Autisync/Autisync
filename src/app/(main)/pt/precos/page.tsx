@@ -10,7 +10,7 @@ const URL = "https://www.autisync.com/pt/precos";
 export const metadata: Metadata = {
     title: "Preços: Websites, Branding e Redes Sociais em Angola",
     description:
-        "Preços claros da Autisync: websites a partir de Kz 495.000, branding a partir de Kz 180.000 e gestão de redes sociais a partir de Kz 150.000/mês e o CRM Autisync a partir de 35 €/mês mais instalação, com preço por tipo de negócio.",
+        "Websites desde Kz 495.000, branding desde Kz 180.000, redes sociais desde Kz 150.000/mês e CRM Autisync desde 35 €/mês. Preços claros e fixos.",
     alternates: {
         canonical: URL,
         languages: {

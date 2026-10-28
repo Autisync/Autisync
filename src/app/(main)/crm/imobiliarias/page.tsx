@@ -8,7 +8,7 @@ const URL = "https://www.autisync.com/crm/imobiliarias";
 const EN_URL = "https://www.autisync.com/crm/estate-agents";
 const TITLE = "CRM para Imobiliárias com IA e Marcação de Visitas | Autisync";
 const DESCRIPTION =
-    "CRM para imobiliárias em Portugal: venda, arrendamento e gestão de imóveis, visitas que se marcam sozinhas, ligação à CASAFARI e assistente de IA fora de horas. Licença AMI e classe energética em cada anúncio. Desde 79 € por mês por agência.";
+    "Desde 79 € por mês por agência: venda, arrendamento e gestão, visitas que se marcam sozinhas, ligação à CASAFARI e assistente de IA fora de horas.";
 
 export const metadata: Metadata = {
     title: { absolute: TITLE },

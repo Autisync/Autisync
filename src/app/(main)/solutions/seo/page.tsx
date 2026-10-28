@@ -1,3 +1,4 @@
+import BreadcrumbSchema from "@/app/components/BreadcrumbSchema";
 import type { Metadata } from "next";
 import { alternatesFor } from "@/lib/i18n/routes";
 import SEO from "./seopage";
@@ -16,5 +17,10 @@ export const metadata: Metadata = {
 };
 
 export default function SEOPage() {
-  return <SEO />;
+  return (
+        <>
+            <BreadcrumbSchema items={[{ name: "Home", path: "/" }, { name: "Services", path: "/servicepackage" }, { name: "SEO & Digital Marketing", path: "/solutions/seo" }]} />
+            <SEO />
+        </>
+    );
 }

@@ -11,7 +11,7 @@ export const SALONS: IndustryPair = {
     en: {
         id: "salons", slug: "salons", otherSlug: "saloes", crumb: "Salons & studios",
         metaTitle: "Salon Booking Software and CRM, No Commission | Autisync",
-        metaDesc: "Online booking for salons, barbers, nail and tattoo studios: your own booking page with no commission, deposits, reminders, Instagram and WhatsApp in one inbox, and review requests. From £39 a month per salon, not per stylist.",
+        metaDesc: "From £39 a month per salon, no commission: your own booking page, deposits, reminders, Instagram and WhatsApp in one inbox, and review requests.",
         keywords: ["salon booking software UK", "salon software no commission", "Fresha alternative", "Booksy alternative", "barber booking app", "nail salon booking system", "tattoo studio booking", "salon CRM", "hair salon software"],
         pill: "For hair and beauty salons, barbers, nail and tattoo studios",
         h1a: "A full column.", h1b: "Fewer empty chairs.",
@@ -55,7 +55,7 @@ export const SALONS: IndustryPair = {
     pt: {
         id: "salons", slug: "saloes", otherSlug: "salons", crumb: "Salões e estúdios",
         metaTitle: "Software de Marcações para Salões, Sem Comissões | Autisync",
-        metaDesc: "Marcações online para cabeleireiros, barbearias, estúdios de unhas e de tatuagem: página de marcações própria sem comissões, sinal, lembretes, Instagram e WhatsApp numa caixa de entrada e pedidos de avaliação. Desde 45 € por mês por salão.",
+        metaDesc: "Desde 45 € por mês por salão, sem comissões: página de marcações própria, sinal, lembretes, Instagram e WhatsApp numa caixa e avaliações.",
         keywords: ["software para cabeleireiros", "marcações online salão", "alternativa ao Fresha", "alternativa ao Booksy", "software para barbearias", "marcações para estúdio de unhas", "software para estúdio de tatuagem", "CRM para salões"],
         pill: "Para cabeleireiros, barbearias, estúdios de unhas e de tatuagem",
         h1a: "A agenda cheia.", h1b: "Menos cadeiras vazias.",

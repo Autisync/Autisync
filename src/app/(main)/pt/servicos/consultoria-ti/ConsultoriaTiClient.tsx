@@ -222,9 +222,9 @@ export default function ConsultoriaTiClient() {
                                 className="group block max-w-sm p-6 bg-white rounded-md shadow-md hover:bg-[#1C1C1C]"
                             >
                                 {" "}
-                                <h5 className="group-hover:animate-bounce group-hover:text-white mb-2 text-2xl font-bold tracking-tight text-gray-800">
+                                <h3 className="group-hover:animate-bounce group-hover:text-white mb-2 text-2xl font-bold tracking-tight text-gray-800">
                                     {service.name}
-                                </h5>
+                                </h3>
                                 <p className="text-gray-500 group-hover:text-white text-sm">
                                     <span className="font-bold text-[var(--autisync-gold,#B98B2F)]">Objetivo: </span>
                                     {service.description}

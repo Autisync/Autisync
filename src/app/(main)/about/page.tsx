@@ -5,7 +5,7 @@ import AboutClient from "./AboutClient";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-      "Meet the Autisync team — a creative digital agency helping businesses across the UK, Portugal, Namibia, and Angola modernise their brand, systems, and customer experience.",
+      "Autisync is a digital agency helping businesses in the UK, Portugal, Namibia and Angola modernise their brand, systems and customer experience.",
   alternates: alternatesFor("/about", "en"),
   openGraph: {
     title: "About Autisync — Our Story, Team & Values",

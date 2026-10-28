@@ -75,7 +75,7 @@ export default function DeliveriesCrm({ locale }: { locale: DeliveriesLocale }) 
 
     return (
         <div className={`${s.page} ${s.light}`}>
-            <main>
+            <div>
                 <header className={s.hero}>
                     <div className={s.wrap}>
                         <div className={s.heroCopy}>
@@ -282,7 +282,7 @@ export default function DeliveriesCrm({ locale }: { locale: DeliveriesLocale }) 
                         </div>
                     </div>
                 </section>
-            </main>
+            </div>
         </div>
     );
 }

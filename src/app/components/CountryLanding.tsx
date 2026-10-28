@@ -1,5 +1,5 @@
 /**
- * Country landing pages (/pt/angola, /namibia) — the page someone lands on
+ * Country landing pages (/pt/angola, /angola, /namibia, /web-design-uk, /pt/portugal) — the page someone lands on
  * from "criação de sites Angola" or "website design Namibia".
  *
  * Server-rendered on purpose: the prices, FAQ and contact details are in the
@@ -19,7 +19,7 @@ export type CountryCopy = {
     lang: "en" | "pt";
     currency: Currency;
     /** ?market= value for links to the price page. */
-    market: "ao" | "na";
+    market: "ao" | "na" | "gb" | "pt";
     url: string;
     city: string;
     country: string;
@@ -53,8 +53,9 @@ export type CountryCopy = {
 
 export default function CountryLanding({ c }: { c: CountryCopy }) {
     const pt = c.lang === "pt";
-    // The marker says which landing page the chat came from: WEB-angola, WEB-namibia.
-    const wa = (text: string) => waLink(text, c.market === "ao" ? "WEB-angola" : "WEB-namibia");
+    // The marker says which landing page the chat came from: WEB-angola, WEB-namibia, WEB-uk, WEB-portugal.
+    const REF = { ao: "WEB-angola", na: "WEB-namibia", gb: "WEB-uk", pt: "WEB-portugal" } as const;
+    const wa = (text: string) => waLink(text, c.lang === "en" && c.market === "ao" ? "WEB-angola-en" : REF[c.market]);
     const care = formatPrice(carePlanMonthly[c.currency], c.currency);
 
     const jsonLd = [

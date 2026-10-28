@@ -885,12 +885,12 @@ export default function ServiceQuestionnairePage() {
 
     return (
         <>
-            <main className="min-h-screen bg-gray-100">
+            <div className="min-h-screen bg-gray-100">
                 {/* HERO — kept exactly from original */}
                 <section className="relative overflow-hidden bg-gradient-to-b from-black via-black/80 to-black/70">
                     <div
                         className="absolute inset-0 bg-center bg-cover opacity-40"
-                        style={{ backgroundImage: "url('https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')" }}
+                        style={{ backgroundImage: "url('https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop')" }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/80 to-black/90" />
                     <div className="relative px-4 pt-28 pb-20 mx-auto max-w-5xl text-center sm:px-6 lg:px-8">
@@ -946,7 +946,7 @@ export default function ServiceQuestionnairePage() {
                         </p>
                     </div>
                 </section>
-            </main>
+            </div>
 
             {/* Modal — layered on top, page stays in background */}
             <AnimatePresence>

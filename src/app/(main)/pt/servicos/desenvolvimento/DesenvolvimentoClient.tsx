@@ -125,8 +125,8 @@ export default function DesenvolvimentoClient() {
                         <div className="flex-none max-w-3xl sm:max-w-5xl lg:max-w-none">
                             <div className="p-2 -m-2 bg-[#1C1C1C] rounded-xl ring-1 ring-inset ring-gray-800 lg:-m-4 lg:rounded-2xl lg:p-4">
                                 <Image
-                                    src="https://images.pexels.com/photos/7988210/pexels-photo-7988210.jpeg"
-                                    alt="Captura de ecrã de uma aplicação"
+                                    src="https://images.pexels.com/photos/7988210/pexels-photo-7988210.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                                    alt="Um programador a trabalhar em código em dois ecrãs"
                                     width={1200}
                                     height={1200}
                                     className="w-[40rem] rounded-md shadow-2xl ring-1 ring-gray-900/10"
@@ -163,9 +163,9 @@ export default function DesenvolvimentoClient() {
                             <li className="relative mb-6 sm:mb-0" key={feature.id}>
                                 <div className="flex items-center">
                                     <div className="z-10 flex items-center justify-center w-6 h-6 bg-[var(--autisync-gold,#B98B2F)]/20 rounded-full ring-0 ring-white dark:bg-[var(--autisync-gold,#B98B2F)] sm:ring-8 dark:ring-gray-900 shrink-0 hover:scale-150 transition-all duration-300 ease-out">
-                                        <h4 className="font-semibold text-gray-700">
+                                        <h3 className="font-semibold text-gray-700">
                                             {feature.num}
-                                        </h4>
+                                        </h3>
                                     </div>
                                     <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                                 </div>

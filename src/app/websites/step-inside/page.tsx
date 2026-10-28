@@ -8,9 +8,9 @@ import { formatPrice } from "@/lib/website-packages";
 
 const URL = "https://www.autisync.com/websites/step-inside";
 const PT_URL = "https://www.autisync.com/pt/websites/demonstracao";
-const TITLE = "Step-inside websites: let customers walk in before they arrive | Autisync";
+const TITLE = "Step-inside websites: customers walk in before they arrive | Autisync";
 const DESCRIPTION =
-    "A website that opens with a walk from the street into your shop, café, salon or clinic, played as visitors scroll. Filmed on a phone in 20 seconds, built by Autisync, with bookings going straight into your CRM.";
+    "A website that opens with a walk from the street into your shop, café, salon or clinic as visitors scroll. Filmed on a phone in 20 seconds.";
 
 export const metadata: Metadata = {
     title: { absolute: TITLE },
@@ -27,7 +27,7 @@ const schema = {
             "@type": "Service",
             name: "Step-inside website",
             serviceType: "Website design with scroll-driven walk-in video",
-            provider: { "@type": "Organization", name: "Autisync", url: "https://www.autisync.com" },
+            provider: { "@id": "https://www.autisync.com/#organization" },
             areaServed: ["GB", "PT", "AO"],
             url: URL,
             description: DESCRIPTION,

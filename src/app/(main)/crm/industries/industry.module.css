@@ -193,10 +193,65 @@
 
 /* Your website: laptop and phone side by side */
 .site {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 220px;
   gap: 24px;
   align-items: end;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 14px;
+}
+.site:focus-visible {
+  outline: 3px solid var(--gold, #b28228);
+  outline-offset: 6px;
+}
+.site .siteLaptop,
+.site .sitePhone {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s;
+}
+.site:hover .siteLaptop { transform: translateY(-6px); }
+.site:hover .sitePhone { transform: translateY(-10px) rotate(-1.5deg); }
+/* "Live demo" tag on the screenshots, so it reads as something to open. */
+.siteBadge {
+  position: absolute;
+  z-index: 2;
+  top: -16px;
+  left: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #1c1c1c;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+.siteBadge i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+  animation: sitePulse 1.8s infinite;
+}
+@keyframes sitePulse {
+  70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+.siteCtaBig {
+  font-size: 1.05rem;
+  padding: 14px 26px;
+}
+.siteHeroBtn {
+  border-color: var(--gold, #b28228);
+}
+@media (prefers-reduced-motion: reduce) {
+  .siteBadge i { animation: none; }
+  .site .siteLaptop, .site .sitePhone { transition: none; }
+  .site:hover .siteLaptop, .site:hover .sitePhone { transform: none; }
 }
 .siteLaptop {
   margin: 0;
@@ -219,7 +274,9 @@
   height: auto;
 }
 .siteCta {
-  margin-top: 22px;
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
 }
 @media (max-width: 760px) {
   .site {

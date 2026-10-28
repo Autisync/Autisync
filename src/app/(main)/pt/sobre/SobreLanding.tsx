@@ -9,7 +9,7 @@ export default function SobreLanding() {
           className="absolute top-0 w-full h-full bg-center bg-cover"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=80')",
+              "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=60')",
           }}
         >
           <span

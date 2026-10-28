@@ -8,9 +8,9 @@ import { formatPrice } from "@/lib/website-packages";
 
 const URL = "https://www.autisync.com/pt/websites/demonstracao";
 const EN_URL = "https://www.autisync.com/websites/step-inside";
-const TITLE = "Websites com entrada em vídeo: deixe os clientes entrar antes de chegarem | Autisync";
+const TITLE = "Websites com entrada em vídeo: o cliente entra antes de chegar";
 const DESCRIPTION =
-    "Um website que abre com um passeio da rua até ao interior da sua loja, café, salão ou clínica, que avança à medida que o visitante faz scroll. Filmado com um telemóvel em 20 segundos, feito pela Autisync, com as marcações a entrar diretamente no seu CRM.";
+    "Um website que abre com um passeio da rua até ao interior da sua loja, café ou clínica, ao ritmo do scroll. Filmado com um telemóvel em 20 segundos.";
 
 export const metadata: Metadata = {
     title: { absolute: TITLE },
@@ -39,7 +39,7 @@ const schema = {
             "@type": "Service",
             name: "Website com entrada em vídeo",
             serviceType: "Design de websites com vídeo de entrada controlado pelo scroll",
-            provider: { "@type": "Organization", name: "Autisync", url: "https://www.autisync.com" },
+            provider: { "@id": "https://www.autisync.com/#organization" },
             areaServed: ["AO", "PT", "GB"],
             url: URL,
             description: DESCRIPTION,

@@ -5,7 +5,7 @@ export const AGENCIES: IndustryPair = {
     en: {
         id: "agencies", slug: "agencies", otherSlug: "agencias", crumb: "Agencies",
         metaTitle: "CRM for Agencies: Projects, Proposals and Invoices | Autisync",
-        metaDesc: "CRM for creative, marketing and web agencies: a pipeline for new projects, proposals accepted online, deposits and stage invoices, retainers, client messages in one inbox and tasks for the team. From £49 a month per agency.",
+        metaDesc: "From £49 a month per agency: a project pipeline, proposals accepted online, stage invoices, retainers and every client message in one inbox.",
         keywords: ["CRM for agencies", "agency CRM UK", "creative agency software", "proposal and invoicing for agencies", "web design agency CRM", "marketing agency client management", "retainer billing agency"],
         pill: "For creative, marketing and web agencies",
         h1a: "From brief to final invoice.", h1b: "One system for the studio.",
@@ -49,7 +49,7 @@ export const AGENCIES: IndustryPair = {
     pt: {
         id: "agencies", slug: "agencias", otherSlug: "agencies", crumb: "Agências",
         metaTitle: "CRM para Agências: Projetos, Propostas e Faturas | Autisync",
-        metaDesc: "CRM para agências criativas, de marketing e web: funil de projetos, propostas aceites online, sinal e faturas por fase, avenças, mensagens dos clientes numa só caixa e tarefas para a equipa. Desde 55 € por mês por agência.",
+        metaDesc: "Desde 55 € por mês por agência: funil de projetos, propostas aceites online, faturas por fase, avenças e mensagens dos clientes numa só caixa.",
         keywords: ["CRM para agências", "software para agências criativas", "propostas e faturação agência", "CRM agência de marketing", "gestão de clientes agência web"],
         pill: "Para agências criativas, de marketing e web",
         h1a: "Do briefing à última fatura.", h1b: "Um só sistema para o estúdio.",

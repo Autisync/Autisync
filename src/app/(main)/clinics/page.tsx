@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import DemoSites from "@/app/components/DemoSites";
 import Link from "next/link";
 import Promises from "@/app/components/Promises";
 import BookingEmbed from "@/app/(main)/crm/BookingEmbed";
@@ -30,9 +31,9 @@ const gbp = (n: number) => formatPrice(n, "GBP");
 const [startup, smallBiz] = websiteTiers;
 const care = gbp(carePlanMonthly.GBP);
 
-const TITLE = "Missed-call text-back, online booking and WhatsApp for clinics and salons";
+const TITLE = "Missed-Call Text-Back and Booking for Clinics & Salons";
 const DESCRIPTION =
-    "For UK clinics, dental practices, aesthetic clinics and salons: missed callers texted back, online booking with reminders, instant WhatsApp replies, review requests and recall reminders. Set up for you, with no 12-month contract.";
+    "For UK clinics, dental practices and salons: missed callers texted back, online booking with reminders, WhatsApp replies and reviews. No 12-month contract.";
 
 export const metadata: Metadata = {
     title: TITLE,
@@ -119,7 +120,7 @@ const jsonLd = [
         "@type": "Service",
         name: "Autisync for clinics and salons",
         serviceType: "Website, online booking, missed-call text-back and CRM with WhatsApp for clinics and salons",
-        provider: { "@type": "Organization", name: "Autisync", url: "https://www.autisync.com" },
+        provider: { "@id": "https://www.autisync.com/#organization" },
         areaServed: { "@type": "Country", name: "United Kingdom" },
         audience: { "@type": "BusinessAudience", name: "Clinics, dental practices, aesthetic clinics and salons" },
         url: URL,
@@ -181,6 +182,8 @@ export default function ClinicsPage() {
                 </div>
                 <p className="mt-4 text-sm text-gray-500">No 12-month contract. Set up for you.</p>
             </section>
+
+            <DemoSites lang="en" />
 
             {/* Use cases, played one by one */}
             <section aria-labelledby="clinics-cases" className="py-20 bg-gray-50">

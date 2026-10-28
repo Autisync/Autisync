@@ -11,6 +11,7 @@ export const siteStats = {
     clients: 30,           // clients served (shown as "30+")
     countries: 4,          // UK, Portugal, Namibia, Angola
     years: 5,              // years building digital (shown as "5+")
-    satisfaction: 98,      // % client satisfaction
+    // No satisfaction percentage: we have no survey behind one (SEO audit,
+    // Oct 2026: unsourced figures cost trust). Add it back with a source.
     uptime: 99,            // % uptime guarantee
 } as const;
