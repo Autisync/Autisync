@@ -391,3 +391,24 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* The demo merchant's website, under the deliveries demo */
+.merchant {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 28px;
+  padding: 24px 28px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--bg-2);
+}
+.merchant > div {
+  flex: 1 1 420px;
+  min-width: 0;
+}
+.merchant p {
+  margin-top: 6px !important;
+}

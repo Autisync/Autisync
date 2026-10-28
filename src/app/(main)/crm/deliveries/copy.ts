@@ -22,6 +22,9 @@ export const DELIVERIES = {
         demoTitle: "A delivery day, from the office, the van and the customer's phone.",
         demoSub: "A made-up merchant running its day. Press play, or step through and do what the driver and the customer do.",
         demoOpen: "Open the demo full screen",
+        siteTitle: "And the merchant's own website",
+        siteText: "Ribeira Materiais is our demo builders' merchant in Lisbon. Its website takes orders straight into its CRM and shows customers a real tracking page for a delivery on its way.",
+        siteCta: "Open the Ribeira Materiais website",
         painsEyebrow: "The usual problems",
         painsTitle: "Where a delivery day goes wrong.",
         pains: [
@@ -83,6 +86,9 @@ export const DELIVERIES = {
         demoTitle: "Um dia de entregas, visto do escritório, da carrinha e do telemóvel do cliente.",
         demoSub: "Um armazém inventado a fazer o seu dia. Carregue em reproduzir, ou avance passo a passo e faça o que o motorista e o cliente fazem.",
         demoOpen: "Abrir a demonstração em ecrã inteiro",
+        siteTitle: "E o site do próprio armazém",
+        siteText: "A Ribeira Materiais é o nosso armazém de materiais de construção de demonstração, em Lisboa. O site envia as encomendas diretamente para o CRM e mostra ao cliente uma página de seguimento real de uma entrega a caminho.",
+        siteCta: "Abrir o site da Ribeira Materiais",
         painsEyebrow: "Os problemas do costume",
         painsTitle: "Onde um dia de entregas corre mal.",
         pains: [

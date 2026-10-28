@@ -258,10 +258,160 @@ const AGENCIES_PT: DemoScript = {
     },
 };
 
+/* ── Salons: Maré Hair & Beauty ───────────────────────────────────────── */
+
+const SALONS_EN: DemoScript = {
+    brand: { name: "Maré Hair & Beauty", short: "Mare", initial: "M", color: "#0e7490", owner: "Jess Moran", ownerInitials: "JM", staff: "Amira" },
+    currency: "GBP",
+    customer: { name: "Chloe Dawson", first: "Chloe", initials: "CD" },
+    others: [
+        { name: "Hollie Grant", preview: "Can I move Thursday's nails to Friday?", when: "2h", channel: "whatsapp" },
+        { name: "Sophie Lane", preview: "Do you do bridal trials on Sundays?", when: "Mon", channel: "web" },
+        { name: "Ellie Shaw", preview: "Thank you so much, love it!", when: "Oct 22", channel: "whatsapp" },
+    ],
+    enquiry: { time: "23:08", msg: "Hiya, do you have anything on Saturday for a balayage? First time with you!", reply: "Hi Chloe, welcome! Amira has Saturday morning free for a balayage, toner and cut (about 3 hours). Book here and we'll do a quick colour chat first: the booking holds with a small deposit." },
+    booking: { service: "Colour consultation and patch test", length: "15 min", price: "Free", day: "Thursday 29 Oct", dayShort: "Thu", slots: ["10:00", "12:30", "15:00", "17:30"], pick: 3, with: "Amira" },
+    diary: [[0, 9, 3, "Colour · Grant"], [0, 13, 1, "Cut · Shaw"], [1, 10, 2, "Nails · Lane"], [2, 9, 4, "Balayage · Price"], [3, 11, 1, "Blow-dry · Reed"], [4, 9, 2, "Bridal trial · Lane"]],
+    newBooking: [3, 17.5, 0.5],
+    quote: { kind: "Price", ref: "P-0231", lines: [{ d: "Balayage, toner and gloss (Amira)", q: 1, p: 165 }, { d: "Cut and finish", q: 1, p: 45 }, { d: "Olaplex treatment", q: 1, p: 25 }], vat: 20, validity: "Saturday 31 Oct, 09:30" },
+    board: { stages: ["Enquiry", "Consultation", "Price sent", "Booked"], cards: [
+        { name: "Sophie Lane", what: "Bridal party (4)", value: 520, stage: 1 },
+        { name: "Hollie Grant", what: "Colour every 6 weeks", value: 110, stage: 3 },
+        { name: "Mia Reed", what: "Extensions", value: 380, stage: 2 },
+        { name: "Ava Price", what: "Lash lift", value: 55, stage: 0 },
+    ] },
+    won: { msg: "You're booked for Saturday at 9:30 with Amira, Chloe! We'll send a reminder on Friday." },
+    invoice: { ref: "INV-1188", label: "Deposit to hold the appointment", share: 0.2 },
+    reviews: [
+        { name: "Ellie S.", text: "Best colour I've had, and they remembered my formula from last time.", when: "3 days ago" },
+        { name: "Hollie G.", text: "Booking online at midnight is a lifesaver.", when: "2 weeks ago" },
+    ],
+    review: { ask: "Thanks for coming in, Chloe! Would you leave us a quick review?", text: "Messaged at 11pm, booked in a minute, and the colour is exactly what I wanted." },
+    captions: {
+        enquiry: { t: "The 11pm message gets an answer", d: "Instagram, WhatsApp and Facebook messages land in one inbox. The assistant replies with prices and your booking link while you sleep." },
+        booking: { t: "They book on your page, not a marketplace", d: "Chloe books a free consultation and patch test herself. No commission, even for a new client." },
+        quote: { t: "The price agreed before the day", d: "After the consultation, the price for the appointment goes as a link, and she accepts it on her phone." },
+        won: { t: "Every booking in view", d: "Enquiries, consultations and booked colours on one board, so nobody falls through the cracks." },
+        invoice: { t: "A deposit stops the no-show", d: "A small deposit holds the long appointment, paid by card in a minute. Fewer empty chairs on Saturday." },
+        review: { t: "Reviews after every visit", d: "A review request goes out after the appointment, and new reviews show in the CRM for you to reply." },
+    },
+};
+const SALONS_PT: DemoScript = {
+    ...SALONS_EN,
+    currency: "EUR",
+    customer: { name: "Carolina Duarte", first: "Carolina", initials: "CD" },
+    others: [
+        { name: "Helena Gomes", preview: "Posso passar as unhas de quinta para sexta?", when: "2 h", channel: "whatsapp" },
+        { name: "Sofia Lacerda", preview: "Fazem provas de noiva ao domingo?", when: "seg", channel: "web" },
+        { name: "Leonor Sá", preview: "Muito obrigada, adorei!", when: "22 out", channel: "whatsapp" },
+    ],
+    enquiry: { time: "23:08", msg: "Olá, têm alguma coisa no sábado para madeixas balayage? É a primeira vez aí!", reply: "Olá Carolina, seja bem-vinda! A Amira tem sábado de manhã livre para balayage, tonalizante e corte (cerca de 3 horas). Marque aqui e fazemos antes uma conversa rápida sobre a cor: a marcação fica garantida com um pequeno sinal." },
+    booking: { service: "Consulta de cor e teste de alergia", length: "15 min", price: "Grátis", day: "Quinta, 29 out", dayShort: "qui", slots: ["10:00", "12:30", "15:00", "17:30"], pick: 3, with: "Amira" },
+    diary: [[0, 9, 3, "Coloração · Gomes"], [0, 13, 1, "Corte · Sá"], [1, 10, 2, "Unhas · Lacerda"], [2, 9, 4, "Balayage · Pires"], [3, 11, 1, "Brushing · Reis"], [4, 9, 2, "Prova de noiva · Lacerda"]],
+    quote: { kind: "Preço", ref: "P-0231", lines: [{ d: "Balayage, tonalizante e brilho (Amira)", q: 1, p: 165 }, { d: "Corte e brushing", q: 1, p: 45 }, { d: "Tratamento Olaplex", q: 1, p: 25 }], vat: 23, validity: "Sábado, 31 out, 9:30" },
+    board: { stages: ["Pedido", "Consulta", "Preço enviado", "Marcado"], cards: [
+        { name: "Sofia Lacerda", what: "Noiva e madrinhas (4)", value: 520, stage: 1 },
+        { name: "Helena Gomes", what: "Coloração a cada 6 semanas", value: 110, stage: 3 },
+        { name: "Mariana Reis", what: "Extensões", value: 380, stage: 2 },
+        { name: "Ana Pires", what: "Lifting de pestanas", value: 55, stage: 0 },
+    ] },
+    won: { msg: "Está marcado para sábado às 9:30 com a Amira, Carolina! Enviamos um lembrete na sexta." },
+    invoice: { ref: "FT-1188", label: "Sinal para garantir a marcação", share: 0.2 },
+    reviews: [
+        { name: "Leonor S.", text: "A melhor cor que já fiz, e lembraram-se da minha fórmula da última vez.", when: "há 3 dias" },
+        { name: "Helena G.", text: "Marcar online à meia-noite é uma salvação.", when: "há 2 semanas" },
+    ],
+    review: { ask: "Obrigada pela visita, Carolina! Deixa-nos uma avaliação rápida?", text: "Escrevi às 23h, marquei num minuto e a cor ficou exatamente como queria." },
+    captions: {
+        enquiry: { t: "A mensagem das 23h tem resposta", d: "Mensagens do Instagram, WhatsApp e Facebook chegam a uma caixa de entrada. O assistente responde com preços e o seu link de marcação enquanto dorme." },
+        booking: { t: "Marcam na sua página, não numa plataforma", d: "A Carolina marca sozinha uma consulta gratuita e o teste de alergia. Sem comissões, mesmo sendo cliente nova." },
+        quote: { t: "O preço combinado antes do dia", d: "Depois da consulta, o preço da marcação segue por link e ela aceita no telemóvel." },
+        won: { t: "Todas as marcações à vista", d: "Pedidos, consultas e colorações marcadas num quadro, para nenhuma ficar esquecida." },
+        invoice: { t: "Um sinal evita a falta", d: "Um pequeno sinal garante a marcação longa, pago por cartão num minuto. Menos cadeiras vazias ao sábado." },
+        review: { t: "Avaliações depois de cada visita", d: "O pedido de avaliação segue depois da marcação, e as novas avaliações aparecem no CRM para responder." },
+    },
+};
+
+/* ── Legal & finance: Ashcombe & Reid Accountants ────────────────────── */
+
+const LEGAL_EN: DemoScript = {
+    brand: { name: "Ashcombe & Reid Accountants", short: "Ashcombe", initial: "A", color: "#1e3a8a", owner: "Claire Ashcombe", ownerInitials: "CA", staff: "Claire" },
+    currency: "GBP",
+    customer: { name: "Daniel Okoro", first: "Daniel", initials: "DO" },
+    others: [
+        { name: "Fenwick Joinery Ltd", preview: "Bank statements for September attached.", when: "1h", channel: "email" },
+        { name: "Laura Price", preview: "Is my self-assessment on track?", when: "Tue", channel: "whatsapp" },
+        { name: "Kite Studio", preview: "Can we add payroll for two new starters?", when: "Oct 20", channel: "web" },
+    ],
+    enquiry: { time: "20:47", msg: "Hi, I've just set up a limited company for my electrical business. Could you do our bookkeeping and year-end accounts?", reply: "Hi Daniel, congratulations on the new company. A free 20-minute call is the best start: pick a time here and we'll send you a fixed monthly fee the same day." },
+    booking: { service: "Free first call (video)", length: "20 min", price: "Free", day: "Thursday 29 Oct", dayShort: "Thu", slots: ["09:00", "11:00", "14:00", "16:00"], pick: 1, with: "Claire" },
+    diary: [[0, 9, 1, "Review · Fenwick"], [0, 14, 2, "Year-end · Kite"], [1, 10, 1, "Call · Price"], [2, 11, 2, "VAT returns"], [3, 9, 1, "Payroll run"], [4, 13, 1.5, "Review · Kite"]],
+    newBooking: [3, 11, 0.5],
+    quote: { kind: "Engagement letter", ref: "EL-0094", lines: [{ d: "Monthly bookkeeping and VAT returns", q: 12, p: 95 }, { d: "Year-end accounts and corporation tax return", q: 1, p: 650 }, { d: "Director's self-assessment", q: 1, p: 180 }], vat: 20, validity: "Fixed monthly fee, cancel with 30 days' notice" },
+    board: { stages: ["Enquiry", "First call", "Letter sent", "Signed"], cards: [
+        { name: "Kite Studio", what: "Payroll for 2 starters", value: 480, stage: 2 },
+        { name: "Laura Price", what: "Self-assessment", value: 180, stage: 3 },
+        { name: "Moss & Hart", what: "Bookkeeping", value: 1140, stage: 1 },
+        { name: "Jon Bell", what: "Rental income return", value: 220, stage: 0 },
+    ] },
+    won: { msg: "Thanks Daniel, welcome aboard. Your bookkeeping starts in November, and we'll remind you when we need your first statements." },
+    invoice: { ref: "INV-0761", label: "Invoice (first month)", share: 95 / 1970 },
+    reviews: [
+        { name: "Fenwick Joinery", text: "We always know where our accounts are, and they remind us before every deadline.", when: "1 week ago" },
+        { name: "Laura P.", text: "Replied the same evening and sorted my return without any fuss.", when: "3 weeks ago" },
+    ],
+    review: { ask: "Thank you for choosing us, Daniel. Would you share a few words about your first month?", text: "Answered my message the same evening and had a fixed fee to me the next day." },
+    captions: {
+        enquiry: { t: "The evening enquiry doesn't wait", d: "Website, email and WhatsApp enquiries come into one inbox. The assistant drafts a reply the same evening, so the prospect doesn't move on to the next firm." },
+        booking: { t: "A first call booked straight away", d: "Your booking link shows only free times. Daniel picks one and gets the video link and a reminder." },
+        quote: { t: "The engagement letter, accepted online", d: "Scope and a fixed fee go as a link. He accepts on his phone, and you see when it was opened and signed." },
+        won: { t: "Every new client tracked", d: "Enquiries, first calls and letters on one board, with a next step on each, so none goes cold." },
+        invoice: { t: "Fees paid on time", d: "Monthly fees are invoiced automatically with a card payment link, and late payers get a polite reminder." },
+        review: { t: "Reviews that bring the next client", d: "A review request goes out after onboarding, and new reviews appear in the CRM." },
+    },
+};
+const LEGAL_PT: DemoScript = {
+    ...LEGAL_EN,
+    currency: "EUR",
+    customer: { name: "Diogo Ferreira", first: "Diogo", initials: "DF" },
+    others: [
+        { name: "Carpintaria Fontes, Lda", preview: "Seguem os extratos de setembro em anexo.", when: "1 h", channel: "email" },
+        { name: "Laura Pinto", preview: "A minha declaração de IRS está encaminhada?", when: "ter", channel: "whatsapp" },
+        { name: "Estúdio Milhafre", preview: "Podemos acrescentar processamento salarial para duas pessoas?", when: "20 out", channel: "web" },
+    ],
+    enquiry: { time: "20:47", msg: "Boa noite, acabei de constituir uma empresa para o meu negócio de eletricidade. Podem tratar da contabilidade e do fecho de contas?", reply: "Boa noite Diogo, parabéns pela nova empresa. O melhor começo é uma chamada gratuita de 20 minutos: escolha a hora aqui e enviamos-lhe uma avença fixa no mesmo dia." },
+    booking: { service: "Primeira chamada gratuita (vídeo)", length: "20 min", price: "Grátis", day: "Quinta, 29 out", dayShort: "qui", slots: ["09:00", "11:00", "14:00", "16:00"], pick: 1, with: "Claire" },
+    diary: [[0, 9, 1, "Revisão · Fontes"], [0, 14, 2, "Fecho de contas · Milhafre"], [1, 10, 1, "Chamada · Pinto"], [2, 11, 2, "Declarações de IVA"], [3, 9, 1, "Processamento salarial"], [4, 13, 1.5, "Revisão · Milhafre"]],
+    quote: { kind: "Proposta de honorários", ref: "PH-0094", lines: [{ d: "Contabilidade mensal e declarações de IVA", q: 12, p: 95 }, { d: "Fecho de contas e declaração Modelo 22", q: 1, p: 650 }, { d: "IRS do gerente", q: 1, p: 180 }], vat: 23, validity: "Avença mensal fixa, cancela com 30 dias de aviso" },
+    board: { stages: ["Pedido", "Primeira chamada", "Proposta enviada", "Adjudicado"], cards: [
+        { name: "Estúdio Milhafre", what: "Processamento salarial", value: 480, stage: 2 },
+        { name: "Laura Pinto", what: "IRS", value: 180, stage: 3 },
+        { name: "Musgo & Coração", what: "Contabilidade", value: 1140, stage: 1 },
+        { name: "João Belo", what: "Rendimentos prediais", value: 220, stage: 0 },
+    ] },
+    won: { msg: "Obrigada Diogo, seja bem-vindo. A contabilidade começa em novembro e avisamos quando precisarmos dos primeiros extratos." },
+    invoice: { ref: "FT-0761", label: "Fatura (primeiro mês)", share: 95 / 1970 },
+    reviews: [
+        { name: "Carpintaria Fontes", text: "Sabemos sempre em que ponto está a contabilidade, e avisam-nos antes de cada prazo.", when: "há 1 semana" },
+        { name: "Laura P.", text: "Responderam na mesma noite e trataram do IRS sem complicações.", when: "há 3 semanas" },
+    ],
+    review: { ask: "Obrigada por nos escolher, Diogo. Pode deixar umas palavras sobre o primeiro mês?", text: "Responderam à minha mensagem na mesma noite e no dia seguinte já tinha uma avença fixa." },
+    captions: {
+        enquiry: { t: "O pedido da noite não fica à espera", d: "Pedidos do site, email e WhatsApp chegam a uma caixa de entrada. O assistente prepara a resposta na mesma noite, para o cliente não seguir para o gabinete seguinte." },
+        booking: { t: "Primeira chamada marcada logo", d: "O seu link de marcação só mostra horas livres. O Diogo escolhe uma e recebe o link da videochamada e um lembrete." },
+        quote: { t: "A proposta de honorários, aceite online", d: "O âmbito e uma avença fixa seguem por link. Ele aceita no telemóvel e vê quando foi aberta e aceite." },
+        won: { t: "Cada novo cliente acompanhado", d: "Pedidos, primeiras chamadas e propostas num quadro, com próximo passo em cada um, para nenhum arrefecer." },
+        invoice: { t: "Honorários pagos a tempo", d: "As avenças são faturadas automaticamente com link de pagamento por cartão, e quem se atrasa recebe um lembrete educado." },
+        review: { t: "Avaliações que trazem o próximo cliente", d: "O pedido de avaliação segue depois da integração, e as novas avaliações aparecem no CRM." },
+    },
+};
+
 export const DEMO_SCRIPTS: Partial<Record<string, Record<IndustryLocale, DemoScript>>> = {
     trades: { en: TRADES_EN, pt: TRADES_PT },
     consultants: { en: CONSULTANTS_EN, pt: CONSULTANTS_PT },
     agencies: { en: AGENCIES_EN, pt: AGENCIES_PT },
+    salons: { en: SALONS_EN, pt: SALONS_PT },
+    legal: { en: LEGAL_EN, pt: LEGAL_PT },
 };
 
 /** Words on the demo's own buttons and screens. */

@@ -24,6 +24,8 @@ export const EN_TO_PT: Record<string, string> = {
     "/crm/consultants": "/crm/consultores",
     "/crm/agencies": "/crm/agencias",
     "/crm/deliveries": "/crm/entregas",
+    "/crm/salons": "/crm/saloes",
+    "/crm/legal-finance": "/crm/juridico-financas",
     "/websites/step-inside": "/pt/websites/demonstracao",
     "/quiz": "/pt/diagnostico",
     "/tools": "/pt/ferramentas",

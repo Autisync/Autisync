@@ -12,6 +12,8 @@ import { isPtPath, toEn, toPt } from "@/lib/i18n/routes";
 
 import {
   BriefcaseIcon,
+  ScaleIcon,
+  ScissorsIcon,
   HomeModernIcon,
   PresentationChartLineIcon,
   TruckIcon,
@@ -103,18 +105,22 @@ const solutionsPt = [
 // The CRM, by kind of business. Prices for all of them: /servicepackage#crm.
 const crmItems = [
   { name: "Estate & letting agents", description: "Listings, viewings, portals, tenancies and rent", href: "/crm/estate-agents", icon: HomeModernIcon },
-  { name: "Clinics & salons", description: "Online booking, reminders, deposits, WhatsApp replies", href: "/clinics", icon: CalendarDaysIcon },
+  { name: "Clinics & dental", description: "Online booking, reminders, deposits, WhatsApp replies", href: "/clinics", icon: CalendarDaysIcon },
+  { name: "Salons & studios", description: "Your own booking page, no commission, deposits, Instagram DMs", href: "/crm/salons", icon: ScissorsIcon },
   { name: "Trades & field services", description: "Quotes accepted online, jobs board, paid by card", href: "/crm/trades", icon: WrenchScrewdriverIcon },
   { name: "Consultants", description: "Pipeline, proposals, retainers invoiced every month", href: "/crm/consultants", icon: PresentationChartLineIcon },
   { name: "Agencies", description: "Proposals, deposits, stage invoices, client inbox", href: "/crm/agencies", icon: BriefcaseIcon },
+  { name: "Legal & finance", description: "Enquiries answered, engagement letters, deadlines, fees", href: "/crm/legal-finance", icon: ScaleIcon },
   { name: "Deliveries & logistics", description: "Office board, driver app, live tracking for customers", href: "/crm/deliveries", icon: TruckIcon },
 ];
 const crmItemsPt = [
   { name: "Imobiliárias", description: "Imóveis, visitas, portais, arrendamentos e rendas", href: "/crm/imobiliarias", icon: HomeModernIcon },
-  { name: "Clínicas e salões", description: "Marcações online, lembretes, sinal, WhatsApp", href: "/pt/clinicas", icon: CalendarDaysIcon },
+  { name: "Clínicas e dentistas", description: "Marcações online, lembretes, sinal, WhatsApp", href: "/pt/clinicas", icon: CalendarDaysIcon },
+  { name: "Salões e estúdios", description: "Página de marcações própria, sem comissões, sinal, Instagram", href: "/crm/saloes", icon: ScissorsIcon },
   { name: "Obras e serviços técnicos", description: "Orçamentos aceites online, quadro de trabalhos, pagamento por cartão", href: "/crm/servicos-tecnicos", icon: WrenchScrewdriverIcon },
   { name: "Consultores", description: "Negócios em curso, propostas, avenças faturadas todos os meses", href: "/crm/consultores", icon: PresentationChartLineIcon },
   { name: "Agências", description: "Propostas, sinal, faturas por fase, caixa de entrada", href: "/crm/agencias", icon: BriefcaseIcon },
+  { name: "Jurídico e finanças", description: "Pedidos respondidos, propostas de honorários, prazos", href: "/crm/juridico-financas", icon: ScaleIcon },
   { name: "Entregas e logística", description: "Quadro do escritório, app do motorista, seguimento em direto", href: "/crm/entregas", icon: TruckIcon },
 ];
 const crmCtas = [

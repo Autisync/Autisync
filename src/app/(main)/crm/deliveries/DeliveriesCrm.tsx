@@ -102,6 +102,13 @@ export default function DeliveriesCrm({ locale }: { locale: DeliveriesLocale }) 
                         <p style={{ marginTop: 14 }}>
                             <a href={`/demos/deliveries/index.html?lang=${locale}`} target="_blank" rel="noopener" style={{ color: "var(--gold)", fontWeight: 600 }}>{c.demoOpen}</a>
                         </p>
+                        <div className={x.merchant}>
+                            <div>
+                                <h3>{c.siteTitle}</h3>
+                                <p className={s.muted}>{c.siteText}</p>
+                            </div>
+                            <a className={`${s.btn} ${s.btnGhost}`} href={`https://deliveries-demo-site.vercel.app/?lang=${locale}`} target="_blank" rel="noopener">{c.siteCta}</a>
+                        </div>
                     </div>
                 </section>
 

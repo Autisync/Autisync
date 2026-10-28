@@ -1,16 +1,17 @@
 /**
  * The industry pages that exist, in the order they are listed. Clinics links
- * to its own page (/clinics, /pt/clinicas); salons and legal & finance have
- * prices and screenshots ready (lib/industry-plans.ts, public/crm/industries)
- * and get a page once their words are written.
+ * to its own page (/clinics, /pt/clinicas); Deliveries has its own folder
+ * (/crm/deliveries, /crm/entregas).
  */
 import type { IndustryLocale, IndustryPair } from "./types";
 import type { IndustryId } from "@/lib/industry-plans";
 import { TRADES } from "./trades";
 import { CONSULTANTS } from "./consultants";
 import { AGENCIES } from "./agencies";
+import { SALONS } from "./salons";
+import { LEGAL } from "./legal";
 
-export const INDUSTRY_PAGES: IndustryPair[] = [TRADES, CONSULTANTS, AGENCIES];
+export const INDUSTRY_PAGES: IndustryPair[] = [TRADES, CONSULTANTS, AGENCIES, SALONS, LEGAL];
 
 export function industryBySlug(slug: string, locale: IndustryLocale) {
     return INDUSTRY_PAGES.find((p) => p[locale].slug === slug)?.[locale];
@@ -20,18 +21,18 @@ export function industryBySlug(slug: string, locale: IndustryLocale) {
 export const INDUSTRY_CHIPS: Record<IndustryLocale, Array<{ label: string; href: string | null }>> = {
     en: [
         { label: "Clinics", href: "/clinics" },
-        { label: "Salons & studios", href: null },
+        { label: "Salons & studios", href: "/crm/salons" },
         { label: "Consultants", href: "/crm/consultants" },
-        { label: "Legal & finance", href: null },
+        { label: "Legal & finance", href: "/crm/legal-finance" },
         { label: "Agencies", href: "/crm/agencies" },
         { label: "Trades & field services", href: "/crm/trades" },
         { label: "Deliveries & logistics", href: "/crm/deliveries" },
     ],
     pt: [
         { label: "Clínicas", href: "/pt/clinicas" },
-        { label: "Salões e estúdios", href: null },
+        { label: "Salões e estúdios", href: "/crm/saloes" },
         { label: "Consultores", href: "/crm/consultores" },
-        { label: "Jurídico e finanças", href: null },
+        { label: "Jurídico e finanças", href: "/crm/juridico-financas" },
         { label: "Agências", href: "/crm/agencias" },
         { label: "Obras e serviços técnicos", href: "/crm/servicos-tecnicos" },
         { label: "Entregas e logística", href: "/crm/entregas" },

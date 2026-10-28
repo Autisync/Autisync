@@ -174,11 +174,11 @@ export const crmPriceRows: CrmPriceRow[] = [
     { id: "lite", en: "CRM Lite, no website", pt: "CRM Lite, sem site", from: crmLite.price, href: null, perMonth: true },
     { id: "estate", en: "Estate & letting agents", pt: "Imobiliárias", from: minOf(agencyPlans.map((p) => p.price)), href: { en: "/crm/estate-agents", pt: "/crm/imobiliarias" }, perMonth: true },
     { id: "clinics", en: "Clinics & dental", pt: "Clínicas e dentistas", from: minOf(industryPlans.clinics.map((p) => p.price)), href: { en: "/clinics", pt: "/pt/clinicas" }, perMonth: true },
-    { id: "salons", en: "Salons & studios", pt: "Salões e estúdios", from: minOf(industryPlans.salons.map((p) => p.price)), href: { en: "/clinics", pt: "/pt/clinicas" }, perMonth: true },
+    { id: "salons", en: "Salons & studios", pt: "Salões e estúdios", from: minOf(industryPlans.salons.map((p) => p.price)), href: { en: "/crm/salons", pt: "/crm/saloes" }, perMonth: true },
     { id: "trades", en: "Trades & field services", pt: "Obras e serviços técnicos", from: minOf(industryPlans.trades.map((p) => p.price)), href: { en: "/crm/trades", pt: "/crm/servicos-tecnicos" }, perMonth: true },
     { id: "consultants", en: "Consultants", pt: "Consultores", from: minOf(industryPlans.consultants.map((p) => p.price)), href: { en: "/crm/consultants", pt: "/crm/consultores" }, perMonth: true },
     { id: "agencies", en: "Agencies", pt: "Agências", from: minOf(industryPlans.agencies.map((p) => p.price)), href: { en: "/crm/agencies", pt: "/crm/agencias" }, perMonth: true },
-    { id: "legal", en: "Legal & finance", pt: "Jurídico e finanças", from: minOf(industryPlans.legal.map((p) => p.price)), href: null, perMonth: true },
+    { id: "legal", en: "Legal & finance", pt: "Jurídico e finanças", from: minOf(industryPlans.legal.map((p) => p.price)), href: { en: "/crm/legal-finance", pt: "/crm/juridico-financas" }, perMonth: true },
     { id: "deliveries", en: "Deliveries & logistics", pt: "Entregas e logística", from: minOf(deliveryPlans.map((p) => p.price)), href: { en: "/crm/deliveries", pt: "/crm/entregas" }, perMonth: true },
     { id: "whitelabel", en: "White-label build, handed over", pt: "Sistema com a sua marca, entregue a si", from: whiteLabelBuild.price, href: { en: "/crm/deliveries#white-label", pt: "/crm/entregas#white-label" }, perMonth: false },
 ];

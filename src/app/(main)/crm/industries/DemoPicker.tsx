@@ -16,11 +16,15 @@ const TABS = {
         { id: "trades", label: "Trades", href: "/crm/trades" },
         { id: "consultants", label: "Consultants", href: "/crm/consultants" },
         { id: "agencies", label: "Agencies", href: "/crm/agencies" },
+        { id: "salons", label: "Salons", href: "/crm/salons" },
+        { id: "legal", label: "Accountants", href: "/crm/legal-finance" },
     ],
     pt: [
         { id: "trades", label: "Serviços técnicos", href: "/crm/servicos-tecnicos" },
         { id: "consultants", label: "Consultores", href: "/crm/consultores" },
         { id: "agencies", label: "Agências", href: "/crm/agencias" },
+        { id: "salons", label: "Salões", href: "/crm/saloes" },
+        { id: "legal", label: "Contabilistas", href: "/crm/juridico-financas" },
     ],
 };
 const MORE = {
