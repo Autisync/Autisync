@@ -59,6 +59,7 @@ export const LABELS = {
         siteBadge: "Live demo website: click to open",
         siteAlt: (name: string) => `${name} demo website on a laptop`,
         sitePhoneAlt: (name: string) => `${name} demo website on a phone`,
+        siteDevicesAlt: (name: string) => `${name} demo website on a laptop, a tablet and a phone`,
     },
     pt: {
         book: "Marcar demonstração",
@@ -119,5 +120,6 @@ export const LABELS = {
         siteBadge: "Site de demonstração ao vivo: clique para abrir",
         siteAlt: (name: string) => `Site de demonstração da ${name} num portátil`,
         sitePhoneAlt: (name: string) => `Site de demonstração da ${name} num telemóvel`,
+        siteDevicesAlt: (name: string) => `Site de demonstração da ${name} num portátil, num tablet e num telemóvel`,
     },
 } as const;

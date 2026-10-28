@@ -12,7 +12,7 @@ const SITES = (lang: Lang) => [
     {
         name: "Alvura Dental Clinic",
         url: DEMO_SITES.clinics,
-        shot: "/crm/industries/clinics/site.webp",
+        shot: "/demos/shots/alvura.webp",
         text: lang === "pt"
             ? "Clínica dentária em Lisboa e Londres, em português e inglês: a próxima vaga lida em direto da agenda, marcação na própria página e pedidos que chegam ao CRM."
             : "A dental practice in London and Lisbon, in English and Portuguese: the next free appointment read live from the diary, booking on the page and enquiries into the CRM.",
@@ -20,7 +20,7 @@ const SITES = (lang: Lang) => [
     {
         name: "Aurelle Skin Clinic",
         url: "https://aurelle-demo-site.vercel.app",
-        shot: null,
+        shot: "/demos/shots/aurelle.webp",
         text: lang === "pt"
             ? "Clínica de pele em Chester: tratamentos com preços, escolha da profissional e marcação confirmada por e-mail, tudo dentro do CRM."
             : "A skin clinic in Chester: treatments with prices, choice of practitioner and bookings confirmed by email, all inside the CRM.",
@@ -28,10 +28,10 @@ const SITES = (lang: Lang) => [
     {
         name: "Maré Hair & Beauty",
         url: DEMO_SITES.salons,
-        shot: "/crm/industries/salons/site.webp",
+        shot: "/demos/shots/mare.webp",
         text: lang === "pt"
-            ? "Salão de cabeleireiro e estética: serviços por profissional, sinal nas marcações longas e lembretes antes de cada visita."
-            : "A hair and beauty salon: services by stylist, deposits on long appointments and reminders before every visit.",
+            ? "Salão de cabeleireiro e estética, com mais três estilos para comparar: barbearia, unhas e tatuagem. Serviços por profissional, sinal e lembretes."
+            : "A hair and beauty salon, plus three more styles to compare: barber, nails and tattoo. Services by stylist, deposits and reminders.",
     },
 ];
 

@@ -32,6 +32,14 @@
   overflow: hidden;
   background: var(--bg-2);
 }
+.phoneShot {
+  justify-self: center;
+  width: 100%;
+  max-width: 290px;
+  border: 8px solid #1f1f22;
+  border-radius: 34px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.22);
+}
 .miniShot img {
   display: block;
   width: 100%;
@@ -301,9 +309,6 @@
   position: relative;
   display: block;
   border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.18);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .siteShot:hover { transform: translateY(-6px); }

@@ -23,7 +23,7 @@ import {
     INDUSTRY_COMPARED_ON, INDUSTRY_COMPARED_ON_PT,
 } from "@/lib/industry-plans";
 import { LABELS } from "./labels";
-import { INDUSTRY_CHIPS, demoSiteUrl } from "./index";
+import { DEVICE_SHOTS, INDUSTRY_CHIPS, demoSiteUrl } from "./index";
 import type { IndustryCopy, IndustryLocale } from "./types";
 
 const Check = () => (
@@ -115,14 +115,22 @@ export default function IndustryCrm({ copy, locale }: { copy: IndustryCopy; loca
                             <h2>{L.siteTitle}</h2>
                             <p className={s.muted}>{L.siteSub}</p>
                         </div>
-                        <a className={x.site} href={demoSiteUrl(copy.id)} target="_blank" rel="noopener noreferrer" aria-label={L.siteOpenNamed(copy.demoName)}>
+                        <a className={`${x.site} ${DEVICE_SHOTS[copy.id] ? x.siteOne : ""}`} href={demoSiteUrl(copy.id)} target="_blank" rel="noopener noreferrer" aria-label={L.siteOpenNamed(copy.demoName)}>
                             <span className={x.siteBadge}><i aria-hidden="true" />{L.siteBadge}</span>
-                            <figure className={x.siteLaptop}>
-                                <Image src={`/crm/industries/${copy.id}/site.webp`} alt={L.siteAlt(copy.demoName)} width={1800} height={1125} sizes="(max-width: 960px) 75vw, 800px" />
-                            </figure>
-                            <figure className={x.sitePhone}>
-                                <Image src={`/crm/industries/${copy.id}/site-phone.webp`} alt={L.sitePhoneAlt(copy.demoName)} width={585} height={1266} sizes="220px" />
-                            </figure>
+                            {DEVICE_SHOTS[copy.id] ? (
+                                <figure className={x.siteDevices}>
+                                    <Image src={`/crm/industries/${copy.id}/devices.webp`} alt={L.siteDevicesAlt(copy.demoName)} width={2071} height={1204} sizes="(max-width: 1100px) 100vw, 1060px" />
+                                </figure>
+                            ) : (
+                                <>
+                                    <figure className={x.siteLaptop}>
+                                        <Image src={`/crm/industries/${copy.id}/site.webp`} alt={L.siteAlt(copy.demoName)} width={1800} height={1125} sizes="(max-width: 960px) 75vw, 800px" />
+                                    </figure>
+                                    <figure className={x.sitePhone}>
+                                        <Image src={`/crm/industries/${copy.id}/site-phone.webp`} alt={L.sitePhoneAlt(copy.demoName)} width={585} height={1266} sizes="220px" />
+                                    </figure>
+                                </>
+                            )}
                         </a>
                         <div className={x.siteCta}>
                             <a className={`${s.btn} ${s.btnGold} ${x.siteCtaBig}`} href={demoSiteUrl(copy.id)} target="_blank" rel="noopener noreferrer">

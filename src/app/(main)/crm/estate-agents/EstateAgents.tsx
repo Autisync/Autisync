@@ -84,10 +84,10 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
                         </div>
                         <figure className={s.shot}>
                             <Image
-                                src="/crm/estate/properties.png"
-                                alt={pt ? "Autisync CRM: lista de imóveis com fotos, preço, estado e interessados" : "Autisync CRM properties view: listings with photos, price, status and interested buyers"}
-                                width={2400}
-                                height={1400}
+                                src="/crm/estate/properties-live.webp"
+                                alt={pt ? "Autisync CRM da Miralume Homes: imóveis com fotos, preço, estado e interessados" : "Miralume Homes in Autisync CRM: listings with photos, price, status and interested buyers"}
+                                width={1552}
+                                height={698}
                                 priority
                                 sizes="(max-width: 1120px) 100vw, 1060px"
                             />
@@ -128,11 +128,11 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
                             ))}
                         </div>
                         <div className={e.shots}>
-                            <figure className={e.miniShot}>
-                                <Image src="/crm/estate/viewing-booking.png" alt={pt ? "Página de marcação de visita no telemóvel" : "Viewing booking page on a phone"} width={900} height={1200} sizes="(max-width: 800px) 100vw, 420px" />
+                            <figure className={`${e.miniShot} ${e.phoneShot}`}>
+                                <Image src="/crm/estate/viewing-booking-live.webp" alt={pt ? "Marcação de visita no site da Miralume Homes, no telemóvel" : "Booking a viewing on the Miralume Homes website, on a phone"} width={403} height={911} sizes="(max-width: 800px) 70vw, 300px" />
                             </figure>
                             <figure className={e.miniShot}>
-                                <Image src="/crm/estate/viewings-diary.png" alt={pt ? "Agenda de visitas da agência" : "The agency's viewings diary"} width={1400} height={1000} sizes="(max-width: 800px) 100vw, 620px" />
+                                <Image src="/crm/estate/property-live.webp" alt={pt ? "Um imóvel no CRM: fotos, mapa, consultor e separadores para interessados, visitas e documentos" : "A home in the CRM: photos, map, agent, and tabs for interested people, viewings and documents"} width={1552} height={698} sizes="(max-width: 800px) 100vw, 620px" />
                             </figure>
                         </div>
                     </div>
@@ -193,7 +193,7 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
                             </div>
                             <a className={e.siteShot} href={DEMO_AGENCY_SITE} target="_blank" rel="noopener noreferrer" aria-label={t.siteOpen}>
                                 <span className={e.siteBadge}><i aria-hidden="true" />{t.siteBadge}</span>
-                                <Image src="/crm/estate/properties.png" alt={pt ? "Os imóveis no CRM que alimentam o site" : "The listings in the CRM that feed the website"} width={2400} height={1400} sizes="(max-width: 900px) 100vw, 560px" />
+                                <Image src="/crm/estate/devices.webp" alt={pt ? "O site da Miralume Homes no portátil, tablet e telemóvel" : "The Miralume Homes website on a laptop, tablet and phone"} width={2071} height={1204} sizes="(max-width: 900px) 100vw, 640px" />
                             </a>
                         </div>
                     </div>

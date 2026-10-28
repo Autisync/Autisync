@@ -210,6 +210,23 @@
 .site .sitePhone {
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s;
 }
+.site.siteOne {
+  grid-template-columns: minmax(0, 1fr);
+}
+.siteDevices {
+  margin: 0;
+}
+.siteDevices img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.site:hover .siteDevices {
+  transform: translateY(-6px);
+}
+.site .siteDevices {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
 .site:hover .siteLaptop { transform: translateY(-6px); }
 .site:hover .sitePhone { transform: translateY(-10px) rotate(-1.5deg); }
 /* "Live demo" tag on the screenshots, so it reads as something to open. */
@@ -252,6 +269,8 @@
   .siteBadge i { animation: none; }
   .site .siteLaptop, .site .sitePhone { transition: none; }
   .site:hover .siteLaptop, .site:hover .sitePhone { transform: none; }
+  .site .siteDevices { transition: none; }
+  .site:hover .siteDevices { transform: none; }
 }
 .siteLaptop {
   margin: 0;

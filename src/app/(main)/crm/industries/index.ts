@@ -51,7 +51,14 @@ export const DEMO_SITES: Record<IndustryId, string> = {
     clinics: "https://alvura-demo-site.vercel.app",
     consultants: "https://app.autisync.com/p/harbourline-demo",
     agencies: "https://app.autisync.com/p/northlight-demo",
-    salons: "https://app.autisync.com/p/mare-demo",
+    salons: "https://salons-demo-site.vercel.app",
     legal: "https://app.autisync.com/p/ashcombe-demo",
 };
 export const demoSiteUrl = (id: IndustryId) => DEMO_SITES[id];
+
+/**
+ * Industries whose demo website has a real laptop + tablet + phone shot,
+ * taken from the live site: public/crm/industries/<id>/devices.webp. The
+ * others still show the older laptop and phone pair (site.webp, site-phone.webp).
+ */
+export const DEVICE_SHOTS: Partial<Record<IndustryId, true>> = { salons: true, trades: true, clinics: true };
