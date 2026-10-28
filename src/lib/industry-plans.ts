@@ -3,7 +3,9 @@
  * prices we compare against. Used by the industry pages under /crm/* (English
  * and Portuguese) and by /llms.txt, so they never disagree.
  *
- * Prices set 27 Oct 2026. Per business (not per user), monthly, ex-VAT.
+ * Prices set 28 Oct 2026. Per business (not per user), monthly, ex-VAT, plus a
+ * one-off setup fee per plan (set-up, data moved over, team training; halved
+ * when paid yearly).
  * GBP for the UK, EUR for Portugal. Kz and N$ follow the same scaling as the
  * rest of the site (see lib/estate-agency-plans.ts), not the exchange rate.
  * To change a price, change it here: every page reads this file.
@@ -19,6 +21,8 @@ export type IndustryPlan = {
     namePt: string;
     price: Record<Currency, number>;
     perSite?: boolean;
+    /** One-off, for setting it up, moving the data and training the team. */
+    setup: Record<Currency, number>;
     users: number;
     aiReplies: number | null;
     highlight?: boolean;
@@ -37,13 +41,19 @@ const scaled = (gbp: number, eur: number): Record<Currency, number> => ({
 type Prices = { solo: [number, number]; team: [number, number]; pro: [number, number]; multi: [number, number]; extraUser: [number, number] };
 
 const PRICES: Record<IndustryId, Prices> = {
-    clinics:     { solo: [45, 49], team: [99, 115], pro: [179, 205], multi: [299, 345], extraUser: [20, 23] },
-    salons:      { solo: [29, 35], team: [69, 79],  pro: [129, 149], multi: [219, 249], extraUser: [12, 14] },
-    consultants: { solo: [35, 39], team: [79, 89],  pro: [149, 169], multi: [249, 279], extraUser: [15, 17] },
-    legal:       { solo: [49, 55], team: [119, 135], pro: [219, 249], multi: [349, 395], extraUser: [25, 29] },
-    agencies:    { solo: [39, 45], team: [89, 99],  pro: [169, 195], multi: [279, 319], extraUser: [15, 17] },
-    trades:      { solo: [39, 45], team: [89, 99],  pro: [169, 195], multi: [279, 319], extraUser: [15, 17] },
+    clinics:     { solo: [59, 69], team: [129, 149], pro: [229, 265], multi: [379, 435], extraUser: [25, 29] },
+    salons:      { solo: [39, 45], team: [89, 99],   pro: [159, 185], multi: [269, 309], extraUser: [15, 17] },
+    consultants: { solo: [49, 55], team: [99, 115],  pro: [189, 215], multi: [299, 345], extraUser: [19, 22] },
+    legal:       { solo: [69, 79], team: [149, 169], pro: [279, 319], multi: [449, 515], extraUser: [29, 33] },
+    agencies:    { solo: [49, 55], team: [109, 125], pro: [199, 229], multi: [329, 379], extraUser: [19, 22] },
+    trades:      { solo: [49, 55], team: [119, 135], pro: [209, 239], multi: [349, 399], extraUser: [19, 22] },
 };
+
+/** One-off setup fee by plan, the same for every kind of business (GBP, EUR). */
+export const SETUP: Record<IndustryPlanId, [number, number]> = { solo: [295, 345], team: [495, 575], pro: [895, 1045], multi: [1495, 1745] };
+/** Setup for each extra site on a multi-site plan. */
+export const setupExtraSite = { GBP: 495, EUR: 575 };
+const setupFor = (id: IndustryPlanId) => scaled(...SETUP[id]);
 
 /** What each tier adds, the same for every kind of business. */
 const TIER = {
@@ -67,13 +77,13 @@ function plansFor(ind: IndustryId): IndustryPlan[] {
     const p = PRICES[ind];
     const sp = SPECIFIC[ind];
     return [
-        { id: "solo", name: "Solo", namePt: "Solo", price: scaled(...p.solo), users: TIER.solo.users, aiReplies: null,
+        { id: "solo", name: "Solo", namePt: "Solo", price: scaled(...p.solo), setup: setupFor("solo"), users: TIER.solo.users, aiReplies: null,
           extras: [sp.solo[0], ...TIER.solo.en], extrasPt: [sp.solo[1], ...TIER.solo.pt] },
-        { id: "team", name: "Team", namePt: "Equipa", price: scaled(...p.team), users: TIER.team.users, aiReplies: TIER.team.ai,
+        { id: "team", name: "Team", namePt: "Equipa", price: scaled(...p.team), setup: setupFor("team"), users: TIER.team.users, aiReplies: TIER.team.ai,
           extras: [sp.team[0], ...TIER.team.en], extrasPt: [sp.team[1], ...TIER.team.pt] },
-        { id: "pro", name: "Pro", namePt: "Pro", price: scaled(...p.pro), users: TIER.pro.users, aiReplies: TIER.pro.ai, highlight: true,
+        { id: "pro", name: "Pro", namePt: "Pro", price: scaled(...p.pro), setup: setupFor("pro"), users: TIER.pro.users, aiReplies: TIER.pro.ai, highlight: true,
           extras: [...TIER.pro.en], extrasPt: [...TIER.pro.pt] },
-        { id: "multi", name: sp.multiName[0], namePt: sp.multiName[1], price: scaled(...p.multi), perSite: ind !== "consultants" && ind !== "agencies",
+        { id: "multi", name: sp.multiName[0], namePt: sp.multiName[1], price: scaled(...p.multi), setup: setupFor("multi"), perSite: ind !== "consultants" && ind !== "agencies",
           users: TIER.multi.users, aiReplies: TIER.multi.ai, extras: [...TIER.multi.en], extrasPt: [...TIER.multi.pt] },
     ];
 }
@@ -139,5 +149,5 @@ export const industryCompetitors: Record<IndustryId, Competitor[]> = {
     ],
 };
 
-export const INDUSTRY_COMPARED_ON = "27 October 2026";
+export const INDUSTRY_COMPARED_ON = "27 October 2026"; // competitors' prices
 export const INDUSTRY_COMPARED_ON_PT = "27 de outubro de 2026";

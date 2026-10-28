@@ -7,7 +7,7 @@ import { agencyPlans } from "@/lib/estate-agency-plans";
 const URL = "https://www.autisync.com/crm/estate-agents";
 const TITLE = "Estate Agency CRM with AI Viewings | Autisync";
 const DESCRIPTION =
-    "CRM for UK estate and letting agents: sales, lettings and property management, viewings that book themselves, Rightmove and OnTheMarket feeds, and an AI assistant that answers enquiries out of hours. From £49 a month per agency, not per user.";
+    "CRM for UK estate and letting agents: sales, lettings and property management, viewings that book themselves, Rightmove and OnTheMarket feeds, and an AI assistant that answers enquiries out of hours. From £69 a month per agency, not per user.";
 
 export const metadata: Metadata = {
     title: { absolute: TITLE },

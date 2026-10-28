@@ -18,7 +18,8 @@ const T = {
     en: {
         eyebrow: "CRM",
         title: "CRM prices by type of business",
-        sub: "Monthly, per business rather than per person, before VAT. Set up for you, with your data moved over and no setup fee. Cancel with 30 days’ notice.",
+        sub: "Monthly, per business rather than per person, before VAT, plus a one-off setup fee: we set it up for you, move your data over and train your team. Setup is halved if you pay yearly. Cancel with 30 days’ notice.",
+        setup: "one-off setup",
         from: "from",
         month: "/ month",
         oneOff: "one-off",
@@ -36,7 +37,8 @@ const T = {
     pt: {
         eyebrow: "CRM",
         title: "Preços do CRM por tipo de negócio",
-        sub: "Mensal, por negócio e não por pessoa, sem IVA. Configurado por nós, com os seus dados passados e sem custo de instalação. Cancela com 30 dias de aviso.",
+        sub: "Mensal, por negócio e não por pessoa, sem IVA, mais uma taxa de instalação única: configuramos por si, passamos os seus dados e formamos a equipa. A instalação fica a metade com pagamento anual. Cancela com 30 dias de aviso.",
+        setup: "de instalação (pagamento único)",
         from: "desde",
         month: "/ mês",
         oneOff: "pagamento único",
@@ -101,6 +103,7 @@ export function CrmPrices({ lang = "en" }: { lang?: Lang }) {
                             <span className="text-4xl font-extrabold text-[#3B3B3B] tabular-nums">{formatPrice(crmLite.price[currency], currency)}</span>
                             <span className="text-sm text-gray-500"> {t.month}</span>
                         </p>
+                        <p className="mt-1 text-sm text-gray-500">+ {formatPrice(crmLite.setup[currency], currency)} {t.setup}</p>
                         <ul className="mt-4 space-y-2 text-sm text-gray-700">
                             {lite.features.map((f) => (
                                 <li key={f} className="flex gap-2">

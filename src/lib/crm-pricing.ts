@@ -2,7 +2,8 @@
  * Every CRM price in one place, for the main site's price pages, the menu,
  * the home page card, the Deliveries page and /llms.txt.
  *
- * Prices set 27 Oct 2026, monthly, ex-VAT. GBP for the UK, EUR for Portugal;
+ * Prices set 28 Oct 2026, monthly, ex-VAT, each plan with a one-off setup fee
+ * (set-up, data moved over, training; halved when paid yearly). GBP for the UK, EUR for Portugal;
  * Kz and N$ follow the site's usual scale (GBP × 367 and × 6.53), not the
  * exchange rate. The per-business plans themselves live in
  * lib/industry-plans.ts and lib/estate-agency-plans.ts.
@@ -21,7 +22,8 @@ const scaled = (gbp: number, eur: number, step = 500): Record<Currency, number> 
 /* ── CRM Lite: the CRM on its own, no website ─────────────────────────── */
 
 export const crmLite = {
-    price: scaled(24, 28),
+    price: scaled(29, 35),
+    setup: scaled(149, 169),
     en: {
         name: "CRM Lite",
         tagline: "Just the CRM, for one person. No website.",
@@ -56,6 +58,7 @@ export type DeliveryPlan = {
     namePt: string;
     price: Record<Currency, number>;
     perDepot?: boolean;
+    setup: Record<Currency, number>;
     drivers: number;
     officeUsers: number;
     highlight?: boolean;
@@ -65,23 +68,23 @@ export type DeliveryPlan = {
 
 export const deliveryPlans: DeliveryPlan[] = [
     {
-        id: "starter", name: "Starter", namePt: "Starter", price: scaled(79, 89), drivers: 3, officeUsers: 2,
+        id: "starter", name: "Starter", namePt: "Starter", price: scaled(99, 115), setup: scaled(695, 795), drivers: 3, officeUsers: 2,
         extras: ["Driver app with proof of delivery: photo, signature, QR scan", "Live tracking link by text and email", "Invoice sent at the drop, with a payment link"],
         extrasPt: ["App do motorista com prova de entrega: foto, assinatura, leitura de QR", "Link de seguimento em direto por SMS e email", "Fatura enviada na entrega, com link de pagamento"],
     },
     {
-        id: "fleet", name: "Fleet", namePt: "Frota", price: scaled(179, 205), drivers: 10, officeUsers: 5, highlight: true,
+        id: "fleet", name: "Fleet", namePt: "Frota", price: scaled(229, 265), setup: scaled(1495, 1745), drivers: 10, officeUsers: 5, highlight: true,
         extras: ["Orders read from email and WhatsApp by themselves", "Late warnings with a new arrival time", "AI replies to “where’s my delivery?”"],
         extrasPt: ["Encomendas lidas do email e do WhatsApp automaticamente", "Avisos de atraso com nova hora de chegada", "Respostas de IA a “onde está a minha entrega?”"],
     },
     {
-        id: "depot", name: "Depot", namePt: "Armazém", price: scaled(349, 395), perDepot: true, drivers: 25, officeUsers: 12,
+        id: "depot", name: "Depot", namePt: "Armazém", price: scaled(449, 515), setup: scaled(2495, 2895), perDepot: true, drivers: 25, officeUsers: 12,
         extras: ["Several depots on one board", "Your own branding on the customer screens", "Priority support"],
         extrasPt: ["Vários armazéns num só quadro", "A sua marca nos ecrãs do cliente", "Suporte prioritário"],
     },
 ];
 
-export const deliveryExtraDriver = scaled(12, 14);
+export const deliveryExtraDriver = scaled(15, 17);
 
 export const everyDeliveryPlan = [
     "Office board: today’s drops, vans and drivers on a live map",

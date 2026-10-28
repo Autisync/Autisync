@@ -171,6 +171,7 @@ export default function IndustryCrm({ copy, locale }: { copy: IndustryCopy; loca
                                         <b>{formatPrice(p.price[cur], cur)}</b>
                                         <span>{p.perSite ? L.perSite : L.perMonth}</span>
                                     </p>
+                                    <p className={e.setup}>{L.setup(formatPrice(p.setup[cur], cur))}</p>
                                     <ul className={e.planList}>
                                         <li><Check />{p.perSite ? L.perSiteUsers(p.users) : L.users(p.users)}</li>
                                         {(pt ? p.extrasPt : p.extras).map((v) => <li key={v}><Check />{v}</li>)}

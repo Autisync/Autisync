@@ -261,3 +261,13 @@
     padding: 22px;
   }
 }
+
+/* The one-off setup fee, under the monthly price */
+.setup {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.setup b {
+  color: var(--fg);
+}

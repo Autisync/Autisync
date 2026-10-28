@@ -166,6 +166,7 @@ export default function DeliveriesCrm({ locale }: { locale: DeliveriesLocale }) 
                                     {p.highlight && <span className={e.hotTag}>{c.popular}</span>}
                                     <h3>{pt ? p.namePt : p.name}</h3>
                                     <p className={e.price}><b>{formatPrice(p.price[cur], cur)}</b><span>{p.perDepot ? c.perDepot : c.perMonth}</span></p>
+                                    <p className={e.setup}>{c.setup(formatPrice(p.setup[cur], cur))}</p>
                                     <ul className={e.planList}>
                                         <li><Check />{c.drivers(p.drivers)}</li>
                                         <li><Check />{c.office(p.officeUsers)}</li>

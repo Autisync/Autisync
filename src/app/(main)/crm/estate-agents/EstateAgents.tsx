@@ -196,6 +196,7 @@ export default function EstateAgents({ locale }: { locale: Locale }) {
                                         <b>{formatPrice(p.price[cur], cur)}</b>
                                         <span>{p.perBranch ? t.perBranch : t.perMonth}</span>
                                     </p>
+                                    <p className={e.setup}>{t.setup(formatPrice(p.setup[cur], cur))}</p>
                                     <ul className={e.planList}>
                                         <li><Check />{p.perBranch ? t.perBranchUsers(p.users) : t.users(p.users)}</li>
                                         <li><Check />{t.listings(p.listings)}</li>
